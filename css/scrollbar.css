@@ -1,0 +1,20 @@
+/* 滚动条 */
+::-webkit-scrollbar { /* 滚动条整体样式 */
+    width: 12px;
+    height: 7px
+}
+
+::-webkit-scrollbar-track { /* 外层轨道 */
+    border-radius: 3em;
+    background-color: rgba(73, 177, 245, .2);
+}
+
+::-webkit-scrollbar-thumb { /* 滑块 */
+    background-color: rgb(255 255 255 / .3);
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent);
+    border-radius: 3em
+}
+
+::-webkit-scrollbar-corner { /* 边角，两个滚动条交汇处 */
+    background-color: transparent
+}
