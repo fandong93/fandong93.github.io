@@ -3,5 +3,5 @@
     font-family: 'Muyao-Softbrush';
     /* 在我们的字体文件没有加载完成之前文字使用默认字体 */
     font-display: swap;
-    src: url('../font/Muyao-Softbrush.ttf');
+    src: url('https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@1.0/font/Muyao-Softbrush.ttf');
 }
