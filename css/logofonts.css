@@ -1,0 +1,7 @@
+/* 网站标题字体 */
+@font-face {
+    font-family: 'Muyao-Softbrush';
+    /* 在我们的字体文件没有加载完成之前文字使用默认字体 */
+    font-display: swap;
+    src: url('../font/Muyao-Softbrush.ttf');
+}

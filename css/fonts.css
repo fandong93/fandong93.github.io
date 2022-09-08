@@ -1,0 +1,14 @@
+/* 网站字体 */
+@font-face {
+    font-family: 'FangzhengJian';
+    /* 在我们的字体文件没有加载完成之前文字使用默认字体 */
+    font-display: swap;
+    src: url('../font/FangzhengJian.ttf');
+}
+/* 代码块字体 */
+@font-face {
+    font-family: 'CascadiaCodePL';
+    /* 在我们的字体文件没有加载完成之前文字使用默认字体 */
+    font-display: swap;
+    src: url('../font/CascadiaCode/ttf/CascadiaCodePL.ttf');
+}

@@ -1,0 +1,644 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Java 入门 | Mr.DONG の 自习室</title><meta name="keywords" content="Java"><meta name="author" content="Mr.DONG"><meta name="copyright" content="Mr.DONG"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、计算机语言发展史 什么是计算机语言？ 语言：人与人之间用于沟通的一种方式。 计算机语言：人与计算机交流的方式。   计算机语言发展史： 第一代语言：机器语言（二进制代码） 第二代语言：汇编语言（指令代替二进制） 第三代语言：高级语言（分为 面向过程 和 面向对象 两大类） C 语言是典型的面向过程的语言。 C++ 兼具面向过程和面向对象。 C++、Java 是典型的面向对象的语言。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 入门">
+<meta property="og:url" content="http://example.com/2022/08/28/Java/Java%20%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="Mr.DONG の 自习室">
+<meta property="og:description" content="一、计算机语言发展史 什么是计算机语言？ 语言：人与人之间用于沟通的一种方式。 计算机语言：人与计算机交流的方式。   计算机语言发展史： 第一代语言：机器语言（二进制代码） 第二代语言：汇编语言（指令代替二进制） 第三代语言：高级语言（分为 面向过程 和 面向对象 两大类） C 语言是典型的面向过程的语言。 C++ 兼具面向过程和面向对象。 C++、Java 是典型的面向对象的语言。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s6.jpg.cm/2022/09/07/PXRROC.jpg">
+<meta property="article:published_time" content="2022-08-28T06:41:00.000Z">
+<meta property="article:modified_time" content="2022-09-08T07:44:49.533Z">
+<meta property="article:author" content="Mr.DONG">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="EditPlus">
+<meta property="article:tag" content="IDEA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s6.jpg.cm/2022/09/07/PXRROC.jpg"><link rel="shortcut icon" href="https://s6.jpg.cm/2022/09/07/PXPkS4.th.png"><link rel="canonical" href="http://example.com/2022/08/28/Java/Java%20%E5%85%A5%E9%97%A8/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/logofonts.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":270},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java 入门',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-09-08 15:44:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/fonts.css"><link rel="stylesheet" href="/css/logofonts.css"><link rel="stylesheet" href="/css/mouse.css"><link rel="stylesheet" href="/css/scrollbar.css"><link rel="stylesheet" href="/css/one.css"><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s6.jpg.cm/2022/09/07/PXPXyi.th.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s6.jpg.cm/2022/09/07/PXRROC.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Mr.DONG の 自习室</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java 入门</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-28T06:41:00.000Z" title="发表于 2022-08-28 14:41:00">2022-08-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-08T07:44:49.533Z" title="更新于 2022-09-08 15:44:49">2022-09-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>21分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java 入门"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一、计算机语言发展史"><a href="#一、计算机语言发展史" class="headerlink" title="一、计算机语言发展史"></a>一、计算机语言发展史</h1><ul>
+<li>什么是计算机语言？<ul>
+<li>语言：人与人之间用于沟通的一种方式。</li>
+<li>计算机语言：人与计算机交流的方式。</li>
+</ul>
+</li>
+<li>计算机语言发展史：<ul>
+<li>第一代语言：机器语言（二进制代码）</li>
+<li>第二代语言：汇编语言（指令代替二进制）</li>
+<li>第三代语言：高级语言（分为 <strong>面向过程</strong> 和 <strong>面向对象</strong> 两大类）<ul>
+<li><code>C</code> 语言是典型的面向过程的语言。</li>
+<li><code>C++</code> 兼具面向过程和面向对象。</li>
+<li><code>C++</code>、<code>Java</code> 是典型的面向对象的语言。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="二、初识-Java"><a href="#二、初识-Java" class="headerlink" title="二、初识 Java"></a>二、初识 Java</h1><h2 id="2-1-Java-帝国的诞生"><a href="#2-1-Java-帝国的诞生" class="headerlink" title="2.1 Java 帝国的诞生"></a>2.1 Java 帝国的诞生</h2><h3 id="2-1-1-C-amp-C"><a href="#2-1-1-C-amp-C" class="headerlink" title="2.1.1 C &amp; C++"></a>2.1.1 C &amp; C++</h3><ul>
+<li><code>1972</code> 年 <code>C</code> 语言诞生。<ul>
+<li>优点：贴近硬件，运行极快，效率极高。</li>
+<li>缺点：指针和内存管理。</li>
+<li>应用：操作系统，编译器，数据库，网络系统等。</li>
+</ul>
+</li>
+<li><code>1982</code> 年 <code>C++</code> 语言诞生。<ul>
+<li>优点：面向对象。</li>
+<li>缺点：复杂难学。</li>
+<li>应用：图形领域、游戏等。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-1-2-Java"><a href="#2-1-2-Java" class="headerlink" title="2.1.2 Java"></a>2.1.2 Java</h3><ul>
+<li>我们想要建立一个具有下列特点的新的语言：<ul>
+<li>语法有点像 <code>C</code>。</li>
+<li>没有指针。</li>
+<li>没有内存管理。</li>
+<li>真正可移植，编写一次，到处运行（<code>JVM</code>）。</li>
+<li>面向对象。</li>
+<li>类型安全。</li>
+<li>拥有高质量的类库。</li>
+<li>$\cdots\cdots$</li>
+</ul>
+</li>
+</ul>
+<h4 id="（1）Java-初生"><a href="#（1）Java-初生" class="headerlink" title="（1）Java 初生"></a>（1）Java 初生</h4><ul>
+<li><p><code>1990</code> 年，<code>Java</code> 之父 <code>James Gosling</code> 与 <code>Patrick Naughton</code> 和 <code>Mike Sheridan</code> 等人合作 “格林（<code>Green</code>）计划”，后来发展一套语言叫做 “<code>Oak</code>（橡树）”。</p>
+</li>
+<li><p><code>1995</code> 年的网页简单而粗糙，缺乏互动性。于是 <code>Sun</code> 公司（<code>Stanford university network</code>）创造了一种在 <code>Web</code> 浏览器中运行的图形界面程序（<code>Applet</code>），<code>Applet</code> 使用现代的图形用户界面与 <code>Web</code> 用户进行交互，<code>Applet</code> 内嵌在 <code>HTML</code> 代码中。从此，<code>Java</code> 声名鹊起。那个时候是叫做 <code>Oak</code>，但是这个商标被注册了，于是在 <code>1996</code> 年的时候更改为 <code>Java</code>。</p>
+</li>
+<li><p><code>1996</code> 年 - <code>1998</code> 年，<code>Java</code> 迅速崛起，但是因为仅有图形界面的程序（<code>Applet</code>）而受到诟病。</p>
+<ul>
+<li><p><code>1996</code> 年，发布 <code>Java1.0</code> 版本，对应 <code>JDK1.0</code>，约 <code>8.3</code> 万个网页应用 <code>Java</code> 技术来制作。</p>
+<ul>
+<li><code>JDK（Java Development Kit）</code> 是 <code>Java</code> 语言的软件开发工具包，主要应用于移动设备、嵌入式设备上的 <code>Java</code> 应用程序。<code>JDK</code> 是整个 <code>Java</code> 开发的核心，它包含了 <code>JAVA</code> 的运行环境（<code>JVM</code> + <code>Java</code> 系统类库）和 <code>JAVA</code> 开发工具。</li>
+</ul>
+</li>
+<li><p><code>1997</code> 年，发布 <code>Java 1.1</code> 版本，对应 <code>JDK 1.1</code>，<code>JavaOne</code> 会议召开，创当时全球同类会议规模之最。</p>
+</li>
+<li><p><code>1998</code> 年，发布 <code>Java 1.2</code> 版本，更名为 <code>J2SE 1.2</code>，对应 <code>JDK 1.2</code>。<code>Sun</code> 公司在 <code>1998</code> 年发布 <code>Java 1.2</code> 版本的时候，使用了新名称 <code>Java 2 Platform</code>，即 “<code>Java2</code> 平台”，该版本到 <code>J2SE 5.0</code> 为止的版本均更名为 <code>J2SE 1.*</code>。</p>
+<ul>
+<li><p><strong><code>Java 2</code> 标准版</strong>（<code>Java 2 Platform, Standard Edition</code>，简称 <code>J2SE</code>）：<code>J2SE</code> 用于开发和部署桌面、服务器以及嵌入设备和实时环境中的 <code>Java</code> 应用程序。<code>J2SE</code> 包括用于开发 <code>Java Web</code> 服务的类库，同时，<code>J2SE</code> 为 <code>J2EE</code> 和 <code>J2ME</code> 提供了基础。<code>J2SE</code> 就是基于 <code>JDK</code> 和 <code>JRE</code>，包含支持 <code>Java Web</code> 服务开发的类，并为 <code>Java</code> 企业级开发提供基础。</p>
+</li>
+<li><p><strong><code>Java 2</code> 移动版</strong>（<code>Java 2 Platform, Micro Edition</code>，简称 <code>J2ME</code>）：<code>J2ME</code> 是为机顶盒、移动电话和 <code>PDA</code> 之类嵌入式消费电子设备提供的 <code>Java</code> 语言平台，包括虚拟机和一系列标准化的 <code>Java API</code>。</p>
+</li>
+<li><p><strong><code>Java 2</code> 企业版</strong>（<code>Java 2 Platform, Enterprise Edition</code>，简称 <code>J2EE</code>）：<code>J2EE</code> 能够帮助我们开发和部署可移植、健壮、可伸缩且安全的服务器端 <code>Java</code> 应用程序。<code>J2EE</code> 是在 <code>J2SE</code> 的基础上构建的，它提供 <code>Web</code> 服务、组件模型、管理和通信 <code>API</code>，可以用来实现企业级的面向服务体系结构（<code>service-oriented architecture</code>，<code>SOA</code>）和 <code>Web 3.0</code> 应用程序。<code>BEA</code> 公司第一个使用了 <code>J2EE</code> 许可证，推出了 <code>weblogic</code> 应用服务器，凭借集群功能第一次展示了复杂应用的可扩展性和高可用性（<strong>程序员们的三高：高并发、高性能、高可用</strong>）。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>1999</code> 年，<code>JSP</code>&#x2F;<code>Servlet</code> 技术诞生。</p>
+</li>
+</ul>
+<h4 id="（2）Java-发展"><a href="#（2）Java-发展" class="headerlink" title="（2）Java 发展"></a>（2）Java 发展</h4><ul>
+<li><p><strong><code>2004</code> 年</strong>，<strong>发布里程碑版本：<code>J2SE 1.5</code><strong>，</strong>对应 <code>JDK 1.5</code><strong>，</strong>为突出此版本的重要性</strong>，<strong>更名为 <code>Java SE 5.0</code><strong>。</strong>从 <code>Java SE 5.0</code> 开始</strong>，**<code>J2SE</code> 更名为 <code>Java SE</code><strong>，</strong><code>J2ME</code> 更名为 <code>Java ME</code><strong>，</strong><code>J2EE</code> 更名为 <code>Java EE</code><strong>。</strong>此时对应的 <code>JDK</code> 版本依然是 <code>JDK 1.X</code> 这种形式**。</p>
+</li>
+<li><p><code>2006</code> 年，发布 <code>Java SE 6.0</code>，对应 <code>JDK 1.6</code>。<code>Sun</code> 从版本号中去掉 “<code>.0</code>”，而开发者内部编号仍然是 <code>1.6.0</code>。同时期出现了 <code>Hadoop</code> 技术（大数据领域）。</p>
+</li>
+<li><p><code>2008</code> 年，<code>Android</code>（手机端）横空出世。</p>
+</li>
+<li><p><code>2009</code> 年，<code>Oracle</code> 公司收购 <code>Sun</code> 公司，交易价格 <code>74</code> 亿美元。</p>
+</li>
+<li><p><code>2011</code> 年，发布 <code>Java SE 7.0</code>，对应 <code>JDK 1.7</code>。</p>
+</li>
+<li><p><strong><code>2014</code> 年</strong>，<strong>发布 <code>Java SE 8.0</code><strong>，</strong>对应 <code>JDK 1.8</code><strong>，</strong>是继 <code>JDK5.0</code> 以来变化最大的版本</strong>。</p>
+</li>
+<li><p><code>2017</code> 年，发布 <code>Java SE 9.0</code>，对应 <code>JDK 1.9</code>，最大程度实现模块化。</p>
+</li>
+<li><p><code>2017</code> 年 <code>8</code> 月，<code>Oracle</code>（甲骨文）决定将 <code>Java EE</code> 移交给开源组织，最后 <code>Eclipse</code> 基金会接手。不过，甲骨文不允许开源组织用 <code>Java</code> 的名号，于是发起投票为 <code>Java EE</code> 征集新的名字。当时社区确定的两个备选名是：“<code>Jakarta EE</code>” 和 “<code>Enterprise Profile</code>”，最后 <code>Jakarta EE</code> 以 <code>64.4%</code> 的票数获胜。也就是说，<code>Java EE</code> 已经正式更名为 <code>Jakarta EE</code>（雅加达）。</p>
+</li>
+<li><p><code>2017</code> 年 <code>9</code> 月，<code>Java</code> 平台的主架构师 <code>Mark Reinhold</code> 发出提议，要求将 <code>Java</code> 的功能更新周期从之前的每两年一个新版本缩减到每六个月一个新版本。该提议获得了通过，并在提出后不久生效。</p>
+</li>
+<li><p><code>2018</code> 年 <code>3</code> 月，发布 <code>Java SE 10.0</code>，此时对应的 <code>JDK</code> 版本不再是 <code>JDK 1.10</code> 这种形式，而是变成了 <code>JDK 10.0</code> 这种形式。</p>
+</li>
+<li><p><code>2018</code> 年 <code>9</code> 月，发布 <code>Java SE 11.0</code>，对应 <code>JDK 11.0</code>。</p>
+</li>
+<li><p><strong>$\cdots\cdots$</strong></p>
+</li>
+<li><p><code>2021</code> 年 <code>9</code> 月 <code>14</code> 日，发布 <code>Java SE 17.0</code>，对应 <code>JDK 17.0</code>。<code>Java SE 17.0</code> 是切换到新的 <code>6</code> 个月发布周期以来的第二个长期支持（<code>LTS</code>）版本（第一个是 <code>Java SE 11.0</code>）。<code>Java SE 17.0</code>，<code>11.0</code>，<code>8.0</code> 为目前提供支持的 <code>LTS</code>（长期支持）版本。</p>
+</li>
+<li><p><code>2022</code> 年 <code>3</code> 月 <code>22</code> 日，发布 <code>Java SE 18.0</code>，对应 <code>JDK 18.0</code>。</p>
+</li>
+<li><p>根据开发计划，<code>JDK 19.0</code> 将于 <code>2022</code> 年 <code>9</code> 月发布，而下一个 <code>LTS</code> 版本 <code>JDK 21</code> 将于 <code>2023</code> 年 <code>9</code> 月发布。</p>
+</li>
+<li><p>程序员基于 <code>Java</code> 开发了许多平台、系统、工具</p>
+<ul>
+<li><p>构建工具：<code>Ant</code>、<code>Maven</code>、<code>Jekins</code></p>
+</li>
+<li><p>应用服务器：<code>Tomcat</code>、<code>Jetty</code>、<code>Jboss</code>、<code>Websphere</code>、<code>weblogic</code></p>
+</li>
+<li><p><code>Web</code> 开发：<code>Struts</code>、<code>Spring</code>、<code>SpringMVC</code>、<code>Hiberbate</code>、<code>MyBatis</code></p>
+</li>
+<li><p>开发工具：<code>Eclipse</code>、<code>NetBeans</code>、<code>IntelliJ IDEA</code>、<code>Jbuilder</code></p>
+</li>
+<li><p><strong>$\cdots\cdots$</strong></p>
+</li>
+</ul>
+</li>
+<li><p>从 <code>Java</code> 的应用领域来分，<code>Java</code> 语言的应用方向主要表现在以下几个方面：</p>
+<ul>
+<li><p><strong>企业级应用</strong>：主要指复杂的大企业的软件系统、各种类型的网站。<code>Java</code> 的安全机制以及它的跨平台的优势，使它在分布式系统领域开发中有广泛应用。应用领域包括金融、电信、交通、电子商务等。</p>
+</li>
+<li><p><strong><code>Android</code> 平台应用</strong>：<code>Android</code> 应用程序使用 <code>Java</code> 语言编写。<code>Android</code> 开发水平的高低很大程序上取决于 <code>Java</code> 语言核心能力是否扎实。</p>
+</li>
+<li><p><strong>大数据平台开发</strong>：各类框架有 <code>Hadoop</code>，<code>spark</code>，<code>storm</code>，<code>flink</code> 等，就这类技术生态圈来讲，还有各种中间件如 <code>flume</code>，<code>kafka</code>，<code>sqoop</code> 等等，这类框架以及工具大多数是用 <code>Java</code> 编写而成，但提供诸如 <code>Java</code>，<code>scala</code>，<code>Python</code>，<code>R</code> 等各种语言的 <code>API</code> 以供编程。</p>
+</li>
+<li><p><strong>移动领域开发</strong>：主要表现在消费和嵌入式领域，是指在各种小型设备上的应用，包括手机、<code>PDA</code>、机顶盒、汽车通信设备等。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-2-Java-特性和优势"><a href="#2-2-Java-特性和优势" class="headerlink" title="2.2 Java 特性和优势"></a>2.2 Java 特性和优势</h2><p>$\quad$ <code>Java</code>从 <code>C</code> 语言和 <code>C++</code> 语言继承了许多成分，甚至可以将 <code>Java</code> 看成是类 <code>C</code> 语言发展和衍生的产物。但同时，<code>Java</code> 是一个纯粹的面向对象的程序设计语言，它继承了 <code>C++</code> 语言面向对象技术的核心。<code>Java</code> 舍弃了 <code>C</code> 语言中容易引起错误的指针（以引用指代）、运算符重载、多重继承（以接口取代）。增加了垃圾回收功能用于回收不再被引用的对象所占据的内存空间。</p>
+<ul>
+<li><p>简单性（简洁版 <code>C++</code>）</p>
+</li>
+<li><p><strong>面向对象</strong></p>
+<ul>
+<li><p>两个基本概念：类、对象</p>
+</li>
+<li><p>三大特性：封装、继承、多态</p>
+</li>
+</ul>
+</li>
+<li><p><strong>可移植性（跨平台性）</strong>：<code>Write once</code>，<code>Run anywhere</code></p>
+<ul>
+<li><p>解释：通过 <code>Java</code> 语言编写的应用程序在不同的系统平台上都可以运行。</p>
+</li>
+<li><p>原理：只要在需要运行 <code>Java</code> 应用程序的操作系统上，先安装一个 <code>Java</code> 虚拟机（<code>Java Virtual Machine</code>，<code>JVM</code>）即可。由 <code>JVM</code> 来负责 <code>Java</code> 程序在该系统中的运行。</p>
+</li>
+</ul>
+</li>
+<li><p>高性能</p>
+</li>
+<li><p>分布式</p>
+</li>
+<li><p>动态性（反射）</p>
+</li>
+<li><p>多线程</p>
+</li>
+<li><p>安全性</p>
+</li>
+<li><p><strong>健壮性</strong></p>
+<ul>
+<li>吸收了 <code>C/C++</code> 语言的优点，但去掉了其影响程序健壮性的部分（如指针、内存的申请与释放等），提供了一个相对安全的内存管理和访问机制。</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-3-Java-运行机制及运行过程"><a href="#2-3-Java-运行机制及运行过程" class="headerlink" title="2.3 Java 运行机制及运行过程"></a>2.3 Java 运行机制及运行过程</h2><h3 id="2-3-1-Java-两种核心机制"><a href="#2-3-1-Java-两种核心机制" class="headerlink" title="2.3.1 Java 两种核心机制"></a>2.3.1 Java 两种核心机制</h3><ul>
+<li><p><code>Java</code> 虚拟机（<code>Java Virtal Machine</code>）</p>
+<ul>
+<li><p><code>JVM</code> 是一个虚拟的计算机，具有指令集并使用不同的存储区域。负责执行指令，管理数据、内存、寄存器。</p>
+</li>
+<li><p>对于不同的平台，有不同的虚拟机，只有某平台提供了对应的 <code>Java</code> 虚拟机，<code>Java</code> 程序才可以在此平台运行。</p>
+</li>
+<li><p><code>JVM</code> 屏蔽了底层运行平台的差别，实现了“一次编译，到处运行”。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/08/23/PVr1jh.png"/>
+</div></li>
+</ul>
+</li>
+<li><p>垃圾收集机制（<code>Garbage Collection</code>）</p>
+<ul>
+<li><p>不再使用的内存空间应回收——垃圾回收</p>
+<ul>
+<li><p>在 <code>C/C++</code> 等语言中，由程序员负责回收无用内存。</p>
+</li>
+<li><p><code>Java</code> 语言消除了程序员回收无用内存空间的责任：它提供了一种系统级线程，跟踪存储空间的分配情况。并在 <code>JVM</code> 空闲时，检查并释放那些可被释放的存储空间。</p>
+</li>
+</ul>
+</li>
+<li><p>垃圾回收在 <code>Java</code> 程序运行过程中自动进行，程序员无法精确控制和干预。</p>
+</li>
+<li><p><code>Java</code> 程序依然会发生内存泄漏和内存溢出问题。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-4-JDK、JRE、JVM"><a href="#2-4-JDK、JRE、JVM" class="headerlink" title="2.4 JDK、JRE、JVM"></a>2.4 JDK、JRE、JVM</h2><ul>
+<li><p><code>JDK</code>：<code>Java Development Kit</code>（<code>JRE</code> 基础上扩充一些开发工具）</p>
+<ul>
+<li><p>安装了 <code>JDK</code>，就不需要单独安装 <code>JRE</code> 了。</p>
+</li>
+<li><p>包含了开发工具：编译工具（<code>javac.exe</code>）、打包工具（<code>jar.exe</code>）等</p>
+</li>
+</ul>
+</li>
+<li><p><code>JRE</code>：<code>Java Runtime Environment</code>（安装 <code>JRE</code> 即可运行 <code>Java</code> 程序）</p>
+<ul>
+<li><p>包括 <code>JVM</code> 和运行 <code>Java</code> 程序所需的核心类库（<code>Java</code> <code>SE</code> 标准库）等。</p>
+</li>
+<li><p>只想运行 <code>Java</code> 程序，仅安装 <code>JRE</code> 即可。</p>
+</li>
+</ul>
+</li>
+<li><p><code>JVM</code>：<code>Java Virtual Machine</code>（可以使用软件或硬件实现）</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/08/23/PVrz45.png"/>
+</div></li>
+</ul>
+<h2 id="2-5-Java-开发环境搭建"><a href="#2-5-Java-开发环境搭建" class="headerlink" title="2.5 Java 开发环境搭建"></a>2.5 Java 开发环境搭建</h2><h3 id="2-5-1-JDK-下载与安装（Windows-10）"><a href="#2-5-1-JDK-下载与安装（Windows-10）" class="headerlink" title="2.5.1 JDK 下载与安装（Windows 10）"></a>2.5.1 JDK 下载与安装（Windows 10）</h3><ul>
+<li><p>官网 <a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/">https://www.oracle.com/java/technologies/downloads/</a> 下载安装包</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://download.oracle.com/java/17/archive/jdk-17.0.1_windows-x64_bin.exe">jdk-17.0.1安装包官网下载</a>，<code>Windows x64 Installer</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Hf8U4j-TT9BxaGNOagAiQA">jdk-17.0.1安装包百度网盘下载</a>，提取码：<code>2iio</code></p>
+</li>
+</ul>
+</li>
+<li><p>配置环境变量：为了在任何文件路径下都可以使用 <code>Java</code>开发工具。</p>
+<ul>
+<li><p>删除系统变量 <code>Path</code> 中的 <code>C:\Program Files\Common Files\Oracle\Java\javapath</code> 变量及相关文件。</p>
+<ul>
+<li><code>path</code>：<code>Windows</code> 系统执行命令时要搜寻的路径。</li>
+</ul>
+</li>
+<li><p>解决 <code>JDK 17</code> 中没有 <code>JRE</code>：</p>
+<ul>
+<li><p>使用管理员模式打开 <code>cmd</code>。</p>
+</li>
+<li><p>进入 <code>JDK</code> 的安装目录：<code>cd C:\Program Files\Java\jdk-17.0.1</code>。</p>
+</li>
+<li><p>生成 <code>JRE</code>：<code>bin\jlink.exe --module-path jmods --add-modules java.desktop --output jre</code>。</p>
+</li>
+</ul>
+</li>
+<li><p>创建系统变量 <code>JAVA_HOME</code>，变量值为 <code>JDK</code> 安装位置：<code>C:\Program Files\Java\jdk-17.0.1</code>。</p>
+<ul>
+<li><code>Tomcat</code> 服务器默认情况下会从系统的环境变量中找到 <code>JAVA_HOME</code>。</li>
+</ul>
+</li>
+<li><p>在系统变量 <code>Path</code> 中添加 <code>%JAVA_HOME%\bin</code> 和 <code>%JAVA_HOME%\jre\bin</code> 并上移到顶部。</p>
+</li>
+<li><p><code>cmd</code> 中验证：<code>java --version</code> 输出版本信息。</p>
+</li>
+<li><p><strong>注</strong>：<code>classpath</code> <strong>环境变量不需要配置</strong>，<code>classpath</code> 变量的作用就是指定 <code>.class</code>文件所在目录，<code>java.exe</code> 运行工具会自动去 <code>classpath</code> 变量指定的目录搜寻 <code>.class</code> 文件。</p>
+</li>
+</ul>
+</li>
+<li><p><code>JDK</code> 卸载：</p>
+<ul>
+<li><p>控制面板中卸载 <code>Java(TM) SE Development Kit 17.0.1 (64-bit)</code>。</p>
+</li>
+<li><p>通过系统变量 <code>JAVA_HOME</code> 找到 <code>JDK</code> 安装位置并删除。</p>
+</li>
+<li><p>删除系统变量 <code>JAVA_HOME</code>。</p>
+</li>
+<li><p>删除系统变量 <code>Path</code> 中与 <code>JAVA_HOME</code> 相关的变量。</p>
+</li>
+<li><p><code>cmd</code> 中验证：<code>java --version</code> 报错。</p>
+</li>
+</ul>
+</li>
+<li><p><code>JDK</code> 目录介绍：</p>
+<ul>
+<li><p><code>bin</code> 目录：开发工具，例：<code>jar.exe</code>，<code>java.exe</code>，<code>javac.exe</code>，<code>javadoc.exe</code> 等。</p>
+</li>
+<li><p><code>db</code> 目录：<code>Java</code> 语言编写的数据库。</p>
+</li>
+<li><p><code>include</code> 目录：<code>C</code> 语言编写的一些头文件，在 <code>Java</code> 调用 <code>C</code> 语言时会用到的文件。</p>
+</li>
+<li><p><code>jre</code>目录：<code>Java</code> 运行时环境。</p>
+</li>
+<li><p><code>lib</code>目录：存在一些 <code>jar</code> 包。</p>
+</li>
+<li><p><code>src.zip</code>：<code>Java</code> 开源的代码，常见的类库。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-5-2-JDK-下载与安装（Ubuntu-20-04）"><a href="#2-5-2-JDK-下载与安装（Ubuntu-20-04）" class="headerlink" title="2.5.2 JDK 下载与安装（Ubuntu 20.04）"></a>2.5.2 JDK 下载与安装（Ubuntu 20.04）</h3><ul>
+<li><p>官网 <a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/">https://www.oracle.com/java/technologies/downloads/</a> 下载安装包</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://download.oracle.com/java/18/archive/jdk-18.0.2_linux-x64_bin.tar.gz">jdk-18.0.2安装包官网下载</a>，<code>Linux x64 Compressed Archive</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/146tzM27V8tnniijcnTa0dw">jdk-18.0.2安装包百度网盘下载</a>，提取码：<code>zbim</code></p>
+</li>
+</ul>
+</li>
+<li><p>创建目录：<code>sudo mkdir /usr/local/jvm</code></p>
+</li>
+<li><p>解压缩到该目录：<code>sudo tar -zxvf jdk-18.0.2_linux-x64_bin.tar.gz -C /usr/local/jvm</code></p>
+</li>
+<li><p>生成 <code>JRE</code>：<code>sudo bin/jlink --module-path jmods --add-modules java.desktop --output jre</code></p>
+</li>
+<li><p>修改环境变量：<code>sudo gedit ~/.bashrc</code></p>
+<ul>
+<li><p>在文件末尾追加下面内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set oracle jdk environment</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/jdk-18.0.2 <span class="comment"># 这里要注意目录要换成自己解压的 jdk 目录</span></span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使环境变量马上生效：<code>source ~/.bashrc</code></p>
+</li>
+</ul>
+</li>
+<li><p>系统注册此 <code>JDK</code>：<code>sudo update-alternatives --install /usr/bin/java java /usr/local/jvm/jdk-18.0.2/bin/java 300</code></p>
+<ul>
+<li><p><code>update-alternatives</code> 是 <code>Debian</code> 系统用于维护系统命令链接符的工具，通过它可以设置系统默认使用的命令和软件版本，便于用户进行软件版本的切换，使其多版本共存。位于 <code>/usr/bin/update-alternatives</code>。</p>
+</li>
+<li><p><code>--install</code> 参数的功能就是增加一组新的系统命令链接符。格式：<code>sudo update-alternatives --install &lt;link&gt; &lt;name&gt; &lt;path&gt; &lt;priority&gt; [--slave link name path]</code></p>
+<ul>
+<li><p><code>&lt;link&gt;</code>：指向 <code>/etc/alternatives/&lt;name&gt;</code> 的符号链接。例：<code>/usr/bin/java</code>。</p>
+<ul>
+<li>符号链接（<code>symbolic link</code> 或 <code>symlink</code>）是 <code>Linux</code> 中一种文件类型，它指向计算机上的另一个文件或文件夹。符号链接类似于 <code>Windows</code> 中的快捷方式。</li>
+</ul>
+</li>
+<li><p><code>&lt;name&gt;</code>：<code>&lt;link&gt; alternatives</code> 的主控名。例：<code>java</code>。</p>
+</li>
+<li><p><code>&lt;path&gt;</code>：<code>alternatives</code> 目标文件的位置。例：<code>/usr/local/jvm/jdk-18.0.2/bin/java</code>。</p>
+</li>
+<li><p><code>&lt;priority&gt;</code>：一个整数，在自动模式下，这个数字越高的选项，其优先级也就越高。</p>
+</li>
+<li><p><code>--slave</code>：通过 <code>slave</code> 创建的链接从属于某一个主链接。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>查看 <code>Java</code> 版本，看看是否安装成功：<code>java -version</code></p>
+</li>
+<li><p><strong>详解</strong> <code>alternatives</code> <strong>管理方式</strong>：</p>
+<ul>
+<li><p><code>java</code> 这个可执行命令实际是一个链接 <code>/usr/bin/java</code>，指向了 <code>/etc/alternatives/java</code>。而 <code>/etc/alternatives/java</code> 也是一个链接，指向了 <code>/usr/local/jvm/jdk-18.0.2/bin/java</code>，这才是最终的可执行文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dong@dong-PC:~$ <span class="built_in">ls</span> -l /usr/bin/java</span><br><span class="line">lrwxrwxrwx 1 root root 22 8月  26 23:24 /usr/bin/java -&gt; /etc/alternatives/java</span><br><span class="line">dong@dong-PC:~$ <span class="built_in">ls</span> -l /etc/alternatives/java</span><br><span class="line">lrwxrwxrwx 1 root root 34 8月  26 23:24 /etc/alternatives/java -&gt; /usr/local/jvm/jdk-18.0.2/bin/java</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>--display</code> 参数显示某一个 <code>alternatives</code> 的信息。包括模式、优先级以及当前最佳的软件版本。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 格式：update-alternatives --display name</span></span><br><span class="line">dong@dong-PC:~$ sudo update-alternatives --display java</span><br><span class="line">java - auto mode</span><br><span class="line">  <span class="built_in">link</span> best version is /usr/local/jvm/jdk-18.0.2/bin/java</span><br><span class="line">  <span class="built_in">link</span> currently points to /usr/local/jvm/jdk-18.0.2/bin/java</span><br><span class="line">  <span class="built_in">link</span> java is /usr/bin/java</span><br><span class="line">/usr/local/jvm/jdk-18.0.2/bin/java - priority 300</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>--query</code> 参数以更友好的格式来查看。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 格式：update-alternatives --query name</span></span><br><span class="line">dong@dong-PC:~$ sudo update-alternatives --query java</span><br><span class="line">Name: java</span><br><span class="line">Link: /usr/bin/java</span><br><span class="line">Status: auto</span><br><span class="line">Best: /usr/local/jvm/jdk-18.0.2/bin/java</span><br><span class="line">Value: /usr/local/jvm/jdk-18.0.2/bin/java</span><br><span class="line"></span><br><span class="line">Alternative: /usr/local/jvm/jdk-18.0.2/bin/java</span><br><span class="line">Priority: 300</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>--list</code> 参数以更简洁的格式来查看。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 格式：update-alternatives --list name</span></span><br><span class="line">dong@dong-PC:~$ sudo update-alternatives --list java</span><br><span class="line">/usr/local/jvm/jdk-18.0.2/bin/java</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><code>--remove</code> 参数删除某一个 <code>alternatives</code>，其附带的 <code>slave</code> 也将一起删除。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 格式：update-alternatives --remove name path</span></span><br><span class="line">sudo update-alternatives --remove java /usr/local/jvm/jdk-18.0.2/bin/java</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>--config</code> 参数显示某一个 <code>alternatives</code> 的信息并让用户选择使用哪一个。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 格式：update-alternatives --config name</span></span><br><span class="line">dong@dong-PC:~$ sudo update-alternatives --config java</span><br><span class="line">There is only one alternative <span class="keyword">in</span> <span class="built_in">link</span> group java (providing /usr/bin/java): /usr/local/jvm/jdk-18.0.2/bin/java</span><br><span class="line">Nothing to configure.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>--auto</code> 参数设置某一个 <code>alternatives</code> 的软件管理模式为自动。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dong@dong-PC:~$ sudo update-alternatives --auto java</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-5-3-EditPlus-安装"><a href="#2-5-3-EditPlus-安装" class="headerlink" title="2.5.3 EditPlus 安装"></a>2.5.3 EditPlus 安装</h3><ul>
+<li><p><strong>Notepad++ 涉嫌反华，坚决抵制使用！！！</strong></p>
+</li>
+<li><p>官网 <a target="_blank" rel="noopener" href="https://www.editplus.com/">https://www.editplus.com/</a> 下载安装包</p>
+</li>
+<li><p>双击安装包</p>
+</li>
+<li><p>注册亲测可用：用户名：<code>Vovan</code>，密码：<code>3AG46-JJ48E-CEACC-8E6EW-ECUAW</code></p>
+</li>
+<li><p>关闭自动备份：<code>Tools</code> $\pmb{\rightarrow}$ <code>Preferences...</code> $\pmb{\rightarrow}$ <code>Categories(Files)</code> $\pmb{\rightarrow}$ 去除 <code>create backup file when saving</code> 勾选 $\pmb{\rightarrow}$ <code>OK</code></p>
+</li>
+</ul>
+<h2 id="2-6-HelloWorld-及简单语法规则"><a href="#2-6-HelloWorld-及简单语法规则" class="headerlink" title="2.6 HelloWorld 及简单语法规则"></a>2.6 HelloWorld 及简单语法规则</h2><ul>
+<li><p>随便新建一个文件夹（建议命名 <code>code</code>），存放代码。</p>
+</li>
+<li><p>新建一个 <code>Java</code> 文件（创建文件，后缀名修改为 <code>.java</code> 即可。建议命名 <code>HelloWorld.java</code>）。</p>
+<ul>
+<li>注：系统如果不显示后缀，需要手动修改设置。</li>
+</ul>
+</li>
+<li><p>编写第一个 <code>Java</code> 程序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorld</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello world!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开控制台 <code>cmd</code>，进入到 <code>HelloWorld.java</code> 文件所在目录，编译运行 <code>HelloWorld.java</code> 文件</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/08/27/P81T88.png"/>
+</div>
+</li>
+<li><p>使用 <code>javac HelloWorld.java</code> 编译成字节码文件。</p>
+<ul>
+<li>编译成功：<code>cmd</code> 不报错，<code>HelloWorld.java</code> 文件所在目录中生成 <code>HelloWorld.class</code> 文件。</li>
+</ul>
+</li>
+<li><p>使用 <code>java HelloWorld</code> 运行生成的 <code>.class</code> 文件（不用写后缀名，<code>java</code> 指令会自动识别）。</p>
+<ul>
+<li>运行成功：<code>cmd</code> 不报错，输出 <code>Hello world!</code></li>
+</ul>
+</li>
+<li><p>注意事项：</p>
+<ul>
+<li><p><strong><code>Java</code> 是大小写敏感的编程语言</strong>，每个单词的大小写不能出现问题。</p>
+</li>
+<li><p><strong>文件名</strong> 和 <strong>类名</strong>（<code>class</code> 修饰的单词）必须 <strong>保持一致</strong>，并且 <strong>首字母大写</strong>。</p>
+</li>
+<li><p>尽量使用英文，且 <strong>符号必须使用英文符号</strong>。</p>
+</li>
+</ul>
+</li>
+<li><p>语法：</p>
+<ul>
+<li><p><code>public class</code> 表示一个类，<code>HelloWorld</code> 表示类名。</p>
+<ul>
+<li><p>在一个 <code>Java</code> 源文件中可以声明多个 <code>class</code> 类，但是只能最多有一个类声明为 <code>public</code>。</p>
+</li>
+<li><p>声明为 <code>public</code> 的类的类名必须与源文件名相同。</p>
+</li>
+<li><p>如果声明了多个 <code>class</code> 类，编译后会生成多个字节码文件（<code>.class</code> 文件），文件名与 <code>class</code> 类名相同。</p>
+</li>
+</ul>
+</li>
+<li><p><code>public static void</code> 表示一些修饰符，后续文章中详细讲解。</p>
+</li>
+<li><p><code>main</code> 方法是 <code>Java</code> 中的 <strong>主方法</strong>，即程序的入口。程序必须通过 <code>main</code> 方法运行，即运行包含 <code>main</code> 方法的 <code>.class</code> 文件。</p>
+</li>
+<li><p><code>String[] args</code> 是 <code>main</code> 方法的参数，<code>args</code> 可以换成其他名称，建议使用 <code>args</code>，后续文章中详细讲解。</p>
+</li>
+<li><p><code>System.out.println</code> 表示输出，后续文章中详细讲解。</p>
+</li>
+<li><p><strong>每一行执行语句都以 “<code>;</code>” 结束</strong>。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-7-Java-程序运行机制"><a href="#2-7-Java-程序运行机制" class="headerlink" title="2.7 Java 程序运行机制"></a>2.7 Java 程序运行机制</h2><p>$\quad$ 计算机不能直接理解 <code>Java</code> 这种 <strong>高级语言</strong>，只能理解和运行 <strong>机器语言</strong>，所以需要将高级语言 <strong>翻译</strong> 成机器语言，计算机才能运行高级语言所编写的程序。<strong>翻译的方式</strong> 有两种：一种是 <strong>编译</strong>，另一种是 <strong>解释</strong>，两种方式只是翻译的 <strong>时间不同</strong>。因此，高级语言有两种类型：<strong>编译型语言</strong> 和 <strong>解释型语言</strong>。</p>
+<ul>
+<li><p>常见的<strong>编译型语言</strong>有 <code>C/C++</code>、<code>Delphi</code>、<code>Pascal</code>、<code>Fortran</code>等。</p>
+</li>
+<li><p>常见的<strong>解释性语言</strong>有 <code>Python</code>、<code>JavaScript</code>等。</p>
+</li>
+</ul>
+<p>$\quad$ 随着硬件与技术的发展，当前编译型与解释型的界限已经不那么明确，由于计算机内存的增加，解释型语言运行速率也不断提升。</p>
+<h3 id="2-7-1-编译型语言"><a href="#2-7-1-编译型语言" class="headerlink" title="2.7.1 编译型语言"></a>2.7.1 编译型语言</h3><p>$\quad$ 程序在运行之前需要一个专门的 <strong>编译过程</strong>，通过编译系统（不仅仅只是通过编译器，编译器只是编译系统的一部分）把高级语言翻译成机器语言，运行时不需要重新翻译，直接使用编译的结果即可。</p>
+<ul>
+<li><p><strong>优点</strong>：编译一次，永久执行，运行效率高，保护源代码。</p>
+</li>
+<li><p><strong>缺点</strong>：跨平台能力差。</p>
+</li>
+</ul>
+<h3 id="2-7-2-解释型语言"><a href="#2-7-2-解释型语言" class="headerlink" title="2.7.2 解释型语言"></a>2.7.2 解释型语言</h3><p>$\quad$ 解释型语言需要一个<strong>解释器</strong>，在程序运行的时候将高级语言翻译成机器语言，每个语句都是执行的时候才被翻译，这样解释型语言每执行一次就要被翻译一次。</p>
+<ul>
+<li><p><strong>优点</strong>：跨平台性能好。</p>
+</li>
+<li><p><strong>缺点</strong>：运行时需要源代码，知识产权保护性差，运行效率低。</p>
+</li>
+</ul>
+<h3 id="2-7-3-Java-语言"><a href="#2-7-3-Java-语言" class="headerlink" title="2.7.3 Java 语言"></a>2.7.3 Java 语言</h3><ul>
+<li><p><code>Java</code> 这个语言很神奇：</p>
+<ul>
+<li><p>你可以说它是编译型的。因为所有的 <code>Java</code> 代码都是要经过编译生成 <code>.class</code> 文件，<code>.java</code> 文件不经过编译就什么用都没有。</p>
+</li>
+<li><p>你可以说它是解释型的。因为 <code>Java</code> 代码经过编译生成的 <code>.class</code> 文件不能直接运行，<code>.class</code> 文件是需要解释运行在 <code>JVM</code> 虚拟机上的，所以 <code>Java</code> 又是解释运行的。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/08/28/P8t8Fh.png"/>
+</div></li>
+</ul>
+</li>
+</ul>
+<h2 id="2-8-IDEA-安装"><a href="#2-8-IDEA-安装" class="headerlink" title="2.8 IDEA 安装"></a>2.8 IDEA 安装</h2><h3 id="2-8-1-什么是-IDE"><a href="#2-8-1-什么是-IDE" class="headerlink" title="2.8.1 什么是 IDE"></a>2.8.1 什么是 IDE</h3><ul>
+<li><p><strong>维基百科</strong>：集成开发环境（<code>Integrated Development Environment</code>，简称 <code>IDE</code>，也称为 <code>Integration Design Environment</code><br>、<code>Integration Debugging Environment</code>）是一种辅助程序开发人员开发软件的应用软件，在开发工具内部就可以辅助编写源代码文本、并编译打包成为可用的程序，有些甚至可以设计图形接口。</p>
+</li>
+<li><p><strong>百度百科</strong>：集成开发环境（<code>IDE</code>，<code>Integrated Development Environment</code><br>）是用于提供程序开发环境的应用程序，一般包括代码编辑器、编译器、调试器和图形用户界面等工具。集成了代码编写功能、分析功能、编译功能、调试功能等一体化的开发软件服务套。所有具备这一特性的软件或者软件套（组）都可以叫集成开发环境。</p>
+</li>
+<li><p>常用 <code>IDE</code>：<code>JBuider</code>、<code>NetBeans</code>、<code>Eclipse</code>（最初由 <code>IBM</code> 公司开发，<code>2001</code> 年 <code>11</code> 月贡献给开源社区，现在由非营利软件供应商联盟 <code>Eclipse</code> 基金会管理）、<code>MyEclipse</code>（由 <code>Eclipse</code> 基金会的创始成员 <code>Genuitec</code> 公司开发和维护）、<code>IntelliJ IDEA</code>（<code>IDEA</code> 是 <code>JetBrains</code> 公司的产品，在业界被公认为最好的 <code>Java</code> 开发工具）。</p>
+</li>
+</ul>
+<h3 id="2-8-2-IDEA-介绍"><a href="#2-8-2-IDEA-介绍" class="headerlink" title="2.8.2 IDEA 介绍"></a>2.8.2 IDEA 介绍</h3><p>$\quad$ <code>IDEA</code> 全称 <code>IntelliJ IDEA</code>，是 <code>Java</code> 编程语言开发的集成环境。<code>IntelliJ</code> 在业界被公认为最好的 <code>Java</code> 开发工具，尤其在智能代码助手、代码自动提示、重构、<code>JavaEE</code><br>支持、各类版本工具（<code>git</code>、<code>svn</code> 等)、<code>JUnit</code>、<code>CVS</code> 整合、代码分析、 创新的 <code>GUI</code> 设计等方面的功能可以说是超常的。<code>IDEA</code> 是 <code>JetBrains</code> 公司的产品，这家公司总部位于捷克共和国的首都布拉格，开发人员以严谨著称的东欧程序员为主。它的旗舰版本还支持 <code>HTML</code>、<code>CSS</code>、<code>PHP</code>、<code>MySQL</code>、<code>Python</code> 等。免费版只支持 <code>Java</code>、<code>Kotlin</code> 等少数语言。</p>
+<h3 id="2-8-3-IDEA-安装"><a href="#2-8-3-IDEA-安装" class="headerlink" title="2.8.3 IDEA 安装"></a>2.8.3 IDEA 安装</h3><ul>
+<li><p>官网：<a target="_blank" rel="noopener" href="https://www.jetbrains.com/idea/download/#section=windows">https://www.jetbrains.com/idea/download/#section=windows</a> 下载安装包。</p>
+</li>
+<li><p>双击安装包，自行注册激活。</p>
+</li>
+<li><p>使用 <code>IDEA</code> 编写 <code>HelloWorld</code>程序</p>
+<ul>
+<li><p>打开软件，选择 <code>New Project</code> $\pmb{\rightarrow}$ <code>Project SDK</code>（选择已经安装的 <code>jdk</code>）$\pmb{\rightarrow}$ <code>Next</code> $\pmb{\rightarrow}$ 勾选 <code>Create project from template</code> $\pmb{\rightarrow}$ <code>Next</code> $\pmb{\rightarrow}$ 命名项目（<code>HelloWorld</code>）、选择项目保存位置、设置包名（<code>Hello</code>）$\pmb{\rightarrow}$ <code>Finish</code></p>
+</li>
+<li><p>自动生成模板：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> HelloWorld;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="comment">// write your code here</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>补全完整代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> HelloWorld;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="comment">// write your code here</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Hello world!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Mr.DONG</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/08/28/Java/Java%20%E5%85%A5%E9%97%A8/">http://example.com/2022/08/28/Java/Java%20%E5%85%A5%E9%97%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Mr.DONG の 自习室</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/EditPlus/">EditPlus</a><a class="post-meta__tags" href="/tags/IDEA/">IDEA</a></div><div class="post_share"><div class="social-share" data-image="https://s6.jpg.cm/2022/09/07/PXRROC.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2022/08/29/Java/Java%20%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%8A%EF%BC%89/"><img class="prev-cover" src="https://s6.jpg.cm/2022/09/07/PXPj1L.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Java 基础语法</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/08/29/Java/Java%20%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%8A%EF%BC%89/" title="Java 基础语法"><img class="cover" src="https://s6.jpg.cm/2022/09/07/PXPj1L.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-29</div><div class="title">Java 基础语法</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s6.jpg.cm/2022/09/07/PXPXyi.th.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Mr.DONG</div><div class="author-info__description">Mr.DONG学习记录</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fandong93"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/fandong93" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dongf19931107@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到 Mr.DONG の 自习室</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80%E5%8F%91%E5%B1%95%E5%8F%B2"><span class="toc-text">一、计算机语言发展史</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%88%9D%E8%AF%86-Java"><span class="toc-text">二、初识 Java</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-Java-%E5%B8%9D%E5%9B%BD%E7%9A%84%E8%AF%9E%E7%94%9F"><span class="toc-text">2.1 Java 帝国的诞生</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-C-amp-C"><span class="toc-text">2.1.1 C &amp; C++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-Java"><span class="toc-text">2.1.2 Java</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89Java-%E5%88%9D%E7%94%9F"><span class="toc-text">（1）Java 初生</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89Java-%E5%8F%91%E5%B1%95"><span class="toc-text">（2）Java 发展</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-Java-%E7%89%B9%E6%80%A7%E5%92%8C%E4%BC%98%E5%8A%BF"><span class="toc-text">2.2 Java 特性和优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-Java-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6%E5%8F%8A%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="toc-text">2.3 Java 运行机制及运行过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-Java-%E4%B8%A4%E7%A7%8D%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6"><span class="toc-text">2.3.1 Java 两种核心机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-JDK%E3%80%81JRE%E3%80%81JVM"><span class="toc-text">2.4 JDK、JRE、JVM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-Java-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">2.5 Java 开发环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-1-JDK-%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85%EF%BC%88Windows-10%EF%BC%89"><span class="toc-text">2.5.1 JDK 下载与安装（Windows 10）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-2-JDK-%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85%EF%BC%88Ubuntu-20-04%EF%BC%89"><span class="toc-text">2.5.2 JDK 下载与安装（Ubuntu 20.04）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-3-EditPlus-%E5%AE%89%E8%A3%85"><span class="toc-text">2.5.3 EditPlus 安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-HelloWorld-%E5%8F%8A%E7%AE%80%E5%8D%95%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99"><span class="toc-text">2.6 HelloWorld 及简单语法规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-Java-%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6"><span class="toc-text">2.7 Java 程序运行机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-1-%E7%BC%96%E8%AF%91%E5%9E%8B%E8%AF%AD%E8%A8%80"><span class="toc-text">2.7.1 编译型语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-2-%E8%A7%A3%E9%87%8A%E5%9E%8B%E8%AF%AD%E8%A8%80"><span class="toc-text">2.7.2 解释型语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-3-Java-%E8%AF%AD%E8%A8%80"><span class="toc-text">2.7.3 Java 语言</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-8-IDEA-%E5%AE%89%E8%A3%85"><span class="toc-text">2.8 IDEA 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-1-%E4%BB%80%E4%B9%88%E6%98%AF-IDE"><span class="toc-text">2.8.1 什么是 IDE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-2-IDEA-%E4%BB%8B%E7%BB%8D"><span class="toc-text">2.8.2 IDEA 介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-3-IDEA-%E5%AE%89%E8%A3%85"><span class="toc-text">2.8.3 IDEA 安装</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/29/Java/Java%20%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%8A%EF%BC%89/" title="Java 基础语法"><img src="https://s6.jpg.cm/2022/09/07/PXPj1L.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 基础语法"/></a><div class="content"><a class="title" href="/2022/08/29/Java/Java%20%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%8A%EF%BC%89/" title="Java 基础语法">Java 基础语法</a><time datetime="2022-08-28T16:00:00.000Z" title="发表于 2022-08-29 00:00:00">2022-08-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/28/Java/Java%20%E5%85%A5%E9%97%A8/" title="Java 入门"><img src="https://s6.jpg.cm/2022/09/07/PXRROC.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 入门"/></a><div class="content"><a class="title" href="/2022/08/28/Java/Java%20%E5%85%A5%E9%97%A8/" title="Java 入门">Java 入门</a><time datetime="2022-08-28T06:41:00.000Z" title="发表于 2022-08-28 14:41:00">2022-08-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By Mr.DONG</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = false;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
