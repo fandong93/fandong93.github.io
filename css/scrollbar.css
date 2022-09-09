@@ -1,12 +1,12 @@
 /* 滚动条 */
 ::-webkit-scrollbar { /* 滚动条整体样式 */
-    width: 12px;
-    height: 7px
+    width: 18px;
+    height: 9px
 }
 
 ::-webkit-scrollbar-track { /* 外层轨道 */
-    border-radius: 3em;
-    background-color: rgba(73, 177, 245, .2);
+    border-radius: 2em;
+    background-color: rgba(73, 177, 245, .3);
 }
 
 ::-webkit-scrollbar-thumb { /* 滑块 */
