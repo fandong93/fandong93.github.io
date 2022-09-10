@@ -5,6 +5,7 @@
     font-display: swap;
     src: url('https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@1.0/font/FangzhengJian.ttf');
 }
+
 /* 代码块字体 */
 @font-face {
     font-family: 'CascadiaCodePL';
