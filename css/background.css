@@ -5,6 +5,6 @@
 /*}*/
 
 /* 所有背景（包括首页卡片、文章页、页面页等） */
-#aside-content .card-widget, #recent-posts>.recent-post-item, .layout>div:first-child:not(.recent-posts), .layout_post>#page, .layout_post>#post, .read-mode .layout_post>#post {
+#aside-content .card-widget, #recent-posts > .recent-post-item, .layout > div:first-child:not(.recent-posts), .layout_post > #page, .layout_post > #post, .read-mode .layout_post > #post {
     background: rgba(60, 60, 60, .3);
 }
