@@ -1,0 +1,390 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景 | Mr.DONG の 自习室</title><meta name="keywords" content="Ubuntu"><meta name="author" content="Mr.DONG"><meta name="copyright" content="Mr.DONG"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="1. 安装 gnome-tweak-tool 2. 去掉 Shell 感叹号 3. 配置主题 GTK Themes 4. 配置图标 Icon Themes 5. 配置光标 Cursor 6. 配置壁纸 Background 7. 配置登录背景 login 8. 文件夹改色助手 Color Folder  8.1 安装  8.1.1 方式一 8.1.2 方式二   8.2 卸载      1. 安">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景">
+<meta property="og:url" content="https://xindong2020.love/paper/15fbef57.html">
+<meta property="og:site_name" content="Mr.DONG の 自习室">
+<meta property="og:description" content="1. 安装 gnome-tweak-tool 2. 去掉 Shell 感叹号 3. 配置主题 GTK Themes 4. 配置图标 Icon Themes 5. 配置光标 Cursor 6. 配置壁纸 Background 7. 配置登录背景 login 8. 文件夹改色助手 Color Folder  8.1 安装  8.1.1 方式一 8.1.2 方式二   8.2 卸载      1. 安">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s6.jpg.cm/2022/09/07/PXRPf5.jpg">
+<meta property="article:published_time" content="2022-09-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-19T18:06:05.182Z">
+<meta property="article:author" content="Mr.DONG">
+<meta property="article:tag" content="Ubuntu 20.04">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s6.jpg.cm/2022/09/07/PXRPf5.jpg"><link rel="shortcut icon" href="https://s6.jpg.cm/2022/09/07/PXPkS4.th.png"><link rel="canonical" href="https://xindong2020.love/paper/15fbef57"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io/css/logofonts.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"R7ZHV2NELE","apiKey":"8aa9f67293bfb4f2895895aaaa92152f","indexName":"fandong","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":270},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-09-20 02:06:05'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/one.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/width.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/background.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/fonts.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/logofonts.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/fontsize.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/mouse.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/scrollbar.css"><link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/KaTeX/0.15.2/katex.min.css" rel="stylesheet"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s6.jpg.cm/2022/09/07/PXPXyi.th.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s6.jpg.cm/2022/09/07/PXRPf5.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Mr.DONG の 自习室</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-05T16:00:00.000Z" title="发表于 2022-09-06 00:00:00">2022-09-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-19T18:06:05.182Z" title="更新于 2022-09-20 02:06:05">2022-09-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Ubuntu/">Ubuntu</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">756</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><ul class="markdownIt-TOC">
+<li><a href="#1-%E5%AE%89%E8%A3%85-gnome-tweak-tool">1. 安装 gnome-tweak-tool</a></li>
+<li><a href="#2-%E5%8E%BB%E6%8E%89-shell-%E6%84%9F%E5%8F%B9%E5%8F%B7">2. 去掉 Shell 感叹号</a></li>
+<li><a href="#3-%E9%85%8D%E7%BD%AE%E4%B8%BB%E9%A2%98-gtk-themes">3. 配置主题 GTK Themes</a></li>
+<li><a href="#4-%E9%85%8D%E7%BD%AE%E5%9B%BE%E6%A0%87-icon-themes">4. 配置图标 Icon Themes</a></li>
+<li><a href="#5-%E9%85%8D%E7%BD%AE%E5%85%89%E6%A0%87-cursor">5. 配置光标 Cursor</a></li>
+<li><a href="#6-%E9%85%8D%E7%BD%AE%E5%A3%81%E7%BA%B8-background">6. 配置壁纸 Background</a></li>
+<li><a href="#7-%E9%85%8D%E7%BD%AE%E7%99%BB%E5%BD%95%E8%83%8C%E6%99%AF-login">7. 配置登录背景 login</a></li>
+<li><a href="#8-%E6%96%87%E4%BB%B6%E5%A4%B9%E6%94%B9%E8%89%B2%E5%8A%A9%E6%89%8B-color-folder">8. 文件夹改色助手 Color Folder</a>
+<ul>
+<li><a href="#81-%E5%AE%89%E8%A3%85">8.1 安装</a>
+<ul>
+<li><a href="#811-%E6%96%B9%E5%BC%8F%E4%B8%80">8.1.1 方式一</a></li>
+<li><a href="#812-%E6%96%B9%E5%BC%8F%E4%BA%8C">8.1.2 方式二</a></li>
+</ul>
+</li>
+<li><a href="#82-%E5%8D%B8%E8%BD%BD">8.2 卸载</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="1-安装-gnome-tweak-tool"><a class="markdownIt-Anchor" href="#1-安装-gnome-tweak-tool"></a> 1. 安装 gnome-tweak-tool</h2>
+<ul>
+<li>
+<p>安装 <code>gnome-tweak-tool</code>：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install gnome-tweak-tool</span><br></pre></td></tr></table></figure>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/18/PU5g28.png"/>
+</div>
+</li>
+<li>
+<p>打开 <code>Tweaks</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Appearance</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Shell</code> 前面会有感叹号。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/18/PU50Li.png"/>
+</div>
+</li>
+</ul>
+<h2 id="2-去掉-shell-感叹号"><a class="markdownIt-Anchor" href="#2-去掉-shell-感叹号"></a> 2. 去掉 Shell 感叹号</h2>
+<ul>
+<li>
+<p>安装 <code>gnome-shell-extensions</code>：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gnome-shell-extensions</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>启用 <code>User themes</code> 扩展：打开 <code>Tweaks</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Extensions</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>User themes</code> 按钮点开。（如果没有 <code>User themes</code> 扩展选项，需要重启 <code>Ubuntu</code> 系统）</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/18/PU5CDy.png"/>
+</div>
+</li>
+<li>
+<p>重启 <code>Tweaks</code> 后，<code>Shell</code> 前面的感叹号消失了。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/18/PU5hVr.png"/>
+</div>
+</li>
+</ul>
+<h2 id="3-配置主题-gtk-themes"><a class="markdownIt-Anchor" href="#3-配置主题-gtk-themes"></a> 3. 配置主题 GTK Themes</h2>
+<ul>
+<li>
+<p>进入 <a target="_blank" rel="noopener" href="https://www.gnome-look.org/browse/">https://www.gnome-look.org/browse/</a> 网站的 <code>GTK3/4 Themes</code> 分类根据个人喜好下载 <code>GTK</code> 主题。</p>
+</li>
+<li>
+<p>作者下载了 <a target="_blank" rel="noopener" href="https://www.gnome-look.org/p/1275087/">McMojave-Dark</a> 主题。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/18/PU7n3Q.png"/>
+</div>
+</li>
+<li>
+<p>解压文件到 <code>/usr/share/themes</code> 文件夹：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -xvJf Mojave-Dark.tar.xz -C /usr/share/themes</span><br></pre></td></tr></table></figure>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/18/PU77Ph.png"/>
+</div>
+</li>
+<li>
+<p>打开 <code>Tweaks</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Appearance</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 在 <code>Shell</code> 和  <code>Applications</code> 中选择主题即可。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/18/PU7QuS.png"/>
+</div>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/18/PU7dBW.png"/>
+</div>
+</li>
+</ul>
+<h2 id="4-配置图标-icon-themes"><a class="markdownIt-Anchor" href="#4-配置图标-icon-themes"></a> 4. 配置图标 Icon Themes</h2>
+<ul>
+<li>
+<p>进入 <a target="_blank" rel="noopener" href="https://www.gnome-look.org/browse/">https://www.gnome-look.org/browse/</a> 网站的<code>Full Icon Themes</code>分类根据个人喜好下载图标主题。</p>
+</li>
+<li>
+<p>作者下载了 <a target="_blank" rel="noopener" href="https://www.gnome-look.org/p/1305429">McMojave-circle</a> 主题。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/18/PU7N8y.png"/>
+</div>
+</li>
+<li>
+<p>解压文件到<code>/usr/share/icons</code>文件夹：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -xvJf 01-McMojave-circle.tar.xz -C /usr/share/icons</span><br></pre></td></tr></table></figure>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/18/PU7YT5.png"/>
+</div>
+</li>
+<li>
+<p>打开 <code>Tweaks</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Appearance</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 在 <code>Icons</code> 中选择主题即可。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/18/PU7wO4.png"/>
+</div>
+</li>
+</ul>
+<h2 id="5-配置光标-cursor"><a class="markdownIt-Anchor" href="#5-配置光标-cursor"></a> 5. 配置光标 Cursor</h2>
+<ul>
+<li>
+<p>进入 <a target="_blank" rel="noopener" href="https://www.gnome-look.org/browse/">https://www.gnome-look.org/browse/</a> 网站的 <code>Cursors</code> 分类根据个人喜好下载光标主题。</p>
+</li>
+<li>
+<p>作者下载了 <a target="_blank" rel="noopener" href="https://www.gnome-look.org/p/1355701">McMojave cursors</a> 主题。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/19/PUbDsu.png"/>
+</div>
+</li>
+<li>
+<p>解压文件到 <code>/usr/share/icons</code> 文件夹：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxvf McMojave-cursors.tar.xz -C /usr/share/icons</span><br></pre></td></tr></table></figure>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/19/PUuciO.png"/>
+</div>
+</li>
+<li>
+<p>打开 <code>Tweaks</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Appearance</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 在 <code>Cursor</code> 中选择主题即可。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/19/PUutte.png"/>
+</div>
+</li>
+</ul>
+<h2 id="6-配置壁纸-background"><a class="markdownIt-Anchor" href="#6-配置壁纸-background"></a> 6. 配置壁纸 Background</h2>
+<ul>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn><mi>k</mi></mrow><annotation encoding="application/x-tex">4k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>、<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>8</mn><mi>k</mi></mrow><annotation encoding="application/x-tex">8k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">8</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> 壁纸资源：</p>
+<ul>
+<li>
+<p><a target="_blank" rel="noopener" href="https://bz.zzzmh.cn/index">极简壁纸</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://wall.alphacoders.com/?lang=Chinese">WALLPAPER ABYSS</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://wallhaven.cc/">wallhaven</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>下载图片到 <code>/usr/share/backgrounds</code> 文件夹。</p>
+</li>
+<li>
+<p>打开 <code>Tweaks</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Appearance</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 在 <code>Background</code> 中选择照片 <code>image</code> 即可。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/19/PUuExt.png"/>
+</div>
+</li>
+</ul>
+<h2 id="7-配置登录背景-login"><a class="markdownIt-Anchor" href="#7-配置登录背景-login"></a> 7. 配置登录背景 login</h2>
+<ul>
+<li>
+<p>下载 <code>ubuntu-20.04-change-gdm-background</code> 文件，并使用 <code>-P</code> 指定下载路径：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -P /home/dong/Documents/change-background/ https://raw.githubusercontent.com/thiggy01/change-gdm-background/master/change-gdm-background</span><br></pre></td></tr></table></figure>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/19/PUumEz.png"/>
+</div>
+</li>
+<li>
+<p>给 <code>change-gdm-background</code> 文件赋予执行的权限：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">chmod</span> 777 /home/dong/Documents/change-background/change-gdm-background</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>修改背景图片：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /home/dong/Documents/change-background/change-gdm-background /usr/share/backgrounds/lamber.jpg</span><br></pre></td></tr></table></figure>
+<ul>
+<li>其中 <code>/usr/share/backgrounds/lamber.jpg</code> 为背景图片所在路径。</li>
+</ul>
+</li>
+<li>
+<p>屏蔽紫色过渡动画：对于登录系统的紫色过渡动画，就是输入密码回车，到进入系统这个过程的紫色动画，可以通过 <code>gnome</code> 的扩展 <code>extension</code> 进行屏蔽，名字是 <a target="_blank" rel="noopener" href="https://extensions.gnome.org/extension/3037/good-bye-gdm-flick/">Good Bye GDM3 Login Screen to Desktop Flick for Ubuntu 20.04 only</a> 。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/19/PUuzo6.png"/>
+</div>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/19/PUuKjh.png"/>
+</div>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/19/PUuj5S.png"/>
+</div>
+</li>
+</ul>
+<h2 id="8-文件夹改色助手-color-folder"><a class="markdownIt-Anchor" href="#8-文件夹改色助手-color-folder"></a> 8. 文件夹改色助手 Color Folder</h2>
+<ul>
+<li><code>Color Folder</code> 可以帮助快速改变文件夹的颜色使它与其他文件夹看起来不同。</li>
+</ul>
+<h3 id="81-安装"><a class="markdownIt-Anchor" href="#81-安装"></a> 8.1 安装</h3>
+<h4 id="811-方式一"><a class="markdownIt-Anchor" href="#811-方式一"></a> 8.1.1 方式一</h4>
+<ul>
+<li>
+<p>官网：<a target="_blank" rel="noopener" href="http://foldercolor.tuxfamily.org/">http://foldercolor.tuxfamily.org/</a></p>
+</li>
+<li>
+<p>如果 <code>Ubuntu</code> 版本大于 <code>15.04</code>，直接点击 <code>Ubuntu 15.04+ Installer</code>  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Open xdg-open</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Install</code></p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/19/PUuyNW.png"/>
+</div>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/19/PUuZFw.png"/>
+</div>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/19/PU1Gy8.png"/>
+</div>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/19/PU1L5i.png"/>
+</div>
+</li>
+</ul>
+<h4 id="812-方式二"><a class="markdownIt-Anchor" href="#812-方式二"></a> 8.1.2 方式二</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install folder-color</span><br></pre></td></tr></table></figure>
+<h3 id="82-卸载"><a class="markdownIt-Anchor" href="#82-卸载"></a> 8.2 卸载</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge folder-color</span><br><span class="line">sudo apt-get autoclean</span><br><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://xindong2020.love">Mr.DONG</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://xindong2020.love/paper/15fbef57.html">https://xindong2020.love/paper/15fbef57.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xindong2020.love" target="_blank">Mr.DONG の 自习室</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Ubuntu-20-04/">Ubuntu 20.04</a></div><div class="post_share"><div class="social-share" data-image="https://s6.jpg.cm/2022/09/07/PXRPf5.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/paper/d523be8e.html"><img class="next-cover" src="https://s6.jpg.cm/2022/09/07/PXRROC.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Ubuntu 20.04 与 Windows10 双系统安装</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/paper/d523be8e.html" title="Ubuntu 20.04 与 Windows10 双系统安装"><img class="cover" src="https://s6.jpg.cm/2022/09/07/PXRROC.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-05</div><div class="title">Ubuntu 20.04 与 Windows10 双系统安装</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s6.jpg.cm/2022/09/07/PXPXyi.th.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Mr.DONG</div><div class="author-info__description">Mr.DONG学习记录</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fandong93"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/fandong93" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dongf19931107@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到 Mr.DONG の 自习室</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85-gnome-tweak-tool"><span class="toc-text"> 1. 安装 gnome-tweak-tool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8E%BB%E6%8E%89-shell-%E6%84%9F%E5%8F%B9%E5%8F%B7"><span class="toc-text"> 2. 去掉 Shell 感叹号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE%E4%B8%BB%E9%A2%98-gtk-themes"><span class="toc-text"> 3. 配置主题 GTK Themes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%85%8D%E7%BD%AE%E5%9B%BE%E6%A0%87-icon-themes"><span class="toc-text"> 4. 配置图标 Icon Themes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E9%85%8D%E7%BD%AE%E5%85%89%E6%A0%87-cursor"><span class="toc-text"> 5. 配置光标 Cursor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E9%85%8D%E7%BD%AE%E5%A3%81%E7%BA%B8-background"><span class="toc-text"> 6. 配置壁纸 Background</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E9%85%8D%E7%BD%AE%E7%99%BB%E5%BD%95%E8%83%8C%E6%99%AF-login"><span class="toc-text"> 7. 配置登录背景 login</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%96%87%E4%BB%B6%E5%A4%B9%E6%94%B9%E8%89%B2%E5%8A%A9%E6%89%8B-color-folder"><span class="toc-text"> 8. 文件夹改色助手 Color Folder</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#81-%E5%AE%89%E8%A3%85"><span class="toc-text"> 8.1 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#811-%E6%96%B9%E5%BC%8F%E4%B8%80"><span class="toc-text"> 8.1.1 方式一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#812-%E6%96%B9%E5%BC%8F%E4%BA%8C"><span class="toc-text"> 8.1.2 方式二</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#82-%E5%8D%B8%E8%BD%BD"><span class="toc-text"> 8.2 卸载</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/paper/15fbef57.html" title="Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景"><img src="https://s6.jpg.cm/2022/09/07/PXRPf5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景"/></a><div class="content"><a class="title" href="/paper/15fbef57.html" title="Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景">Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景</a><time datetime="2022-09-05T16:00:00.000Z" title="发表于 2022-09-06 00:00:00">2022-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/paper/d523be8e.html" title="Ubuntu 20.04 与 Windows10 双系统安装"><img src="https://s6.jpg.cm/2022/09/07/PXRROC.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu 20.04 与 Windows10 双系统安装"/></a><div class="content"><a class="title" href="/paper/d523be8e.html" title="Ubuntu 20.04 与 Windows10 双系统安装">Ubuntu 20.04 与 Windows10 双系统安装</a><time datetime="2022-09-04T16:00:00.000Z" title="发表于 2022-09-05 00:00:00">2022-09-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/paper/fafd0576.html" title="Java 流程控制"><img src="https://s6.jpg.cm/2022/09/07/PXRcAT.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 流程控制"/></a><div class="content"><a class="title" href="/paper/fafd0576.html" title="Java 流程控制">Java 流程控制</a><time datetime="2022-09-03T16:00:00.000Z" title="发表于 2022-09-04 00:00:00">2022-09-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By Mr.DONG</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = false;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.js"></script><!-- hexo injector body_end end --></body></html>
