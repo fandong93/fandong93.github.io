@@ -1,0 +1,1459 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>IntelliJ IDEA 的配置及使用 | Mr.DONG の 自习室</title><meta name="keywords" content="Java"><meta name="author" content="Mr.DONG"><meta name="copyright" content="Mr.DONG"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="一、IntelliJ IDEA 的安装与激活  1.1 IntelliJ IDEA 的安装  （1）Windows （2）Ubuntu   1.2 IntelliJ IDEA 的激活   二、IntelliJ IDEA 的详细配置  2.1 进入设置界面  2.1.1 方式一 2.1.2 方式二   2.2 关闭 Intellij IDEA 自动更新 2.3 配置项目默认路径 2.4 创建项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IntelliJ IDEA 的配置及使用">
+<meta property="og:url" content="https://xindong2020.love/8c11795d">
+<meta property="og:site_name" content="Mr.DONG の 自习室">
+<meta property="og:description" content="一、IntelliJ IDEA 的安装与激活  1.1 IntelliJ IDEA 的安装  （1）Windows （2）Ubuntu   1.2 IntelliJ IDEA 的激活   二、IntelliJ IDEA 的详细配置  2.1 进入设置界面  2.1.1 方式一 2.1.2 方式二   2.2 关闭 Intellij IDEA 自动更新 2.3 配置项目默认路径 2.4 创建项目">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s6.jpg.cm/2022/09/07/PXRROC.jpg">
+<meta property="article:published_time" content="2022-08-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-13T17:05:22.311Z">
+<meta property="article:author" content="Mr.DONG">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Eclipse">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s6.jpg.cm/2022/09/07/PXRROC.jpg"><link rel="shortcut icon" href="https://s6.jpg.cm/2022/09/07/PXPkS4.th.png"><link rel="canonical" href="https://xindong2020.love/8c11795d"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io/css/logofonts.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"R7ZHV2NELE","apiKey":"8aa9f67293bfb4f2895895aaaa92152f","indexName":"fandong","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":270},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'IntelliJ IDEA 的配置及使用',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-14 01:05:22'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/one.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/width.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/background.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/fonts.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/logofonts.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/fontsize.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/mouse.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/scrollbar.css"><link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/KaTeX/0.15.2/katex.min.css" rel="stylesheet"><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s6.jpg.cm/2022/09/07/PXPXyi.th.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/musics/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-images"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s6.jpg.cm/2022/09/07/PXRROC.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Mr.DONG の 自习室</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/musics/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-images"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">IntelliJ IDEA 的配置及使用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-22T16:00:00.000Z" title="发表于 2022-08-23 00:00:00">2022-08-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-13T17:05:22.311Z" title="更新于 2022-10-14 01:05:22">2022-10-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java-%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">Java 开发语言</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>18分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="IntelliJ IDEA 的配置及使用"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%80-intellij-idea-%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E6%BF%80%E6%B4%BB">一、IntelliJ IDEA 的安装与激活</a>
+<ul>
+<li><a href="#11-intellij-idea-%E7%9A%84%E5%AE%89%E8%A3%85">1.1 IntelliJ IDEA 的安装</a>
+<ul>
+<li><a href="#1windows">（1）Windows</a></li>
+<li><a href="#2ubuntu">（2）Ubuntu</a></li>
+</ul>
+</li>
+<li><a href="#12-intellij-idea-%E7%9A%84%E6%BF%80%E6%B4%BB">1.2 IntelliJ IDEA 的激活</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-intellij-idea-%E7%9A%84%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE">二、IntelliJ IDEA 的详细配置</a>
+<ul>
+<li><a href="#21-%E8%BF%9B%E5%85%A5%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2">2.1 进入设置界面</a>
+<ul>
+<li><a href="#211-%E6%96%B9%E5%BC%8F%E4%B8%80">2.1.1 方式一</a></li>
+<li><a href="#212-%E6%96%B9%E5%BC%8F%E4%BA%8C">2.1.2 方式二</a></li>
+</ul>
+</li>
+<li><a href="#22-%E5%85%B3%E9%97%AD-intellij-idea-%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0">2.2 关闭 Intellij IDEA 自动更新</a></li>
+<li><a href="#23-%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE%E9%BB%98%E8%AE%A4%E8%B7%AF%E5%BE%84">2.3 配置项目默认路径</a></li>
+<li><a href="#24-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE">2.4 创建项目</a>
+<ul>
+<li><a href="#241-%E6%96%B9%E5%BC%8F%E4%B8%80">2.4.1 方式一</a></li>
+<li><a href="#242-%E6%96%B9%E5%BC%8F%E4%BA%8C">2.4.2 方式二</a></li>
+</ul>
+</li>
+<li><a href="#25-%E9%85%8D%E7%BD%AE-jdk">2.5 配置 JDK</a></li>
+<li><a href="#26-%E7%BB%9F%E4%B8%80%E7%BC%96%E8%AF%91%E5%99%A8%E5%92%8C%E7%BC%96%E8%AF%91%E7%89%88%E6%9C%AC">2.6 统一编译器和编译版本</a></li>
+<li><a href="#27-%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98">2.7 设置主题</a>
+<ul>
+<li><a href="#271-%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98">2.7.1 安装主题</a></li>
+<li><a href="#272-%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98">2.7.2 设置主题</a>
+<ul>
+<li><a href="#1%E6%96%B9%E5%BC%8F%E4%B8%80">（1）方式一</a></li>
+<li><a href="#2%E6%96%B9%E5%BC%8F%E4%BA%8C">（2）方式二</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#28-%E8%AE%BE%E7%BD%AE%E5%AD%97%E4%BD%93">2.8 设置字体</a>
+<ul>
+<li><a href="#281-idea-%E7%95%8C%E9%9D%A2%E5%AD%97%E4%BD%93">2.8.1 IDEA 界面字体</a>
+<ul>
+<li><a href="#1%E6%96%B9%E5%BC%8F%E4%B8%80-2">（1）方式一</a></li>
+<li><a href="#2%E6%96%B9%E5%BC%8F%E4%BA%8C-2">（2）方式二</a></li>
+</ul>
+</li>
+<li><a href="#282-%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E7%95%8C%E9%9D%A2%E5%AD%97%E4%BD%93">2.8.2 代码编辑界面字体</a></li>
+<li><a href="#283-ctrl-%E9%BC%A0%E6%A0%87%E6%BB%9A%E8%BD%AE%E4%BF%AE%E6%94%B9%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F">2.8.3 Ctrl + 鼠标滚轮修改字体大小</a></li>
+<li><a href="#284-%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%AD%97%E4%BD%93">2.8.4 控制台字体</a></li>
+</ul>
+</li>
+<li><a href="#29-%E8%A1%8C%E5%8F%B7%E5%92%8C%E6%96%B9%E6%B3%95%E5%88%86%E9%9A%94%E7%AC%A6">2.9 行号和方法分隔符</a></li>
+<li><a href="#210-%E5%BF%BD%E7%95%A5%E5%A4%A7%E5%B0%8F%E5%86%99%E5%8C%B9%E9%85%8D">2.10 忽略大小写匹配</a></li>
+<li><a href="#211-%E9%85%8D%E7%BD%AE%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%8C%85">2.11 配置自动导包</a></li>
+<li><a href="#212-%E9%85%8D%E7%BD%AE%E7%BC%96%E7%A0%81">2.12 配置编码</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-intellij-idea-%E5%BF%AB%E6%8D%B7%E9%94%AE">三、IntelliJ IDEA 快捷键</a>
+<ul>
+<li><a href="#31-ctrl">3.1 Ctrl</a></li>
+<li><a href="#32-alt">3.2 Alt</a></li>
+<li><a href="#33-shift">3.3 Shift</a></li>
+<li><a href="#34-ctrl-alt">3.4 Ctrl + Alt</a></li>
+<li><a href="#35-ctrl-shift">3.5 Ctrl + Shift</a></li>
+<li><a href="#36-alt-shift">3.6 Alt + Shift</a></li>
+<li><a href="#37-ctrl-shift-alt">3.7 Ctrl + Shift + Alt</a></li>
+<li><a href="#38-%E5%85%B6%E4%BB%96">3.8 其他</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-intellij-idea-%E7%9A%84%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9C">三、IntelliJ IDEA 的其他操作</a>
+<ul>
+<li><a href="#31-%E5%88%A0%E9%99%A4%E7%B1%BB%E6%96%87%E4%BB%B6">3.1 删除类文件</a></li>
+<li><a href="#32-%E4%BF%AE%E6%94%B9%E7%B1%BB%E5%90%8D%E7%A7%B0">3.2 修改类名称</a></li>
+<li><a href="#33-%E4%BF%AE%E6%94%B9%E6%A8%A1%E5%9D%97%E5%90%8D%E7%A7%B0">3.3 修改模块名称</a></li>
+<li><a href="#34-%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97">3.4 导入模块</a></li>
+<li><a href="#35-%E5%88%A0%E9%99%A4%E6%A8%A1%E5%9D%97">3.5 删除模块</a>
+<ul>
+<li><a href="#351-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%A7%BB%E9%99%A4">3.5.1 项目中移除</a></li>
+<li><a href="#352-%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4">3.5.2 彻底删除</a></li>
+</ul>
+</li>
+<li><a href="#36-%E6%89%93%E5%BC%80%E5%B7%A5%E7%A8%8B">3.6 打开工程</a></li>
+<li><a href="#37-%E5%85%B3%E9%97%AD%E5%B7%A5%E7%A8%8B">3.7 关闭工程</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="一-intellij-idea-的安装与激活"><a class="markdownIt-Anchor" href="#一-intellij-idea-的安装与激活"></a> 一、IntelliJ IDEA 的安装与激活</h2>
+<h3 id="11-intellij-idea-的安装"><a class="markdownIt-Anchor" href="#11-intellij-idea-的安装"></a> 1.1 IntelliJ IDEA 的安装</h3>
+<h4 id="1windows"><a class="markdownIt-Anchor" href="#1windows"></a> （1）Windows</h4>
+<ul>
+<li>
+<p>官网：<a target="_blank" rel="noopener" href="https://www.jetbrains.com/idea/download/other.html">https://www.jetbrains.com/idea/download/other.html</a> 下载 <code>Version 2021.3.2</code> 的 <code>2021.3.2 - Windows x64 (exe)</code> 版本。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/30/P1RIDH.png"/>
+</div>
+</li>
+<li>
+<p>双击安装：</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/30/P1RRFf.png"/>
+</div>
+<div align=center>
+  <img src="https://s6.jpg.cm/2022/09/30/P1Rs96.png" width="350"/>
+  <img src="https://s6.jpg.cm/2022/09/30/P1RF7T.png" width="350"/>
+</div>
+<div align=center>
+  <img src="https://s6.jpg.cm/2022/09/30/P1RkSE.png" width="350"/>
+  <img src="https://s6.jpg.cm/2022/09/30/P1Rm3Q.png" width="350"/>
+</div>
+<div align=center>
+  <img src="https://s6.jpg.cm/2022/09/30/P1RvPh.png" width="350"/>
+  <img src="https://s6.jpg.cm/2022/09/30/P1RwuS.png" width="350"/>
+</div>
+</li>
+</ul>
+<h4 id="2ubuntu"><a class="markdownIt-Anchor" href="#2ubuntu"></a> （2）Ubuntu</h4>
+<ul>
+<li>
+<p>官网：<a target="_blank" rel="noopener" href="https://www.jetbrains.com/idea/download/other.html">https://www.jetbrains.com/idea/download/other.html</a> 下载 <code>Version 2021.3.2</code> 的 <code>2021.3.2 - Linux x86_64 (tar.gz)</code> 版本。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/16/PcjJRz.png"/>
+</div>
+</li>
+<li>
+<p>解压到指定文件夹：<code>tar -zxvf ideaIU-2021.3.2.tar.gz -C /home/dong</code>，重命名解压后的文件夹为 <code>idea-IU</code>。</p>
+</li>
+<li>
+<p>在 <code>Ubuntu 20.04</code> 的 <code>/usr/share/applications</code> 文件夹中创建 <code>idea.desktop</code> 文件：<code>sudo gedit /usr/share/applications/idea.desktop</code>，然后输入下列内容，其中 <code>Exec</code> 与 <code>icon</code> 内容根据实际情况填写。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=IntelliJ IDEA</span><br><span class="line">Comment=IntelliJ IDEA</span><br><span class="line">Exec=/home/dong/idea-IU/bin/idea.sh</span><br><span class="line">Icon=/home/dong/idea-IU/bin/idea.png</span><br><span class="line">Terminal=<span class="literal">false</span></span><br><span class="line">Type=Application</span><br><span class="line">Categories=Developer;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>如果想要在桌面生成快捷方式，只需在桌面创建 <code>idea.desktop</code> 文件：<code>gedit ~/Desktop/idea.desktop</code>，然后输入下列内容，其中 <code>Exec</code> 与 <code>icon</code> 内容根据实际情况填写。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=IntelliJ IDEA</span><br><span class="line">Comment=IntelliJ IDEA</span><br><span class="line">Exec=/home/dong/idea-IU/bin/idea.sh</span><br><span class="line">Icon=/home/dong/idea-IU/bin/idea.png</span><br><span class="line">Terminal=<span class="literal">false</span></span><br><span class="line">Type=Application</span><br><span class="line">Categories=Developer;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>文件 <code>idea.desktop</code> 上右键，选择 <code>Allow Launching</code>。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/17/PcZ2UC.png"/>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="12-intellij-idea-的激活"><a class="markdownIt-Anchor" href="#12-intellij-idea-的激活"></a> 1.2 IntelliJ IDEA 的激活</h3>
+<ul>
+<li>
+<p>运行 <code>IntelliJ IDEA</code>，出现 <code>DATA SHARING</code> 页面，自愿选择发送与否。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/17/PcZDLp.png"/>
+</div>
+</li>
+<li>
+<p>先不导入之前的 <code>IntelliJ IDEA</code> 配置，点击 <code>OK</code>。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/17/PcZZDE.png"/>
+</div>
+</li>
+<li>
+<p>启动页面</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/17/PUGLFh.png"/>
+</div>
+</li>
+<li>
+<p><code>Intellij IDEA</code> 运行成功后，会弹出下面的对话框，提示我们需要先登录 <code>JetBrains</code> 账户才能使用，这里我们先不管，先点击 <code>Exit</code> 退出，准备开始运行激活脚本。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/17/PUGq7W.png"/>
+</div>
+</li>
+<li>
+<p>开始激活</p>
+<ul>
+<li>
+<p>自行下载 <code>ja-netfilter-all</code> 激活文件夹，放置到电脑上某个位置。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/17/PUGDYk.png"/>
+</div>
+</li>
+<li>
+<p>进入到 <code>ja-netfilter-all</code> 中的 <code>scripts</code> 文件夹，运行脚本安装破解补丁。</p>
+<ul>
+<li>
+<p><code>Windows</code> 系统，点击运行 <code>install-current-user.vbs</code> 脚本，为当前用户安装破解补丁。</p>
+</li>
+<li>
+<p><code>Mac</code> / <code>Linux</code> 系统，运行 <code>bash install.sh</code> 指令。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/17/PUISZf.png"/>
+</div>
+</li>
+</ul>
+</li>
+<li>
+<p>重启 <code>Intellij IDEA</code>，选择 <code>Activation code</code>，填入激活码。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/17/PUL8te.png"/>
+</div>
+</li>
+<li>
+<p>点击 <code>Activate</code> 进行激活后，可以看到激活到 <code>2099</code> 年。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/17/PULAzy.png"/>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="二-intellij-idea-的详细配置"><a class="markdownIt-Anchor" href="#二-intellij-idea-的详细配置"></a> 二、IntelliJ IDEA 的详细配置</h2>
+<h3 id="21-进入设置界面"><a class="markdownIt-Anchor" href="#21-进入设置界面"></a> 2.1 进入设置界面</h3>
+<h4 id="211-方式一"><a class="markdownIt-Anchor" href="#211-方式一"></a> 2.1.1 方式一</h4>
+<ul>
+<li>
+<p>欢迎界面下，点击 <code>Customize</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>All settings...</code> 进入设置界面。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/17/PULuxt.png"/>
+</div>
+</li>
+</ul>
+<h4 id="212-方式二"><a class="markdownIt-Anchor" href="#212-方式二"></a> 2.1.2 方式二</h4>
+<ul>
+<li>
+<p>项目界面下，点击菜单 <code>File</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Settings...</code> 进入设置界面。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/01/P17ll2.png"/>
+</div>
+</li>
+</ul>
+<h3 id="22-关闭-intellij-idea-自动更新"><a class="markdownIt-Anchor" href="#22-关闭-intellij-idea-自动更新"></a> 2.2 关闭 Intellij IDEA 自动更新</h3>
+<ul>
+<li>
+<p>进入设置界面 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Appearance &amp; Behavior</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>System Settings</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Updates</code>，取消 <code>Check IDE updates for:</code> 和 <code>Show What's New in the editor after an IDE update</code> 的勾选 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>OK</code>。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/18/PURCsw.png"/>
+</div>
+</li>
+</ul>
+<h3 id="23-配置项目默认路径"><a class="markdownIt-Anchor" href="#23-配置项目默认路径"></a> 2.3 配置项目默认路径</h3>
+<ul>
+<li>
+<p>进入设置界面 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Appearance &amp; Behavior</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>System Settings</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Default project directory</code> 选择项目默认路径。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/18/PUPpuy.png"/>
+</div>
+</li>
+</ul>
+<h3 id="24-创建项目"><a class="markdownIt-Anchor" href="#24-创建项目"></a> 2.4 创建项目</h3>
+<h4 id="241-方式一"><a class="markdownIt-Anchor" href="#241-方式一"></a> 2.4.1 方式一</h4>
+<ul>
+<li>
+<p><strong>欢迎界面</strong>下，点击 <code>Projects</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>New Project</code>。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/17/PUL2bL.png"/>
+</div>
+</li>
+<li>
+<p>创建 <code>Empty Project</code> 空项目 <code>JavaSE</code></p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/02/P17BjD.png"/>
+</div>
+</li>
+<li>
+<p>创建 <code>Module</code>：项目上右键 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>New</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Module...</code></p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/02/P17CbQ.png"/>
+</div>
+</li>
+<li>
+<p>设置 <code>JDK</code>：在新窗口中选择 <code>Java</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Module SDK</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Add JDK...</code>，选择 <code>JDK</code> 所在路径 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Next</code>。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/02/P17hDS.png"/>
+</div>
+</li>
+<li>
+<p>在新窗口中选择设置 <code>Module name</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Finish</code>。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/02/P17yVW.png"/>
+</div>
+</li>
+<li>
+<p>创建包 <code>Package</code>：在新建 <code>Module</code> 的 <code>src</code> 文件夹上右键 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>New</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Package</code></p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/02/P179F2.png"/>
+</div>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/02/P17TyH.png"/>
+</div>
+</li>
+<li>
+<p>创建类 <code>Class</code>：在新建的包 <code>Package</code> 上右键 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>New</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Java Class</code></p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/02/P17i7L.png"/>
+</div>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/02/P17xNf.png"/>
+</div>
+</li>
+</ul>
+<h4 id="242-方式二"><a class="markdownIt-Anchor" href="#242-方式二"></a> 2.4.2 方式二</h4>
+<ul>
+<li>
+<p><strong>项目界面</strong> 下，点击菜单 <code>File</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>New</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Projects...</code>，然后按照上述步骤进行创建。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/01/P176EH.png"/>
+</div>
+</li>
+</ul>
+<h3 id="25-配置-jdk"><a class="markdownIt-Anchor" href="#25-配置-jdk"></a> 2.5 配置 JDK</h3>
+<ul>
+<li>
+<p><code>File</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Project Structure...</code></p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/07/P11Ttz.png"/>
+</div>
+</li>
+<li>
+<p><code>Project</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>SDK</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 选择环境变量中配置好的<code>JDK</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>OK</code></p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/07/P11a0u.png"/>
+</div>
+</li>
+</ul>
+<h3 id="26-统一编译器和编译版本"><a class="markdownIt-Anchor" href="#26-统一编译器和编译版本"></a> 2.6 统一编译器和编译版本</h3>
+<ul>
+<li>
+<p>进入设置界面 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Build, Execution, Deployment</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Compiler</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Java Compiler</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Use Compiler:</code> 选择 <code>javac</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Project bytecode version:</code> 根据当前项目使用的 <code>JDK</code> 版本进行统一 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Apply</code></p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/01/P17NEy.png"/>
+</div>
+</li>
+</ul>
+<h3 id="27-设置主题"><a class="markdownIt-Anchor" href="#27-设置主题"></a> 2.7 设置主题</h3>
+<h4 id="271-安装主题"><a class="markdownIt-Anchor" href="#271-安装主题"></a> 2.7.1 安装主题</h4>
+<ul>
+<li>
+<p>下载网址：<a target="_blank" rel="noopener" href="http://www.themesmap.com/theme.html?t=down">http://www.themesmap.com/theme.html?t=down</a></p>
+</li>
+<li>
+<p>下载主题：<a target="_blank" rel="noopener" href="http://www.themesmap.com/details.html?id=56a%60F4%60d27333ecc1800c392b3">Relax Your Eyes Green</a></p>
+  <div align=center>
+  <img src="https://s6.jpg.cm/2022/09/18/PURaGy.png"/>
+  </div>
+</li>
+<li>
+<p>导入主题</p>
+<ul>
+<li>
+<p>打开设置界面 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Editor</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Color Scheme</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 齿轮设置 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Import Scheme</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Intellij IDEA color scheme(.icis) or settings(.jar)</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 选择 <code>Relax Your Eyes Green</code> 主题所在路径 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>OK</code></p>
+  <div align=center>
+  <img src="https://s6.jpg.cm/2022/09/18/PURicr.png"/>
+  </div>
+  <div align=center>
+    <img src="https://s6.jpg.cm/2022/09/18/PURxw5.png" width="350"/>
+    <img src="https://s6.jpg.cm/2022/09/18/PURDiC.png" width="320"/>
+  </div>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="272-设置主题"><a class="markdownIt-Anchor" href="#272-设置主题"></a> 2.7.2 设置主题</h4>
+<h5 id="1方式一"><a class="markdownIt-Anchor" href="#1方式一"></a> （1）方式一</h5>
+<ul>
+<li>
+<p>欢迎界面点击 <code>Customize</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Color theme</code>，选择要设置的主题。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/18/PURyJk.png"/>
+</div>
+</li>
+</ul>
+<h5 id="2方式二"><a class="markdownIt-Anchor" href="#2方式二"></a> （2）方式二</h5>
+<ul>
+<li>
+<p>进入设置界面 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Appearance &amp; Behavior</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Appearance</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Theme</code>，选择要设置的主题。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/18/PUR9ze.png"/>
+</div>
+</li>
+</ul>
+<h3 id="28-设置字体"><a class="markdownIt-Anchor" href="#28-设置字体"></a> 2.8 设置字体</h3>
+<h4 id="281-idea-界面字体"><a class="markdownIt-Anchor" href="#281-idea-界面字体"></a> 2.8.1 IDEA 界面字体</h4>
+<h5 id="1方式一-2"><a class="markdownIt-Anchor" href="#1方式一-2"></a> （1）方式一</h5>
+<ul>
+<li>
+<p>在欢迎界面下，点击 <code>Customize</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 在 <code>Accessibility</code> 中进行设置 <code>IDEA</code> 界面字体大小。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/09/30/P1qIRz.png"/>
+</div>
+</li>
+</ul>
+<h5 id="2方式二-2"><a class="markdownIt-Anchor" href="#2方式二-2"></a> （2）方式二</h5>
+<ul>
+<li>
+<p>进入设置界面 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Appearance &amp; Behavior</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Appearance</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 设置 <code>IDEA</code> 界面字体大小。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/01/P1qRO4.png"/>
+</div>
+</li>
+</ul>
+<h4 id="282-代码编辑界面字体"><a class="markdownIt-Anchor" href="#282-代码编辑界面字体"></a> 2.8.2 代码编辑界面字体</h4>
+<ul>
+<li>
+<p>进入设置界面 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Editor</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Font</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 设置代码编辑界面字体大小及行距。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/01/P1q5Tp.png"/>
+</div>
+</li>
+</ul>
+<h4 id="283-ctrl-鼠标滚轮修改字体大小"><a class="markdownIt-Anchor" href="#283-ctrl-鼠标滚轮修改字体大小"></a> 2.8.3 Ctrl + 鼠标滚轮修改字体大小</h4>
+<ul>
+<li>
+<p>进入设置界面 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Editor</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>General</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 勾选 <code>Change font size with Ctrl+Mouse Wheel in:</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 自选 <code>Active editor</code> 或 <code>All editors</code></p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/01/P1qvrC.png"/>
+</div>
+</li>
+</ul>
+<h4 id="284-控制台字体"><a class="markdownIt-Anchor" href="#284-控制台字体"></a> 2.8.4 控制台字体</h4>
+<ul>
+<li>
+<p>默认情况下无需调整，会跟随代码编辑界面使用一致的设置，如需自定义则可以进入设置界面 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Editor</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Color Scheme</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Console Font</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 勾选 <code>Use console font instead of the default</code>，然后自定义控制台字体</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/01/P1qwKt.png"/>
+</div>
+</li>
+</ul>
+<h3 id="29-行号和方法分隔符"><a class="markdownIt-Anchor" href="#29-行号和方法分隔符"></a> 2.9 行号和方法分隔符</h3>
+<ul>
+<li>
+<p>进入设置界面 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Editor</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>General</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Appearance</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 勾选 <code>Show line numbers</code> 显示行号，勾选 <code>Show method separators</code> 显示方法分隔符</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/01/P1q4WR.png"/>
+</div>
+</li>
+</ul>
+<h3 id="210-忽略大小写匹配"><a class="markdownIt-Anchor" href="#210-忽略大小写匹配"></a> 2.10 忽略大小写匹配</h3>
+<ul>
+<li>
+<p>进入设置界面 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Editor</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>General</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Code Completion</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 取消勾选 <code>Match case</code></p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/01/P1qBHz.png"/>
+</div>
+</li>
+</ul>
+<h3 id="211-配置自动导包"><a class="markdownIt-Anchor" href="#211-配置自动导包"></a> 2.11 配置自动导包</h3>
+<ul>
+<li>
+<p>进入设置界面 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Editor</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>General</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Auto Import</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Insert imports on paste:</code> 选择 <code>Always</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 勾选 <code>Add unambiguous imports on the fly</code> 和 <code>Optimize imports on the fly</code></p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/01/P17pou.png"/>
+</div>
+</li>
+</ul>
+<h3 id="212-配置编码"><a class="markdownIt-Anchor" href="#212-配置编码"></a> 2.12 配置编码</h3>
+<ul>
+<li>
+<p>进入设置界面 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Editor</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>File Encodings</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Global Encodings:</code> 和 <code>Project Encodings:</code> 选择 <code>UTF-8</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Default encoding for properties files:</code> 选择 <code>UTF-8</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 勾选 <code>Transparent native-to-ascll conversion</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Create UTF-8 files:</code> 选择 <code>with NO BOM</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Apply</code></p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/01/P17o64.png"/>
+</div>
+</li>
+</ul>
+<h2 id="三-intellij-idea-快捷键"><a class="markdownIt-Anchor" href="#三-intellij-idea-快捷键"></a> 三、IntelliJ IDEA 快捷键</h2>
+<h3 id="31-ctrl"><a class="markdownIt-Anchor" href="#31-ctrl"></a> 3.1 Ctrl</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">快捷键</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>F</code></td>
+<td style="text-align:center">在当前文件进行文本查找（<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>R</code></td>
+<td style="text-align:center">在当前文件进行文本替换（<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Z</code></td>
+<td style="text-align:center">撤销（<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>C</code></td>
+<td style="text-align:center">复制光标所在行 或 复制选择内容（<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>D</code></td>
+<td style="text-align:center">复制光标所在行并插入到下一行 或 复制选择内容并插入到右侧（<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>X</code></td>
+<td style="text-align:center">剪切光标所在行 或 剪切选择内容（<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Y</code></td>
+<td style="text-align:center">删除光标所在行 或 删除选中的行（<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>W</code></td>
+<td style="text-align:center">递进式选择代码块。可选中光标所在的单词或段落，连续按会在原有选中的基础上再扩展选中范围（<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>E</code></td>
+<td style="text-align:center">显示最近打开的文件记录列表（<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>N</code></td>
+<td style="text-align:center">根据输入的 类名 查找类文件（<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>G</code></td>
+<td style="text-align:center">在当前文件跳转到指定行处</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>J</code></td>
+<td style="text-align:center">插入自定义动态代码模板 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>P</code></td>
+<td style="text-align:center">方法参数提示显示 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Q</code></td>
+<td style="text-align:center">光标所在的变量 / 类名 / 方法名等上面（也可以在提示补充的时候按），显示文档内容</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>U</code></td>
+<td style="text-align:center">前往当前光标所在的方法的父类的方法 / 接口定义 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>B</code></td>
+<td style="text-align:center">进入光标所在的方法/变量的接口或是定义处，等效于 Ctrl + 左键单击 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>K</code></td>
+<td style="text-align:center">版本控制 <strong>提交</strong> 项目，需要此项目有加入到版本控制才可用</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>T</code></td>
+<td style="text-align:center">版本控制 <strong>更新</strong> 项目，需要此项目有加入到版本控制才可用</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>H</code></td>
+<td style="text-align:center">显示当前类的层次结构</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>O</code></td>
+<td style="text-align:center">选择可重写的方法</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>I</code></td>
+<td style="text-align:center">选择可继承的方法</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>+</code></td>
+<td style="text-align:center">展开代码</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>-</code></td>
+<td style="text-align:center">折叠代码</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>/</code></td>
+<td style="text-align:center">注释光标所在行代码，会根据当前不同文件类型使用不同的注释符号 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>[</code></td>
+<td style="text-align:center">移动光标到当前所在代码的花括号开始位置</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>]</code></td>
+<td style="text-align:center">移动光标到当前所在代码的花括号结束位置</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>F1</code></td>
+<td style="text-align:center">在光标所在的错误代码处显示错误信息 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>F3</code></td>
+<td style="text-align:center">调转到所选中的词的下一个引用位置 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>F4</code></td>
+<td style="text-align:center">关闭当前编辑文件</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>F8</code></td>
+<td style="text-align:center">在 Debug 模式下，设置光标当前行为断点，如果当前已经是断点则去掉断点</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>F9</code></td>
+<td style="text-align:center">执行 Make Project 操作</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>F11</code></td>
+<td style="text-align:center">选中文件 / 文件夹，使用助记符设定 / 取消书签 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>F12</code></td>
+<td style="text-align:center">弹出当前文件结构层，可以在弹出的层上直接输入，进行筛选</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Tab</code></td>
+<td style="text-align:center">编辑窗口切换，如果在切换的过程又加按上delete，则是关闭对应选中的窗口</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>End</code></td>
+<td style="text-align:center">跳到文件尾</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Home</code></td>
+<td style="text-align:center">跳到文件头</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Space</code></td>
+<td style="text-align:center">基础代码补全，默认在 Windows 系统上被输入法占用，需要进行修改，建议修改为 Ctrl + 逗号 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Delete</code></td>
+<td style="text-align:center">删除光标后面的单词或是中文句 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>BackSpace</code></td>
+<td style="text-align:center">删除光标前面的单词或是中文句 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>1,2,3...9</code></td>
+<td style="text-align:center">定位到对应数值的书签位置 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>左键单击</code></td>
+<td style="text-align:center">在打开的文件标题上，弹出该文件路径 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>光标定位</code></td>
+<td style="text-align:center">按 Ctrl 不要松开，会显示光标所在的类信息摘要</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">←</span></span></span></span></td>
+<td style="text-align:center">光标跳转到当前单词 / 中文句的左侧开头位置 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span></td>
+<td style="text-align:center">光标跳转到当前单词 / 中文句的右侧开头位置 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>↑</mo></mrow><annotation encoding="application/x-tex">\uparrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mrel">↑</span></span></span></span></td>
+<td style="text-align:center">等效于鼠标滚轮向前效果 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>↓</mo></mrow><annotation encoding="application/x-tex">\downarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mrel">↓</span></span></span></span></td>
+<td style="text-align:center">等效于鼠标滚轮向后效果 （<strong>必备</strong>）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-alt"><a class="markdownIt-Anchor" href="#32-alt"></a> 3.2 Alt</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">快捷键</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>Alt</code> + `</td>
+<td style="text-align:center">显示版本控制常用操作菜单弹出层（<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + Q</td>
+<td style="text-align:center">弹出一个提示，显示当前类的声明 / 上下文信息</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <code>F1</code></td>
+<td style="text-align:center">显示当前文件选择目标弹出层，弹出层中有很多目标可以进行选择 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <code>F2</code></td>
+<td style="text-align:center">对于前面页面，显示各类浏览器打开目标选择弹出层</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <code>F3</code></td>
+<td style="text-align:center">选中文本，逐个往下查找相同文本，并高亮显示</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <code>F7</code></td>
+<td style="text-align:center">查找光标所在的方法 / 变量 / 类被调用的地方</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <code>F8</code></td>
+<td style="text-align:center">在 Debug 的状态下，选中对象，弹出可输入计算表达式调试框，查看该输入内容的调试结果</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + Home</td>
+<td style="text-align:center">定位 / 显示到当前文件的 Navigation Bar</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + Enter</td>
+<td style="text-align:center">IntelliJ IDEA 根据光标所在问题，提供快速修复选择，光标放在的位置不同提示的结果也不同 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + Insert</td>
+<td style="text-align:center">代码自动生成，如生成对象的 set / get 方法，构造函数，toString() 等 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">←</span></span></span></span></td>
+<td style="text-align:center">切换当前已打开的窗口中的子视图，比如Debug窗口中有Output、Debugger等子视图，用此快捷键就可以在子视图中切换 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span></td>
+<td style="text-align:center">按切换当前已打开的窗口中的子视图，比如Debug窗口中有Output、Debugger等子视图，用此快捷键就可以在子视图中切换 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>↑</mo></mrow><annotation encoding="application/x-tex">\uparrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mrel">↑</span></span></span></span></td>
+<td style="text-align:center">当前光标跳转到当前文件的前一个方法名位置 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>↓</mo></mrow><annotation encoding="application/x-tex">\downarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mrel">↓</span></span></span></span></td>
+<td style="text-align:center">当前光标跳转到当前文件的后一个方法名位置 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <code>1,2,3...9</code></td>
+<td style="text-align:center">显示对应数值的选项卡，其中 1 是 Project 用得最多 （<strong>必备</strong>）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-shift"><a class="markdownIt-Anchor" href="#33-shift"></a> 3.3 Shift</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">快捷键</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>Shift</code> + <code>F1</code></td>
+<td style="text-align:center">如果有外部文档可以连接外部文档</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Shift</code> + <code>F2</code></td>
+<td style="text-align:center">跳转到上一个高亮错误 或 警告位置</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Shift</code> + <code>F3</code></td>
+<td style="text-align:center">在查找模式下，查找匹配上一个</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Shift</code> + <code>F4</code></td>
+<td style="text-align:center">对当前打开的文件，使用新Windows窗口打开，旧窗口保留</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Shift</code> + <code>F6</code></td>
+<td style="text-align:center">对文件 / 文件夹 重命名</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Shift</code> + <code>F7</code></td>
+<td style="text-align:center">在 Debug 模式下，智能步入。断点所在行上有多个方法调用，会弹出进入哪个方法</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Shift</code> + <code>F8</code></td>
+<td style="text-align:center">在 Debug 模式下，跳出，表现出来的效果跟 <code>F9</code> 一样</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Shift</code> + <code>F9</code></td>
+<td style="text-align:center">等效于点击工具栏的 Debug 按钮</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Shift</code> + <code>F10</code></td>
+<td style="text-align:center">等效于点击工具栏的 Run 按钮</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Shift</code> + <code>F11</code></td>
+<td style="text-align:center">弹出书签显示层 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Shift</code> + Tab</td>
+<td style="text-align:center">取消缩进 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Shift</code> + ESC</td>
+<td style="text-align:center">隐藏当前 或 最后一个激活的工具窗口</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Shift</code> + End</td>
+<td style="text-align:center">选中光标到当前行尾位置</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Shift</code> + Home</td>
+<td style="text-align:center">选中光标到当前行头位置</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Shift</code> + Enter</td>
+<td style="text-align:center">开始新一行。光标所在行下空出一行，光标定位到新行位置 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Shift</code> + 左键单击</td>
+<td style="text-align:center">在打开的文件名上按此快捷键，可以关闭当前打开文件 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Shift</code> + 滚轮前后滚动</td>
+<td style="text-align:center">当前文件的横向滚动轴滚动 （<strong>必备</strong>）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="34-ctrl-alt"><a class="markdownIt-Anchor" href="#34-ctrl-alt"></a> 3.4 Ctrl + Alt</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">快捷键</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + L</td>
+<td style="text-align:center">格式化代码，可以对当前文件和整个包目录使用 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + O</td>
+<td style="text-align:center">优化导入的类，可以对当前文件和整个包目录使用 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + I</td>
+<td style="text-align:center">光标所在行 或 选中部分进行自动代码缩进，有点类似格式化</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + T</td>
+<td style="text-align:center">对选中的代码弹出环绕选项弹出层 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + J</td>
+<td style="text-align:center">弹出模板选择窗口，将选定的代码加入动态模板中</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + H</td>
+<td style="text-align:center">调用层次</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + B</td>
+<td style="text-align:center">在某个调用的方法名上使用会跳到具体的实现处，可以跳过接口</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + C</td>
+<td style="text-align:center">重构-快速提取常量</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + F</td>
+<td style="text-align:center">重构-快速提取成员变量</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + V</td>
+<td style="text-align:center">重构-快速提取变量</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + Y</td>
+<td style="text-align:center">同步、刷新</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + S</td>
+<td style="text-align:center">打开 IntelliJ IDEA 系统设置 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + <code>F7</code></td>
+<td style="text-align:center">显示使用的地方。寻找被该类或是变量被调用的地方，用弹出框的方式找出来</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + <code>F11</code></td>
+<td style="text-align:center">切换全屏模式</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + Enter</td>
+<td style="text-align:center">光标所在行上空出一行，光标定位到新行 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + Home</td>
+<td style="text-align:center">弹出跟当前文件有关联的文件弹出层</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + Space</td>
+<td style="text-align:center">类名自动完成</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">←</span></span></span></span></td>
+<td style="text-align:center">退回到上一个操作的地方 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span></td>
+<td style="text-align:center">前进到上一个操作的地方 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>↑</mo></mrow><annotation encoding="application/x-tex">\uparrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mrel">↑</span></span></span></span></td>
+<td style="text-align:center">在查找模式下，跳到上个查找的文件</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>↓</mo></mrow><annotation encoding="application/x-tex">\downarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mrel">↓</span></span></span></span></td>
+<td style="text-align:center">在查找模式下，跳到下个查找的文件</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code>+ <code>]</code></td>
+<td style="text-align:center">在打开多个项目的情况下，切换下一个项目窗口</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Alt</code> + <code>[</code></td>
+<td style="text-align:center">在打开多个项目的情况下，切换上一个项目窗口</td>
+</tr>
+</tbody>
+</table>
+<h3 id="35-ctrl-shift"><a class="markdownIt-Anchor" href="#35-ctrl-shift"></a> 3.5 Ctrl + Shift</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">快捷键</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>F</code></td>
+<td style="text-align:center">根据输入内容查找整个项目 或 指定目录内文件 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>R</code></td>
+<td style="text-align:center">根据输入内容替换对应内容，范围为整个项目 或 指定目录内文件 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>J</code></td>
+<td style="text-align:center">自动将下一行合并到当前行末尾 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>Z</code></td>
+<td style="text-align:center">取消撤销 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>W</code></td>
+<td style="text-align:center">递进式取消选择代码块。可选中光标所在的单词或段落，连续按会在原有选中的基础上再扩展取消选中范围 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>N</code></td>
+<td style="text-align:center">通过文件名定位 / 打开文件 / 目录，打开目录需要在输入的内容后面多加一个正斜杠 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>U</code></td>
+<td style="text-align:center">对选中的代码进行大 / 小写轮流转换 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>T</code></td>
+<td style="text-align:center">对当前类生成单元测试类，如果已经存在的单元测试类则可以进行选择 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>C</code></td>
+<td style="text-align:center">复制当前文件磁盘路径到剪贴板 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>V</code></td>
+<td style="text-align:center">弹出缓存的最近拷贝的内容管理器弹出层</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>E</code></td>
+<td style="text-align:center">显示最近修改的文件列表的弹出层</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>H</code></td>
+<td style="text-align:center">显示方法层次结构</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>B</code></td>
+<td style="text-align:center">跳转到类型声明处 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>I</code></td>
+<td style="text-align:center">快速查看光标所在的方法 或 类的定义</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>A</code></td>
+<td style="text-align:center">查找动作 / 设置</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>/</code></td>
+<td style="text-align:center">代码块注释 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>[</code></td>
+<td style="text-align:center">选中从光标所在位置到它的顶部中括号位置 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>]</code></td>
+<td style="text-align:center">选中从光标所在位置到它的底部中括号位置 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>+</code></td>
+<td style="text-align:center">展开所有代码 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>-</code></td>
+<td style="text-align:center">折叠所有代码 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>F7</code></td>
+<td style="text-align:center">高亮显示所有该选中文本，按Esc高亮消失 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>F8</code></td>
+<td style="text-align:center">在 Debug 模式下，指定断点进入条件</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>F9</code></td>
+<td style="text-align:center">编译选中的文件 / 包 / Module</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>F12</code></td>
+<td style="text-align:center">编辑器最大化 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>Space</code></td>
+<td style="text-align:center">智能代码提示</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>Enter</code></td>
+<td style="text-align:center">自动结束代码，行末自动添加分号 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>Backspace</code></td>
+<td style="text-align:center">退回到上次修改的地方 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>1,2,3...9</code></td>
+<td style="text-align:center">快速添加指定数值的书签 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + 左键单击</td>
+<td style="text-align:center">把光标放在某个类变量上，按此快捷键可以直接定位到该类中 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">←</span></span></span></span></td>
+<td style="text-align:center">在代码文件上，光标跳转到当前单词 / 中文句的左侧开头位置，同时选中该单词 / 中文句 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span></td>
+<td style="text-align:center">在代码文件上，光标跳转到当前单词 / 中文句的右侧开头位置，同时选中该单词 / 中文句 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>↑</mo></mrow><annotation encoding="application/x-tex">\uparrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mrel">↑</span></span></span></span></td>
+<td style="text-align:center">光标放在方法名上，将方法移动到上一个方法前面，调整方法排序 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>↓</mo></mrow><annotation encoding="application/x-tex">\downarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mrel">↓</span></span></span></span></td>
+<td style="text-align:center">光标放在方法名上，将方法移动到下一个方法前面，调整方法排序 （<strong>必备</strong>）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="36-alt-shift"><a class="markdownIt-Anchor" href="#36-alt-shift"></a> 3.6 Alt + Shift</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">快捷键</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <code>Shift</code> + <code>N</code></td>
+<td style="text-align:center">选择 / 添加 task （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <code>Shift</code> + <code>F</code></td>
+<td style="text-align:center">显示添加到收藏夹弹出层 / 添加到收藏夹</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <code>Shift</code> + <code>C</code></td>
+<td style="text-align:center">查看最近操作项目的变化情况列表</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <code>Shift</code> + <code>I</code></td>
+<td style="text-align:center">查看项目当前文件</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <code>Shift</code> + <code>F7</code></td>
+<td style="text-align:center">在 Debug 模式下，下一步，进入当前方法体内，如果方法体还有方法，则会进入该内嵌的方法中，依此循环进入</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <code>Shift</code> + <code>F9</code></td>
+<td style="text-align:center">弹出 Debug 的可选择菜单</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <code>Shift</code> + <code>F10</code></td>
+<td style="text-align:center">弹出 Run 的可选择菜单</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <code>Shift</code> + 左键双击</td>
+<td style="text-align:center">选择被双击的单词 / 中文句，按住不放，可以同时选择其他单词 / 中文句 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <code>Shift</code> + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>↑</mo></mrow><annotation encoding="application/x-tex">\uparrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mrel">↑</span></span></span></span></td>
+<td style="text-align:center">向上移动光标所在行（<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Alt</code> + <code>Shift</code> + <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>↓</mo></mrow><annotation encoding="application/x-tex">\downarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mrel">↓</span></span></span></span></td>
+<td style="text-align:center">向下移动光标所在行（<strong>必备</strong>）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="37-ctrl-shift-alt"><a class="markdownIt-Anchor" href="#37-ctrl-shift-alt"></a> 3.7 Ctrl + Shift + Alt</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">快捷键</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>Alt</code> + <code>V</code></td>
+<td style="text-align:center">无格式黏贴 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>Alt</code> + <code>N</code></td>
+<td style="text-align:center">前往指定的变量 / 方法</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>Alt</code> + <code>S</code></td>
+<td style="text-align:center">打开当前项目设置 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>Alt</code> + <code>C</code></td>
+<td style="text-align:center">复制参考信息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="38-其他"><a class="markdownIt-Anchor" href="#38-其他"></a> 3.8 其他</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">快捷键</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>F2</code></td>
+<td style="text-align:center">跳转到下一个高亮错误 或 警告位置 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>F3</code></td>
+<td style="text-align:center">在查找模式下，定位到下一个匹配处</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>F4</code></td>
+<td style="text-align:center">编辑源 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>F7</code></td>
+<td style="text-align:center">在 Debug 模式下，进入下一步，如果当前行断点是一个方法，则进入当前方法体内，如果该方法体还有方法，则不会进入该内嵌的方法中</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>F8</code></td>
+<td style="text-align:center">在 Debug 模式下，进入下一步，如果当前行断点是一个方法，则不进入当前方法体内</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>F9</code></td>
+<td style="text-align:center">在 Debug 模式下，恢复程序运行，但是如果该断点下面代码还有断点则停在下一个断点上</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>F11</code></td>
+<td style="text-align:center">添加书签 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>F12</code></td>
+<td style="text-align:center">回到前一个工具窗口 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Tab</code></td>
+<td style="text-align:center">缩进 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>ESC</code></td>
+<td style="text-align:center">从工具窗口进入代码文件窗口 （<strong>必备</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:center">连按两次 <code>Shift</code></td>
+<td style="text-align:center">弹出 Search Everywhere 弹出层</td>
+</tr>
+</tbody>
+</table>
+<h2 id="三-intellij-idea-的其他操作"><a class="markdownIt-Anchor" href="#三-intellij-idea-的其他操作"></a> 三、IntelliJ IDEA 的其他操作</h2>
+<h3 id="31-删除类文件"><a class="markdownIt-Anchor" href="#31-删除类文件"></a> 3.1 删除类文件</h3>
+<ul>
+<li>
+<p>文件名上右键 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Delete...</code></p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/02/P1dL1T.png"/>
+</div>
+</li>
+</ul>
+<h3 id="32-修改类名称"><a class="markdownIt-Anchor" href="#32-修改类名称"></a> 3.2 修改类名称</h3>
+<ul>
+<li>
+<p>文件名上右键 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Refactor</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Rename</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 改名 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Refactor</code></p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/02/P1dRZQ.png"/>
+</div>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/02/P1d5aW.png"/>
+</div>
+</li>
+</ul>
+<h3 id="33-修改模块名称"><a class="markdownIt-Anchor" href="#33-修改模块名称"></a> 3.3 修改模块名称</h3>
+<ul>
+<li>
+<p>模块名上右键 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Refactor</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Rename</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Rename module and directory</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 改名 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Refactor</code></p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/03/P1eBye.png"/>
+</div>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/03/P1eg5y.png"/>
+</div>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/03/P1ezNr.png"/>
+</div>
+</li>
+</ul>
+<h3 id="34-导入模块"><a class="markdownIt-Anchor" href="#34-导入模块"></a> 3.4 导入模块</h3>
+<ul>
+<li>
+<p><code>File</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>New</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Module from Existing Sources...</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 填写模块所在路径 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>OK</code></p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/02/P1e5It.png"/>
+</div>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/02/P1e7UR.png"/>
+</div>
+</li>
+</ul>
+<h3 id="35-删除模块"><a class="markdownIt-Anchor" href="#35-删除模块"></a> 3.5 删除模块</h3>
+<h4 id="351-项目中移除"><a class="markdownIt-Anchor" href="#351-项目中移除"></a> 3.5.1 项目中移除</h4>
+<ul>
+<li>
+<p>模块名上右键 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Remove Module</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Remove</code></p>
+<div align=center>
+  <img src="https://s6.jpg.cm/2022/10/03/P1e3LC.png" width="420"/>
+  <img src="https://s6.jpg.cm/2022/10/03/P1eCbt.png" width="320"/>
+</div>
+</li>
+</ul>
+<h4 id="352-彻底删除"><a class="markdownIt-Anchor" href="#352-彻底删除"></a> 3.5.2 彻底删除</h4>
+<ul>
+<li>
+<p>在项目中移除模块 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 再次在模块名上右键 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Delete...</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Delete</code></p>
+<div align=center>
+  <img src="https://s6.jpg.cm/2022/10/03/P1eK4R.png" width="420"/>
+  <img src="https://s6.jpg.cm/2022/10/03/P1e9kG.png" width="320"/>
+</div>
+</li>
+</ul>
+<h3 id="36-打开工程"><a class="markdownIt-Anchor" href="#36-打开工程"></a> 3.6 打开工程</h3>
+<ul>
+<li>
+<p>菜单栏 <code>File</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Open</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 找到工程所在路径 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>OK</code></p>
+<div align=center>
+  <img src="https://s6.jpg.cm/2022/10/03/P1exND.png" width="360"/>
+  <img src="https://s6.jpg.cm/2022/10/03/P1eD2p.png" width="380"/>
+</div>
+</li>
+<li>
+<p>菜单栏 <code>File</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Close Project</code></p>
+</li>
+</ul>
+<h3 id="37-关闭工程"><a class="markdownIt-Anchor" href="#37-关闭工程"></a> 3.7 关闭工程</h3>
+<ul>
+<li>
+<p>菜单栏 <code>File</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Close Project</code></p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/03/P1eOP6.png"/>
+</div>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://xindong2020.love">Mr.DONG</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://xindong2020.love/8c11795d">https://xindong2020.love/8c11795d</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xindong2020.love" target="_blank">Mr.DONG の 自习室</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/Eclipse/">Eclipse</a></div><div class="post_share"><div class="social-share" data-image="https://s6.jpg.cm/2022/09/07/PXRROC.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/IDE/50e5c707"><img class="prev-cover" src="https://s6.jpg.cm/2022/09/22/PbP30W.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Eclipse 的配置及使用</div></div></a></div><div class="next-post pull-right"><a href="/Computer/Computer01"><img class="next-cover" src="https://s6.jpg.cm/2022/09/22/PbPyxf.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机进制转换</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/IDE/50e5c707" title="Eclipse 的配置及使用"><img class="cover" src="https://s6.jpg.cm/2022/09/22/PbP30W.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-25</div><div class="title">Eclipse 的配置及使用</div></div></a></div><div><a href="/Java/Java01" title="Java 入门"><img class="cover" src="https://s6.jpg.cm/2022/09/22/PbPyxf.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-19</div><div class="title">Java 入门</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s6.jpg.cm/2022/09/07/PXPXyi.th.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Mr.DONG</div><div class="author-info__description">Mr.DONG学习记录</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fandong93"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/fandong93" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dongf19931107@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到 Mr.DONG の 自习室</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-intellij-idea-%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E6%BF%80%E6%B4%BB"><span class="toc-text"> 一、IntelliJ IDEA 的安装与激活</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-intellij-idea-%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-text"> 1.1 IntelliJ IDEA 的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1windows"><span class="toc-text"> （1）Windows</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2ubuntu"><span class="toc-text"> （2）Ubuntu</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-intellij-idea-%E7%9A%84%E6%BF%80%E6%B4%BB"><span class="toc-text"> 1.2 IntelliJ IDEA 的激活</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-intellij-idea-%E7%9A%84%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE"><span class="toc-text"> 二、IntelliJ IDEA 的详细配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#21-%E8%BF%9B%E5%85%A5%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2"><span class="toc-text"> 2.1 进入设置界面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#211-%E6%96%B9%E5%BC%8F%E4%B8%80"><span class="toc-text"> 2.1.1 方式一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#212-%E6%96%B9%E5%BC%8F%E4%BA%8C"><span class="toc-text"> 2.1.2 方式二</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-%E5%85%B3%E9%97%AD-intellij-idea-%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0"><span class="toc-text"> 2.2 关闭 Intellij IDEA 自动更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23-%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE%E9%BB%98%E8%AE%A4%E8%B7%AF%E5%BE%84"><span class="toc-text"> 2.3 配置项目默认路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-text"> 2.4 创建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#241-%E6%96%B9%E5%BC%8F%E4%B8%80"><span class="toc-text"> 2.4.1 方式一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#242-%E6%96%B9%E5%BC%8F%E4%BA%8C"><span class="toc-text"> 2.4.2 方式二</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25-%E9%85%8D%E7%BD%AE-jdk"><span class="toc-text"> 2.5 配置 JDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#26-%E7%BB%9F%E4%B8%80%E7%BC%96%E8%AF%91%E5%99%A8%E5%92%8C%E7%BC%96%E8%AF%91%E7%89%88%E6%9C%AC"><span class="toc-text"> 2.6 统一编译器和编译版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#27-%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="toc-text"> 2.7 设置主题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#271-%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98"><span class="toc-text"> 2.7.1 安装主题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#272-%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="toc-text"> 2.7.2 设置主题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E6%96%B9%E5%BC%8F%E4%B8%80"><span class="toc-text"> （1）方式一</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E6%96%B9%E5%BC%8F%E4%BA%8C"><span class="toc-text"> （2）方式二</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#28-%E8%AE%BE%E7%BD%AE%E5%AD%97%E4%BD%93"><span class="toc-text"> 2.8 设置字体</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#281-idea-%E7%95%8C%E9%9D%A2%E5%AD%97%E4%BD%93"><span class="toc-text"> 2.8.1 IDEA 界面字体</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E6%96%B9%E5%BC%8F%E4%B8%80-2"><span class="toc-text"> （1）方式一</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E6%96%B9%E5%BC%8F%E4%BA%8C-2"><span class="toc-text"> （2）方式二</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#282-%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E7%95%8C%E9%9D%A2%E5%AD%97%E4%BD%93"><span class="toc-text"> 2.8.2 代码编辑界面字体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#283-ctrl-%E9%BC%A0%E6%A0%87%E6%BB%9A%E8%BD%AE%E4%BF%AE%E6%94%B9%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F"><span class="toc-text"> 2.8.3 Ctrl + 鼠标滚轮修改字体大小</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#284-%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%AD%97%E4%BD%93"><span class="toc-text"> 2.8.4 控制台字体</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#29-%E8%A1%8C%E5%8F%B7%E5%92%8C%E6%96%B9%E6%B3%95%E5%88%86%E9%9A%94%E7%AC%A6"><span class="toc-text"> 2.9 行号和方法分隔符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#210-%E5%BF%BD%E7%95%A5%E5%A4%A7%E5%B0%8F%E5%86%99%E5%8C%B9%E9%85%8D"><span class="toc-text"> 2.10 忽略大小写匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#211-%E9%85%8D%E7%BD%AE%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%8C%85"><span class="toc-text"> 2.11 配置自动导包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#212-%E9%85%8D%E7%BD%AE%E7%BC%96%E7%A0%81"><span class="toc-text"> 2.12 配置编码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-intellij-idea-%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text"> 三、IntelliJ IDEA 快捷键</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-ctrl"><span class="toc-text"> 3.1 Ctrl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-alt"><span class="toc-text"> 3.2 Alt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-shift"><span class="toc-text"> 3.3 Shift</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#34-ctrl-alt"><span class="toc-text"> 3.4 Ctrl + Alt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#35-ctrl-shift"><span class="toc-text"> 3.5 Ctrl + Shift</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#36-alt-shift"><span class="toc-text"> 3.6 Alt + Shift</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#37-ctrl-shift-alt"><span class="toc-text"> 3.7 Ctrl + Shift + Alt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#38-%E5%85%B6%E4%BB%96"><span class="toc-text"> 3.8 其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-intellij-idea-%E7%9A%84%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9C"><span class="toc-text"> 三、IntelliJ IDEA 的其他操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-%E5%88%A0%E9%99%A4%E7%B1%BB%E6%96%87%E4%BB%B6"><span class="toc-text"> 3.1 删除类文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-%E4%BF%AE%E6%94%B9%E7%B1%BB%E5%90%8D%E7%A7%B0"><span class="toc-text"> 3.2 修改类名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-%E4%BF%AE%E6%94%B9%E6%A8%A1%E5%9D%97%E5%90%8D%E7%A7%B0"><span class="toc-text"> 3.3 修改模块名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#34-%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="toc-text"> 3.4 导入模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#35-%E5%88%A0%E9%99%A4%E6%A8%A1%E5%9D%97"><span class="toc-text"> 3.5 删除模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#351-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%A7%BB%E9%99%A4"><span class="toc-text"> 3.5.1 项目中移除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#352-%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4"><span class="toc-text"> 3.5.2 彻底删除</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#36-%E6%89%93%E5%BC%80%E5%B7%A5%E7%A8%8B"><span class="toc-text"> 3.6 打开工程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#37-%E5%85%B3%E9%97%AD%E5%B7%A5%E7%A8%8B"><span class="toc-text"> 3.7 关闭工程</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/Ubuntu/15fbef57" title="Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景"><img src="https://s6.jpg.cm/2022/09/07/PXPf8E.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景"/></a><div class="content"><a class="title" href="/Ubuntu/15fbef57" title="Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景">Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景</a><time datetime="2022-09-06T16:00:00.000Z" title="发表于 2022-09-07 00:00:00">2022-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Ubuntu/1a25703d" title="Ubuntu 20.04 常用软件 &amp; 必要配置"><img src="https://s6.jpg.cm/2022/09/22/PbPyxf.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu 20.04 常用软件 &amp; 必要配置"/></a><div class="content"><a class="title" href="/Ubuntu/1a25703d" title="Ubuntu 20.04 常用软件 &amp; 必要配置">Ubuntu 20.04 常用软件 &amp; 必要配置</a><time datetime="2022-09-05T16:00:00.000Z" title="发表于 2022-09-06 00:00:00">2022-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Java/Java07" title="Java 面向对象（一）"><img src="https://s6.jpg.cm/2022/09/07/PXRPf5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 面向对象（一）"/></a><div class="content"><a class="title" href="/Java/Java07" title="Java 面向对象（一）">Java 面向对象（一）</a><time datetime="2022-09-04T16:00:00.000Z" title="发表于 2022-09-05 00:00:00">2022-09-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022  <i id="heartbeat" class="fa fas fa-heartbeat"></i> Mr.DONG</div><div class="footer_custom_text"><p> <a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="本站使用Hexo框架"></a>&nbsp; <a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="本站使用Butterfly主题"></a>&nbsp; <a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站使用Gtihub托管"></a>&nbsp; <a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> </p> <p> <img src="https://s6.jpg.cm/2022/09/21/PbLJdQ.png"/>&nbsp; <a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=46010802001122">琼公网安备 46010802001122号</a>&nbsp; <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/#/Integrated/recordQuery">琼ICP备2022012184号</a> </p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = false;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://s6.jpg.cm/2022/09/21/PUB2HH.jpg);"> <a class="categoryBar-list-link" href="categories/Java-开发语言/">Java 开发语言</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">IDE 集成开发环境</span></li><li class="categoryBar-list-item" style="background:url(https://s6.jpg.cm/2022/09/22/PbPrhz.jpg);"> <a class="categoryBar-list-link" href="categories/IDE-集成开发环境/">IDE 集成开发环境</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">Java 开发语言</span></li><li class="categoryBar-list-item" style="background:url(https://s6.jpg.cm/2022/09/22/PbPEnu.jpg);"> <a class="categoryBar-list-link" href="categories/JavaSE/">JavaSE</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr">Ubuntu 20.04 指南</span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/Ubuntu-20-04-指南/">Ubuntu 20.04 指南</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/计算机基础/">计算机基础</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.js"></script><!-- hexo injector body_end end --></body></html>

@@ -1,17 +1,17 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Java 基础语法（中） | Mr.DONG の 自习室</title><meta name="keywords" content="Java"><meta name="author" content="Mr.DONG"><meta name="copyright" content="Mr.DONG"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="3. 类型转换  3.1 隐式转换（自动类型转换） 3.2 显式转换（强制类型转换）   5. Java 变量  5.1 全局变量  5.1.1 成员变量（实例变量） 5.1.2 静态变量（类变量）   5.2 局部变量   6. Java 常量  6.1 interface 中定义常量 6.2 Class 中定义常量 6.3 enum 定义常量 6.4 通过配置文件来配置常量   7. 命名规">
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Java 基础语法（中） | Mr.DONG の 自习室</title><meta name="keywords" content="Java"><meta name="author" content="Mr.DONG"><meta name="copyright" content="Mr.DONG"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="三、类型转换  3.1 隐式转换（自动类型转换） 3.2 显式转换（强制类型转换）   四、String 5. Java 变量  5.1 全局变量  5.1.1 成员变量（实例变量） 5.1.2 静态变量（类变量）   5.2 局部变量   6. Java 常量  6.1 interface 中定义常量 6.2 Class 中定义常量 6.3 enum 定义常量 6.4 通过配置文件来配置常量">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 基础语法（中）">
-<meta property="og:url" content="https://xindong2020.love/Java/e2453482">
+<meta property="og:url" content="https://xindong2020.love/Java/Java03">
 <meta property="og:site_name" content="Mr.DONG の 自习室">
-<meta property="og:description" content="3. 类型转换  3.1 隐式转换（自动类型转换） 3.2 显式转换（强制类型转换）   5. Java 变量  5.1 全局变量  5.1.1 成员变量（实例变量） 5.1.2 静态变量（类变量）   5.2 局部变量   6. Java 常量  6.1 interface 中定义常量 6.2 Class 中定义常量 6.3 enum 定义常量 6.4 通过配置文件来配置常量   7. 命名规">
+<meta property="og:description" content="三、类型转换  3.1 隐式转换（自动类型转换） 3.2 显式转换（强制类型转换）   四、String 5. Java 变量  5.1 全局变量  5.1.1 成员变量（实例变量） 5.1.2 静态变量（类变量）   5.2 局部变量   6. Java 常量  6.1 interface 中定义常量 6.2 Class 中定义常量 6.3 enum 定义常量 6.4 通过配置文件来配置常量">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s6.jpg.cm/2022/09/07/PXRV1D.jpg">
-<meta property="article:published_time" content="2022-08-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-09-21T18:13:55.723Z">
+<meta property="og:image" content="https://s6.jpg.cm/2022/09/22/PbPwwp.png">
+<meta property="article:published_time" content="2022-08-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-13T17:05:22.311Z">
 <meta property="article:author" content="Mr.DONG">
 <meta property="article:tag" content="JavaSE">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s6.jpg.cm/2022/09/07/PXRV1D.jpg"><link rel="shortcut icon" href="https://s6.jpg.cm/2022/09/07/PXPkS4.th.png"><link rel="canonical" href="https://xindong2020.love/Java/e2453482"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io/css/logofonts.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://s6.jpg.cm/2022/09/22/PbPwwp.png"><link rel="shortcut icon" href="https://s6.jpg.cm/2022/09/07/PXPkS4.th.png"><link rel="canonical" href="https://xindong2020.love/Java/Java03"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io/css/logofonts.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: {"appId":"R7ZHV2NELE","apiKey":"8aa9f67293bfb4f2895895aaaa92152f","indexName":"fandong","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
   localSearch: undefined,
@@ -53,7 +53,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-09-22 02:13:55'
+  postUpdate: '2022-10-14 01:05:22'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -125,13 +125,14 @@
       }
     }
     detectApple()
-    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/one.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/width.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/background.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/fonts.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/logofonts.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/fontsize.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/mouse.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/scrollbar.css"><link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/KaTeX/0.15.2/katex.min.css" rel="stylesheet"><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s6.jpg.cm/2022/09/07/PXPXyi.th.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/musics/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-images"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s6.jpg.cm/2022/09/07/PXRV1D.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Mr.DONG の 自习室</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/musics/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-images"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java 基础语法（中）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-29T16:00:00.000Z" title="发表于 2022-08-30 00:00:00">2022-08-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-21T18:13:55.723Z" title="更新于 2022-09-22 02:13:55">2022-09-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java-%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/">Java 开发语言</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">8.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>28分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java 基础语法（中）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><ul class="markdownIt-TOC">
-<li><a href="#3-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">3. 类型转换</a>
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/one.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/width.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/background.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/fonts.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/logofonts.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/fontsize.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/mouse.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/scrollbar.css"><link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/KaTeX/0.15.2/katex.min.css" rel="stylesheet"><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s6.jpg.cm/2022/09/07/PXPXyi.th.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/musics/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-images"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s6.jpg.cm/2022/09/22/PbPwwp.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Mr.DONG の 自习室</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/musics/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-images"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java 基础语法（中）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-27T16:00:00.000Z" title="发表于 2022-08-28 00:00:00">2022-08-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-13T17:05:22.311Z" title="更新于 2022-10-14 01:05:22">2022-10-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JavaSE/">JavaSE</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">9.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>29分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java 基础语法（中）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%89-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">三、类型转换</a>
 <ul>
 <li><a href="#31-%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%E8%87%AA%E5%8A%A8%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">3.1 隐式转换（自动类型转换）</a></li>
 <li><a href="#32-%E6%98%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">3.2 显式转换（强制类型转换）</a></li>
 </ul>
 </li>
+<li><a href="#%E5%9B%9B-string">四、String</a></li>
 <li><a href="#5-java-%E5%8F%98%E9%87%8F">5. Java 变量</a>
 <ul>
 <li><a href="#51-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F">5.1 全局变量</a>
@@ -152,9 +153,9 @@
 </ul>
 </li>
 <li><a href="#7-%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83">7. 命名规范</a></li>
-<li><a href="#8-%E8%BF%90%E7%AE%97%E7%AC%A6">8. 运算符</a>
+<li><a href="#%E5%85%AB-%E8%BF%90%E7%AE%97%E7%AC%A6">八. 运算符</a>
 <ul>
-<li><a href="#81-%E8%87%AA%E5%A2%9E-%E8%87%AA%E5%87%8F">8.1 自增、自减</a>
+<li><a href="#81-%E5%8D%95%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6">8.1 单目运算符</a>
 <ul>
 <li><a href="#811-%E8%AF%AD%E5%8F%A5%E4%B8%AD%E4%BB%85%E6%9C%89%E6%88%96-">8.1.1 语句中仅有++或--</a>
 <ul>
@@ -168,7 +169,7 @@
 <li><a href="#2%E4%BB%A3%E7%A0%81-2">（2）代码 2</a></li>
 </ul>
 </li>
-<li><a href="#813-%E6%88%96-%E8%BF%90%E7%AE%97%E7%BB%93%E6%9E%9C%E8%B5%8B%E5%80%BC%E7%BB%99%E8%87%AA%E8%BA%AB">8.1.3 ++ 或 - - 运算结果赋值给自身</a>
+<li><a href="#813-%E6%88%96-%E8%BF%90%E7%AE%97%E7%BB%93%E6%9E%9C%E8%B5%8B%E5%80%BC%E7%BB%99%E8%87%AA%E8%BA%AB">8.1.3 ++ 或 -- 运算结果赋值给自身</a>
 <ul>
 <li><a href="#1%E4%BB%A3%E7%A0%81-1-2">（1）代码 1</a></li>
 <li><a href="#2%E4%BB%A3%E7%A0%81-2-2">（2）代码 2</a></li>
@@ -181,22 +182,23 @@
 </li>
 <li><a href="#82-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6">8.2 逻辑运算符</a></li>
 <li><a href="#83-%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6">8.3 位运算符</a></li>
-<li><a href="#84-%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97%E7%AC%A6">8.4 条件运算符</a></li>
+<li><a href="#84-%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6">8.4 三目运算符</a></li>
+<li><a href="#85-%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7">8.5 运算符优先级</a></li>
 </ul>
 </li>
 </ul>
 </p>
-<h2 id="3-类型转换"><a class="markdownIt-Anchor" href="#3-类型转换"></a> 3. 类型转换</h2>
+<h2 id="三-类型转换"><a class="markdownIt-Anchor" href="#三-类型转换"></a> 三、类型转换</h2>
 <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 由于 <code>Java</code> 是一种强类型语言，所以在进行某些运算的时候，需要用到类型转换。所谓类型转换即将某一个数据的数据类型通过某种方式转换为另一种所需的数据类型。在运算中，不同类型的数据需要先转化为同一类型，然后才能进行运算。数据类型的转换可以分为 <strong>隐式转换</strong>（自动类型转换）和 <strong>显式转换</strong>（强制类型转换）两种。</p>
 <h3 id="31-隐式转换自动类型转换"><a class="markdownIt-Anchor" href="#31-隐式转换自动类型转换"></a> 3.1 隐式转换（自动类型转换）</h3>
 <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 在运算中，如果满足：（1）两种数据类型彼此 <strong>兼容</strong>；（2）目标数据类型的取值范围大于源数据类型，那么将执行自动类型转换，转换为取值范围大的数据类型。<strong>自动类型转换主要表达数字表示范围小的数据类型可以自动转换成范围大的数据类型</strong>。</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 在运算过程中，由于不同的数据类型会转换成同一种数据类型（取值范围大的数据类型），所以整型、浮点型以及字符型都可以参与混合运算。自动类型转换的规则是从低级类型数据转换成高级类型数据。转换规则如下：</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 在运算过程中，由于不同的数据类型会转换成同一种数据类型（取值范围大的数据类型），所以整型、浮点型以及字符型都可以参与混合运算，最终结果类型由取值范围最大的数据类型决定。自动类型转换的规则是从低级类型数据转换成高级类型数据。转换规则如下：</p>
 <ul>
 <li>
 <p><code>boolean</code> 类型不参与自动类型转换，值只能为 <code>true</code> 或 <code>false</code>。</p>
 </li>
 <li>
-<p>数值型数据的转换：<code>byte</code>，<code>short</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>int</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>long</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>float</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>double</code></p>
+<p>数值型数据的转换：<code>byte</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>short</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>int</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>long</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>float</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>double</code></p>
 <ul>
 <li>
 <p><code>byte</code>，<code>short</code>参与运算时（包含同种类型运算），会自动转换为 <code>int</code> 类型，然后参与运算，最终结果为 <code>int</code> 类型。</p>
@@ -204,8 +206,12 @@
 <li>
 <p>当对 <code>long</code> 类型变量进行赋值时，如果忘记在数值后加 “<code>L</code>”，会产生两种情况：</p>
 <ul>
-<li>数值在 <code>int</code> 取值范围内不报错，因为会将数值先定义为 <code>int</code> 类型，然后在运算过程中自动类型转换为 <code>long</code> 类型。</li>
-<li>数值超出 <code>int</code> 取值范围会报错，因为无法将数值定义为 <code>int</code> 类型。</li>
+<li>
+<p>数值在 <code>int</code> 取值范围内不报错，因为会将数值先定义为 <code>int</code> 类型，然后在运算过程中自动类型转换为 <code>long</code> 类型。</p>
+</li>
+<li>
+<p>数值超出 <code>int</code> 取值范围会报错，因为无法将数值定义为 <code>int</code> 类型。</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -223,10 +229,12 @@
 </li>
 </ul>
 <h3 id="32-显式转换强制类型转换"><a class="markdownIt-Anchor" href="#32-显式转换强制类型转换"></a> 3.2 显式转换（强制类型转换）</h3>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 当两种数据类型 <strong>不兼容</strong>，或目标数据类型的取值范围小于源数据类型时，自动转换将无法进行，这时就需要进行强制类型转换。强制数据类型转换是 <strong>手动</strong> 将较大范围数据转换较小数据类型，<strong>格式</strong>是在需要进行类型转换的数据前加上 “<code>(数据类型)</code>”，<strong>在括号内加入需要转化的数据类型</strong>。有的数据经过转型运算后，精度会丢失，而有的会更加精确。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 当两种数据类型 <strong>不兼容</strong>，或目标数据类型的取值范围小于源数据类型时，自动类型转换将无法进行，这时就需要进行强制类型转换。强制数据类型转换是 <strong>手动</strong> 将较大范围数据转换较小数据类型，<strong>格式</strong> 是在需要进行类型转换的数据前加上 “(<strong>数据类型</strong>)”，<strong>括号内数据类型是需要转换成的数据类型</strong>。有的数据经过转型运算后，精度会丢失，而有的会更加精确。</p>
 <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 在强制类型转换中，如果是将浮点类型的值转换为整数，直接截断小数点后边的所有数字（损失精度）；而如果是整数类型强制转换为浮点类型时，将在小数点后面补零。</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> <strong>注</strong>：<strong>不能对布尔值进行强制类型转换</strong>；<strong>转换过程中可能发生内存溢出或精度问题</strong>。</p>
-<h1 id="4-string"><a class="markdownIt-Anchor" href="#4-string"></a> 4. String</h1>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> <strong>注</strong>：</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="2em"/></mrow><annotation encoding="application/x-tex">\qquad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:2em;"></span></span></span></span> <strong>不能对布尔值进行强制类型转换</strong>；</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="2em"/></mrow><annotation encoding="application/x-tex">\qquad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:2em;"></span></span></span></span> <strong>强制类型转换过程中可能发生内存溢出或精度问题</strong>。</p>
+<h2 id="四-string"><a class="markdownIt-Anchor" href="#四-string"></a> 四、String</h2>
 <ul>
 <li>
 <p><code>String</code> 不是基本数据类型，属于引用数据类型。</p>
@@ -251,7 +259,7 @@
 </li>
 <li>
 <p>练习：<code>char</code> + <code>char</code> 执行加法运算，<code>char</code> + <code>String</code> 或 <code>String</code> + <code>char</code> 执行拼接运算。</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">&#x27;*&#x27;</span>+<span class="string">&#x27;\t&#x27;</span>+<span class="string">&#x27;*&#x27;</span>);<span class="comment">// 93</span></span><br><span class="line">System.out.println(<span class="string">&#x27;*&#x27;</span>+<span class="string">&quot;\t&quot;</span>+<span class="string">&#x27;*&#x27;</span>);<span class="comment">// *       *</span></span><br><span class="line">System.out.println(<span class="string">&#x27;*&#x27;</span>+<span class="string">&#x27;\t&#x27;</span>+<span class="string">&quot;*&quot;</span>);<span class="comment">// 51*</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">&#x27;*&#x27;</span>+<span class="string">&#x27;\t&#x27;</span>+<span class="string">&#x27;*&#x27;</span>);<span class="comment">// 93</span></span><br><span class="line">System.out.println(<span class="string">&#x27;*&#x27;</span>+<span class="string">&quot;\t&quot;</span>+<span class="string">&#x27;*&#x27;</span>);<span class="comment">// *       *</span></span><br><span class="line">System.out.println(<span class="string">&#x27;*&#x27;</span>+<span class="string">&#x27;\t&#x27;</span>+<span class="string">&quot;*&quot;</span>);<span class="comment">// 51*</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="5-java-变量"><a class="markdownIt-Anchor" href="#5-java-变量"></a> 5. Java 变量</h2>
@@ -516,23 +524,20 @@
 <p><strong>方法名</strong>：首字母小写和驼峰原则。例：<code>runProcedure()</code></p>
 </li>
 </ul>
-<h2 id="8-运算符"><a class="markdownIt-Anchor" href="#8-运算符"></a> 8. 运算符</h2>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> <code>Java</code> 语言支持如下运算符：</p>
+<h2 id="八-运算符"><a class="markdownIt-Anchor" href="#八-运算符"></a> 八. 运算符</h2>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 对字面量或变量进行操作的符号被称为运算符，<code>Java</code> 语言支持如下运算符：</p>
 <ul>
 <li>
-<p>算数运算符：<code>+</code>，<code>-</code>，<code>*</code>，<code>/</code>，<code>%</code>（模运算，取余），<code>++</code>，<code>--</code></p>
+<p>算数运算符：<code>+</code>，<code>-</code>，<code>*</code>，<code>/</code>，<code>%</code>（模运算，取余）</p>
 <ul>
 <li>
 <p><code>+</code>：正号、加法运算、字符串拼接。</p>
+<ul>
+<li><code>+</code> 符号与字符串运算的时候是用作字符串拼接的，返回的结果依然是一个字符串。</li>
+</ul>
 </li>
 <li>
-<p><code>++</code>：（前）自增、（后）自增。</p>
-</li>
-<li>
-<p><code>--</code>：（前）自减、（后）自减。</p>
-</li>
-<li>
-<p><code>/</code>：整型（<code>byte</code>，<code>short</code>，<code>int</code>）数值相除之后为 <code>int</code> 类型，赋给 <code>float</code> / <code>double</code> 类型变量也只是在整数末尾加 <code>.0</code>。</p>
+<p><code>/</code>：整型（<code>byte</code>，<code>short</code>，<code>int</code>）数值相除之后为 <code>int</code> 类型，运算结果赋给 <code>float</code> / <code>double</code> 类型变量也只是在整数末尾加 <code>.0</code>。</p>
 </li>
 <li>
 <p><code>%</code>：运算结果的符号与被模数的符号相同。例：<code>-12 % 5</code> 的结果为 <code>-2</code>。</p>
@@ -540,7 +545,38 @@
 </ul>
 </li>
 <li>
+<p>单目运算符：<code>++</code>、<code>--</code>，只对单独一个操作数进行操作。</p>
+<ul>
+<li>
+<p><code>++</code>：（前）自增、（后）自增。</p>
+</li>
+<li>
+<p><code>--</code>：（前）自减、（后）自减。</p>
+</li>
+</ul>
+</li>
+<li>
 <p>赋值运算符：<code>=</code>，当 <code>=</code> 两侧数据类型不一致时，可以自动类型转换或使用强制类型转换。支持连续赋值。</p>
+</li>
+<li>
+<p>复合赋值运算符：<code>+=</code>，<code>-=</code>，<code>*=</code>，<code>/=</code>，<code>%=</code>，不会改变变量本身的数据类型，复合赋值运算符隐含了强制类型转换。</p>
+<ul>
+<li>
+<p><code>+=</code>：加后赋值。<code>a += b</code>等价于<code>a = (a的数据类型)(a + b)</code>。</p>
+</li>
+<li>
+<p><code>-=</code>：减后赋值。<code>a -= b</code>等价于<code>a = (a的数据类型)(a - b)</code>。</p>
+</li>
+<li>
+<p><code>*=</code>：乘后赋值。<code>a *= b</code>等价于<code>a = (a的数据类型)(a * b)</code>。</p>
+</li>
+<li>
+<p><code>/=</code>：除后赋值。<code>a /= b</code>等价于<code>a = (a的数据类型)(a / b)</code>。</p>
+</li>
+<li>
+<p><code>%=</code>：模后赋值。<code>a %= b</code>等价于<code>a = (a的数据类型)(a % b)</code>。</p>
+</li>
+</ul>
 </li>
 <li>
 <p>比较运算符（关系运算符）：<code>&gt;</code>，<code>&lt;</code>，<code>&gt;=</code>，<code>&lt;=</code>，<code>==</code>，<code>!=</code>，<code>instanceof</code>（后续多态部分详解）。返回布尔值。</p>
@@ -549,27 +585,25 @@
 </ul>
 </li>
 <li>
-<p>逻辑运算符：逻辑与 <code>&amp;</code>，短路与 <code>&amp;&amp;</code>、逻辑或 <code>|</code>, 短路或 <code>||</code>、逻辑非 <code>!</code>、逻辑异或 <code>^</code>。返回布尔值。</p>
+<p>逻辑运算符：逻辑与 <code>&amp;</code>，短路与 <code>&amp;&amp;</code>，逻辑或 <code>|</code>, 短路或 <code>||</code>，逻辑非 <code>!</code>，逻辑异或 <code>^</code>。返回布尔值。</p>
 </li>
 <li>
 <p>位运算符：<code>&amp;</code>，<code>|</code>，<code>^</code>，<code>~</code>，<code>&gt;&gt;</code>，<code>&lt;&lt;</code>，<code>&gt;&gt;&gt;</code></p>
 </li>
 <li>
-<p>条件运算符：<code>? :</code></p>
-</li>
-<li>
-<p>复合赋值运算符：<code>+=</code>，<code>-=</code>，<code>*=</code>，<code>/=</code>，<code>%=</code>，不会改变变量本身的数据类型，即不会发生自动类型转换。</p>
+<p>三目运算符：<code>? :</code></p>
 <ul>
-<li>示例：  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">i *= <span class="number">1.234</span>;</span><br><span class="line">System.out.println(i);<span class="comment">//编译通过，正常运行，输出12</span></span><br></pre></td></tr></table></figure>
-</li>
+<li>示例：</li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">i *= <span class="number">1.234</span>;</span><br><span class="line">System.out.println(i);<span class="comment">//编译通过，正常运行，输出12</span></span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>字符串连接符：<code>+</code></p>
 </li>
 </ul>
-<h3 id="81-自增-自减"><a class="markdownIt-Anchor" href="#81-自增-自减"></a> 8.1 自增、自减</h3>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 自增（<code>++</code>）和自减（<code>--</code>）运算符是对变量在原始值的基础上进行加 <code>1</code> 或减 <code>1</code> 的操作，且 <strong>不会改变变量原有的数据类型</strong>。它们都有 <strong>前缀</strong> 和 <strong>后缀</strong> 两种形式。<strong>前缀形式</strong> 的运算规则可以概括为：“<strong>先自增（减）</strong>，<strong>后引用</strong>”；而 <strong>后缀形式</strong> 的运算规则可以概括为：“<strong>先引用</strong>，<strong>后自增（减）</strong>”。这里所说的 “引用”，指的是使用变量的值。另外，我们还要强调一个细节：无论是前缀形式还是后缀形式，<strong>自增自减运算符的优先级要高于赋值运算符</strong>。</p>
+<h3 id="81-单目运算符"><a class="markdownIt-Anchor" href="#81-单目运算符"></a> 8.1 单目运算符</h3>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 自增（<code>++</code>）和自减（<code>--</code>）运算符是对 <strong>变量</strong>（不能操作常量）在原始值的基础上进行加 <code>1</code> 或减 <code>1</code> 的操作，且 <strong>不会改变变量原有的数据类型</strong>。它们都有 <strong>前缀</strong> 和 <strong>后缀</strong> 两种形式，并且它们都只对单独一个操作数进行操作，因此也是一种单目运算符。</p>
+<p><strong>前缀形式</strong> 的运算规则可以概括为：“<strong>先自增（减）</strong>，<strong>后引用</strong>”；而 <strong>后缀形式</strong> 的运算规则可以概括为：“<strong>先引用</strong>，<strong>后自增（减）</strong>”。这里所说的 “引用”，指的是使用变量的值。另外，我们还要强调一个细节：无论是前缀形式还是后缀形式，<strong>自增自减运算符的优先级要高于赋值运算符</strong>。</p>
 <h4 id="811-语句中仅有或-"><a class="markdownIt-Anchor" href="#811-语句中仅有或-"></a> 8.1.1 语句中仅有++或--</h4>
 <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 当一条语句中仅有 <code>++</code> 或 <code>--</code> 操作时，前缀形式与后缀形式的运算符没有任何区别。</p>
 <h5 id="代码-1"><a class="markdownIt-Anchor" href="#代码-1"></a> 代码 1</h5>
@@ -592,7 +626,7 @@
 <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 科普完这个小常识之后，我们来解释刚才的代码为什么会输出 <code>3</code> 和 <code>2</code>。代码中出现用 <code>a</code> 的值给变量 <code>b</code> 赋值的语句，并且 <code>a</code> 的后面出现了 <code>++</code>，说明要对<code>a</code>进行 <strong>后缀形式的自增操作</strong>。按照我们刚才科普的小常识，<code>a</code> <strong>参与了赋值运算</strong>，那么就会把 <code>a</code> 的值存入操作数栈。因为 <code>a</code> 的自增是后缀形式的，所以要遵循 “先引用，后自增” 的运算规则，因此，<strong>计算机会首先取出</strong> <code>a</code> <strong>的值</strong> <code>2</code> <strong>存入操作数栈</strong>，<strong>然后再把</strong> <code>a</code> <strong>的值增加到</strong> <code>3</code>。做完自增操作之后，接下来会对变量 <code>b</code> 进行赋值操作。那么，是用哪个值给变量 <code>b</code> 赋值呢？就是 <strong>用刚才存到操作数栈中的那个</strong> <code>2</code> <strong>对变量</strong> <code>b</code> <strong>进行赋值</strong>，所以 <code>b</code> 最终得到的值是 <code>2</code>，因此输出结果是 <code>3</code> 和 <code>2</code>。</p>
 <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 在这里，请大家注意一个细节，那就是：<strong>代码中的自增操作虽然是后缀形式的</strong>，<strong>但这个自增动作却是在赋值之前完成的</strong>，<strong>这也解释了后缀形式的自增运算优先级高于赋值运算</strong>，而网上很多资料中所说的 “先完成赋值，再去做自增操作” 是完全错误的。</p>
 <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> <strong>代码</strong> <code>1</code> <strong>中第</strong> <code>2</code> <strong>条语句是</strong> “<code>int b = ++a;</code>”，<strong>会不会也把</strong> <code>a</code> <strong>的值存入操作数栈呢</strong>？答案是肯定的，只要是变量参与了 <strong>算术运算</strong>、<strong>赋值</strong>、<strong>被打印</strong> 这些操作，都会 <strong>取出变量的值存入操作数栈</strong>。因为语句中出现的是 <strong>前缀形式</strong> 的自增，所以 <strong>在值存入操作数栈之前就已经完成了自增操作</strong>。</p>
-<h4 id="813-或-运算结果赋值给自身"><a class="markdownIt-Anchor" href="#813-或-运算结果赋值给自身"></a> 8.1.3 ++ 或 - - 运算结果赋值给自身</h4>
+<h4 id="813-或-运算结果赋值给自身"><a class="markdownIt-Anchor" href="#813-或-运算结果赋值给自身"></a> 8.1.3 ++ 或 -- 运算结果赋值给自身</h4>
 <h5 id="1代码-1-2"><a class="markdownIt-Anchor" href="#1代码-1-2"></a> （1）代码 1</h5>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line">a = ++a;</span><br><span class="line">System.out.println(a);</span><br></pre></td></tr></table></figure>
 <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 第 <code>2</code> 条语句，对 <code>a</code> 进行了前缀形式的自增，然后又赋值给 <code>a</code> 自身。</p>
@@ -631,7 +665,7 @@
 </li>
 <li>
 <p>开发中实现 <code>int</code> 类型变量 <code>+1</code> 的方式：</p>
-<ul>
+</li>
 <li>
 <p>方式<code>1</code>：<code>num = num + 1</code>;</p>
 </li>
@@ -640,8 +674,6 @@
 </li>
 <li>
 <p>方式<code>3</code>：<code>num++</code>;（<strong>推荐</strong>）</p>
-</li>
-</ul>
 </li>
 </ul>
 <h3 id="82-逻辑运算符"><a class="markdownIt-Anchor" href="#82-逻辑运算符"></a> 8.2 逻辑运算符</h3>
@@ -675,7 +707,7 @@
 </li>
 <li>
 <p>例：程序输出结果</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Operator</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">		<span class="type">boolean</span> <span class="variable">x</span> <span class="operator">=</span> <span class="literal">true</span>;</span><br><span class="line">		<span class="type">boolean</span> <span class="variable">y</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="type">short</span> <span class="variable">z</span> <span class="operator">=</span> <span class="number">40</span>;</span><br><span class="line">		<span class="keyword">if</span> ((z++ == <span class="number">40</span>) &amp;&amp; (y = <span class="literal">true</span>))&#123;</span><br><span class="line">			z++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> ((x = <span class="literal">false</span>) || (++z == <span class="number">43</span>))&#123;</span><br><span class="line">			z++;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">&quot;z = &quot;</span> + z); <span class="comment">// z = 44</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Operator</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">x</span> <span class="operator">=</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="type">boolean</span> <span class="variable">y</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="type">short</span> <span class="variable">z</span> <span class="operator">=</span> <span class="number">40</span>;</span><br><span class="line">    <span class="keyword">if</span> ((z++ == <span class="number">40</span>) &amp;&amp; (y = <span class="literal">true</span>))&#123;</span><br><span class="line">        z++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ((x = <span class="literal">false</span>) || (++z == <span class="number">43</span>))&#123;</span><br><span class="line">        z++;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(<span class="string">&quot;z = &quot;</span> + z); <span class="comment">// z = 44</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -684,9 +716,6 @@
 </li>
 <li>
 <p>逻辑异或 “<code>^</code>” 的前后两个操作数的值不相同，则异或结果为 <code>true</code>，反之异或结果为 <code>false</code>。</p>
-</li>
-</ul>
-<div align=center>
 <table>
 <thead>
 <tr>
@@ -743,24 +772,25 @@
 </tr>
 </tbody>
 </table>
-</div>
+</li>
+</ul>
 <h3 id="83-位运算符"><a class="markdownIt-Anchor" href="#83-位运算符"></a> 8.3 位运算符</h3>
 <ul>
 <li>
-<p>位运算是直接对整数的<strong>二进制</strong>进行的运算，即位运算符操作的都是整型的数据。</p>
+<p>位运算是直接对整数的 <strong>二进制</strong> 进行的运算，即位运算符操作的都是整型的数据。</p>
 </li>
 <li>
-<p><strong>按位与</strong><code>＆</code>：如果相对应二进制位都是 <code>1</code>，则结果为 <code>1</code>，否则为 <code>0</code>。</p>
+<p><strong>按位与</strong> <code>＆</code>：如果相对应二进制位都是 <code>1</code>，则结果为 <code>1</code>，否则为 <code>0</code>。</p>
 </li>
 <li>
-<p><strong>按位或</strong><code>|</code>：如果相对应二进制位都是 <code>0</code>，则结果为 <code>0</code>，否则为 <code>1</code>。</p>
+<p><strong>按位或</strong> <code>|</code>：如果相对应二进制位都是 <code>0</code>，则结果为 <code>0</code>，否则为 <code>1</code>。</p>
 </li>
 <li>
-<p><strong>按位异或</strong><code>^</code>：如果相对应二进制位值相同，则结果为 <code>0</code>，否则为 <code>1</code>。</p>
+<p><strong>按位异或</strong> <code>^</code>：如果相对应二进制位值相同，则结果为 <code>0</code>，否则为 <code>1</code>。</p>
 <ul>
 <li>
 <p>按位异或可用于不借助第三个变量实现两个数的交换，示例如下：</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> num1;</span><br><span class="line"><span class="type">int</span> num2;</span><br><span class="line">num1 = num1 ^ num2;</span><br><span class="line">num2 = num1 ^ num2;<span class="comment">// (num1 ^ num2) ^ num2 得到 num1 的值，然后赋给num2</span></span><br><span class="line">num1 = num1 ^ num2;<span class="comment">// (num1 ^ num2) ^ num2，这里的 num2 已经替换为 num1，所以左式得到原有 num2 的值，然后赋给 num1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> num1;</span><br><span class="line"><span class="type">int</span> num2;</span><br><span class="line">num1 = num1 ^ num2;</span><br><span class="line">num2 = num1 ^ num2;<span class="comment">// (num1 ^ num2) ^ num2 得到 num1 的值，然后赋给num2</span></span><br><span class="line">num1 = num1 ^ num2;<span class="comment">// (num1 ^ num2) ^ num2，这里的 num2 已经替换为 num1，所以左式得到原有 num2 的值，然后赋给 num1</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -791,30 +821,125 @@
 <p><strong>无符号右移</strong> <code>&gt;&gt;&gt;</code>：无符号右移即按位右移 <strong>补零操作符</strong>。左操作数的值按右操作数指定的位数右移，移动得到的左边空位 <strong>以零填充</strong>。</p>
 </li>
 </ul>
-<h3 id="84-条件运算符"><a class="markdownIt-Anchor" href="#84-条件运算符"></a> 8.4 条件运算符</h3>
+<h3 id="84-三目运算符"><a class="markdownIt-Anchor" href="#84-三目运算符"></a> 8.4 三目运算符</h3>
 <ul>
 <li>
-<p><code>Java</code> 提供了一个特别的 <strong>三元运算符</strong>（也叫三目运算符）经常用于取代某个类型的 <code>if-then-else</code> 语句。</p>
+<p><code>Java</code> 提供了一个特别的 <strong>三目运算符</strong>（也称三元运算符）“<code>? :</code>”，它经常用于取代某个类型的 <code>if-then-else</code> 语句。</p>
 </li>
 <li>
-<p><strong>条件运算符是</strong> <code>Java</code> <strong>唯一的三目运算符</strong>，表示为 “<code>? :</code>”，使用该运算符时需要有 <strong>三个操作数</strong>，因此称其为三目运算符。使用条件运算符的一般语法结构为：</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = &lt;expression&gt; ? &lt;statement1&gt; : &lt;statement2&gt;;</span><br></pre></td></tr></table></figure>
+<p>“<code>? :</code>” <strong>是</strong> <code>Java</code> <strong>唯一的三目运算符</strong>，使用该运算符时需要有三个操作数，因此称其为三目运算符。使用条件运算符的一般语法结构为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = &lt;expression&gt; ? &lt;statement1&gt; : &lt;statement2&gt;;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>其中，<code>expression</code> 是一个布尔表达式。当 <code>expression</code> 为真时，执行 <code>statement1</code>， 否则就执行 <code>statement2</code>。<code>statement1</code> 和 <code>statement2</code> 返回的值的 <strong>数据类型要能够统一</strong>，可以被 <code>result</code> 接收。</li>
 </ul>
 </li>
 <li>
-<p>三元运算符可以进行嵌套，结构为：</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = &lt;expression1&gt; ? &lt;statement1&gt; : &lt;expression1&gt; ? &lt;statement2&gt; : &lt;statement3&gt;;</span><br></pre></td></tr></table></figure>
+<p>三目运算符可以进行嵌套，结构为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = &lt;expression1&gt; ? &lt;statement1&gt; : &lt;expression1&gt; ? &lt;statement2&gt; : &lt;statement3&gt;;</span><br></pre></td></tr></table></figure>
 </li>
 <li>
-<p>凡是可以使用三元运算符的地方，都可以改写为 <code>if-else</code>，反之不成立。</p>
+<p>凡是可以使用三目运算符的地方，都可以改写为 <code>if-else</code>，反之不成立。</p>
 </li>
 <li>
-<p>如果程序既可以使用三元运算符，又可以使用 <code>if-else</code> 结构，那么 <strong>优先选择三元运算符</strong>。原因：简单、执行效率高。</p>
+<p>如果程序既可以使用三目运算符，又可以使用 <code>if-else</code> 结构，那么 <strong>优先选择三目运算符</strong>。原因：简单、执行效率高。</p>
 </li>
 </ul>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://xindong2020.love">Mr.DONG</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://xindong2020.love/Java/e2453482">https://xindong2020.love/Java/e2453482</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xindong2020.love" target="_blank">Mr.DONG の 自习室</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaSE/">JavaSE</a></div><div class="post_share"><div class="social-share" data-image="https://s6.jpg.cm/2022/09/07/PXRV1D.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/Java/671cc460"><img class="prev-cover" src="https://s6.jpg.cm/2022/09/22/PbP0nh.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Java 基础语法（下）</div></div></a></div><div class="next-post pull-right"><a href="/Java/518e9178"><img class="next-cover" src="https://s6.jpg.cm/2022/09/22/PbP30W.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java 基础语法（上）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/Java/e6fa4949" title="Java 入门"><img class="cover" src="https://s6.jpg.cm/2022/09/22/PbPox6.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-28</div><div class="title">Java 入门</div></div></a></div><div><a href="/Java/518e9178" title="Java 基础语法（上）"><img class="cover" src="https://s6.jpg.cm/2022/09/22/PbP30W.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-29</div><div class="title">Java 基础语法（上）</div></div></a></div><div><a href="/Java/671cc460" title="Java 基础语法（下）"><img class="cover" src="https://s6.jpg.cm/2022/09/22/PbP0nh.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-01</div><div class="title">Java 基础语法（下）</div></div></a></div><div><a href="/Java/fafd0576" title="Java 流程控制"><img class="cover" src="https://s6.jpg.cm/2022/09/22/PbRLor.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-04</div><div class="title">Java 流程控制</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s6.jpg.cm/2022/09/07/PXPXyi.th.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Mr.DONG</div><div class="author-info__description">Mr.DONG学习记录</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fandong93"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/fandong93" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dongf19931107@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到 Mr.DONG の 自习室</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text"> 3. 类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%E8%87%AA%E5%8A%A8%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text"> 3.1 隐式转换（自动类型转换）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-%E6%98%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text"> 3.2 显式转换（强制类型转换）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-string"><span class="toc-text"> 4. String</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-java-%E5%8F%98%E9%87%8F"><span class="toc-text"> 5. Java 变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#51-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-text"> 5.1 全局变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#511-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F"><span class="toc-text"> 5.1.1 成员变量（实例变量）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#512-%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E7%B1%BB%E5%8F%98%E9%87%8F"><span class="toc-text"> 5.1.2 静态变量（类变量）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#52-%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-text"> 5.2 局部变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-java-%E5%B8%B8%E9%87%8F"><span class="toc-text"> 6. Java 常量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#61-interface-%E4%B8%AD%E5%AE%9A%E4%B9%89%E5%B8%B8%E9%87%8F"><span class="toc-text"> 6.1 interface 中定义常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#62-class-%E4%B8%AD%E5%AE%9A%E4%B9%89%E5%B8%B8%E9%87%8F"><span class="toc-text"> 6.2 Class 中定义常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#63-enum-%E5%AE%9A%E4%B9%89%E5%B8%B8%E9%87%8F"><span class="toc-text"> 6.3 enum 定义常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#64-%E9%80%9A%E8%BF%87%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%9D%A5%E9%85%8D%E7%BD%AE%E5%B8%B8%E9%87%8F"><span class="toc-text"> 6.4 通过配置文件来配置常量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-text"> 7. 命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text"> 8. 运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#81-%E8%87%AA%E5%A2%9E-%E8%87%AA%E5%87%8F"><span class="toc-text"> 8.1 自增、自减</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#811-%E8%AF%AD%E5%8F%A5%E4%B8%AD%E4%BB%85%E6%9C%89%E6%88%96-"><span class="toc-text"> 8.1.1 语句中仅有++或--</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-text"> 代码 1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="toc-text"> 代码 2</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#812-%E6%88%96-%E8%BF%90%E7%AE%97%E7%BB%93%E6%9E%9C%E8%B5%8B%E5%80%BC%E7%BB%99%E5%85%B6%E4%BB%96%E5%8F%98%E9%87%8F"><span class="toc-text"> 8.1.2 ++或--运算结果赋值给其他变量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E4%BB%A3%E7%A0%81-1"><span class="toc-text"> （1）代码 1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E4%BB%A3%E7%A0%81-2"><span class="toc-text"> （2）代码 2</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#813-%E6%88%96-%E8%BF%90%E7%AE%97%E7%BB%93%E6%9E%9C%E8%B5%8B%E5%80%BC%E7%BB%99%E8%87%AA%E8%BA%AB"><span class="toc-text"> 8.1.3 ++ 或 - - 运算结果赋值给自身</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E4%BB%A3%E7%A0%81-1-2"><span class="toc-text"> （1）代码 1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E4%BB%A3%E7%A0%81-2-2"><span class="toc-text"> （2）代码 2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E4%BB%A3%E7%A0%81-3"><span class="toc-text"> （3）代码 3</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E4%BB%A3%E7%A0%81-4"><span class="toc-text"> （4）代码 4</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5%E6%89%A9%E5%B1%95"><span class="toc-text"> （5）扩展</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#82-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text"> 8.2 逻辑运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#83-%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text"> 8.3 位运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#84-%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text"> 8.4 条件运算符</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/Ubuntu/15fbef57" title="Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景"><img src="https://s6.jpg.cm/2022/09/07/PXRPf5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景"/></a><div class="content"><a class="title" href="/Ubuntu/15fbef57" title="Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景">Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景</a><time datetime="2022-09-06T16:00:00.000Z" title="发表于 2022-09-07 00:00:00">2022-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Ubuntu/1a25703d" title="Ubuntu 20.04 常用软件 &amp; 必要配置"><img src="https://s6.jpg.cm/2022/09/22/PbP30W.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu 20.04 常用软件 &amp; 必要配置"/></a><div class="content"><a class="title" href="/Ubuntu/1a25703d" title="Ubuntu 20.04 常用软件 &amp; 必要配置">Ubuntu 20.04 常用软件 &amp; 必要配置</a><time datetime="2022-09-05T16:00:00.000Z" title="发表于 2022-09-06 00:00:00">2022-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Ubuntu/d523be8e" title="Ubuntu 20.04 与 Windows10 双系统安装"><img src="https://s6.jpg.cm/2022/09/22/PbPO0k.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu 20.04 与 Windows10 双系统安装"/></a><div class="content"><a class="title" href="/Ubuntu/d523be8e" title="Ubuntu 20.04 与 Windows10 双系统安装">Ubuntu 20.04 与 Windows10 双系统安装</a><time datetime="2022-09-04T16:00:00.000Z" title="发表于 2022-09-05 00:00:00">2022-09-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022  <i id="heartbeat" class="fa fas fa-heartbeat"></i> Mr.DONG</div><div class="footer_custom_text"><p> <a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="本站使用Hexo框架"></a>&nbsp; <a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="本站使用Butterfly主题"></a>&nbsp; <a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站使用Gtihub托管"></a>&nbsp; <a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> </p> <p> <img src="https://s6.jpg.cm/2022/09/21/PbLJdQ.png"/>&nbsp; <a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=46010802001122">琼公网安备 46010802001122号</a>&nbsp; <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/#/Integrated/recordQuery">琼ICP备2022012184号</a> </p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><script>var preloader = {
+<h3 id="85-运算符优先级"><a class="markdownIt-Anchor" href="#85-运算符优先级"></a> 8.5 运算符优先级</h3>
+<ul>
+<li>
+<p>运算符有不同的优先级，所谓优先级就是在表达式中的运算先后顺序。<code>Java</code> 语言中运算符的优先级共分为 <code>14</code> 级，其中 <code>1</code> 级最高，<code>14</code> 级最低。在同一个表达式中运算符优先级高的先执行。下表列出了所有的运算符的优先级以及结合性。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">优先级</th>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">结合性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">()、[]、{}</td>
+<td style="text-align:center">从左向右</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">!、+、-、~、++、–</td>
+<td style="text-align:center"><strong>从右向左</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">*、/、%</td>
+<td style="text-align:center">从左向右</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">+、-</td>
+<td style="text-align:center">从左向右</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">«、»、&gt;&gt;&gt;</td>
+<td style="text-align:center">从左向右</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">&lt;、&lt;=、&gt;、&gt;=、instanceof</td>
+<td style="text-align:center">从左向右</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">==、!=</td>
+<td style="text-align:center">从左向右</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">&amp;</td>
+<td style="text-align:center">从左向右</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center">^</td>
+<td style="text-align:center">从左向右</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">|</td>
+<td style="text-align:center">从左向右</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">&amp;&amp;</td>
+<td style="text-align:center">从左向右</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">||</td>
+<td style="text-align:center">从左向右</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:center">?:</td>
+<td style="text-align:center"><strong>从右向左</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td style="text-align:center">=、+=、-=、*=、/=、&amp;=、|=、^=、~=</td>
+<td style="text-align:center"><strong>从右向左</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p><code>Java</code> 语言中大多数运算符具有左结合性，而 <strong>单目运算符</strong>、<strong>三目运算符</strong>、<strong>赋值运算符</strong> 具有右结合性。</p>
+</li>
+<li>
+<p>使用优先级为 <code>1</code> 的小括号 <code>()</code> 可以改变其他运算符的优先级，即如果需要将具有较低优先级的运算符先运算，则可以使用小括号将该运算符和操作符括起来。</p>
+</li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://xindong2020.love">Mr.DONG</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://xindong2020.love/Java/Java03">https://xindong2020.love/Java/Java03</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xindong2020.love" target="_blank">Mr.DONG の 自习室</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaSE/">JavaSE</a></div><div class="post_share"><div class="social-share" data-image="https://s6.jpg.cm/2022/09/22/PbPwwp.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/Java/Java04"><img class="prev-cover" src="https://s6.jpg.cm/2022/09/07/PXPMQi.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Java 基础语法（下）</div></div></a></div><div class="next-post pull-right"><a href="/Java/Java02"><img class="next-cover" src="https://s6.jpg.cm/2022/09/07/PXRcAT.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java 基础语法（上）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/Java/Java01" title="Java 入门"><img class="cover" src="https://s6.jpg.cm/2022/09/22/PbPyxf.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-19</div><div class="title">Java 入门</div></div></a></div><div><a href="/Java/Java02" title="Java 基础语法（上）"><img class="cover" src="https://s6.jpg.cm/2022/09/07/PXRcAT.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-27</div><div class="title">Java 基础语法（上）</div></div></a></div><div><a href="/Java/Java04" title="Java 基础语法（下）"><img class="cover" src="https://s6.jpg.cm/2022/09/07/PXPMQi.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-29</div><div class="title">Java 基础语法（下）</div></div></a></div><div><a href="/Java/Java05" title="Java 流程控制"><img class="cover" src="https://s6.jpg.cm/2022/09/22/PbPijw.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-01</div><div class="title">Java 流程控制</div></div></a></div><div><a href="/Java/Java06" title="Java 数组"><img class="cover" src="https://s6.jpg.cm/2022/09/07/PXRROC.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-02</div><div class="title">Java 数组</div></div></a></div><div><a href="/Java/Java07" title="Java 面向对象（一）"><img class="cover" src="https://s6.jpg.cm/2022/09/07/PXRPf5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-05</div><div class="title">Java 面向对象（一）</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s6.jpg.cm/2022/09/07/PXPXyi.th.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Mr.DONG</div><div class="author-info__description">Mr.DONG学习记录</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fandong93"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/fandong93" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dongf19931107@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到 Mr.DONG の 自习室</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text"> 三、类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%E8%87%AA%E5%8A%A8%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text"> 3.1 隐式转换（自动类型转换）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-%E6%98%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text"> 3.2 显式转换（强制类型转换）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-string"><span class="toc-text"> 四、String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-java-%E5%8F%98%E9%87%8F"><span class="toc-text"> 5. Java 变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#51-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-text"> 5.1 全局变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#511-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F"><span class="toc-text"> 5.1.1 成员变量（实例变量）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#512-%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E7%B1%BB%E5%8F%98%E9%87%8F"><span class="toc-text"> 5.1.2 静态变量（类变量）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#52-%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-text"> 5.2 局部变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-java-%E5%B8%B8%E9%87%8F"><span class="toc-text"> 6. Java 常量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#61-interface-%E4%B8%AD%E5%AE%9A%E4%B9%89%E5%B8%B8%E9%87%8F"><span class="toc-text"> 6.1 interface 中定义常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#62-class-%E4%B8%AD%E5%AE%9A%E4%B9%89%E5%B8%B8%E9%87%8F"><span class="toc-text"> 6.2 Class 中定义常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#63-enum-%E5%AE%9A%E4%B9%89%E5%B8%B8%E9%87%8F"><span class="toc-text"> 6.3 enum 定义常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#64-%E9%80%9A%E8%BF%87%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%9D%A5%E9%85%8D%E7%BD%AE%E5%B8%B8%E9%87%8F"><span class="toc-text"> 6.4 通过配置文件来配置常量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-text"> 7. 命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text"> 八. 运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#81-%E5%8D%95%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text"> 8.1 单目运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#811-%E8%AF%AD%E5%8F%A5%E4%B8%AD%E4%BB%85%E6%9C%89%E6%88%96-"><span class="toc-text"> 8.1.1 语句中仅有++或--</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-text"> 代码 1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="toc-text"> 代码 2</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#812-%E6%88%96-%E8%BF%90%E7%AE%97%E7%BB%93%E6%9E%9C%E8%B5%8B%E5%80%BC%E7%BB%99%E5%85%B6%E4%BB%96%E5%8F%98%E9%87%8F"><span class="toc-text"> 8.1.2 ++或--运算结果赋值给其他变量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E4%BB%A3%E7%A0%81-1"><span class="toc-text"> （1）代码 1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E4%BB%A3%E7%A0%81-2"><span class="toc-text"> （2）代码 2</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#813-%E6%88%96-%E8%BF%90%E7%AE%97%E7%BB%93%E6%9E%9C%E8%B5%8B%E5%80%BC%E7%BB%99%E8%87%AA%E8%BA%AB"><span class="toc-text"> 8.1.3 ++ 或 -- 运算结果赋值给自身</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E4%BB%A3%E7%A0%81-1-2"><span class="toc-text"> （1）代码 1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E4%BB%A3%E7%A0%81-2-2"><span class="toc-text"> （2）代码 2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E4%BB%A3%E7%A0%81-3"><span class="toc-text"> （3）代码 3</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E4%BB%A3%E7%A0%81-4"><span class="toc-text"> （4）代码 4</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5%E6%89%A9%E5%B1%95"><span class="toc-text"> （5）扩展</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#82-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text"> 8.2 逻辑运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#83-%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text"> 8.3 位运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#84-%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text"> 8.4 三目运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#85-%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text"> 8.5 运算符优先级</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/Ubuntu/15fbef57" title="Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景"><img src="https://s6.jpg.cm/2022/09/07/PXPf8E.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景"/></a><div class="content"><a class="title" href="/Ubuntu/15fbef57" title="Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景">Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景</a><time datetime="2022-09-06T16:00:00.000Z" title="发表于 2022-09-07 00:00:00">2022-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Ubuntu/1a25703d" title="Ubuntu 20.04 常用软件 &amp; 必要配置"><img src="https://s6.jpg.cm/2022/09/22/PbPyxf.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu 20.04 常用软件 &amp; 必要配置"/></a><div class="content"><a class="title" href="/Ubuntu/1a25703d" title="Ubuntu 20.04 常用软件 &amp; 必要配置">Ubuntu 20.04 常用软件 &amp; 必要配置</a><time datetime="2022-09-05T16:00:00.000Z" title="发表于 2022-09-06 00:00:00">2022-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Java/Java07" title="Java 面向对象（一）"><img src="https://s6.jpg.cm/2022/09/07/PXRPf5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java 面向对象（一）"/></a><div class="content"><a class="title" href="/Java/Java07" title="Java 面向对象（一）">Java 面向对象（一）</a><time datetime="2022-09-04T16:00:00.000Z" title="发表于 2022-09-05 00:00:00">2022-09-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022  <i id="heartbeat" class="fa fas fa-heartbeat"></i> Mr.DONG</div><div class="footer_custom_text"><p> <a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="本站使用Hexo框架"></a>&nbsp; <a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="本站使用Butterfly主题"></a>&nbsp; <a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站使用Gtihub托管"></a>&nbsp; <a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> </p> <p> <img src="https://s6.jpg.cm/2022/09/21/PbLJdQ.png"/>&nbsp; <a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=46010802001122">琼公网安备 46010802001122号</a>&nbsp; <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/#/Integrated/recordQuery">琼ICP备2022012184号</a> </p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><script>var preloader = {
   endLoading: () => {
     document.body.style.overflow = 'auto';
     document.getElementById('loading-box').classList.add("loaded")
@@ -832,7 +957,7 @@ document.body.addEventListener('input', POWERMODE);
 </script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
     function butterfly_categories_card_injector_config(){
       var parent_div_git = document.getElementById('recent-posts');
-      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://s6.jpg.cm/2022/09/21/PUB2HH.jpg);"> <a class="categoryBar-list-link" href="categories/IDE-集成开发环境/">IDE 集成开发环境</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">IDE 集成开发环境</span></li><li class="categoryBar-list-item" style="background:url(https://s6.jpg.cm/2022/09/22/PbPrhz.jpg);"> <a class="categoryBar-list-link" href="categories/Java-开发语言/">Java 开发语言</a><span class="categoryBar-list-count">5</span><span class="categoryBar-list-descr">Java 开发语言</span></li><li class="categoryBar-list-item" style="background:url(https://s6.jpg.cm/2022/09/22/PbPEnu.jpg);"> <a class="categoryBar-list-link" href="categories/Ubuntu-20-04-指南/">Ubuntu 20.04 指南</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr">Ubuntu 20.04 指南</span></li></ul></div></div>';
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://s6.jpg.cm/2022/09/21/PUB2HH.jpg);"> <a class="categoryBar-list-link" href="categories/Java-开发语言/">Java 开发语言</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">IDE 集成开发环境</span></li><li class="categoryBar-list-item" style="background:url(https://s6.jpg.cm/2022/09/22/PbPrhz.jpg);"> <a class="categoryBar-list-link" href="categories/IDE-集成开发环境/">IDE 集成开发环境</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">Java 开发语言</span></li><li class="categoryBar-list-item" style="background:url(https://s6.jpg.cm/2022/09/22/PbPEnu.jpg);"> <a class="categoryBar-list-link" href="categories/JavaSE/">JavaSE</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr">Ubuntu 20.04 指南</span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/Ubuntu-20-04-指南/">Ubuntu 20.04 指南</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/计算机基础/">计算机基础</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
       console.log('已挂载butterfly_categories_card')
       parent_div_git.insertAdjacentHTML("afterbegin",item_html)
       }
