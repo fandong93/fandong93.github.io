@@ -1,0 +1,927 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Java 面向对象（二） | Mr.DONG の 自习室</title><meta name="keywords" content="Java"><meta name="author" content="Mr.DONG"><meta name="copyright" content="Mr.DONG"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="一、面向对象特征之一：封装（Encapsulation）与隐藏  1.1 为什么需要封装？ 1.2 封装性的体现 1.3 权限修饰符   二、类的成员之三：构造器（构造方法）  2.1 作用 2.2 语法格式 2.3 构造器分类  2.3.1 无参构造器 2.3.2 有参构造器   2.4 属性赋值过程   三、JavaBean 四、UML 类图 五、关键字：this 的使用  5.1 this">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 面向对象（二）">
+<meta property="og:url" content="https://xindong2020.love/Java/Java08">
+<meta property="og:site_name" content="Mr.DONG の 自习室">
+<meta property="og:description" content="一、面向对象特征之一：封装（Encapsulation）与隐藏  1.1 为什么需要封装？ 1.2 封装性的体现 1.3 权限修饰符   二、类的成员之三：构造器（构造方法）  2.1 作用 2.2 语法格式 2.3 构造器分类  2.3.1 无参构造器 2.3.2 有参构造器   2.4 属性赋值过程   三、JavaBean 四、UML 类图 五、关键字：this 的使用  5.1 this">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s6.jpg.cm/2022/09/07/PXRPf5.jpg">
+<meta property="article:published_time" content="2022-09-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-11-21T08:29:44.228Z">
+<meta property="article:author" content="Mr.DONG">
+<meta property="article:tag" content="JavaSE">
+<meta property="article:tag" content="面向对象">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s6.jpg.cm/2022/09/07/PXRPf5.jpg"><link rel="shortcut icon" href="https://s6.jpg.cm/2022/09/07/PXPkS4.th.png"><link rel="canonical" href="https://xindong2020.love/Java/Java08"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io/css/logofonts.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"R7ZHV2NELE","apiKey":"8aa9f67293bfb4f2895895aaaa92152f","indexName":"fandong","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":270},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java 面向对象（二）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-21 16:29:44'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/one.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/width.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/background.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/fonts.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/logofonts.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/fontsize.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/mouse.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/scrollbar.css"><link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/KaTeX/0.15.2/katex.min.css" rel="stylesheet"><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s6.jpg.cm/2022/09/07/PXPXyi.th.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/musics/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-images"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s6.jpg.cm/2022/09/07/PXRPf5.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Mr.DONG の 自习室</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/musics/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-images"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java 面向对象（二）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-05T16:00:00.000Z" title="发表于 2022-09-06 00:00:00">2022-09-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-21T08:29:44.228Z" title="更新于 2022-11-21 16:29:44">2022-11-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JavaSE/">JavaSE</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>21分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java 面向对象（二）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%80-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%E5%B0%81%E8%A3%85encapsulation%E4%B8%8E%E9%9A%90%E8%97%8F">一、面向对象特征之一：封装（Encapsulation）与隐藏</a>
+<ul>
+<li><a href="#11-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%B0%81%E8%A3%85">1.1 为什么需要封装？</a></li>
+<li><a href="#12-%E5%B0%81%E8%A3%85%E6%80%A7%E7%9A%84%E4%BD%93%E7%8E%B0">1.2 封装性的体现</a></li>
+<li><a href="#13-%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6">1.3 权限修饰符</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98%E4%B9%8B%E4%B8%89%E6%9E%84%E9%80%A0%E5%99%A8%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95">二、类的成员之三：构造器（构造方法）</a>
+<ul>
+<li><a href="#21-%E4%BD%9C%E7%94%A8">2.1 作用</a></li>
+<li><a href="#22-%E8%AF%AD%E6%B3%95%E6%A0%BC%E5%BC%8F">2.2 语法格式</a></li>
+<li><a href="#23-%E6%9E%84%E9%80%A0%E5%99%A8%E5%88%86%E7%B1%BB">2.3 构造器分类</a>
+<ul>
+<li><a href="#231-%E6%97%A0%E5%8F%82%E6%9E%84%E9%80%A0%E5%99%A8">2.3.1 无参构造器</a></li>
+<li><a href="#232-%E6%9C%89%E5%8F%82%E6%9E%84%E9%80%A0%E5%99%A8">2.3.2 有参构造器</a></li>
+</ul>
+</li>
+<li><a href="#24-%E5%B1%9E%E6%80%A7%E8%B5%8B%E5%80%BC%E8%BF%87%E7%A8%8B">2.4 属性赋值过程</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-javabean">三、JavaBean</a></li>
+<li><a href="#%E5%9B%9B-uml-%E7%B1%BB%E5%9B%BE">四、UML 类图</a></li>
+<li><a href="#%E4%BA%94-%E5%85%B3%E9%94%AE%E5%AD%97this-%E7%9A%84%E4%BD%BF%E7%94%A8">五、关键字：this 的使用</a>
+<ul>
+<li><a href="#51-this%E5%B1%9E%E6%80%A7%E5%90%8D">5.1 this.属性名</a></li>
+<li><a href="#52-this%E6%96%B9%E6%B3%95%E5%90%8D%E5%AE%9E%E5%8F%82%E5%88%97%E8%A1%A8">5.2 this.方法名(实参列表)</a></li>
+<li><a href="#53-this-%E8%B0%83%E7%94%A8%E6%9E%84%E9%80%A0%E5%99%A8">5.3 this() 调用构造器</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%AD-%E5%85%B3%E9%94%AE%E5%AD%97package-import-%E7%9A%84%E4%BD%BF%E7%94%A8">六、关键字：package、import 的使用</a>
+<ul>
+<li><a href="#61-%E5%8C%85%E7%9A%84%E4%BD%9C%E7%94%A8">6.1 包的作用</a></li>
+<li><a href="#62-%E5%8C%85%E7%9A%84%E5%88%9B%E5%BB%BApackage">6.2 包的创建（package）</a></li>
+<li><a href="#63-%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5import">6.3 包的导入（import）</a></li>
+<li><a href="#64-%E7%B3%BB%E7%BB%9F%E5%8C%85">6.4 系统包</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%83-mvc%E6%A8%A1%E5%BC%8F">七、MVC模式</a></li>
+<li><a href="#%E5%85%AB-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%BA%8C%E7%BB%A7%E6%89%BF%E6%80%A7inheritance">八、面向对象特征之二：继承性（Inheritance）</a>
+<ul>
+<li><a href="#81-%E7%BB%A7%E6%89%BF%E6%80%A7%E7%9A%84%E7%90%86%E8%A7%A3">8.1 继承性的理解</a></li>
+<li><a href="#82-%E7%BB%A7%E6%89%BF%E6%80%A7%E7%9A%84%E4%BD%BF%E7%94%A8">8.2 继承性的使用</a></li>
+<li><a href="#83-java-%E5%8D%95%E7%BB%A7%E6%89%BF">8.3 Java 单继承</a></li>
+<li><a href="#84-%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E5%86%99overrideoverwrite">8.4 方法的重写（Override/Overwrite）</a></li>
+<li><a href="#85-super-%E5%85%B3%E9%94%AE%E5%AD%97">8.5 super 关键字</a>
+<ul>
+<li><a href="#851-super-%E8%B0%83%E7%94%A8%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E5%99%A8">8.5.1 super 调用父类构造器</a></li>
+<li><a href="#852-super-%E8%AE%BF%E9%97%AE%E7%88%B6%E7%B1%BB%E6%88%90%E5%91%98">8.5.2 super 访问父类成员</a>
+<ul>
+<li><a href="#1super-%E8%B0%83%E7%94%A8%E6%88%90%E5%91%98%E5%B1%9E%E6%80%A7">（1）super 调用成员属性</a></li>
+<li><a href="#2super-%E8%B0%83%E7%94%A8%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95">（2）super 调用成员方法</a></li>
+</ul>
+</li>
+<li><a href="#853-super-%E5%92%8C-this-%E7%9A%84%E5%8C%BA%E5%88%AB">8.5.3 super 和 this 的区别</a></li>
+</ul>
+</li>
+<li><a href="#86-%E5%AD%90%E7%B1%BB%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B%E5%8C%96%E8%BF%87%E7%A8%8B">8.6 子类对象实例化过程</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="一-面向对象特征之一封装encapsulation与隐藏"><a class="markdownIt-Anchor" href="#一-面向对象特征之一封装encapsulation与隐藏"></a> 一、面向对象特征之一：封装（Encapsulation）与隐藏</h2>
+<h3 id="11-为什么需要封装"><a class="markdownIt-Anchor" href="#11-为什么需要封装"></a> 1.1 为什么需要封装？</h3>
+<ul>
+<li>
+<p>程序设计追求 “高内聚，低耦合”。</p>
+<ul>
+<li>
+<p>高内聚：类的内部数据操作细节在内部完成，不允许外部干涉。</p>
+</li>
+<li>
+<p>低耦合：仅对外暴露少量的方法用于使用。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>隐藏对象内部的复杂性，只对外公开简单的方法用于外部调用，从而提高系统的可扩展性、可维护性。</p>
+</li>
+</ul>
+<h3 id="12-封装性的体现"><a class="markdownIt-Anchor" href="#12-封装性的体现"></a> 1.2 封装性的体现</h3>
+<ul>
+<li>
+<p>当我们创建一个类的对象后，我们可以通过 “对象.属性” 的方式为对象的属性赋值，这种赋值方式仅受到属性的数据类型与取值范围的限制。但是，现实问题中，我们通常需要为属性赋值操作添加更多的限制，这时我们就要通过方法来限制赋值操作。同时，为了并且避免用户自行操作属性，我们需要将属性声明为私有的（<code>private</code>）。这些就体现了针对属性的封装性。</p>
+</li>
+<li>
+<p>我们将类的属性（<code>XXX</code>）私有化，同时，提供公有的（<code>public</code>）方法来获取（<code>getXxx</code>）和设置（<code>setXxx</code>）属性的值。</p>
+</li>
+<li>
+<p>封装性的体现有很多，例：属性私有化、私有方法和单例模式（私有构造器）等。</p>
+</li>
+</ul>
+<h3 id="13-权限修饰符"><a class="markdownIt-Anchor" href="#13-权限修饰符"></a> 1.3 权限修饰符</h3>
+<ul>
+<li>
+<p>封装性的体现需要权限修饰符的配合。</p>
+</li>
+<li>
+<p><code>Java</code> 规定了四种权限修饰符：<code>public</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">\gt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span></span></span></span> <code>缺省（空白）</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">\gt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span></span></span></span> <code>protected</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">\gt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span></span></span></span> <code>private</code>。</p>
+</li>
+<li>
+<p><code>Java</code> 权限修饰符 <code>public</code>、<code>缺省（空白）</code>、<code>protected</code> 和 <code>private</code> 可以置于类的成员（属性、方法、构造器、内部类）定义之前，用来限定对象对该类成员的访问权限。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/14/PH6y32.png"/>
+</div>
+</li>
+<li>
+<p>对于 <code>class</code> 的权限修饰符只可以用 <code>public</code> 和 <code>缺省（空白）</code>。</p>
+<ul>
+<li>
+<p><code>public</code> 类可以在任意地方被访问。</p>
+</li>
+<li>
+<p><code>缺省（空白）</code> 类只可以被同一个包内部的其他类访问。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="二-类的成员之三构造器构造方法"><a class="markdownIt-Anchor" href="#二-类的成员之三构造器构造方法"></a> 二、类的成员之三：构造器（构造方法）</h2>
+<h3 id="21-作用"><a class="markdownIt-Anchor" href="#21-作用"></a> 2.1 作用</h3>
+<ul>
+<li><code>Java</code> 类中构造器的作用是新建对象，并初始化新建的对象，在创建（<code>new</code>）对象之后自动调用。</li>
+</ul>
+<h3 id="22-语法格式"><a class="markdownIt-Anchor" href="#22-语法格式"></a> 2.2 语法格式</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">权限修饰符 类名(形参列表) &#123;</span><br><span class="line">    初始化语句;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>默认构造器的权限修饰符与所属类的权限修饰符一致。</p>
+</li>
+<li>
+<p>构造器不能被 <code>static</code>、<code>final</code>、<code>synchronized</code>、<code>abstract</code> 和 <code>native</code>（类似于 <code>abstract</code>）修饰。构造器用于初始化一个新对象，所以用 <code>static</code> 修饰没有意义。构造器不能被子类继承，所以用 <code>final</code> 和 <code>abstract</code> 修饰没有意义。多个线程不会同时创建内存地址相同的同一个对象，所以用 <code>synchronized</code> 修饰没有必要。</p>
+</li>
+<li>
+<p>构造器不用声明任何返回值类型（包括 <code>void</code>）。如果为构造器定义了返回值类型或使用 <code>void</code> 声明构造器没有返回值，编译时不会出错，但 <code>Java</code> 会把这个构造器当成普通方法来处理。</p>
+</li>
+<li>
+<p>构造器与类名相同。</p>
+</li>
+<li>
+<p>不要在构造器里使用 <code>return</code> 来返回值。当使用 <code>new</code> 关键字来调用构造器时，构造器返回该类的实例。</p>
+</li>
+</ul>
+<h3 id="23-构造器分类"><a class="markdownIt-Anchor" href="#23-构造器分类"></a> 2.3 构造器分类</h3>
+<ul>
+<li>构造器主要有 <strong>无参构造器</strong> 和 <strong>有参构造器</strong> 两种。</li>
+</ul>
+<h4 id="231-无参构造器"><a class="markdownIt-Anchor" href="#231-无参构造器"></a> 2.3.1 无参构造器</h4>
+<ul>
+<li>
+<p>隐式无参构造器（系统默认提供）。</p>
+<ul>
+<li>如果在类中没有定义任何一个构造器，则 <code>Java</code> 会自动为该类生成一个默认的构造器。默认的构造器不包含任何参数，并且方法体为空。</li>
+</ul>
+</li>
+<li>
+<p>显式无参构造器。</p>
+<ul>
+<li>如果类中显式地定义了一个无参构造器，则 <code>Java</code> 不再提供默认构造器。</li>
+</ul>
+</li>
+</ul>
+<h4 id="232-有参构造器"><a class="markdownIt-Anchor" href="#232-有参构造器"></a> 2.3.2 有参构造器</h4>
+<ul>
+<li>
+<p><code>Java</code> 中的每个类可以具有多个构造器，但要求它们各自包含不同的形参列表，这些构造器彼此之间构成了 <strong>重载</strong>。</p>
+</li>
+<li>
+<p><code>Java</code> 中显式地定义了有参构造器，则 <code>Java</code> 不再提供默认构造器。</p>
+</li>
+<li>
+<p>在实例化 <code>Java</code> 类时，可以根据参数列表的不同，调用不同的构造器进行初始化。</p>
+</li>
+<li>
+<p>通过调用带参数的构造器，在创建对象的同时，完成了对象成员的初始化，节省了对象初始化的代码。</p>
+</li>
+</ul>
+<h3 id="24-属性赋值过程"><a class="markdownIt-Anchor" href="#24-属性赋值过程"></a> 2.4 属性赋值过程</h3>
+<ul>
+<li>
+<p>赋值的位置：</p>
+<ul>
+<li>
+<p>默认初始化（仅执行一次）：例：<code>int age;</code> 默认初始化值为 <code>0</code>。</p>
+</li>
+<li>
+<p>显式初始化（仅执行一次）：例：<code>int age = 18;</code> 显式初始化值为 <code>18</code>。</p>
+</li>
+<li>
+<p>构造器初始化（仅执行一次）：例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(<span class="type">int</span> a, String n)</span> &#123;</span><br><span class="line">    age = a;</span><br><span class="line">    name = n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>通过 “对象.属性” 或 “对象.方法” 的方式赋值（可以多次赋值）。例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p.age = <span class="number">18</span>;</span><br><span class="line">p.name = <span class="string">&quot;dong&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p.setAge(<span class="number">18</span>);</span><br><span class="line">p.setName(<span class="string">&quot;dong&quot;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>赋值的先后执行顺序：默认初始化 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 显式初始化 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 构造器初始化 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 通过 “对象.属性” 或 “对象.方法” 的方式赋值</p>
+</li>
+</ul>
+<h2 id="三-javabean"><a class="markdownIt-Anchor" href="#三-javabean"></a> 三、JavaBean</h2>
+<ul>
+<li>
+<p><code>JavaBean</code> 是一种特殊的、可重用的 <code>Java</code> 类，并且它符合以下规范：</p>
+<ul>
+<li>
+<p><code>JavaBean</code> 为公有类，即使用权限权限符 <code>public</code> 对 <code>class</code> 进行修饰。</p>
+</li>
+<li>
+<p><code>JavaBean</code> 要使用无参构造器。如果使用显式无参构造器，权限修饰符必须为 <code>public</code>。</p>
+</li>
+<li>
+<p><code>JavaBean</code> 所有属性都是私有的（<code>private</code>），通过提供 <code>setter</code> 和 <code>getter</code> 方法来实现对属性的访问。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="四-uml-类图"><a class="markdownIt-Anchor" href="#四-uml-类图"></a> 四、UML 类图</h2>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/14/PHrDtp.png"/>
+</div>
+<ul>
+<li>
+<p>类名：第一栏</p>
+</li>
+<li>
+<p>属性：第二栏。“<code>:</code>” 前是属性名，“<code>:</code>” 后是属性的数据类型。</p>
+<ul>
+<li>
+<p><strong>格式</strong>：<code>访问权限</code> <code>名称</code> <code>:</code> <code>类型</code> [<code>= 缺省值</code>]，中括号 <code>[ ]</code> 表示是可选的。</p>
+<ul>
+<li><strong>访问权限</strong>：<code>+</code> 表示 <code>public</code> 类型，<code>-</code> 表示 <code>private</code> 类型，<code>#</code> 表示 <code>protected</code> 类型，<code>空白</code> / <code>~</code> 表示 <code>缺省</code> 类型。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>方法：第三栏。</p>
+<ul>
+<li>
+<p><strong>格式</strong>：<code>访问权限</code> <code>方法名</code>(<code>参数名</code> <code>:</code> <code>参数类型</code>) [<code>:</code> <code>返回值类型</code>]，中括号 <code>[ ]</code> 表示是可选的。</p>
+<ul>
+<li><strong>返回值类型</strong>：可选项。表示方法的返回值类型，可以是基本数据类型，也可以是用户自定义类型，还可以是空类型（<code>void</code>），如果是构造器，则无返回类型。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="五-关键字this-的使用"><a class="markdownIt-Anchor" href="#五-关键字this-的使用"></a> 五、关键字：this 的使用</h2>
+<h3 id="51-this属性名"><a class="markdownIt-Anchor" href="#51-this属性名"></a> 5.1 this.属性名</h3>
+<ul>
+<li>
+<p>在类的 <code>方法</code> / <code>构造器</code> 中，我们可以使用 “<code>this.属性</code>” 的方式来调用当前对象的属性，通常情况下，我们都选择省略 “<code>this.</code>”。</p>
+</li>
+<li>
+<p>当一个类的属性（成员变量）名与访问该属性的 <code>方法</code> / <code>构造器</code> 的局部变量 <strong>同名</strong> 时，则必须使用 <code>this</code> 关键字来访问类中的属性，以区分类的属性和方法中的局部变量。</p>
+</li>
+<li>
+<p><code>this</code> 表示 <strong>当前对象</strong> 或 <strong>当前正在创建的对象</strong>（构造器中使用 <code>this</code>）。</p>
+</li>
+<li>
+<p>示例：</p>
+<ul>
+<li>
+<p>假设有一个类 <code>Person</code> 的定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age; <span class="comment">// 年龄</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>在上述代码中，属性 <code>age</code> 的访问权限是 <code>private</code>，因此在 <code>Person</code> 类的外部无法直接访问这个属性。我们可以通过 <code>setter</code> 和 <code>getter</code> 方法来实现对属性的访问。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAge</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(<span class="type">int</span> age)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在上述代码中，<code>setAge</code> 方法使用了 <code>this</code> 关键字对属性 <code>age</code> 赋值，<code>this</code> 表示调用方法的对象。<code>this.age = age;</code> 语句表示一个赋值语句，<code>=</code> 左边的 <code>this.age</code> 是指当前对象具有的属性 <code>age</code>，<code>=</code> 右边的 <code>age</code> 表示传递过来的实参。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="52-this方法名实参列表"><a class="markdownIt-Anchor" href="#52-this方法名实参列表"></a> 5.2 this.方法名(实参列表)</h3>
+<ul>
+<li>
+<p>在类的 <code>方法</code> / <code>构造器</code> 中，我们可以使用 “<code>this.方法名(实参列表)</code>” 的方式来调用当前对象的其他方法，通常情况下，我们都选择省略 “<code>this.</code>”。</p>
+</li>
+<li>
+<p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.run(<span class="string">&quot;dong&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">(String str)</span> &#123;</span><br><span class="line">        System.out.println(str + <span class="string">&quot; run()...&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.jump(<span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span>  <span class="title function_">jump</span><span class="params">(<span class="type">int</span> num)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;jump(&quot;</span> + num + <span class="string">&quot;)&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在上述代码中，构造器 <code>Teacher()</code> 中使用了 <code>this</code> 关键字调用 <code>run</code> 方法，<code>run</code> 方法中使用了 <code>this</code> 关键字调用 <code>jump</code> 方法。</li>
+</ul>
+</li>
+</ul>
+<h3 id="53-this-调用构造器"><a class="markdownIt-Anchor" href="#53-this-调用构造器"></a> 5.3 this() 调用构造器</h3>
+<ul>
+<li>
+<p><code>this()</code> 用来访问本类的构造器，括号中可以有参数，如果有参数就是调用指定的有参构造器。</p>
+</li>
+<li>
+<p><code>this()</code> 不能在普通方法中使用，只能写在构造器中。</p>
+</li>
+<li>
+<p><code>this()</code> 在构造器中使用时，最多只能声明一个 “<code>this()</code>”，必须是 <strong>第一条</strong> 语句，且不能递归调用构造器。</p>
+</li>
+<li>
+<p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>(<span class="string">&quot;dong&quot;</span>,<span class="number">18</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="六-关键字package-import-的使用"><a class="markdownIt-Anchor" href="#六-关键字package-import-的使用"></a> 六、关键字：package、import 的使用</h2>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 在编写 <code>Java</code> 程序时，随着程序架构越来越大，类的数量也越来越多，这时就会发现管理维护类的名称也是一件很麻烦的事，尤其是一些同名问题的发生。有时，开发人员还需要将处理同种问题的类放在同一个目录下，以便于管理。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 为了解决上述问题，<code>Java</code> 引入了包（<code>package</code>）机制，提供了类的多层命名空间，用于解决类的命名冲突、类文件管理等问题。</p>
+<h3 id="61-包的作用"><a class="markdownIt-Anchor" href="#61-包的作用"></a> 6.1 包的作用</h3>
+<ul>
+<li>
+<p><strong>包可以避免名字冲突</strong>：如同文件夹一样，包也采用了树形目录的存储方式。同一个包中的类名字是不同的，不同的包中的类的名字是可以相同的，当同时调用两个不同包中相同类名的类时，应该加上包名加以区别。</p>
+</li>
+<li>
+<p><strong>包限定了访问权限</strong>：拥有包访问权限的类才能访问某个包中的类。</p>
+</li>
+<li>
+<p><strong>包能够较好的管理类</strong>：把功能相似或相关的类或接口组织在同一个包中，方便类的查找和使用。</p>
+</li>
+</ul>
+<h3 id="62-包的创建package"><a class="markdownIt-Anchor" href="#62-包的创建package"></a> 6.2 包的创建（package）</h3>
+<ul>
+<li>
+<p><code>Java</code> 中使用 <code>package</code> 语句定义包，<code>package</code> 语句应该放在源文件的第一行，在每个 <code>Java</code> 源文件中只能有一个包定义语句，并且 <code>package</code> 语句适用于所有类型（类、接口、枚举或注释）的源文件。</p>
+</li>
+<li>
+<p>如果一个源文件中没有使用包声明，那么其中的类，函数，枚举，注释等将被放在一个无名的包（<code>unnamed package</code>）中。</p>
+</li>
+<li>
+<p>包的创建语句语法格式为：<code>package pkg1[．pkg2[．pkg3…]];</code></p>
+<ul>
+<li>
+<p>Java 包的命名规则如下：</p>
+<ul>
+<li>
+<p>包名全部由小写字母（多个单词也全部小写）。</p>
+</li>
+<li>
+<p>如果包名包含多个层次，每个层次用 “<code>.</code>” 分割。</p>
+</li>
+<li>
+<p>包名一般由倒置的域名开头，比如 <code>com.baidu</code>，不要有 <code>www</code>。</p>
+</li>
+<li>
+<p>自定义包不能以 <code>java</code> 开头，这是一种安全机制，如果以 <code>java</code> 开头，系统直接抛异常。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="63-包的导入import"><a class="markdownIt-Anchor" href="#63-包的导入import"></a> 6.3 包的导入（import）</h3>
+<ul>
+<li>
+<p>为了能够使用某一个包（非本包）的成员，我们需要在 <code>Java</code> 程序中明确导入该包，使用 “<code>import</code>” 语句可完成此功能。使用本包中的成员，可以省略 “<code>import</code>” 语句。</p>
+</li>
+<li>
+<p><code>import</code> 语句位于 <code>package</code> 语句之后，所有类的定义之前。</p>
+</li>
+<li>
+<p>一个 <code>Java</code> 源文件只能包含一个 <code>package</code> 语句，但可以包含多个 <code>import</code> 语句。</p>
+</li>
+<li>
+<p>包的导入语句语法格式为：<code>import package1[.package2…].(classname|*);</code>。</p>
+<ul>
+<li>
+<p>导入包中指定类：使用具体的类名 <code>classname</code>，<code>import package1[.package2…].classname;</code>。</p>
+</li>
+<li>
+<p>导入包中所有类：使用通配符 <code>*</code>，<code>import package1[.package2…].*;</code>。</p>
+<ul>
+<li>注：使用通配符 <code>*</code> 仅是导入包中所有类，如果使用子包下的结构，则仍需显式导入。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>Java</code> 默认为所有源文件导入 <code>java.lang</code> 包下的所有类，因此前面在 <code>Java</code> 程序中使用 <code>String</code>、<code>System</code> 类时都无须使用 <code>import</code> 语句来导入这些类。但对于前面介绍数组时提到的 <code>Arrays</code> 工具类，其位于 <code>java.util</code> 包下，则必须使用 <code>import</code> 语句来导入该类。</p>
+<ul>
+<li>注：使用 <code>java.lang</code> 子包中的类，仍需显式导入，例：<code>import java.lang.reflect.Field;</code>。</li>
+</ul>
+</li>
+<li>
+<p>在一些极端的情况下，例：使用两个不同包中同类名的类。此时，在源文件中至少有一个类需要使用 <strong>全类名</strong>，例：需要在程序中使用 <code>java.sql</code> 包下的类 <code>Date</code>，也需要使用 <code>java.util</code> 包下的类 <code>Date</code>，则至少有一个类需要使用全类名，<code>java.sql.Date d = new java.sql.Date();</code>。</p>
+</li>
+<li>
+<p><code>import static</code> 是静态导入的声明。之前我们如果想调用一个类里的静态成员，需要首先 <code>import</code> 这个类，再使用 “<code>类名.成员名</code>” 的方式，例：<code>Math.PI</code>；而静态导入声明从类中导入静态成员，从而允许在没有类限定的情况下直接使用静态成员，例：<code>PI</code>。</p>
+</li>
+</ul>
+<h3 id="64-系统包"><a class="markdownIt-Anchor" href="#64-系统包"></a> 6.4 系统包</h3>
+<ul>
+<li>
+<p><code>Java SE</code> 提供了一些系统包，其中包含了 <code>Java</code> 开发中常用的基础类。在 <code>Java</code> 开发中，开发人员可以自定义包，也可以使用系统包，常用的系统包如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">包</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>java.lang</code></td>
+<td style="text-align:center"><code>Java</code> 的核心类库，包含运行 <code>Java</code> 程序必不可少的系统类。例：基本数据类型、基本数学函数（<code>Math</code>）、字符串处理（<code>String</code>）、系统类（<code>System</code>）和线程（<code>Thread</code>）等，系统默认加载这个包。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>java.io</code></td>
+<td style="text-align:center"><code>Java</code> 语言的标准输入输出类库。例：基本输入/输出流、文件输入/输出、过滤输入/输出流等。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>java.util</code></td>
+<td style="text-align:center">包含如处理时间的 <code>Date</code> 类，处理动态数组的 <code>Vector</code> 类，以及 <code>Stack</code> 和 <code>HashTable</code> 类。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>java.text</code></td>
+<td style="text-align:center">提供以与自然语言无关的方式来处理文本、日期、数字和消息的类和接口。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>java.awt</code></td>
+<td style="text-align:center">构建图形用户界面（<code>GUI</code>）的类库，低级绘图操作 <code>Graphics</code> 类、图形界面组件和布局管理（例：<code>Checkbox</code> 类、<code>Container</code> 类、<code>LayoutManger</code> 接口等），以及用户界面交互控制和事件响应（例：<code>Event</code> 类）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>java.awt.image</code></td>
+<td style="text-align:center">处理和操纵来自网上的图片的 <code>Java</code> 工具类库。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>java.wat.peer</code></td>
+<td style="text-align:center">很少在程序中直接用到，使得同一个 <code>Java</code> 程序在不同的软硬件平台上运行。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>java.net</code></td>
+<td style="text-align:center">实现网络功能的类库有 <code>Socket</code> 类、<code>ServerSocket</code> 类。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>java.lang.reflect</code></td>
+<td style="text-align:center">提供用于反射对象的工具。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>java.util.zip</code></td>
+<td style="text-align:center">实现文件压缩功能。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>java.awt.datatransfer</code></td>
+<td style="text-align:center">处理数据传输的工具类，包括剪贴板、字符串发送器等。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>java.sql</code></td>
+<td style="text-align:center">实现 <code>JDBC</code> 的类库。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>java.rmi</code></td>
+<td style="text-align:center">提供远程连接与载入的支持。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>java.security</code></td>
+<td style="text-align:center">提供安全性方面的有关支持。</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h2 id="七-mvc模式"><a class="markdownIt-Anchor" href="#七-mvc模式"></a> 七、MVC模式</h2>
+<ul>
+<li>
+<p><code>MVC</code>模式（<code>Model–view–controller</code>）是软件工程中的一种 <strong>软件架构模式</strong>，把软件系统分为三个基本部分：模型（<code>Model</code>）、视图（<code>View</code>）和控制器（<code>Controller</code>）。</p>
+</li>
+<li>
+<p><code>MVC</code> 模式的目的是实现一种动态的程序设计，使后续对程序的修改和扩展简化，并且实现对程序某一部分的重复使用。此外，该模式通过对程序复杂度的简化，使程序结构更加直观，通过将程序的输入输出、数据处理及数据的展示分离，并提供各模块之间的通信方式，降低了程序耦合性。</p>
+</li>
+<li>
+<p><strong>模型</strong>（<code>Model</code>）：用于封装与应用程序的业务逻辑相关的数据以及对数据的处理方法。“<code>Model</code>” 有对数据直接访问的权力，例：对数据库的访问。“<code>Model</code>” 不依赖 “<code>View</code>” 和 “<code>Controller</code>”，也就是说， <code>Model</code> 不关心它会被如何显示或是如何被操作。但是 <code>Model</code> 中数据的变化一般会通过一种刷新机制被公布。为了实现这种机制，那些用于监视此 <code>Model</code> 的 <code>View</code> 必须事先在此 <code>Model</code> 上注册，从而，<code>View</code> 可以了解在数据 <code>Model</code> 上发生的改变。（例：观察者模式）</p>
+<ul>
+<li>
+<p>数据对象封装：<code>model.bean</code> / <code>domain</code>。</p>
+</li>
+<li>
+<p>数据库操作类：<code>model.dao</code>。</p>
+</li>
+<li>
+<p>数据库：<code>model.db</code>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>视图</strong>（<code>View</code>）：实现数据的显示，在 <code>View</code> 中一般没有程序上的逻辑。为了实现 <code>View</code> 上的刷新功能，<code>View</code> 需要访问它监视的数据模型（<code>Model</code>），因此应该事先在被它监视的数据那里注册。</p>
+<ul>
+<li>
+<p>相关工具类：<code>view.utils</code>。</p>
+</li>
+<li>
+<p>自定义 <code>view</code>：<code>view.ui</code>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>控制器</strong>（<code>Controller</code>）：控制器作用于模型和视图上。它控制数据流向模型对象，并在数据变化时更新视图。它使视图与模型分离开。</p>
+<ul>
+<li>
+<p>应用界面相关：<code>controller.activity</code>。</p>
+</li>
+<li>
+<p>存放 <code>fragment</code>：<code>controller.fragment</code>。</p>
+</li>
+<li>
+<p>显示列表的适配器：<code>controller.adapter</code>。</p>
+</li>
+<li>
+<p>服务相关的：<code>controller.service</code>。</p>
+</li>
+<li>
+<p>抽取的基类：<code>controller.base</code>。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="八-面向对象特征之二继承性inheritance"><a class="markdownIt-Anchor" href="#八-面向对象特征之二继承性inheritance"></a> 八、面向对象特征之二：继承性（Inheritance）</h2>
+<h3 id="81-继承性的理解"><a class="markdownIt-Anchor" href="#81-继承性的理解"></a> 8.1 继承性的理解</h3>
+<ul>
+<li>
+<p>继承是面向对象的三大特征之一。继承和现实生活中的 “继承” 的相似之处是保留一些父辈的特性，从而减少代码冗余，提高代码复用性。</p>
+</li>
+<li>
+<p><code>Java</code> 中的继承就是在已经存在的类的基础上进行扩展，从而产生新的类。已经存在的类称为 <strong>父类</strong>、<strong>基类</strong> 或 <strong>超类</strong>（<code>superclass</code>），而新产生的类称为 <strong>子类</strong> 或 <strong>派生类</strong>（<code>subclass</code>）。</p>
+</li>
+<li>
+<p>在子类中，不仅包含父类的属性和方法，还可以增加新的属性和方法。</p>
+</li>
+<li>
+<p>父类和其子类间必须存在 “<strong>是一个</strong>” 即 “<code>is-a</code>” 的关系，否则不能用继承。</p>
+</li>
+<li>
+<p><code>Java</code> 继承性为之后 <code>Java</code> 多态性的使用，提供了前提。</p>
+</li>
+</ul>
+<h3 id="82-继承性的使用"><a class="markdownIt-Anchor" href="#82-继承性的使用"></a> 8.2 继承性的使用</h3>
+<ul>
+<li>
+<p><code>Java</code> 中子类继承父类的语法格式如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">修饰符 <span class="keyword">class</span> <span class="title class_">class_name</span> <span class="keyword">extends</span> <span class="title class_">extend_class</span> &#123;</span><br><span class="line">    <span class="comment">// 类的主体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>class_name</code> 表示 <strong>子类</strong>（<code>subclass</code>）的名称；</p>
+</li>
+<li>
+<p><code>extend_class</code> 表示 <strong>父类</strong>（<code>superclass</code>）的名称；</p>
+</li>
+<li>
+<p><code>extends</code> 关键字直接跟在子类名之后，其后面是该类要继承的父类名称。</p>
+<ul>
+<li><code>Java</code> 的继承通过 <code>extends</code> 关键字来实现，<code>extends</code> 的英文意思是扩展，而不是继承。<code>extends</code> 很好的体现了子类和父类的关系，即子类是对父类的扩展，子类是一种特殊的父类。国内把 <code>extends</code> 翻译为 “继承” 是因为子类扩展父类之后就可以获得父类的属性和方法，这与汉语中的继承（子类从父类获得一笔财富称为继承）具有相似性。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>类的继承不改变类成员的访问权限，也就是说，如果父类的成员是 <code>public</code>、<code>protected</code> 或 <code>默认（空白）</code>，它的子类仍具有相应的这些特性，并且子类不能获得父类的构造器。</p>
+<ul>
+<li>特别的，父类中声明为 <code>private</code> 的属性或方法，子类继承父类后，仍认为获取了父类中私有的成员，只是因为封装性的影响，使得子类不能直接调用父类的成员。</li>
+</ul>
+</li>
+</ul>
+<h3 id="83-java-单继承"><a class="markdownIt-Anchor" href="#83-java-单继承"></a> 8.3 Java 单继承</h3>
+<ul>
+<li>
+<p><code>Java</code> 不支持多继承，只允许一个类直接继承另一个类，即子类只能有一个 <strong>直接父类</strong>，<code>extends</code> 关键字后面只能有一个类名。</p>
+</li>
+<li>
+<p>子类直接继承的父类称为 <strong>直接父类</strong>，间接继承的父类称为 <strong>间接父类</strong>。一个类只能有一个直接父类，但是它可以有多个间接父类。</p>
+</li>
+<li>
+<p>子类继承父类以后，就获取了直接父类以及所有间接父类中声明的属性和方法。</p>
+</li>
+<li>
+<p>如果定义一个 <code>Java</code> 类时并未显式指定这个类的直接父类，则这个类 <strong>默认继承</strong> <code>java.lang.Object</code> <strong>类</strong>。因此，<code>java.lang.Object</code> 类是所有类的父类，要么是其直接父类，要么是其间接父类。因此所有的 <code>Java</code> 对象都可调用 <code>java.lang.Object</code> 类所定义的成员方法。</p>
+</li>
+</ul>
+<h3 id="84-方法的重写overrideoverwrite"><a class="markdownIt-Anchor" href="#84-方法的重写overrideoverwrite"></a> 8.4 方法的重写（Override/Overwrite）</h3>
+<ul>
+<li>
+<p>在子类中如果创建了一个与父类中 <strong>相同名称</strong>、<strong>相同返回值类型</strong>、<strong>相同参数列表</strong> 的方法，只是方法体中的实现不同，以实现不同于父类的功能，这种方式被称为方法重写（<code>override</code>），又称为方法的重置、覆盖。</p>
+</li>
+<li>
+<p>当父类中的方法无法满足子类需求或子类具有特有功能的时候，需要方法重写。</p>
+</li>
+<li>
+<p>子类可以根据需要，定义特定于自己的行为。既沿袭了父类的功能名称，又根据子类的需要重新实现父类方法，从而进行功能扩展增强。</p>
+</li>
+<li>
+<p>在重写方法时，需要遵循下面的规则：</p>
+<ul>
+<li>
+<p>子类重写的方法的方法名和形参列表必须完全与父类被重写的方法的方法名和形参列表相同。</p>
+</li>
+<li>
+<p>子类重写的方法的访问权限不能比父类中被重写的方法的访问权限更低（<code>public</code> &gt; <code>protected</code> &gt; <code>default</code> &gt; <code>private</code>）。</p>
+<ul>
+<li>特殊情况：子类不能重写父类中声明为 <code>private</code> 权限的方法。</li>
+</ul>
+</li>
+<li>
+<p>声明为 <code>final</code> 的方法不能被重写。</p>
+</li>
+<li>
+<p>声明为 <code>static</code> 的方法不能被重写，但是能够被再次声明。</p>
+</li>
+<li>
+<p>子类和父类在同一个包中，那么子类可以重写父类所有方法，除了声明为 <code>private</code> 和 <code>final</code> 的方法。</p>
+</li>
+<li>
+<p>子类和父类不在同一个包中，那么子类只能够重写父类的声明为 <code>public</code> 和 <code>protected</code> 的非 <code>final</code> 方法。</p>
+</li>
+<li>
+<p>返回类型与被重写方法的返回类型可以不相同，但是必须是父类返回值的派生类。</p>
+<ul>
+<li>
+<p>父类被重写的方法的返回值类型是 <code>void</code>，则子类重写的方法的返回值类型只能是 <code>void</code>。</p>
+</li>
+<li>
+<p>父类被重写的方法的返回值类型是 <strong>基本数据类型</strong> 或 <strong>数组</strong>，则子类重写的方法的返回值类型必须是相同的 <strong>基本数据类型</strong> 或 <strong>数组</strong>。</p>
+</li>
+<li>
+<p>父类被重写的方法的返回值类型是 <strong>类</strong>，则子类重写的方法的返回值类型必须是父类返回值的 <strong>派生类</strong>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>父类的构造器不能被子类重写。</p>
+</li>
+<li>
+<p>子类重写的方法能够抛出任何 <strong>非强制异常</strong>，无论被重写的方法是否抛出异常。但是，子类重写的方法不能抛出新的 <strong>强制性异常</strong>，或者比父类被重写方法声明的更广泛的 <strong>强制性异常</strong>，反之则可以。（后续异常处理中详解）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="85-super-关键字"><a class="markdownIt-Anchor" href="#85-super-关键字"></a> 8.5 super 关键字</h3>
+<ul>
+<li><code>super</code> 可以用来访问父类的构造器、普通方法和属性。</li>
+</ul>
+<h4 id="851-super-调用父类构造器"><a class="markdownIt-Anchor" href="#851-super-调用父类构造器"></a> 8.5.1 super 调用父类构造器</h4>
+<ul>
+<li>
+<p><code>super</code> 关键字可以在子类的构造器中显式地调用父类的构造器，语法格式：<code>super(parameter-list);</code></p>
+<ul>
+<li>
+<p><code>parameter-list</code> 指定了父类构造器中的所有参数。</p>
+</li>
+<li>
+<p>通过 <code>super</code> 来调用父类有参构造器时，只需要把相应的参数传过去。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>super(parameter-list)</code> 必须是在子类构造器中方法体的第一行。因此，<code>this(parameter-list)</code> 和 <code>super(parameter-list)</code> 只能二选一。</p>
+</li>
+<li>
+<p>在子类的构造器中，没有显式的声明 <code>this(parameter-list)</code> 或 <code>super(parameter-list)</code>，第一条语句默认为调用父类的无参构造器（即默认为 <code>super();</code>）。</p>
+<ul>
+<li>当父类中定义了有参构造器，没有定义无参构造器时，编译器会强制要求我们在父类中定义一个无参构造器，或在子类中定义一个包含父类有参构造器所含参数类型的构造器，并使用 <code>super(parameter-list)</code> 调用父类有参构造器，否则报错。</li>
+</ul>
+</li>
+<li>
+<p>在子类的多个构造器中，至少有一个类的构造器中使用 “<code>super(parameter-list)</code>” 调用父类构造器。</p>
+</li>
+</ul>
+<h4 id="852-super-访问父类成员"><a class="markdownIt-Anchor" href="#852-super-访问父类成员"></a> 8.5.2 super 访问父类成员</h4>
+<ul>
+<li>当子类的成员变量或成员方法与父类同名时，可以使用 <code>super</code> 关键字来访问父类中的成员。</li>
+</ul>
+<h5 id="1super-调用成员属性"><a class="markdownIt-Anchor" href="#1super-调用成员属性"></a> （1）super 调用成员属性</h5>
+<ul>
+<li>当父类和子类具有相同的成员属性时，可以使用 <code>super.member</code> 访问父类中的成员属性，其中 <code>member</code> 是父类中的成员属性。</li>
+</ul>
+<h5 id="2super-调用成员方法"><a class="markdownIt-Anchor" href="#2super-调用成员方法"></a> （2）super 调用成员方法</h5>
+<ul>
+<li>
+<p>当父类和子类具有相同的成员方法时，可以使用 <code>super.method()</code> 访问父类的成员方法，其中 <code>method</code> 是父类中的成员方法名。</p>
+</li>
+<li>
+<p>如果子类重写了父类的某一个方法，即子类和父类有相同的方法定义，但是有不同的方法体，此时，我们可以通过 <code>super</code> 来调用父类里面的这个方法。</p>
+</li>
+</ul>
+<h4 id="853-super-和-this-的区别"><a class="markdownIt-Anchor" href="#853-super-和-this-的区别"></a> 8.5.3 super 和 this 的区别</h4>
+<ul>
+<li>
+<p><code>this</code> 指的是当前对象的引用，<code>super</code> 是当前对象的父类对象的引用。</p>
+</li>
+<li>
+<p><code>this()</code> 和 <code>super()</code> 都指的是对象，所以，均不可以在 <code>static</code> 环境中使用，包括 <code>static</code> 变量、<code>static</code> 方法和 <code>static</code> 语句块。</p>
+</li>
+<li>
+<p><code>super</code> 关键字的用法：</p>
+<ul>
+<li>
+<p><code>super.父类属性名</code>：调用父类中的属性。</p>
+</li>
+<li>
+<p><code>super.父类方法名</code>：调用父类中的方法。</p>
+</li>
+<li>
+<p><code>super()</code>：调用父类的无参构造器。</p>
+</li>
+<li>
+<p><code>super(参数列表)</code>：调用父类的有参构造器。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>this</code> 关键字的用法：</p>
+<ul>
+<li>
+<p><code>this.属性名</code>：调用当前对象的属性。</p>
+</li>
+<li>
+<p><code>this.方法名(参数)</code>：调用当前对象的方法。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="86-子类对象实例化过程"><a class="markdownIt-Anchor" href="#86-子类对象实例化过程"></a> 8.6 子类对象实例化过程</h3>
+<ul>
+<li>
+<p>从结果上看：（继承性）</p>
+<ul>
+<li>
+<p>子类继承父类后，就获取了父类中声明的属性或方法。</p>
+</li>
+<li>
+<p>创建子类对象，在堆空间中就会加载所有父类中声明的属性。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>从过程上看：</p>
+<ul>
+<li>
+<p>当我们通过子类的构造器创建子类对象时，我们一定会直接或间接的调用其 <strong>直接父类</strong> 的构造器，进而调用 <strong>间接父类</strong> 的构造器，直到调用了 <code>java.lang.Object</code> 类中无参构造器，然后从 <code>java.lang.Object</code> 类的无参构造器开始执行。</p>
+<ul>
+<li>虽然创建子类对象时调用了 <strong>直接父类</strong> 和 <strong>间接父类</strong> 的构造器，但是自始至终只创建过一个对象，即 <code>new</code> 的子类对象。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://xindong2020.love">Mr.DONG</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://xindong2020.love/Java/Java08">https://xindong2020.love/Java/Java08</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xindong2020.love" target="_blank">Mr.DONG の 自习室</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaSE/">JavaSE</a><a class="post-meta__tags" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></div><div class="post_share"><div class="social-share" data-image="https://s6.jpg.cm/2022/09/07/PXRPf5.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/Ubuntu/15fbef57"><img class="prev-cover" src="https://s6.jpg.cm/2022/09/22/PbPyxf.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Ubuntu 20.04 美化主题、图标、光标、壁纸、登录背景</div></div></a></div><div class="next-post pull-right"><a href="/Ubuntu/1a25703d"><img class="next-cover" src="https://s6.jpg.cm/2022/09/22/PbR75z.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Ubuntu 20.04 常用软件 &amp; 必要配置</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/Java/Java07" title="Java 面向对象（一）"><img class="cover" src="https://s6.jpg.cm/2022/09/07/PXRV1D.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-05</div><div class="title">Java 面向对象（一）</div></div></a></div><div><a href="/Java/Java09" title="Java 面向对象（三）"><img class="cover" src="https://s6.jpg.cm/2022/09/22/PbPkz4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-09</div><div class="title">Java 面向对象（三）</div></div></a></div><div><a href="/Java/Java01" title="Java 入门"><img class="cover" src="https://s6.jpg.cm/2022/09/22/PbPhUH.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-19</div><div class="title">Java 入门</div></div></a></div><div><a href="/Java/Java02" title="Java 基础语法（上）"><img class="cover" src="https://s6.jpg.cm/2022/09/07/PXPOYk.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-27</div><div class="title">Java 基础语法（上）</div></div></a></div><div><a href="/Java/Java03" title="Java 基础语法（中）"><img class="cover" src="https://s6.jpg.cm/2022/09/22/PbPhUH.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-28</div><div class="title">Java 基础语法（中）</div></div></a></div><div><a href="/Java/Java04" title="Java 基础语法（下）"><img class="cover" src="https://s6.jpg.cm/2022/09/22/PbPfEE.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-29</div><div class="title">Java 基础语法（下）</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s6.jpg.cm/2022/09/07/PXPXyi.th.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Mr.DONG</div><div class="author-info__description">Mr.DONG学习记录</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fandong93"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/fandong93" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dongf19931107@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到 Mr.DONG の 自习室</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%B8%80%E5%B0%81%E8%A3%85encapsulation%E4%B8%8E%E9%9A%90%E8%97%8F"><span class="toc-text"> 一、面向对象特征之一：封装（Encapsulation）与隐藏</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%B0%81%E8%A3%85"><span class="toc-text"> 1.1 为什么需要封装？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E5%B0%81%E8%A3%85%E6%80%A7%E7%9A%84%E4%BD%93%E7%8E%B0"><span class="toc-text"> 1.2 封装性的体现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text"> 1.3 权限修饰符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98%E4%B9%8B%E4%B8%89%E6%9E%84%E9%80%A0%E5%99%A8%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="toc-text"> 二、类的成员之三：构造器（构造方法）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#21-%E4%BD%9C%E7%94%A8"><span class="toc-text"> 2.1 作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-%E8%AF%AD%E6%B3%95%E6%A0%BC%E5%BC%8F"><span class="toc-text"> 2.2 语法格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23-%E6%9E%84%E9%80%A0%E5%99%A8%E5%88%86%E7%B1%BB"><span class="toc-text"> 2.3 构造器分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#231-%E6%97%A0%E5%8F%82%E6%9E%84%E9%80%A0%E5%99%A8"><span class="toc-text"> 2.3.1 无参构造器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#232-%E6%9C%89%E5%8F%82%E6%9E%84%E9%80%A0%E5%99%A8"><span class="toc-text"> 2.3.2 有参构造器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24-%E5%B1%9E%E6%80%A7%E8%B5%8B%E5%80%BC%E8%BF%87%E7%A8%8B"><span class="toc-text"> 2.4 属性赋值过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-javabean"><span class="toc-text"> 三、JavaBean</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-uml-%E7%B1%BB%E5%9B%BE"><span class="toc-text"> 四、UML 类图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E5%85%B3%E9%94%AE%E5%AD%97this-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text"> 五、关键字：this 的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#51-this%E5%B1%9E%E6%80%A7%E5%90%8D"><span class="toc-text"> 5.1 this.属性名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#52-this%E6%96%B9%E6%B3%95%E5%90%8D%E5%AE%9E%E5%8F%82%E5%88%97%E8%A1%A8"><span class="toc-text"> 5.2 this.方法名(实参列表)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#53-this-%E8%B0%83%E7%94%A8%E6%9E%84%E9%80%A0%E5%99%A8"><span class="toc-text"> 5.3 this() 调用构造器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E5%85%B3%E9%94%AE%E5%AD%97package-import-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text"> 六、关键字：package、import 的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#61-%E5%8C%85%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text"> 6.1 包的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#62-%E5%8C%85%E7%9A%84%E5%88%9B%E5%BB%BApackage"><span class="toc-text"> 6.2 包的创建（package）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#63-%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5import"><span class="toc-text"> 6.3 包的导入（import）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#64-%E7%B3%BB%E7%BB%9F%E5%8C%85"><span class="toc-text"> 6.4 系统包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-mvc%E6%A8%A1%E5%BC%8F"><span class="toc-text"> 七、MVC模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E5%BE%81%E4%B9%8B%E4%BA%8C%E7%BB%A7%E6%89%BF%E6%80%A7inheritance"><span class="toc-text"> 八、面向对象特征之二：继承性（Inheritance）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#81-%E7%BB%A7%E6%89%BF%E6%80%A7%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text"> 8.1 继承性的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#82-%E7%BB%A7%E6%89%BF%E6%80%A7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text"> 8.2 继承性的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#83-java-%E5%8D%95%E7%BB%A7%E6%89%BF"><span class="toc-text"> 8.3 Java 单继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#84-%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E5%86%99overrideoverwrite"><span class="toc-text"> 8.4 方法的重写（Override&#x2F;Overwrite）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#85-super-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text"> 8.5 super 关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#851-super-%E8%B0%83%E7%94%A8%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E5%99%A8"><span class="toc-text"> 8.5.1 super 调用父类构造器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#852-super-%E8%AE%BF%E9%97%AE%E7%88%B6%E7%B1%BB%E6%88%90%E5%91%98"><span class="toc-text"> 8.5.2 super 访问父类成员</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1super-%E8%B0%83%E7%94%A8%E6%88%90%E5%91%98%E5%B1%9E%E6%80%A7"><span class="toc-text"> （1）super 调用成员属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2super-%E8%B0%83%E7%94%A8%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="toc-text"> （2）super 调用成员方法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#853-super-%E5%92%8C-this-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text"> 8.5.3 super 和 this 的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#86-%E5%AD%90%E7%B1%BB%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B%E5%8C%96%E8%BF%87%E7%A8%8B"><span class="toc-text"> 8.6 子类对象实例化过程</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/b657703c" title="Python3 函数"><img src="https://s6.jpg.cm/2022/09/22/PbPvcD.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python3 函数"/></a><div class="content"><a class="title" href="/b657703c" title="Python3 函数">Python3 函数</a><time datetime="2022-11-06T16:00:00.000Z" title="发表于 2022-11-07 00:00:00">2022-11-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/e37807" title="Python 文件操作（I/O）"><img src="https://s6.jpg.cm/2022/09/22/PbPD58.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python 文件操作（I/O）"/></a><div class="content"><a class="title" href="/e37807" title="Python 文件操作（I/O）">Python 文件操作（I/O）</a><time datetime="2022-11-06T16:00:00.000Z" title="发表于 2022-11-07 00:00:00">2022-11-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/f901d550" title="递归神经网络"><img src="https://s6.jpg.cm/2022/09/22/PbRQNu.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="递归神经网络"/></a><div class="content"><a class="title" href="/f901d550" title="递归神经网络">递归神经网络</a><time datetime="2022-11-06T16:00:00.000Z" title="发表于 2022-11-07 00:00:00">2022-11-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022  <i id="heartbeat" class="fa fas fa-heartbeat"></i> Mr.DONG</div><div class="footer_custom_text"><p> <a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="本站使用Hexo框架"></a>&nbsp; <a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="本站使用Butterfly主题"></a>&nbsp; <a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站使用Gtihub托管"></a>&nbsp; <a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> </p> <p> <img src="https://s6.jpg.cm/2022/09/21/PbLJdQ.png"/>&nbsp; <a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=46010802001122">琼公网安备 46010802001122号</a>&nbsp; <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/#/Integrated/recordQuery">琼ICP备2022012184号</a> </p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = false;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/01.jpg);"> <a class="categoryBar-list-link" href="categories/Java-开发语言/">Java 开发语言</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr">IDE 集成开发环境</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/02.jpg);"> <a class="categoryBar-list-link" href="categories/Python/">Python</a><span class="categoryBar-list-count">6</span><span class="categoryBar-list-descr">Java 开发语言</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/03.jpg);"> <a class="categoryBar-list-link" href="categories/JavaSE/">JavaSE</a><span class="categoryBar-list-count">9</span><span class="categoryBar-list-descr">Ubuntu 20.04 指南</span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/Java-开发语言/IDE-集成开发环境/">IDE 集成开发环境</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/Python/IDE-集成开发环境/">IDE 集成开发环境</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/Ubuntu-20-04-指南/">Ubuntu 20.04 指南</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/一元函数微积分/">一元函数微积分</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/Deep-learning/">Deep learning</a><span class="categoryBar-list-count">4</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/计算机基础/">计算机基础</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/Latex/">Latex</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.js"></script><!-- hexo injector body_end end --></body></html>

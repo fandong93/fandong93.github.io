@@ -1,0 +1,624 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Python3 基础 | Mr.DONG の 自习室</title><meta name="keywords" content="Python"><meta name="author" content="Mr.DONG"><meta name="copyright" content="Mr.DONG"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="一、Python 解释器 二、Python 注释 三、Python 变量  2.1 强、弱类型语言 2.2 Python 变量的定义 2.3 Python 变量的赋值   四、Python 基本数据类型  4.1 Numbers 数值  4.1.1 int 整型数  （1）int 整型 （2）bool 布尔型   4.1.2 float 浮点型数 4.1.3 complex 复数 4.1.4 数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python3 基础">
+<meta property="og:url" content="https://xindong2020.love/Python/Python01">
+<meta property="og:site_name" content="Mr.DONG の 自习室">
+<meta property="og:description" content="一、Python 解释器 二、Python 注释 三、Python 变量  2.1 强、弱类型语言 2.2 Python 变量的定义 2.3 Python 变量的赋值   四、Python 基本数据类型  4.1 Numbers 数值  4.1.1 int 整型数  （1）int 整型 （2）bool 布尔型   4.1.2 float 浮点型数 4.1.3 complex 复数 4.1.4 数">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s6.jpg.cm/2022/09/22/PbRGLe.jpg">
+<meta property="article:published_time" content="2022-09-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-11-21T08:29:44.228Z">
+<meta property="article:author" content="Mr.DONG">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s6.jpg.cm/2022/09/22/PbRGLe.jpg"><link rel="shortcut icon" href="https://s6.jpg.cm/2022/09/07/PXPkS4.th.png"><link rel="canonical" href="https://xindong2020.love/Python/Python01"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io/css/logofonts.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"R7ZHV2NELE","apiKey":"8aa9f67293bfb4f2895895aaaa92152f","indexName":"fandong","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":270},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Python3 基础',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-21 16:29:44'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/one.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/width.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/background.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/fonts.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/logofonts.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/fontsize.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/mouse.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/scrollbar.css"><link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/KaTeX/0.15.2/katex.min.css" rel="stylesheet"><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s6.jpg.cm/2022/09/07/PXPXyi.th.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/musics/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-images"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s6.jpg.cm/2022/09/22/PbRGLe.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Mr.DONG の 自习室</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/musics/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-images"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Python3 基础</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-30T16:00:00.000Z" title="发表于 2022-10-01 00:00:00">2022-10-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-21T08:29:44.228Z" title="更新于 2022-11-21 16:29:44">2022-11-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python/">Python</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Python3 基础"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%80-python-%E8%A7%A3%E9%87%8A%E5%99%A8">一、Python 解释器</a></li>
+<li><a href="#%E4%BA%8C-python-%E6%B3%A8%E9%87%8A">二、Python 注释</a></li>
+<li><a href="#%E4%B8%89-python-%E5%8F%98%E9%87%8F">三、Python 变量</a>
+<ul>
+<li><a href="#21-%E5%BC%BA-%E5%BC%B1%E7%B1%BB%E5%9E%8B%E8%AF%AD%E8%A8%80">2.1 强、弱类型语言</a></li>
+<li><a href="#22-python-%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89">2.2 Python 变量的定义</a></li>
+<li><a href="#23-python-%E5%8F%98%E9%87%8F%E7%9A%84%E8%B5%8B%E5%80%BC">2.3 Python 变量的赋值</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9B-python-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">四、Python 基本数据类型</a>
+<ul>
+<li><a href="#41-numbers-%E6%95%B0%E5%80%BC">4.1 Numbers 数值</a>
+<ul>
+<li><a href="#411-int-%E6%95%B4%E5%9E%8B%E6%95%B0">4.1.1 int 整型数</a>
+<ul>
+<li><a href="#1int-%E6%95%B4%E5%9E%8B">（1）int 整型</a></li>
+<li><a href="#2bool-%E5%B8%83%E5%B0%94%E5%9E%8B">（2）bool 布尔型</a></li>
+</ul>
+</li>
+<li><a href="#412-float-%E6%B5%AE%E7%82%B9%E5%9E%8B%E6%95%B0">4.1.2 float 浮点型数</a></li>
+<li><a href="#413-complex-%E5%A4%8D%E6%95%B0">4.1.3 complex 复数</a></li>
+<li><a href="#414-%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">4.1.4 数字类型转换</a></li>
+</ul>
+</li>
+<li><a href="#42-string-%E5%AD%97%E7%AC%A6%E4%B8%B2">4.2 String 字符串</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="一-python-解释器"><a class="markdownIt-Anchor" href="#一-python-解释器"></a> 一、Python 解释器</h2>
+<ul>
+<li>
+<p><code>Python</code> 是一种高级计算机语言，设计它们的目的是为了方便程序员理解和使用。但严格意义上来说，计算机只能理解一种非常低级的计算机语言，也就是 <strong>机器语言</strong>。</p>
+</li>
+<li>
+<p>我们需要设计一种方法，将高级语言翻译成计算机可以执行的机器语言。目前，有两种方法可以实现，分别是 <strong>编译器</strong> 和 <strong>解释器</strong>。</p>
+</li>
+<li>
+<p>使用 <strong>编译器</strong> 将自身转换成机器语言的高级语言，通常称为 <strong>编译型语言</strong>；而使 <strong>解释器</strong> 将自身转换成机器语言的高级语言，称为 <strong>解释型语言</strong>，<code>Python</code> 就是一种解释型编程语言。</p>
+</li>
+<li>
+<p><strong>解释型语言</strong> 由 <strong>解释器</strong> 逐行对源码进行解释，一边解释一边执行，不会生成可执行程序。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/25/PJxyiC.png"/>
+</div>
+</li>
+<li>
+<p><code>Python</code> 官方针对不同平台（例：<code>Windows</code>、<code>MacOS</code>、<code>Linux</code>）开发了不同的解释器，这些解释器必须要遵守同样的语法，识别同样的函数，完成同样的功能。只有这样，同一份代码才能在不同平台上拥有相同的执行结果。</p>
+</li>
+<li>
+<p><code>Python</code> 解析器种类</p>
+<ul>
+<li>
+<p><code>CPython</code>，<code>C</code> 语言开发的解释器 [官方]，应用广泛的解释器。</p>
+</li>
+<li>
+<p><code>IPython</code>，基于 <code>CPython</code> 的一种 <strong>交互式</strong> 解释器。</p>
+</li>
+<li>
+<p><code>PyPy</code>，基于 <code>Python</code> 语言开发的解释器，解析效率低。</p>
+</li>
+<li>
+<p><code>JPython</code>，运行在 <code>Java</code> 平台的解释器，直接把 <code>Python</code> 代码编译成 <code>Java</code> 字节码执行。</p>
+</li>
+<li>
+<p><code>IronPython</code>，运行在微软 <code>.Net</code> 平台的解释器，直接把 <code>Python</code> 代码编译成 <code>.Net</code> 字节码执行。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>Python</code> 解析器下载</p>
+<ul>
+<li>
+<p>官网：<a target="_blank" rel="noopener" href="https://www.python.org/downloads/release/python-379/">https://www.python.org/downloads/release/python-379/</a></p>
+</li>
+<li>
+<p>选择 <code>Windows x86-64 executable installer</code> 版本。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>Python</code> 解析器安装</p>
+<ul>
+<li>
+<p>双击 <code>python-3.7.9-amd64.exe</code> 安装包。</p>
+</li>
+<li>
+<p>勾选 <code>Add Python 3.7 to PATH</code>，然后点击 <code>Customize installation</code>。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/25/PJxihz.png"/>
+</div>
+</li>
+<li>
+<p><code>Python</code> 最重要的两部分：<code>Python</code> <strong>解释器</strong> 和 <code>pip</code> <strong>包依赖管理工具</strong>。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/25/PJxDnu.png"/>
+</div>
+</li>
+<li>
+<p>勾选 <code>Install for all users</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> 自定义安装路径 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Install</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> <code>Close</code>。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/26/PtQ1I6.png"/>
+</div>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/25/PJxOz4.png"/>
+</div>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/25/PJDGIX.png"/>
+</div>
+</li>
+<li>
+<p>测试安装成功：命令提示符中输入 <code>python</code>，出现交互式语言即为安装成功，输入 <code>exit()</code> 退出。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/25/PJDLwp.png"/>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="二-python-注释"><a class="markdownIt-Anchor" href="#二-python-注释"></a> 二、Python 注释</h2>
+<ul>
+<li>
+<p>作用：对代码进行解释和说明，提高程序的可读性。</p>
+</li>
+<li>
+<p><code>Python</code> 中的注释有 <strong>单行注释</strong> 和 <strong>多行注释</strong>。</p>
+<ul>
+<li>
+<p><code>Python</code> 中单行注释以 <code>#</code> 开头，<code>PyCharm</code> 快捷键 <code>Ctrl + /</code>。例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这是单行注释</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>多行注释用三个单引号 <code>'''</code> 或者三个双引号 <code>&quot;&quot;&quot;</code> 将注释括起来，常用于代码块注释。例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">多行注释</span></span><br><span class="line"><span class="string">多行注释</span></span><br><span class="line"><span class="string">多行注释</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="三-python-变量"><a class="markdownIt-Anchor" href="#三-python-变量"></a> 三、Python 变量</h2>
+<h3 id="21-强-弱类型语言"><a class="markdownIt-Anchor" href="#21-强-弱类型语言"></a> 2.1 强、弱类型语言</h3>
+<ul>
+<li>
+<p><code>Python</code>、<code>JavaScript</code>、<code>PHP</code> 等脚本语言都是 <strong>弱类型语言</strong>，这种语言有下面两种特点：</p>
+<ul>
+<li>
+<p>变量无须声明就可以直接赋值，对一个不存在的变量赋值就相当于定义了一个新变量。</p>
+</li>
+<li>
+<p>变量的数据类型可以随时改变，例：同一变量可以先被被赋值为整数，然后再被赋值为字符串。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>弱类型不代表没有数据类型</strong>，弱类型是说在声明变量时无须指明数据类型，但是在编程语言的内部仍然是有数据类型的。</p>
+</li>
+<li>
+<p>我们可以使用 <code>type()</code> 内置函数类检测某个变量或者表达式的类型，</p>
+</li>
+</ul>
+<h3 id="22-python-变量的定义"><a class="markdownIt-Anchor" href="#22-python-变量的定义"></a> 2.2 Python 变量的定义</h3>
+<ul>
+<li>
+<p>变量是存储数据的一块内存地址的别名。</p>
+</li>
+<li>
+<p>每个变量都拥有独一无二的名字，通过变量的名字就能找到变量中的数据。</p>
+</li>
+<li>
+<p>变量存储的数据是临时的。</p>
+</li>
+</ul>
+<h3 id="23-python-变量的赋值"><a class="markdownIt-Anchor" href="#23-python-变量的赋值"></a> 2.3 Python 变量的赋值</h3>
+<ul>
+<li>
+<p>将数据放入变量的过程就叫做赋值。<code>Python</code> 使用等号 <code>=</code> 作为赋值运算符，格式：<code>name = value</code>，其中 <code>name</code> 表示变量名，<code>value</code> 表示变量值，也就是要存储的数据。</p>
+</li>
+<li>
+<p>变量的值可以随时被修改，只要重新赋值即可，可以将不同类型的数据赋值给同一个变量。</p>
+</li>
+<li>
+<p><strong>变量名要遵守</strong> <code>Python</code> <strong>标识符命名规范</strong>，<strong>还要避免和</strong> <code>Python</code> <strong>内置函数及</strong> <code>Python</code> <strong>保留字重名</strong>。</p>
+</li>
+<li>
+<p><strong>标识符</strong> 主要作用是作为变量、函数、类、模块及其他对象的名称，<code>Python</code> 标识符命名规范：</p>
+<ul>
+<li>
+<p>标识符是由字母（<code>A ~ Z</code> 和 <code>a ~ z</code>）、数字和下划线（<code>_</code>）组成。</p>
+</li>
+<li>
+<p>标识符第一个字符不能是数字。</p>
+</li>
+<li>
+<p>标识符不能和 <code>Python</code> 中的保留字相同。</p>
+</li>
+<li>
+<p>标识符严格区分大小写。</p>
+</li>
+<li>
+<p>以下划线开头的标识符通常有特殊含义，例：</p>
+<ul>
+<li>
+<p>以 <strong>单下划线开头</strong> 的标识符（例：<code>_width</code>）表示不能直接访问的 <strong>类属性</strong>，其无法通过 <code>from ... import *</code> 的方式导入。</p>
+</li>
+<li>
+<p>以 <strong>双下划线开头</strong> 的标识符（例：<code>__add</code>）表示 <strong>类的私有成员</strong>。</p>
+</li>
+<li>
+<p>以 <strong>双下划线开头和结尾</strong> 的标识符（例：<code>__init__</code>），是 <strong>专用标识符</strong>。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>保留字</strong> 是 <code>Python</code> 语言中一些已经被赋予特定意义的单词，所以不能使用这些保留字作为标识符给变量、函数、类、模块及其他对象命名。<code>Python</code> 中一共有 <code>33</code> 个保留字，如下表所示：</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/24/PJ4FhE.png"/>
+</div>
+<ul>
+<li>注：<code>Python</code> 严格区分大小写，保留字也不例外。所以，<code>False</code> 是保留字，但 <code>false</code> 不是保留字。</li>
+</ul>
+</li>
+<li>
+<p><strong>内置函数</strong> 是 <code>Python</code> 解释器自带的函数，这些函数可以直接使用，不需要导入某个模块。下表列出了 <code>Python 3.x</code> 中的所有内置函数。</p>
+<div align=center>
+<img src="https://s6.jpg.cm/2022/10/24/PJ4mnQ.png"/>
+</div>
+<ul>
+<li>不要使用内置函数作为标识符，虽然这样做 <code>Python</code> 解释器不会报错，但这会导致同名的内置函数被覆盖，从而无法使用。</li>
+</ul>
+</li>
+<li>
+<p><code>Python</code> 变量的命名习惯：</p>
+<ul>
+<li>
+<p><code>Python</code> 变量命名一定要做到见名知义。</p>
+</li>
+<li>
+<p>当标识符用作 <strong>模块名</strong> 或 <strong>包名</strong> 时，应全部使用小写字母，尽量不使用下划线。</p>
+</li>
+<li>
+<p>当标识符用作 <strong>类名</strong> 时，应采用单词首字母大写的形式（<strong>大驼峰</strong>），私有类使用一个下划线开头。</p>
+</li>
+<li>
+<p>当标识符用作 <strong>函数名</strong> 时，应全部使用小写字母，多个单词之间使用下划线分割。</p>
+<ul>
+<li>
+<p>类的 <strong>私有函数</strong> 使用下划线（<code>_</code>）开头（该函数可被继承访问）。</p>
+</li>
+<li>
+<p>类的 <strong>私有函数</strong> 使用单下划线（<code>_</code>）开头（该函数不可被继承访问）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>当标识符用作 <strong>变量名</strong> 时，应全部使用小写字母，多个单词之间使用下划线分割。</p>
+<ul>
+<li>
+<p>类的 <strong>内部变量</strong> 使用单下划线（<code>_</code>）开头（该变量可被继承访问）。</p>
+</li>
+<li>
+<p>类的 <strong>私有变量</strong> 使用双下划线（<code>__</code>）开头（该变量不可被继承访问）</p>
+</li>
+</ul>
+</li>
+<li>
+<p>当标识符用作 <strong>常量</strong> 时，应全部使用大写字母，多个单词之间使用下划线分割。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="四-python-基本数据类型"><a class="markdownIt-Anchor" href="#四-python-基本数据类型"></a> 四、Python 基本数据类型</h2>
+<ul>
+<li>
+<p><code>Python</code> 基本数据类型一般分为 <code>6</code> 种：数值（<code>Numbers</code>）、字符串（<code>String</code>）、列表（<code>List</code>）、元组（<code>Tuple</code>）、字典（<code>Dictionary</code>）、集合（<code>Set</code>）。</p>
+</li>
+<li>
+<p><code>Python</code> 的六个标准数据类型中：</p>
+<ul>
+<li>
+<p>不可变数据（<code>3</code> 个）：<code>Number</code>（数字）、<code>String</code>（字符串）、<code>Tuple</code>（元组）。</p>
+</li>
+<li>
+<p>可变数据（<code>3</code> 个）：<code>List</code>（列表）、<code>Dictionary</code>（字典）、<code>Set</code>（集合）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>Python</code> 内置的 <code>type()</code> 函数可以用来查询变量所指向的对象类型。</p>
+</li>
+</ul>
+<h3 id="41-numbers-数值"><a class="markdownIt-Anchor" href="#41-numbers-数值"></a> 4.1 Numbers 数值</h3>
+<ul>
+<li>
+<p><code>Numbers</code> 数字类型是不允许改变的，这就意味着如果改变数字数据类型的值，将重新分配内存空间。</p>
+</li>
+<li>
+<p><code>Python</code> 中数字类型有 <code>3</code> 种：整型数（<code>int</code>）、浮点型数（<code>float</code>）、复数（<code>complex</code>）。其中，整型数又可以分为整型（<code>int</code>）和布尔型（<code>bool</code>）。</p>
+</li>
+</ul>
+<h4 id="411-int-整型数"><a class="markdownIt-Anchor" href="#411-int-整型数"></a> 4.1.1 int 整型数</h4>
+<h5 id="1int-整型"><a class="markdownIt-Anchor" href="#1int-整型"></a> （1）int 整型</h5>
+<ul>
+<li>
+<p>类型 <code>&lt;class 'int'&gt;</code>。</p>
+</li>
+<li>
+<p><code>Python</code> 整数不分类型，或者说它只有一种类型的整数。<code>Python</code> 整数的取值范围是无限的，不管多大或者多小的数字。</p>
+</li>
+<li>
+<p>当所用数值超过计算机自身的计算能力时，<code>Python</code> 会自动转用高精度计算（大数计算）。</p>
+</li>
+<li>
+<p>在 <code>Python</code> 中，可以使用多种进制来表示整数：</p>
+<ul>
+<li>
+<p>十进制形式：常见的整数形式，由 <code>0 ~ 9</code> 共十个数字排列组合而成。</p>
+</li>
+<li>
+<p>二进制形式：由 <code>0</code> 和 <code>1</code> 两个数字组成，书写时以 <code>0b</code> 或 <code>0B</code> 开头。</p>
+</li>
+<li>
+<p>八进制形式：由 <code>0 ~ 7</code> 共八个数字组成，书写时以 <code>0o</code> 或 <code>0O</code> 开头。</p>
+</li>
+<li>
+<p>十六进制形式：由 <code>0 ~ 9</code> 十个数字和 <code>A ~ F</code>（或 <code>a ~ f</code>）六个字母组成，书写时以 <code>0x</code> 或 <code>0X</code> 开头。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>为了提高数字的的可读性，<code>Python 3.x</code> 允许使用下划线 <code>_</code> 作为数字（包括整数和小数）的分隔符。通常每隔三个数字添加一个下划线，类似于英文数字中的逗号。例：<code>num = 1_234.123_456</code>。</p>
+</li>
+</ul>
+<h5 id="2bool-布尔型"><a class="markdownIt-Anchor" href="#2bool-布尔型"></a> （2）bool 布尔型</h5>
+<ul>
+<li>
+<p>类型 <code>&lt;class 'bool'&gt;</code>。</p>
+</li>
+<li>
+<p><code>Python</code> 提供了 <code>bool</code> 类型来表示真（对）或假（错），其中 <strong>真</strong>（<strong>对</strong>）使用 <code>True</code> 来代表、<strong>假</strong>（<strong>错</strong>）使用 <code>False</code> 来代表。</p>
+</li>
+<li>
+<p><code>True</code> 和 <code>False</code> 是 <code>Python</code> 中的关键字，要注意字母的大小写。</p>
+</li>
+<li>
+<p>在 <code>Python</code> 中，<code>bool</code> 是 <code>int</code> 的子类，<code>bool.__base__</code> 返回的 <strong>基类</strong> 是 <code>&lt;class 'int'&gt;</code>，<code>True</code> 和 <code>False</code> 可以和数字直接相加，类似于数值 <code>1</code> 和 <code>0</code>。在实际使用中，<code>True == 1</code>、<code>False == 0</code> 会返回 <code>True</code>。</p>
+</li>
+</ul>
+<h4 id="412-float-浮点型数"><a class="markdownIt-Anchor" href="#412-float-浮点型数"></a> 4.1.2 float 浮点型数</h4>
+<ul>
+<li>
+<p>类型 <code>&lt;class 'float'&gt;</code>。</p>
+</li>
+<li>
+<p><code>Python</code> 只有一种小数类型，就是 <code>float</code>。书写时必须包含一个小数点，否则会被当作整数处理。</p>
+</li>
+<li>
+<p><code>Python</code> 中的小数有两种书写形式：</p>
+<ul>
+<li>
+<p>十进制形式：常见的浮点数形式。</p>
+</li>
+<li>
+<p>指数形式：写法为 <code>aEn</code> 或 <code>aen</code>，整个表达式等价于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>×</mo><mn>1</mn><msup><mn>0</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">a×10^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span>。例：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2.1</mn><mi>E</mi><mn>5</mn><mo>=</mo><mn>2.1</mn><mo>×</mo><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">2.1E5 = 2.1×10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">.</span><span class="mord">1</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord">5</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mord">.</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span>。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="413-complex-复数"><a class="markdownIt-Anchor" href="#413-complex-复数"></a> 4.1.3 complex 复数</h4>
+<ul>
+<li>
+<p>类型 <code>&lt;class 'complex'&gt;</code>。</p>
+</li>
+<li>
+<p>复数（<code>complex</code>）是 <code>Python</code> 的内置类型，直接书写即可。</p>
+</li>
+<li>
+<p>复数由实部（<code>real</code>）和虚部（<code>imag</code>）构成，在 <code>Python</code> 中，复数的虚部以 <code>j</code> 或者 <code>J</code> 作为后缀，具体格式为：<code>a + bj</code>，其中 <code>a</code> 表示实部，<code>b</code> 表示虚部。例：<code>12 + 0.2j</code>。</p>
+</li>
+<li>
+<p>使用 <code>complex</code> 函数可以表示复数，例：<code>complex(1, 2)</code> 表示复数 <code>1 + 2j</code>。</p>
+</li>
+</ul>
+<h4 id="414-数字类型转换"><a class="markdownIt-Anchor" href="#414-数字类型转换"></a> 4.1.4 数字类型转换</h4>
+<ul>
+<li>
+<p><code>int(x)</code>：内置函数，将 <code>x</code> 转换为一个整数。</p>
+</li>
+<li>
+<p><code>float(x)</code>：内置函数，将 <code>x</code> 转换为一个浮点数。</p>
+</li>
+<li>
+<p><code>complex(x)</code>：内置函数，将 <code>x</code> 转换为一个复数，实数部分为 <code>x</code>，虚数部分为 <code>0</code>。</p>
+</li>
+<li>
+<p><code>complex(x, y)</code>：内置函数，将 <code>x</code> 和 <code>y</code> 转换到一个复数，实数部分为 <code>x</code>，虚数部分为 <code>y</code>。</p>
+</li>
+</ul>
+<h3 id="42-string-字符串"><a class="markdownIt-Anchor" href="#42-string-字符串"></a> 4.2 String 字符串</h3>
+<ul>
+<li>
+<p><code>Python</code> 中的字符串使用双引号 <code>&quot; &quot;</code> 或单引号 <code>' '</code> 创建，双引号和单引号没有区别。</p>
+</li>
+<li>
+<p>当字符串内容中出现 <strong>引号</strong> 时，需要对其进行特殊处理，有两种处理方法：</p>
+<ul>
+<li>
+<p>在引号前面添加反斜杠 <code>\</code> 对引号进行转义，将引号作为普通文本。</p>
+</li>
+<li>
+<p>使用不同的引号创建字符串，如果字符串内容中出现了单引号，可以使用双引号创建字符串，反之亦然。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>要想 <strong>换行书写</strong> 一个比较长的字符串，可以在行尾添加反斜杠 <code>\</code> 对字符串内容实现换行。</p>
+</li>
+<li>
+<p><code>Python</code> 提供了 <strong>长字符串</strong> 的使用。所谓长字符串，就是可以直接换行（不用加反斜杠 <code>\</code>）书写的字符串。</p>
+<ul>
+<li>
+<p><code>Python</code> 长字符串由三个双引号 <code>&quot;&quot;&quot;</code> 或者三个单引号 <code>'''</code> 创建。</p>
+</li>
+<li>
+<p>长字符串中的换行、空格、缩进等空白符都会原样输出。</p>
+</li>
+<li>
+<p>在长字符串中放置单引号或者双引号不会导致解析错误。</p>
+</li>
+<li>
+<p>如果长字符串没有赋值给任何变量，那么这个长字符串就相当于多行注释。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>原始字符串</strong> 就是在普通字符串或者长字符串的开头加上 <code>r</code> 前缀。</p>
+<ul>
+<li>
+<p>如果普通字符串的原始字符串中出现引号，程序同样需要对引号进行转义，但是和普通字符串不同的是，此时用于转义的反斜杠会变成字符串内容的一部分。</p>
+</li>
+<li>
+<p>原始字符串中的反斜杠仍然会对引号进行转义，因此原始字符串的结尾处不能是反斜杠，否则字符串结尾处的引号会被转义，导致字符串不能正确结束。</p>
+</li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://xindong2020.love">Mr.DONG</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://xindong2020.love/Python/Python01">https://xindong2020.love/Python/Python01</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xindong2020.love" target="_blank">Mr.DONG の 自习室</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a></div><div class="post_share"><div class="social-share" data-image="https://s6.jpg.cm/2022/09/22/PbRGLe.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/IDE/PyCharm"><img class="prev-cover" src="https://s6.jpg.cm/2022/09/22/PbPaEO.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">PyCharm 的配置及使用</div></div></a></div><div class="next-post pull-right"><a href="/Math/Calculus01"><img class="next-cover" src="https://s6.jpg.cm/2022/09/07/PXPf8E.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">极限与连续</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/Python/Python02" title="Python3 序列"><img class="cover" src="https://s6.jpg.cm/2022/09/22/PbPfEE.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-05</div><div class="title">Python3 序列</div></div></a></div><div><a href="/IDE/PyCharm" title="PyCharm 的配置及使用"><img class="cover" src="https://s6.jpg.cm/2022/09/22/PbPaEO.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-03</div><div class="title">PyCharm 的配置及使用</div></div></a></div><div><a href="/b657703c" title="Python3 函数"><img class="cover" src="https://s6.jpg.cm/2022/09/22/PbPvcD.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-07</div><div class="title">Python3 函数</div></div></a></div><div><a href="/e37807" title="Python 文件操作（I&#x2F;O）"><img class="cover" src="https://s6.jpg.cm/2022/09/22/PbPD58.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-07</div><div class="title">Python 文件操作（I&#x2F;O）</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s6.jpg.cm/2022/09/07/PXPXyi.th.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Mr.DONG</div><div class="author-info__description">Mr.DONG学习记录</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fandong93"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/fandong93" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dongf19931107@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到 Mr.DONG の 自习室</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-python-%E8%A7%A3%E9%87%8A%E5%99%A8"><span class="toc-text"> 一、Python 解释器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-python-%E6%B3%A8%E9%87%8A"><span class="toc-text"> 二、Python 注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-python-%E5%8F%98%E9%87%8F"><span class="toc-text"> 三、Python 变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#21-%E5%BC%BA-%E5%BC%B1%E7%B1%BB%E5%9E%8B%E8%AF%AD%E8%A8%80"><span class="toc-text"> 2.1 强、弱类型语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-python-%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text"> 2.2 Python 变量的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23-python-%E5%8F%98%E9%87%8F%E7%9A%84%E8%B5%8B%E5%80%BC"><span class="toc-text"> 2.3 Python 变量的赋值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-python-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 四、Python 基本数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-numbers-%E6%95%B0%E5%80%BC"><span class="toc-text"> 4.1 Numbers 数值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#411-int-%E6%95%B4%E5%9E%8B%E6%95%B0"><span class="toc-text"> 4.1.1 int 整型数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1int-%E6%95%B4%E5%9E%8B"><span class="toc-text"> （1）int 整型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2bool-%E5%B8%83%E5%B0%94%E5%9E%8B"><span class="toc-text"> （2）bool 布尔型</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#412-float-%E6%B5%AE%E7%82%B9%E5%9E%8B%E6%95%B0"><span class="toc-text"> 4.1.2 float 浮点型数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#413-complex-%E5%A4%8D%E6%95%B0"><span class="toc-text"> 4.1.3 complex 复数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#414-%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text"> 4.1.4 数字类型转换</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-string-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text"> 4.2 String 字符串</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/b657703c" title="Python3 函数"><img src="https://s6.jpg.cm/2022/09/22/PbPvcD.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python3 函数"/></a><div class="content"><a class="title" href="/b657703c" title="Python3 函数">Python3 函数</a><time datetime="2022-11-06T16:00:00.000Z" title="发表于 2022-11-07 00:00:00">2022-11-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/e37807" title="Python 文件操作（I/O）"><img src="https://s6.jpg.cm/2022/09/22/PbPD58.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python 文件操作（I/O）"/></a><div class="content"><a class="title" href="/e37807" title="Python 文件操作（I/O）">Python 文件操作（I/O）</a><time datetime="2022-11-06T16:00:00.000Z" title="发表于 2022-11-07 00:00:00">2022-11-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/f901d550" title="递归神经网络"><img src="https://s6.jpg.cm/2022/09/22/PbRQNu.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="递归神经网络"/></a><div class="content"><a class="title" href="/f901d550" title="递归神经网络">递归神经网络</a><time datetime="2022-11-06T16:00:00.000Z" title="发表于 2022-11-07 00:00:00">2022-11-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022  <i id="heartbeat" class="fa fas fa-heartbeat"></i> Mr.DONG</div><div class="footer_custom_text"><p> <a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="本站使用Hexo框架"></a>&nbsp; <a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="本站使用Butterfly主题"></a>&nbsp; <a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站使用Gtihub托管"></a>&nbsp; <a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> </p> <p> <img src="https://s6.jpg.cm/2022/09/21/PbLJdQ.png"/>&nbsp; <a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=46010802001122">琼公网安备 46010802001122号</a>&nbsp; <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/#/Integrated/recordQuery">琼ICP备2022012184号</a> </p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = false;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/01.jpg);"> <a class="categoryBar-list-link" href="categories/Java-开发语言/">Java 开发语言</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr">IDE 集成开发环境</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/02.jpg);"> <a class="categoryBar-list-link" href="categories/Python/">Python</a><span class="categoryBar-list-count">6</span><span class="categoryBar-list-descr">Java 开发语言</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/03.jpg);"> <a class="categoryBar-list-link" href="categories/JavaSE/">JavaSE</a><span class="categoryBar-list-count">9</span><span class="categoryBar-list-descr">Ubuntu 20.04 指南</span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/Java-开发语言/IDE-集成开发环境/">IDE 集成开发环境</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/Python/IDE-集成开发环境/">IDE 集成开发环境</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/Ubuntu-20-04-指南/">Ubuntu 20.04 指南</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/一元函数微积分/">一元函数微积分</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/Deep-learning/">Deep learning</a><span class="categoryBar-list-count">4</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/计算机基础/">计算机基础</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/Latex/">Latex</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.js"></script><!-- hexo injector body_end end --></body></html>
