@@ -1,0 +1,1408 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>NumPy 教程一（属性、类型、创建、切片、索引、广播） | Mr.DONG の 自习室</title><meta name="keywords" content="Numpy"><meta name="author" content="Mr.DONG"><meta name="copyright" content="Mr.DONG"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="一、NumPy ndarray 对象  1.1 ndarray 对象简介 1.2 ndarray 对象创建 1.3 ndarray 的设计哲学 1.4 ndarray 的内存布局   二、NumPy 数组属性 三、NumPy 数据类型  3.1 常用 NumPy 基本类型 3.2 数据类型对象（dtype） 3.3 日期时间（datetime64）和时间增量（timedelta64）  3.3.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NumPy 教程一（属性、类型、创建、切片、索引、广播）">
+<meta property="og:url" content="https://xindong2020.love/Numpy/Numpy01">
+<meta property="og:site_name" content="Mr.DONG の 自习室">
+<meta property="og:description" content="一、NumPy ndarray 对象  1.1 ndarray 对象简介 1.2 ndarray 对象创建 1.3 ndarray 的设计哲学 1.4 ndarray 的内存布局   二、NumPy 数组属性 三、NumPy 数据类型  3.1 常用 NumPy 基本类型 3.2 数据类型对象（dtype） 3.3 日期时间（datetime64）和时间增量（timedelta64）  3.3.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover35.jpg">
+<meta property="article:published_time" content="2022-12-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-12-12T16:18:55.417Z">
+<meta property="article:author" content="Mr.DONG">
+<meta property="article:tag" content="Numpy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover35.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/favicon.png"><link rel="canonical" href="https://xindong2020.love/Numpy/Numpy01"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io/css/logofonts.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"R7ZHV2NELE","apiKey":"8aa9f67293bfb4f2895895aaaa92152f","indexName":"fandong","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":270},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'NumPy 教程一（属性、类型、创建、切片、索引、广播）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-13 00:18:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/one.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/width.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/background.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/fonts.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/logofonts.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/fontsize.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/mouse.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/scrollbar.css"><link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/KaTeX/0.15.2/katex.min.css" rel="stylesheet"><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/avatar.png" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/musics/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-images"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover35.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Mr.DONG の 自习室</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/musics/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-images"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">NumPy 教程一（属性、类型、创建、切片、索引、广播）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-01T16:00:00.000Z" title="发表于 2022-12-02 00:00:00">2022-12-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-12T16:18:55.417Z" title="更新于 2022-12-13 00:18:55">2022-12-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Numpy/">Numpy</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">11.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>44分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="NumPy 教程一（属性、类型、创建、切片、索引、广播）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ul>
+<li><a href="#%E4%B8%80numpy-ndarray-%E5%AF%B9%E8%B1%A1">一、NumPy ndarray 对象</a>
+<ul>
+<li><a href="#11-ndarray-%E5%AF%B9%E8%B1%A1%E7%AE%80%E4%BB%8B">1.1 ndarray 对象简介</a></li>
+<li><a href="#12-ndarray-%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA">1.2 ndarray 对象创建</a></li>
+<li><a href="#13-ndarray-%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6">1.3 ndarray 的设计哲学</a></li>
+<li><a href="#14-ndarray-%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80">1.4 ndarray 的内存布局</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8Cnumpy-%E6%95%B0%E7%BB%84%E5%B1%9E%E6%80%A7">二、NumPy 数组属性</a></li>
+<li><a href="#%E4%B8%89numpy-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">三、NumPy 数据类型</a>
+<ul>
+<li><a href="#31-%E5%B8%B8%E7%94%A8-numpy-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B">3.1 常用 NumPy 基本类型</a></li>
+<li><a href="#32-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%AF%B9%E8%B1%A1dtype">3.2 数据类型对象（dtype）</a></li>
+<li><a href="#33-%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4datetime64%E5%92%8C%E6%97%B6%E9%97%B4%E5%A2%9E%E9%87%8Ftimedelta64">3.3 日期时间（datetime64）和时间增量（timedelta64）</a>
+<ul>
+<li><a href="#331-%E5%9F%BA%E6%9C%AC%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4">3.3.1 基本日期时间</a>
+<ul>
+<li><a href="#1-%E7%AE%80%E4%BB%8B">1. 简介</a></li>
+<li><a href="#2-iso-8601-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F">2. ISO 8601 日期格式</a></li>
+<li><a href="#3-%E5%AE%9E%E4%BE%8B">3. 实例</a></li>
+</ul>
+</li>
+<li><a href="#332-datetime64-%E5%92%8C-timedelta64-%E8%BF%90%E7%AE%97">3.3.2 datetime64 和 timedelta64 运算</a></li>
+<li><a href="#333-%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%8A%9F%E8%83%BDbusday">3.3.3 工作日功能（busday）</a>
+<ul>
+<li><a href="#1-busday_offset-%E5%87%BD%E6%95%B0">1. busday_offset 函数</a></li>
+<li><a href="#2-is_busday-%E5%87%BD%E6%95%B0">2. is_busday 函数</a></li>
+<li><a href="#3-busday_count-%E5%87%BD%E6%95%B0">3. busday_count 函数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9Bnumpy-%E6%95%B0%E7%BB%84">四、NumPy 数组</a>
+<ul>
+<li><a href="#41-numpy-%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84">4.1 NumPy 创建数组</a>
+<ul>
+<li><a href="#411-numpyempty">4.1.1 numpy.empty</a></li>
+<li><a href="#412-numpyzeros">4.1.2 numpy.zeros</a></li>
+<li><a href="#413-numpyones">4.1.3 numpy.ones</a></li>
+<li><a href="#414-numpyfull">4.1.4 numpy.full</a></li>
+<li><a href="#415-numpyeye">4.1.5 numpy.eye</a></li>
+</ul>
+</li>
+<li><a href="#42-numpy-%E4%BB%8E%E5%B7%B2%E6%9C%89%E7%9A%84%E6%95%B0%E7%BB%84%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84">4.2 NumPy 从已有的数组创建数组</a>
+<ul>
+<li><a href="#421-numpyasarray">4.2.1 numpy.asarray</a></li>
+<li><a href="#422-numpyfrombuffer">4.2.2 numpy.frombuffer</a></li>
+<li><a href="#423-numpyfromiter">4.2.3 numpy.fromiter</a></li>
+<li><a href="#424-numpyempty_like">4.2.4 numpy.empty_like</a></li>
+<li><a href="#425-numpyzeros_like">4.2.5 numpy.zeros_like</a></li>
+<li><a href="#426-numpyones_like">4.2.6 numpy.ones_like</a></li>
+<li><a href="#427-numpyfull_like">4.2.7 numpy.full_like</a></li>
+</ul>
+</li>
+<li><a href="#43-numpy-%E4%BB%8E%E6%95%B0%E5%80%BC%E8%8C%83%E5%9B%B4%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84">4.3 NumPy 从数值范围创建数组</a>
+<ul>
+<li><a href="#431-numpyarange">4.3.1 numpy.arange</a></li>
+<li><a href="#432-numpylinspace">4.3.2 numpy.linspace</a></li>
+<li><a href="#433-numpylogspace">4.3.3 numpy.logspace</a></li>
+<li><a href="#434-numpygeomspace">4.3.4 numpy.geomspace</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%BA%94numpy-%E5%88%87%E7%89%87%E5%92%8C%E7%B4%A2%E5%BC%95">五、NumPy 切片和索引</a>
+<ul>
+<li><a href="#51-numpy-%E7%B4%A2%E5%BC%95">5.1 NumPy 索引</a></li>
+<li><a href="#52-numpy-%E5%88%87%E7%89%87">5.2 NumPy 切片</a>
+<ul>
+<li><a href="#521-%E7%B4%A2%E5%BC%95%E5%88%87%E7%89%87">5.2.1 索引切片</a></li>
+<li><a href="#522-slice-%E5%87%BD%E6%95%B0">5.2.2 slice 函数</a></li>
+</ul>
+</li>
+<li><a href="#53-numpy-%E9%AB%98%E7%BA%A7%E7%B4%A2%E5%BC%95">5.3 NumPy 高级索引</a>
+<ul>
+<li><a href="#531-%E6%95%B4%E6%95%B0%E6%95%B0%E7%BB%84%E7%B4%A2%E5%BC%95">5.3.1 整数数组索引</a></li>
+<li><a href="#532-%E5%B8%83%E5%B0%94%E7%B4%A2%E5%BC%95">5.3.2 布尔索引</a></li>
+<li><a href="#533-%E8%8A%B1%E5%BC%8F%E7%B4%A2%E5%BC%95">5.3.3 花式索引</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%85%ADnumpy-%E5%B9%BF%E6%92%ADbroadcast">六、NumPy 广播（Broadcast）</a></li>
+</ul>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> <code>Python</code> 本身含有列表（<code>list</code>）和数组（<code>array</code> 模块），但是由于列表保存的是对象的指针，<code>array</code> 对象不支持多维，因此它们并不适合做数值运算。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> <code>Numpy</code> 的诞生弥补了这些不足。<code>Numpy</code> 提供了两种基本的对象：<code>ndarray</code>（<code>N-dimensional Array Object</code>）和 <code>ufunc</code>（<code>Universal Function Object</code>）。<code>ndarray</code> 是存储单一数据类型的多维数组，而 <code>ufunc</code> 则是能够对数组进行处理的函数。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> <code>Numpy</code> 是 <code>Python</code> 中科学计算的核心库，<code>NumPy</code> 这个词来源于 <code>Numerical</code> 和 <code>Python</code> 两个单词。它提供了一个高性能的多维数组对象，以及大量的库函数和操作，可以帮助程序员轻松地进行数值计算，广泛应用于机器学习模型、图像处理和计算机图形学、数学任务等领域。</p>
+<h2 id="一-numpy-ndarray-对象"><a class="markdownIt-Anchor" href="#一-numpy-ndarray-对象"></a> 一、NumPy ndarray 对象</h2>
+<h3 id="11-ndarray-对象简介"><a class="markdownIt-Anchor" href="#11-ndarray-对象简介"></a> 1.1 ndarray 对象简介</h3>
+<ul>
+<li>
+<p><code>numpy</code> 最重要的一个特点是它的 <code>N</code> 维数组对象 <code>ndarray</code>，它是 <strong>一系列同类型数据的集合</strong>，以 <code>0</code> 开始进行集合中元素的索引。</p>
+</li>
+<li>
+<p><code>numpy</code> 中多维数组的类为 <code>np.ndarray</code>。</p>
+</li>
+<li>
+<p><code>ndarray</code> 对象是 <code>numpy</code> 中用于存放 <strong>同类型元素</strong> 的 <strong>多维数组</strong>。</p>
+</li>
+<li>
+<p><code>ndarray</code> 中的每个元素在内存中都有 <strong>相同存储大小</strong> 的区域。</p>
+</li>
+</ul>
+<h3 id="12-ndarray-对象创建"><a class="markdownIt-Anchor" href="#12-ndarray-对象创建"></a> 1.2 ndarray 对象创建</h3>
+<ul>
+<li>
+<p>创建一个 <code>ndarray</code> 只需调用 <code>NumPy</code> 的 <code>array</code> 函数即可：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.array(<span class="built_in">object</span>, dtype=<span class="literal">None</span>, *, copy=<span class="literal">True</span>, order=<span class="string">&#x27;K&#x27;</span>, subok=<span class="literal">False</span>, ndmin=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>参数说明：</p>
+<ul>
+<li>
+<p><code>object</code>：可以是数组、公开数组接口的对象、<code>__array__</code> 方法返回数组的对象或任何（嵌套）序列。如果 <code>object</code> 是标量，则返回包含对象的 <code>0</code> 维数组。</p>
+</li>
+<li>
+<p><code>dtype</code>：数组元素的数据类型，如果未给出，则类型将被确定为保存序列中对象所需的最小类型。<strong>可选参数</strong>。</p>
+</li>
+<li>
+<p><code>copy</code>：对象是否需要复制，是否生成副本，默认 <code>True</code>。<strong>可选参数</strong>。</p>
+<ul>
+<li>副本是一个数据的完整的拷贝，如果我们对副本进行修改，它不会影响到原始数据，物理内存不在同一位置。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">b = np.array(a)</span><br><span class="line">c = np.array(a, copy=<span class="literal">False</span>)</span><br><span class="line">a[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment"># [0 2 3]</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># [1 2 3]</span></span><br><span class="line"><span class="built_in">print</span>(c) <span class="comment"># [0 2 3]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>可以看到修改 <code>a</code> 的元素值，<code>b</code> 的值不会改变，说明 <code>b</code> 是 <code>a</code> 的 <strong>副本</strong>，两个是不同的对象；而 <code>c</code> 的元素值随着 <code>a</code> 的修改同样被改变，说明 <code>c</code> 是 <code>a</code> 的 <strong>视图</strong>。</p>
+</li>
+<li>
+<p>视图是一个数据的别称或引用，通过该别称或引用亦可访问和操作原有数据，修改视图会影响到原始数据，物理内存在同一位置。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>order</code>：<code>&#123;‘K’, ‘A’, ‘C’, ‘F’&#125;</code>, <strong>可选参数</strong>，指定新生成的 <code>array</code> 的内存布局。</p>
+<ul>
+<li>
+<p>如果 <code>object</code> 不是数组，则新创建的数组默认按行排列（<code>C</code>），如果指定了（<code>F</code>），则按列排列。</p>
+</li>
+<li>
+<p>如果 <code>object</code> 是一个数组，可选项为 <code>&#123;‘K’, ‘A’, ‘C’, ‘F’&#125;</code>，默认 <code>K</code>。</p>
+<ul>
+<li>
+<p><code>C</code>（<code>C</code> 语言存储结构）：按照 <strong>行方向</strong> 进行存储。</p>
+</li>
+<li>
+<p><code>F</code>（<code>Fortran</code> 语言存储结构）：按照 <strong>列方向</strong> 进行存储。</p>
+</li>
+<li>
+<p><code>A</code>（<code>any</code>）：表示如果输入源在内存中的存储结构是 <code>F order</code> 连续的，按 <code>F order</code> 进行存储，否则都按 <code>C odrder</code> 进行存储。</p>
+</li>
+<li>
+<p><code>K</code>（<code>keep</code>）：按照输入源的数据存储结构进行存储。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>subok</code>：如果为 <code>True</code>，则新创建的数组将使用 <code>object</code> 的类型，否则它将是基类 <code>ndarray</code>。默认为 <code>False</code>。</p>
+</li>
+<li>
+<p><code>ndmin</code>：指定生成数组的最小维度。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> ctypes <span class="keyword">import</span> string_at</span><br><span class="line"></span><br><span class="line">arr = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>], [<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]], order=<span class="string">&quot;F&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(arr)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;C_CONTIGUOUS:&quot;</span>, arr.flags[<span class="string">&quot;C_CONTIGUOUS&quot;</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;F_CONTIGUOUS:&quot;</span>, arr.flags[<span class="string">&quot;F_CONTIGUOUS&quot;</span>])</span><br><span class="line"><span class="comment"># ctypes.string_at(address, size=-1) 函数返回从内存地址 address 开始的以字节串表示的 C 字符串。</span></span><br><span class="line"><span class="comment">#                                    如果指定了 size，则将其用作长度，否则将假定字符串以零值结尾。</span></span><br><span class="line"><span class="comment"># ndarray.nbytes 属性返回数组元素消耗的总字节数。</span></span><br><span class="line"><span class="built_in">print</span>(string_at(arr.ctypes.data, arr.nbytes).<span class="built_in">hex</span>())</span><br><span class="line"></span><br><span class="line">karr = np.array(arr) <span class="comment"># 默认 order=&quot;K&quot;</span></span><br><span class="line"><span class="built_in">print</span>(karr)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;C_CONTIGUOUS:&quot;</span>, karr.flags[<span class="string">&quot;C_CONTIGUOUS&quot;</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;F_CONTIGUOUS:&quot;</span>, karr.flags[<span class="string">&quot;F_CONTIGUOUS&quot;</span>])</span><br><span class="line"><span class="built_in">print</span>(string_at(karr.ctypes.data, karr.nbytes).<span class="built_in">hex</span>())</span><br><span class="line"></span><br><span class="line">carr = np.array(arr, order=<span class="string">&quot;C&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(carr)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;C_CONTIGUOUS:&quot;</span>, carr.flags[<span class="string">&quot;C_CONTIGUOUS&quot;</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;F_CONTIGUOUS:&quot;</span>, carr.flags[<span class="string">&quot;F_CONTIGUOUS&quot;</span>])</span><br><span class="line"><span class="built_in">print</span>(string_at(carr.ctypes.data, carr.nbytes).<span class="built_in">hex</span>())</span><br></pre></td></tr></table></figure>
+<div align=center>
+<img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/Numpy/01/0000.png" width=520/>
+</div>
+</li>
+</ul>
+<h3 id="13-ndarray-的设计哲学"><a class="markdownIt-Anchor" href="#13-ndarray-的设计哲学"></a> 1.3 ndarray 的设计哲学</h3>
+<ul>
+<li>
+<p><code>ndarray</code> 的设计哲学在于数据存储与其解释方式的分离，或者说 <code>copy</code> 和 <code>view</code> 的分离，让尽可能多的操作发生在解释方式（<code>view</code>）上，而尽量少地操作实际存储数据的内存区域。</p>
+</li>
+<li>
+<p>例：使用 <code>reshape</code>、转置操作返回的新对象与原对象共享同一块内存区域，数据的存储并没有发生变化，发生变化的只是数据的解释方式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">arr = np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">rearr = arr.reshape(<span class="number">4</span>, <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;arr:\n&quot;</span>, arr)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;rearr:\n&quot;</span>, rearr)</span><br><span class="line"><span class="comment"># reshape 操作产生的是 view 视图，只是对数据的解释方式发生变化，数据物理地址相同</span></span><br><span class="line"><span class="comment"># 可以通过 ndarray.__array_interface__[&#x27;data&#x27;][0] 获得 numpy 数组的内存地址</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;arr 的内存地址:&quot;</span>, arr.__array_interface__[<span class="string">&#x27;data&#x27;</span>][<span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;rearr 的内存地址:&quot;</span>, rearr.__array_interface__[<span class="string">&#x27;data&#x27;</span>][<span class="number">0</span>])</span><br><span class="line"><span class="comment"># arr 的转置 tarr 仍然与 arr 共享相同的内存块，只改变了数据的解释方式。“以列优先的方式解释行优先的存储”</span></span><br><span class="line">tarr = arr.T</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;tarr:\n&quot;</span>, tarr)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;tarr 的内存地址:&quot;</span>, tarr.__array_interface__[<span class="string">&#x27;data&#x27;</span>][<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<div align=center>
+<img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/Numpy/01/000.png" width=270/>
+</div>
+</li>
+</ul>
+<h3 id="14-ndarray-的内存布局"><a class="markdownIt-Anchor" href="#14-ndarray-的内存布局"></a> 1.4 ndarray 的内存布局</h3>
+<div align=center>
+<img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/Numpy/01/001.png" height=300/>
+</div>
+<ul>
+<li>
+<p><code>ndarray</code> 的内存布局可大致划分成两个部分——对应设计哲学中的数据存储部分和解释方式部分：</p>
+<ul>
+<li>
+<p>数据存储部分是一个连续的 <code>memory block</code>，存储着原始数据，类似于 <code>C</code> 或 <code>Fortran</code> 中的数组。</p>
+</li>
+<li>
+<p>解释方式部分是对上面内存块 <code>memory block</code> 的解释方式，包含 <code>dtype</code>、<code>ndim</code>、<code>shape</code>、<code>strides</code>、字节序（大端小端）、读写权限、<code>C-order</code>（行优先存储）、<code>Fortran-order</code>（列优先存储）等。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="二-numpy-数组属性"><a class="markdownIt-Anchor" href="#二-numpy-数组属性"></a> 二、NumPy 数组属性</h2>
+<ul>
+<li>
+<p><code>ndarray.ndim</code>：秩，即轴的数量或维度的数量。</p>
+<ul>
+<li><code>numpy</code> 数组的维数称为秩（<code>rank</code>），秩就是轴（<code>axis</code>）的数量，即数组的维度，一维数组的秩为 <code>1</code>，二维数组的秩为 <code>2</code>，以此类推。</li>
+</ul>
+</li>
+<li>
+<p><code>ndarray.shape</code>：数组的维度。</p>
+<ul>
+<li>返回一个元组，这个元组的长度就是维度的数目，即 <code>ndim</code> 属性(秩)。例：对于矩阵，<code>n</code> 行 <code>m</code> 列，返回 <code>(n,m)</code>。</li>
+</ul>
+</li>
+<li>
+<p><code>ndarray.size</code>：数组元素的总个数。</p>
+</li>
+<li>
+<p><code>ndarray.dtype</code>：<code>ndarray</code> 对象的元素类型。</p>
+</li>
+<li>
+<p><code>ndarray.nbytes</code>：总字节数。</p>
+</li>
+<li>
+<p><code>ndarray.strides</code>：由每个维度的字节跨度组成的元组。</p>
+<ul>
+<li>
+<p>示例：整数类型占用 <code>4</code> 个字节。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">ls = [[[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>], [<span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>]],</span><br><span class="line">        [[<span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>, <span class="number">16</span>], [<span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>], [<span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">24</span>]]]</span><br><span class="line">a = np.array(ls, dtype=<span class="built_in">int</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;a:&quot;</span>, a)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;a.shape:&quot;</span>, a.shape)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;a.strides:&quot;</span>, a.strides)</span><br></pre></td></tr></table></figure>
+<div align=center>
+<img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/Numpy/01/01.png"/>
+</div>
+<ul>
+<li>可以利用 <code>strides</code> 属性获取元素偏移量：假设数组 <code>arr</code> 是三维数组，那么 <code>arr[i][j][k]</code> 的偏移量为：<code>offset = arr.strides[0] * i + arr.strides[1] * j + arr.strides[2] * k</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>ndarray.itemsize</code>：<code>ndarray</code> 对象中每个元素的大小，<strong>以字节为单位</strong>。</p>
+<ul>
+<li>例：一个元素类型为 <code>float64</code> 的数组 <code>itemsize</code> 属性值为 <code>8</code>（<code>float64</code> 占用 <code>64</code> 个 <code>bits</code>，每个字节长度为 <code>8</code>，所以 <code>64/8</code>，占用 <code>8</code> 个字节）</li>
+</ul>
+</li>
+<li>
+<p><code>ndarray.base</code>：若一个数组存在基类数组，用 <code>base</code> 可获取基类数组。</p>
+</li>
+<li>
+<p><code>ndarray.flags</code>：<code>ndarray</code> 数组内存布局的信息，字典类型。包含以下属性：</p>
+<ul>
+<li>
+<p><code>C_CONTIGUOUS (C)</code>：指的是数组的行存储在内存中的地址是连续的。</p>
+</li>
+<li>
+<p><code>F_CONTIGUOUS (F)</code>：指的是数组的列存储在内存中的地址是连续的。</p>
+</li>
+<li>
+<p><code>OWNDATA (O)</code>：是否是数据的所有者。</p>
+</li>
+<li>
+<p><code>WRITEABLE (W)</code>：值为 <code>True</code>，则数据区域可以被写入，值为 <code>False</code>，则数据为只读。</p>
+</li>
+<li>
+<p><code>ALIGNED (A)</code>：数据和所有的元素是否针对硬件进行适当的排列。</p>
+</li>
+<li>
+<p><code>WRITEBACKIFCOPY</code>：<code>UPDATEIFCOPY</code> 已弃用，由 <code>WRITEBACKIFCOPY</code> 取代。</p>
+</li>
+<li>
+<p><code>UPDATEIFCOPY (U)</code>：这个数组是其它数组的一个副本，当这个数组被释放时，原数组的内容将被更新。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>ndarray.real</code>：<code>ndarray</code> 元素的实部。</p>
+</li>
+<li>
+<p><code>ndarray.imag</code>：<code>ndarray</code> 元素的虚部。</p>
+</li>
+<li>
+<p><code>ndarray.data</code>：包含实际数组元素的缓冲区，由于一般通过数组的索引获取元素，所以通常不需要使用这个属性。</p>
+</li>
+</ul>
+<h2 id="三-numpy-数据类型"><a class="markdownIt-Anchor" href="#三-numpy-数据类型"></a> 三、NumPy 数据类型</h2>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> <code>NumPy</code> 支持比 <code>Python</code> 更多种类的数值类型，为了区别于 <code>Python</code> 原生的数据类型，<code>NumPy</code> 在 <code>bool</code>、<code>int</code>、<code>float</code>、<code>complex</code>、<code>str</code> 等类型名称末尾都添加了下划线 <code>_</code>。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> <strong>使用</strong> <code>print(ndarray.dtype)</code> <strong>打印</strong> <code>dtype</code> <strong>属性所显示的都是</strong> <code>ndarray</code> <strong>数组中的数据类型</strong>，<strong>而非</strong> <code>Python</code> <strong>原生数据类型</strong>。</p>
+<h3 id="31-常用-numpy-基本类型"><a class="markdownIt-Anchor" href="#31-常用-numpy-基本类型"></a> 3.1 常用 NumPy 基本类型</h3>
+<ul>
+<li>
+<p><code>bool_</code>：布尔型数据类型（<code>True</code> 或 <code>False</code>）。<strong>字符代码</strong>：<code>b</code>。</p>
+</li>
+<li>
+<p><code>int8 / byte</code>：字节（<code>-128</code> ~ <code>127</code>）。<strong>字符代码</strong>：<code>i1</code>。</p>
+</li>
+<li>
+<p><code>int16 / short</code>：整数（<code>-32768</code> ~ <code>32767</code>）。<strong>字符代码</strong>：<code>i2</code>。</p>
+</li>
+<li>
+<p><code>int32 / intc / int_ / long</code>：整数（<code>-2147483648</code> ~ <code>2147483647</code>）。<strong>字符代码</strong>：<code>i4</code>。</p>
+</li>
+<li>
+<p><code>int64 / longlong / intp / int0</code>：整数（<code>-9223372036854775808</code> ~ <code>9223372036854775807</code>）。<strong>字符代码</strong>：<code>i8</code>。</p>
+</li>
+<li>
+<p><code>uint8 / ubyte</code>：无符号整数（<code>0</code> ~ <code>255</code>）。<strong>字符代码</strong>：<code>u1</code>。</p>
+</li>
+<li>
+<p><code>uint16 / ushort</code>：无符号整数（<code>0</code> ~ <code>65535</code>）。<strong>字符代码</strong>：<code>u2</code>。</p>
+</li>
+<li>
+<p><code>uint32 / uintc</code>：无符号整数（<code>0</code> ~ <code>4294967295</code>）。<strong>字符代码</strong>：<code>u4</code>。</p>
+</li>
+<li>
+<p><code>uint64 / ulonglong / uintp / uint0</code>：无符号整数（<code>0</code> ~ <code>18446744073709551615</code>）。<strong>字符代码</strong>：<code>u8</code>。</p>
+</li>
+<li>
+<p><code>float16 / half</code>：半精度浮点数，包括：<code>1</code> 个符号位，<code>5</code> 个指数位，<code>10</code> 个尾数位。<strong>字符代码</strong>：<code>f2</code>。</p>
+</li>
+<li>
+<p><code>float32 / single</code>：单精度浮点数，包括：<code>1</code> 个符号位，<code>8</code> 个指数位，<code>23</code> 个尾数位。<strong>字符代码</strong>：<code>f4</code>。</p>
+<div align=center>
+<img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/Numpy/01/02.jpg"/>
+</div>
+<ul>
+<li>从高位到低位，依次为：符号位，指数位，尾数位。<code>1</code> 位符号位表示正负；<code>8</code> 位指数位指定了规范化表达的二进制小数中小数点在数据中的位置，能表达的范围是：<code>[-127，128]</code>；尾数位是规范化表达的二进制小数的小数点后面部分。感兴趣的可以阅读文章《<a href="https://xindong2020.love/Java/Java02#2%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B1%BB%E5%9E%8B%E6%B5%AE%E7%82%B9%E6%95%B0%E6%98%AF%E5%AF%B9%E5%AE%9E%E6%95%B0%E7%9A%84%E4%B8%80%E7%A7%8D%E8%BF%91%E4%BC%BC%E8%A1%A8%E7%A4%BA">浮点数类型（浮点数是对实数的一种近似表示）</a>》</li>
+</ul>
+</li>
+<li>
+<p><code>float64 / float_ / double</code>：双精度浮点数，包括：<code>1</code> 个符号位，<code>11</code> 个指数位，<code>52</code> 个尾数位。<strong>字符代码</strong>：<code>f8</code>。</p>
+</li>
+<li>
+<p><code>complex64 / singlecomplex</code>：复数，表示双 <code>32</code> 位浮点数（实数部分和虚数部分）。<strong>字符代码</strong>：<code>c8</code>。</p>
+</li>
+<li>
+<p><code>complex128 / complex_ / cfloat / cdouble / longcomplex / clongfloat / clongdouble</code>：复数，表示双 <code>64</code> 位浮点数（实数部分和虚数部分）。<strong>字符代码</strong>：<code>c16</code>。</p>
+</li>
+<li>
+<p><code>unicode_ / unicode / str_ / str0</code>：表示 <code>Unicode</code> 字符串。<strong>字符代码</strong>：<code>U</code>。<code>U</code> 后带数字表示字符串长度，超出部分将被截断，例：<code>U20</code>。</p>
+</li>
+<li>
+<p><code>string_</code>：表示字节串类型。<strong>字符代码</strong>：<code>S / a</code>。</p>
+<ul>
+<li><strong>只能包含 ASCII 码字符</strong>，<code>S</code> 或 <code>a</code> 后带数字表示字节串长度，超出部分将被截断，例：<code>S20</code>、<code>a10</code>。</li>
+</ul>
+</li>
+<li>
+<p><code>datetime64</code>：NumPy 1.7 开始支持的日期时间类型。<strong>字符代码</strong>：<code>M</code>，例：M8[D]，必须要填写单位。</p>
+</li>
+<li>
+<p><code>timedelta64</code>：表示两个时间之间的间隔。<strong>字符代码</strong>：<code>m</code>。</p>
+</li>
+</ul>
+<h3 id="32-数据类型对象dtype"><a class="markdownIt-Anchor" href="#32-数据类型对象dtype"></a> 3.2 数据类型对象（dtype）</h3>
+<ul>
+<li>
+<p>每个 <code>ndarray</code> 都有一个关联的数据类型对象 <code>dtype</code>，这个数据类型对象 <code>dtype</code> 告诉我们数组的布局，为我们提供了下列信息：</p>
+<ul>
+<li>
+<p>数据类型（整数、浮点数、<code>Python</code> 对象等）</p>
+</li>
+<li>
+<p>数据大小（字节数）</p>
+</li>
+<li>
+<p>数据的字节顺序（小端法或大端法）</p>
+</li>
+<li>
+<p>在结构化类型的情况下，字段的名称、每个字段的数据类型和每个字段所取的内存块的部分</p>
+</li>
+<li>
+<p>如果数据类型是子数组，那么它的形状和数据类型是什么。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>构造数据类型对象 <code>dtype</code>：数据类型对象是 <code>numpy.dtype</code> 类的一个实例，可以使用 <code>numpy.dtype</code> 来创建，语法格式：<code>numpy.dtype(dtype, align=False, copy=False)</code></p>
+<ul>
+<li>
+<p><code>dtype</code>：要转换为数据类型对象的对象。</p>
+</li>
+<li>
+<p><code>align</code>：如果为 <code>True</code>，则向字段添加间隔，使其类似 <code>C</code> 的结构体。</p>
+</li>
+<li>
+<p><code>copy</code>：是否创建数据类型对象的新副本，如果为 <code>flase</code>，结果是内建数据类型对象的引用。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>创建结构化数据类型，示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">student = np.dtype([(<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;U20&#x27;</span>),  (<span class="string">&#x27;age&#x27;</span>,  <span class="string">&#x27;i1&#x27;</span>),  (<span class="string">&#x27;grade&#x27;</span>,  <span class="string">&#x27;f4&#x27;</span>, (<span class="number">2</span>,))])</span><br><span class="line">studentarr = np.array([(<span class="string">&#x27;dong&#x27;</span>,  <span class="number">18</span>,  [<span class="number">66</span>,<span class="number">88</span>]),(<span class="string">&#x27;xin&#x27;</span>,  <span class="number">18</span>,  [<span class="number">99</span>,<span class="number">100</span>])], dtype = student)</span><br><span class="line"><span class="built_in">print</span>(studentarr)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="33-日期时间datetime64和时间增量timedelta64"><a class="markdownIt-Anchor" href="#33-日期时间datetime64和时间增量timedelta64"></a> 3.3 日期时间（datetime64）和时间增量（timedelta64）</h3>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> 从 <code>NumPy 1.7</code> 开始支持日期时间功能，数据类型称为 “<code>datetime64</code>”，之所以这样命名是因为 <code>Python</code> 中包含的 <code>datetime</code> 库已经采用了 “<code>datetime</code>”。</p>
+<h4 id="331-基本日期时间"><a class="markdownIt-Anchor" href="#331-基本日期时间"></a> 3.3.1 基本日期时间</h4>
+<h5 id="1-简介"><a class="markdownIt-Anchor" href="#1-简介"></a> 1. 简介</h5>
+<ul>
+<li>
+<p>创建日期时间的最基本方法是使用 <code>ISO 8601</code> 日期（<code>2022-03-07</code>）或日期时间（<code>2022-03-07T21:38:13</code>）格式的字符串。也可以通过相对于 <code>Unix</code> 纪元（<code>1970</code> 年 <code>1</code> 月 <code>1</code> 日 <code>00:00:00 UTC</code>）的偏移量从整数创建日期时间。</p>
+</li>
+<li>
+<p><code>datetime64</code> 可以指定使用的单位，单位包括年（’<code>Y</code>’），月（’<code>M</code>’），周（’<code>W</code>’）和天（’<code>D</code>’），而时间单位是时（’<code>h</code>’），分（’<code>m</code>’），秒（’<code>s</code>’），毫秒（’<code>ms</code>’），微秒（’<code>us</code>’），纳秒（’<code>ns</code>’），皮秒（’<code>ps</code>’），飞秒（’<code>fs</code>’），阿托秒（’<code>as</code>’），其中秒、毫秒、微秒、纳秒、皮秒、飞秒、阿托秒每两级之间的换算进率为 <code>1000</code>。</p>
+<ul>
+<li>
+<p>周（’<code>W</code>’）是一个比较奇怪的单位，使用 ‘<code>D</code>’ 类型数据创建 ’<code>W</code>’ 类型的 <code>datetime64</code> 变量时，有如下规定：如果是星期四，返回当天；否则，返回上一个星期四的日期。示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.datetime64(<span class="string">&#x27;2022-03-08&#x27;</span>, <span class="string">&#x27;W&#x27;</span>)</span><br><span class="line">b = np.datetime64(<span class="string">&#x27;2022-03-10&#x27;</span>, <span class="string">&#x27;W&#x27;</span>)</span><br><span class="line">c = np.datetime64(<span class="string">&#x27;2022-03-11&#x27;</span>, <span class="string">&#x27;W&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment"># 2022-03-03</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># 2022-03-10</span></span><br><span class="line"><span class="built_in">print</span>(c) <span class="comment"># 2022-03-10</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><code>datetime64</code> 数据类型还接受字符串 “<code>NAT</code>”（小写/大写字母的任意组合）作为 “<code>Not A Time</code>” 值。例：<code>n = np.datetime64(&quot;NAT&quot;)</code></p>
+</li>
+</ul>
+<h5 id="2-iso-8601-日期格式"><a class="markdownIt-Anchor" href="#2-iso-8601-日期格式"></a> 2. ISO 8601 日期格式</h5>
+<ul>
+<li>
+<p><code>ISO 8601</code> 日期格式：<code>YYYY-MM-DDThh:mm:ss[.mmm]TZD</code>。例：<code>2022-03-07T21:38:13</code> 表示中国标准时间 <code>2022</code> 年 <code>3</code> 月 <code>7</code> 日 <code>21:38:13</code>。</p>
+<ul>
+<li>
+<p><code>YYYY</code>：表示四位数的年份。</p>
+</li>
+<li>
+<p><code>MM</code>：表示两位数的月份，从 <code>01</code> 到 <code>12</code>。</p>
+</li>
+<li>
+<p><code>DD</code>：表示两位数的天，从 <code>01</code> 到 <code>31</code>。</p>
+</li>
+<li>
+<p><code>T</code>：指示时间元素的开始字符。</p>
+</li>
+<li>
+<p><code>hh</code>：表示两位数的时，从 <code>00</code> 到 <code>23</code>，不包括 <code>AM / PM</code>。</p>
+</li>
+<li>
+<p><code>mm</code>：表示两位数的分，从 <code>00</code> 到 <code>59</code>。</p>
+</li>
+<li>
+<p><code>ss</code>：表示两位数的秒，从 <code>00</code> 到 <code>59</code>。</p>
+</li>
+<li>
+<p><code>mmm</code>：表示三位数的毫秒，从 <code>000</code> 到 <code>999</code>。</p>
+</li>
+<li>
+<p><code>TZD</code>：表示时区指示符，格式：<code>Z</code> 或 <code>+hh:mm</code> 或 <code>-hh:mm</code>。</p>
+<ul>
+<li>
+<p><code>+</code> 或 <code>-</code> 表示时区距离 <code>UTC</code>（世界标准时间）的时差。例：<code>CST</code>（中国标准时间）为 <code>UTC+08:00</code>；<code>EST</code>（北美东部标准时间）为 <code>UTC-05:00</code>。</p>
+</li>
+<li>
+<p><code>Z</code>（<code>z time</code>）：是 <code>zulu time</code> 的缩写，即祖鲁时间，又被称为格林威治标准时间（<code>GMT</code>）、世界标准时间（<code>UTC</code>）。如果时间在零时区（<code>UTC±00:00</code>），那么在时间最后加一个大写字母 <code>Z</code>。</p>
+</li>
+<li>
+<p>注：自 <code>1.11.0</code> 版起 <code>NumPy</code> 不再存储时区信息。为了向后兼容（新版本兼容旧版本），<code>datetime64</code> 仍然解析时区偏移，它通过将时间转为转换为世界标准时间来处理。这种行为已被废弃,将来会引发错误。示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">t = np.datetime64(<span class="string">&#x27;2022-03-11T21:38:13+08:00&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(t)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2022</span>-03-11T13:<span class="number">38</span>:<span class="number">13</span></span><br><span class="line">DeprecationWarning: parsing timezone aware datetimes <span class="keyword">is</span> deprecated; this will <span class="keyword">raise</span> an error <span class="keyword">in</span> the future</span><br><span class="line">  c = np.datetime64(<span class="string">&#x27;2022-03-11T21:38:13+08:00&#x27;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-实例"><a class="markdownIt-Anchor" href="#3-实例"></a> 3. 实例</h5>
+<ul>
+<li>
+<p>创建日期时间，通过相对于 <code>Unix</code> 纪元（<code>1970</code> 年 <code>1</code> 月 <code>1</code> 日 <code>00:00:00</code> UTC）的偏移量从整数创建日期时间。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">t = np.datetime64(<span class="number">10</span>, <span class="string">&#x27;Y&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;年份：&quot;</span>, t, <span class="string">&quot;，类型：&quot;</span>, t.dtype) <span class="comment"># 输出：年份： 1980 ，类型： datetime64[Y]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>创建日期时间，自动选择对应单位。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.datetime64(<span class="string">&#x27;2022&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(a,a.dtype) <span class="comment"># 输出：2022 datetime64[Y]</span></span><br><span class="line"></span><br><span class="line">b = np.datetime64(<span class="string">&#x27;2022-03&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(b,b.dtype) <span class="comment"># 输出：2022-03 datetime64[M]</span></span><br><span class="line"></span><br><span class="line">c = np.datetime64(<span class="string">&#x27;2022-03-07&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(c,c.dtype) <span class="comment"># 输出：2022-03-07 datetime64[D]</span></span><br><span class="line"></span><br><span class="line">d = np.datetime64(<span class="string">&#x27;2022-03-07 21&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(d,d.dtype) <span class="comment"># 输出：2022-03-07T21 datetime64[h]</span></span><br><span class="line"></span><br><span class="line">e = np.datetime64(<span class="string">&#x27;2022-03-07 21:38&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(e,e.dtype) <span class="comment"># 输出：2022-03-07T21:38 datetime64[m]</span></span><br><span class="line"></span><br><span class="line">f = np.datetime64(<span class="string">&#x27;2022-03-07 21:38:13&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(f,f.dtype) <span class="comment"># 输出：2022-03-07T21:38:13 datetime64[s]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>创建日期时间，指定单位。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.datetime64(<span class="string">&#x27;2022-03&#x27;</span>,<span class="string">&#x27;s&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment"># 输出：2022-03-01T00:00:00</span></span><br><span class="line"><span class="built_in">print</span>(np.datetime64(<span class="string">&#x27;2022-03&#x27;</span>) == np.datetime64(<span class="string">&#x27;2022-03-01&#x27;</span>)) <span class="comment"># 输出：True</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>由上例可以看出，<code>2022-03</code> 和 <code>2022-03-01</code> 所表示的其实是同一个时间。事实上，如果两个 <code>datetime64</code> 对象具有不同的单位，它们可能仍然代表相同的时刻。并且从较大的单位（例：月）转换为较小的单位（例：日）是安全的。</li>
+</ul>
+</li>
+<li>
+<p>字符串创建日期时间数组：如果 <code>list</code> 中每个元素的单位不统一，则统一用其中最详尽元素的表示方式来表示日期（详尽效应）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([<span class="string">&#x27;2022-03&#x27;</span>, <span class="string">&#x27;2022-03-07 21:38&#x27;</span>,<span class="string">&#x27;2022-03-07 21:38:13&#x27;</span>], dtype=<span class="string">&#x27;datetime64&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment"># 输出：[&#x27;2022-03-01T00:00:00&#x27; &#x27;2022-03-07T21:38:00&#x27; &#x27;2022-03-07T21:38:13&#x27;]</span></span><br><span class="line"><span class="built_in">print</span>(a.dtype) <span class="comment"># 输出：datetime64[s]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>配合 <code>arange</code> 函数，用于生成日期范围。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">dt = np.arange(<span class="string">&#x27;2022-03&#x27;</span>, <span class="string">&#x27;2022-04&#x27;</span>, dtype=<span class="string">&#x27;datetime64[D]&#x27;</span>)</span><br><span class="line">st = np.arange(<span class="string">&#x27;2022-03&#x27;</span>, <span class="string">&#x27;2022-04&#x27;</span>, dtype=<span class="string">&#x27;datetime64[s]&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;天数序列:\n&quot;</span>, dt)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;秒数序列长度：&quot;</span>, <span class="built_in">len</span>(st))</span><br></pre></td></tr></table></figure>
+<div align=center>
+<img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/Numpy/01/03.png"/>
+</div>
+</li>
+<li>
+<p>配合 <code>arange</code> 函数时可以设置间隔，间隔数在单位中设置。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.arange(<span class="string">&#x27;2022-02&#x27;</span>, <span class="string">&#x27;2022-03&#x27;</span>, dtype=<span class="string">&#x27;datetime64[6D]&#x27;</span>)</span><br><span class="line">b = np.arange(<span class="string">&#x27;2022-03-07&#x27;</span>, <span class="string">&#x27;2022-03-08&#x27;</span>, dtype=<span class="string">&#x27;datetime64[6h]&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment"># 输出：[&#x27;2022-01-28&#x27; &#x27;2022-02-03&#x27; &#x27;2022-02-09&#x27; &#x27;2022-02-15&#x27; &#x27;2022-02-21&#x27;]</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># 输出：[&#x27;2022-03-07T00&#x27; &#x27;2022-03-07T06&#x27; &#x27;2022-03-07T12&#x27; &#x27;2022-03-07T18&#x27;]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="332-datetime64-和-timedelta64-运算"><a class="markdownIt-Anchor" href="#332-datetime64-和-timedelta64-运算"></a> 3.3.2 datetime64 和 timedelta64 运算</h4>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> <code>NumPy</code> 允许将两个 <code>datetime64</code> 值相减，该操作会产生一个带有时间单位的数字。由于 <code>NumPy</code> 的核心没有物理量系统，因此创建了 <code>timedelta64</code> 数据类型以补充 <code>datetime64</code>。<code>timedelta64</code> 表示两个 <code>datetime64</code> 之间的差。<code>timedelta64</code> 也是带单位的，例：<code>(D)ay</code>，<code>(M)onth</code>，<code>(Y)ear</code>，<code>(h)ours</code>，<code>(m)inutes</code> 或 <code>(s)econd</code>，并且和参与相减运算的两个 <code>datetime64</code> 中的较小单位保持一致（详尽效应）。<code>timedelta64</code> 数据类型还接受字符串 “<code>NAT</code>”（小写/大写字母的任意组合）作为 “<code>Not A Time</code>” 值。</p>
+<ul>
+<li>
+<p>实例 <code>1</code>：<code>datetime64</code> 相减，返回 <code>timedelta64</code> 数据类型的值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">yt = np.datetime64(<span class="string">&#x27;2022&#x27;</span>) - np.datetime64(<span class="string">&#x27;2021&#x27;</span>)</span><br><span class="line">dt = np.datetime64(<span class="string">&#x27;2022-03-11&#x27;</span>) - np.datetime64(<span class="string">&#x27;2022-03-07&#x27;</span>)</span><br><span class="line">ht = np.datetime64(<span class="string">&#x27;2022-03-07 07&#x27;</span>) - np.datetime64(<span class="string">&#x27;2022-03-07 08&#x27;</span>)</span><br><span class="line">st = np.datetime64(<span class="string">&#x27;2022-03-07 08:30&#x27;</span>) - np.datetime64(<span class="string">&#x27;2022-03-07 08:00&#x27;</span>)</span><br><span class="line">t = np.datetime64(<span class="string">&#x27;2022-03-11&#x27;</span>) - np.datetime64(<span class="string">&#x27;2022-03-06 23:00&#x27;</span>, <span class="string">&#x27;D&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(yt, yt.dtype) <span class="comment"># 输出：1 years timedelta64[Y]</span></span><br><span class="line"><span class="built_in">print</span>(dt, dt.dtype) <span class="comment"># 输出：4 days timedelta64[D]</span></span><br><span class="line"><span class="built_in">print</span>(ht, ht.dtype) <span class="comment"># 输出：-1 hours timedelta64[h]</span></span><br><span class="line"><span class="built_in">print</span>(st, st.dtype) <span class="comment"># 输出：30 minutes timedelta64[m]</span></span><br><span class="line"><span class="built_in">print</span>(t, t.dtype) <span class="comment"># 输出：5 days timedelta64[D]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>实例 <code>2</code>：允许在 <code>datetime64</code> 和 <code>timedelta64</code> 之间进行加减运算。注：<code>datetime64</code> 要在前。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">dt = np.datetime64(<span class="string">&#x27;2022-03-11&#x27;</span>) + np.timedelta64(<span class="number">27</span>, <span class="string">&#x27;D&#x27;</span>)</span><br><span class="line">ht = np.datetime64(<span class="string">&#x27;2022-03-11&#x27;</span>) + np.timedelta64(<span class="number">88</span>, <span class="string">&#x27;h&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(dt, dt.dtype) <span class="comment"># 输出：2022-04-07 datetime64[D]</span></span><br><span class="line"><span class="built_in">print</span>(ht, ht.dtype) <span class="comment"># 输出：2022-03-14T16 datetime64[h]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>实例 <code>3</code>：<code>numpy.datetime64</code> 与 <code>datetime.datetime</code> 相互转换。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">dt = datetime.datetime(<span class="number">2022</span>, <span class="number">3</span>, <span class="number">7</span>) <span class="comment"># 创建 datetime 对象</span></span><br><span class="line">dt64 = np.datetime64(dt, <span class="string">&#x27;D&#x27;</span>) <span class="comment"># 将 datetime 对象转换为 datetime64 对象</span></span><br><span class="line"><span class="built_in">print</span>(dt64, <span class="built_in">type</span>(dt64))</span><br><span class="line"></span><br><span class="line">ndt64 = np.datetime64(<span class="string">&#x27;2022-03-11&#x27;</span>) <span class="comment"># 创建 datetime64 对象</span></span><br><span class="line">ddt = ndt64.astype(datetime.datetime) <span class="comment"># 将 datetime64 对象转换为 datetime 对象</span></span><br><span class="line"><span class="built_in">print</span>(ddt, <span class="built_in">type</span>(ddt))</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>实例 <code>4</code>：允许在 <code>timedelta64</code> 和 <code>timedelta64</code> 之间进行运算。注：两个 <code>timedelta64</code> 之间不能进行跨级别运算，例：年和时之间不能直接运算。</p>
+<ul>
+<li>
+<p>同级单位的 <code>timedelta64</code> 可以进行加减乘除运算，返回数值类型。否则只能进行加减除运算，返回较小单位的 <code>timedelta64</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">yt1 = np.timedelta64(<span class="number">1</span>, <span class="string">&#x27;Y&#x27;</span>)</span><br><span class="line">yt2 = np.timedelta64(<span class="number">5</span>, <span class="string">&#x27;Y&#x27;</span>)</span><br><span class="line">mt = np.timedelta64(<span class="number">6</span>, <span class="string">&#x27;M&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(yt1 + mt)</span><br><span class="line"><span class="built_in">print</span>(yt1 - mt)</span><br><span class="line"><span class="built_in">print</span>(yt1 / yt2)</span><br><span class="line"><span class="built_in">print</span>(yt1 / mt)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>有两个 <code>timedelta</code> 单位（年（<code>Y</code>）和月（<code>M</code>））被特别处理，因为它们表示多少时间取决于使用时间。尽管 <code>timedelta</code> 天（&quot;<code>D</code>&quot;）单位等于 <code>24</code> 小时，但无法将一个月单位转换为天，因为不同的月份有不同的天数。示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.timedelta64(<span class="number">1</span>, <span class="string">&#x27;Y&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(np.timedelta64(a, <span class="string">&#x27;M&#x27;</span>)) <span class="comment"># 输出：12 months</span></span><br><span class="line"><span class="built_in">print</span>(np.timedelta64(a,<span class="string">&#x27;D&#x27;</span>)) <span class="comment"># 报错：TypeError: Cannot cast NumPy timedelta64 scalar from metadata [Y] to [D] according to the rule &#x27;same_kind&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>实例 <code>5</code>：允许 <code>timedelta64</code> 和数字进行加减乘除运算。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">yt = np.timedelta64(<span class="number">3</span>, <span class="string">&#x27;Y&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(yt * <span class="number">6</span>) <span class="comment"># 输出：18 years</span></span><br><span class="line"><span class="built_in">print</span>(yt / <span class="number">2</span>) <span class="comment"># 输出：1 years</span></span><br><span class="line"><span class="built_in">print</span>(yt + <span class="number">3</span>) <span class="comment"># 输出：6 years</span></span><br><span class="line"><span class="built_in">print</span>(yt - <span class="number">5</span>) <span class="comment"># 输出：-2 years</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="333-工作日功能busday"><a class="markdownIt-Anchor" href="#333-工作日功能busday"></a> 3.3.3 工作日功能（busday）</h4>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> <code>busday</code> 默认周一至周五是工作日。该实现基于一个 <code>weekmask</code>，包含 <code>7</code> 个布尔标志，用于工作日。</p>
+<h5 id="1-busday_offset-函数"><a class="markdownIt-Anchor" href="#1-busday_offset-函数"></a> 1. busday_offset 函数</h5>
+<ul>
+<li>
+<p><code>busday_offset</code> 函数用于将 <code>offsets</code> 偏移量应用于 <code>dates</code> 日期，单位：日（<code>D</code>）。如果 <code>dates</code> 为非工作日，则默认抛出异常：<code>ValueError: Non-business day date in busday_offset</code>。可以设置 <code>roll</code> 规则，首先将日期 <code>dates</code> 调整为工作日，然后再将偏移量 <code>offsets</code> 应用于这个工作日。<code>busday_offset</code> 函数的格式为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.busday_offset(dates, offsets, roll=<span class="string">&#x27;raise&#x27;</span>, weekmask=<span class="string">&#x27;1111100&#x27;</span>, holidays=<span class="literal">None</span>, busdaycal=<span class="literal">None</span>, out=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>dates</code>：必选参数，要处理的日期的数组。</p>
+</li>
+<li>
+<p><code>offsets</code>：必选参数，偏移量数组。若为 <strong>负</strong>，则返回在工作日中 <strong>向前</strong> 查找 <code>offsets</code> 绝对值大小步长的日期；若为 <strong>正</strong>，则返回在工作日中 <strong>向后</strong> 查找 <code>offsets</code> 绝对值大小步长的日期。</p>
+<ul>
+<li>
+<p>注：偏移量偏移的是工作日，跳过周末或节假日。</p>
+</li>
+<li>
+<p>当添加偏移量的日期落在周末或节假日时，<code>busday_offset</code> 会继续向前 / 向后滚动到工作日。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>roll</code>：可选参数，默认 <code>raise</code>，可填写内容：<code>&#123;'raise', 'nat', 'forward', 'following', 'backward', 'preceding', 'modifiedfollowing', 'modifiedpreceding'&#125;</code></p>
+<ul>
+<li>
+<p><code>raise</code>（<strong>默认</strong>）：对一个非工作日的日期抛出异常：<code>ValueError: Non-business day date in busday_offset</code>。</p>
+</li>
+<li>
+<p><code>nat</code>：对一个非工作日的日期抛出 <code>NaT</code>，<code>NaT</code> 是 <code>not-a-time</code> 的缩写。</p>
+</li>
+<li>
+<p><code>forward</code> 和 <code>following</code>：如果 <code>dates</code> 是非工作日，则向前滚动（日期增长），返回第一个找到的工作日的日期。</p>
+</li>
+<li>
+<p><code>backward</code> 和 <code>preceding</code>：如果 <code>dates</code> 是非工作日，则向后滚动（日期减少），返回第一个找到的工作日的日期。</p>
+</li>
+<li>
+<p><code>modifiedfollowing</code>：如果 <code>dates</code> 是非工作日，且返回第一个找到的工作日的日期没有跨月份，则与 <code>following</code> 相同，否则将向后滚动返回第一个工作日。示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 2022-07-31 周日，向前滚动返回第一个找到的工作日的日期跨月份（2022-08-01）</span></span><br><span class="line"><span class="comment"># 向前滚动 2 个偏移量，输出：2022-08-03</span></span><br><span class="line"><span class="built_in">print</span>(np.busday_offset(<span class="string">&#x27;2022-07-31&#x27;</span>, <span class="number">2</span>, roll=<span class="string">&quot;following&quot;</span>)) </span><br><span class="line"><span class="comment"># 跨月份，向后滚动返回第一个工作日（2022-07-29），</span></span><br><span class="line"><span class="comment"># 然后向前滚动 2 个偏移量，添加偏移量的日期落在周末，继续向前滚动，输出：2022-08-02</span></span><br><span class="line"><span class="built_in">print</span>(np.busday_offset(<span class="string">&#x27;2022-07-31&#x27;</span>, <span class="number">2</span>, roll=<span class="string">&quot;modifiedfollowing&quot;</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>modifiedpreceding</code>：如果 <code>dates</code> 是非工作日，且返回第一个找到的工作日的日期没有跨月份，则与 <code>preceding</code> 相同，否则将向前滚动返回第一个工作日。示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 2022-10-01 周六，向后滚动返回第一个找到的工作日的日期跨月份（2022-09-30）</span></span><br><span class="line"><span class="comment"># 向前滚动 2 个偏移量，输出：2022-10-04</span></span><br><span class="line"><span class="built_in">print</span>(np.busday_offset(<span class="string">&#x27;2022-10-01&#x27;</span>, <span class="number">2</span>, roll=<span class="string">&quot;preceding&quot;</span>))</span><br><span class="line"><span class="comment"># 跨月份，向前滚动返回第一个工作日（2022-10-03），</span></span><br><span class="line"><span class="comment"># 然后向前滚动 2 个偏移量，输出：2022-10-05</span></span><br><span class="line"><span class="built_in">print</span>(np.busday_offset(<span class="string">&#x27;2022-10-01&#x27;</span>, <span class="number">2</span>, roll=<span class="string">&quot;modifiedpreceding&quot;</span>))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><code>weekmask</code>：可选参数，表示工作日。可以是长度为 <code>7</code> 的 <code>list</code> 或 <code>array</code>，例：<code>[1,1,1,1,1,0,0]</code>；可以是长度为 <code>7</code> 的 <code>string</code>，例：<code>'1111100'</code>；<code>string</code> 中的元素可以是 <code>3</code> 字符缩写（<code>Mon</code> <code>Tue</code> <code>Wed</code> <code>Thu</code> <code>Fri</code> <code>Sat</code> <code>Sun</code>），每个元素之间使用空格分隔，<code>string</code> 中含有的元素即为工作日，例：<code>'Mon Tue Wed Thu Fri'</code>。示例：自定义 <code>weekmask</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 2022-03-07 周一</span></span><br><span class="line"><span class="comment"># 周一工作日，偏移量为 2，偏移两个工作日。</span></span><br><span class="line"><span class="built_in">print</span>(np.busday_offset(<span class="string">&#x27;2022-03-07&#x27;</span>, <span class="number">2</span>, weekmask=[<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>])) <span class="comment"># 输出：2022-03-11</span></span><br><span class="line"><span class="comment"># 周一非工作日，偏移量为 2，偏移两个工作日，roll=&quot;forward&quot; 向前滚动。</span></span><br><span class="line"><span class="built_in">print</span>(np.busday_offset(<span class="string">&#x27;2022-03-07&#x27;</span>, <span class="number">2</span>, roll=<span class="string">&quot;forward&quot;</span>, weekmask=<span class="string">&#x27;0110110&#x27;</span>)) <span class="comment"># 输出：2022-03-11</span></span><br><span class="line"><span class="comment"># 周一（Mon）工作日，偏移量为 2，偏移两个工作日。</span></span><br><span class="line"><span class="built_in">print</span>(np.busday_offset(<span class="string">&#x27;2022-03-07&#x27;</span>, <span class="number">2</span>, weekmask=<span class="string">&#x27;Mon Tue Wed Thu Fri&#x27;</span>)) <span class="comment"># 输出：2022-03-09</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>holidays</code>：可选参数，表示节假日，即要视为非工作日的 <code>list</code> 或 <code>array</code>。</p>
+</li>
+<li>
+<p><code>busdaycal</code>：指定工作日的 <code>busdaycalendar</code> 对象。如果提供此参数，则不能提供 <code>weekmask</code> 和 <code>holidays</code>。</p>
+<ul>
+<li><code>busdaycalendar(weekmask='1111100', holidays=None)</code> 可以返回指定工作日的 <code>busdaycalendar</code> 对象。</li>
+</ul>
+</li>
+<li>
+<p><code>out</code>：<code>datetime64[D]</code> 类型的数组，如果提供了，将使用 <code>busday_offset</code> 函数的返回值填充该数组。注：<code>busday_offset</code> 函数返回的数组要能够广播到 <code>out</code>，否则抛出异常：<code>ValueError: operands could not be broadcast together with shapes</code>。示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">oa = np.array([<span class="string">&quot;2022-12-01&quot;</span>,<span class="string">&quot;2022-12-02&quot;</span>,<span class="string">&quot;2022-12-03&quot;</span>],dtype=<span class="string">&quot;datetime64[D]&quot;</span>)</span><br><span class="line">ba = np.busday_offset([<span class="string">&#x27;2022-10-01&#x27;</span>,<span class="string">&#x27;2022-10-02&#x27;</span>,<span class="string">&#x27;2022-10-03&#x27;</span>], <span class="number">2</span>, roll=<span class="string">&quot;forward&quot;</span>,out=oa)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;oa：&quot;</span>, oa) <span class="comment"># 输出 oa： [&#x27;2022-10-05&#x27; &#x27;2022-10-05&#x27; &#x27;2022-10-05&#x27;]</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;ba：&quot;</span>, ba) <span class="comment"># 输出 ba： [&#x27;2022-10-05&#x27; &#x27;2022-10-05&#x27; &#x27;2022-10-05&#x27;]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-is_busday-函数"><a class="markdownIt-Anchor" href="#2-is_busday-函数"></a> 2. is_busday 函数</h5>
+<ul>
+<li>
+<p><code>is_busday</code> 函数返回布尔类型数组，判断指定日期是否为工作日，格式：<code>numpy.is_busday(dates, weekmask='1111100', holidays=None, busdaycal=None, out=None)</code>。</p>
+</li>
+<li>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">	</span><br><span class="line"><span class="built_in">print</span>(np.is_busday(np.datetime64(<span class="string">&#x27;2022-03-07&#x27;</span>))) <span class="comment"># 2022-03-07 周一，输出：True</span></span><br><span class="line"><span class="built_in">print</span>(np.is_busday(<span class="string">&#x27;2022-03-07&#x27;</span>)) <span class="comment"># 输出：True</span></span><br><span class="line"><span class="built_in">print</span>(np.is_busday(np.datetime64(<span class="string">&#x27;2022-03-06&#x27;</span>))) <span class="comment"># 2022-03-06 周日，输出：False</span></span><br><span class="line"><span class="built_in">print</span>(np.is_busday(<span class="string">&#x27;2022-03-06&#x27;</span>)) <span class="comment"># 输出：True</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="3-busday_count-函数"><a class="markdownIt-Anchor" href="#3-busday_count-函数"></a> 3. busday_count 函数</h5>
+<ul>
+<li>
+<p><code>busday_count</code> 函数返回 <code>begindates</code> 和 <code>enddates</code> 两个日期之间的工作日数量，如果 <code>enddates</code> 大于 <code>begindates</code>，则返回值为负，格式：<code>busday_count(begindates, enddates, weekmask=None, holidays=None, busdaycal=None, out=None)</code></p>
+</li>
+<li>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(np.busday_count(np.datetime64(<span class="string">&#x27;2022-03-07&#x27;</span>), np.datetime64(<span class="string">&#x27;2022-04-07&#x27;</span>)))  <span class="comment"># 输出 23</span></span><br><span class="line"><span class="built_in">print</span>(np.busday_count(<span class="string">&#x27;2022-03-07&#x27;</span>, <span class="string">&#x27;2022-04-07&#x27;</span>)) <span class="comment"># 输出 23</span></span><br><span class="line"><span class="built_in">print</span>(np.busday_count(<span class="string">&#x27;2022-04-07&#x27;</span>, <span class="string">&#x27;2022-03-07&#x27;</span>))  <span class="comment"># 输出 -23</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="四-numpy-数组"><a class="markdownIt-Anchor" href="#四-numpy-数组"></a> 四、NumPy 数组</h2>
+<h3 id="41-numpy-创建数组"><a class="markdownIt-Anchor" href="#41-numpy-创建数组"></a> 4.1 NumPy 创建数组</h3>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> <code>ndarray</code> 数组除了可以使用底层 <code>ndarray</code> 构造器（<code>numpy.array</code>）来创建外，也可以通过以下几种方式来创建。</p>
+<h4 id="411-numpyempty"><a class="markdownIt-Anchor" href="#411-numpyempty"></a> 4.1.1 numpy.empty</h4>
+<ul>
+<li>
+<p><code>numpy.empty</code> 方法用来创建一个指定形状（<code>shape</code>）、数据类型（<code>dtype</code>）且未初始化的数组（数组元素为随机值）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.empty(shape, dtype = <span class="built_in">float</span>, order = <span class="string">&#x27;C&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>shape</code>：数组形状，必选，单数值或数值序列，例：<code>(2,3)</code>。</p>
+</li>
+<li>
+<p><code>dtype</code>：数据类型，可选。默认为浮点数。</p>
+</li>
+<li>
+<p><code>order</code>：默认 “<code>C</code>”，可选。有 “<code>C</code>” 和 “<code>F</code>” 两个选项，分别代表行优先和列优先。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="412-numpyzeros"><a class="markdownIt-Anchor" href="#412-numpyzeros"></a> 4.1.2 numpy.zeros</h4>
+<ul>
+<li>
+<p>创建指定大小的数组，数组元素以 <code>0</code> 来填充：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.zeros(shape, dtype = <span class="built_in">float</span>, order = <span class="string">&#x27;C&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>shape</code>：数组形状，必选，单数值或数值序列，例：<code>(2,3)</code>。</p>
+</li>
+<li>
+<p><code>dtype</code>：数据类型，可选。默认为浮点数。</p>
+</li>
+<li>
+<p><code>order</code>：默认&quot;<code>C</code>&quot;，可选。有 “<code>C</code>” 和 “<code>F</code>” 两个选项，分别代表行优先和列优先。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="413-numpyones"><a class="markdownIt-Anchor" href="#413-numpyones"></a> 4.1.3 numpy.ones</h4>
+<ul>
+<li>
+<p>创建指定形状的数组，数组元素以 <code>1</code> 来填充：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.ones(shape, dtype = <span class="built_in">float</span>, order = <span class="string">&#x27;C&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>shape</code>：数组形状，必选，单数值或数值序列，例：<code>(2,3)</code>。</p>
+</li>
+<li>
+<p><code>dtype</code>：数据类型，可选。默认为浮点数。</p>
+</li>
+<li>
+<p><code>order</code>：默认&quot;<code>C</code>&quot;，可选。有 “<code>C</code>” 和 “<code>F</code>” 两个选项，分别代表行优先和列优先。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="414-numpyfull"><a class="markdownIt-Anchor" href="#414-numpyfull"></a> 4.1.4 numpy.full</h4>
+<ul>
+<li>
+<p>创建指定维度和类型的数组，填充 <code>fill_value</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.full(shape, fill_value, dtype = <span class="literal">None</span>, order = <span class="string">&#x27;C&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>shape</code>：数组形状，必选，单数值或数值序列，例：<code>(2,3)</code>。</p>
+</li>
+<li>
+<p><code>fill_value</code>：填充值，必选。</p>
+</li>
+<li>
+<p><code>dtype</code>：数据类型，可选。<strong>默认为</strong> <code>None</code>。</p>
+</li>
+<li>
+<p><code>order</code>：默认&quot;<code>C</code>&quot;，可选。有 “<code>C</code>” 和 “<code>F</code>” 两个选项，分别代表行优先和列优先。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="415-numpyeye"><a class="markdownIt-Anchor" href="#415-numpyeye"></a> 4.1.5 numpy.eye</h4>
+<ul>
+<li>
+<p>创建对角线元素全为 <code>1</code>，其余元素全为 <code>0</code> 的矩阵。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.ones(N, M = <span class="literal">None</span>, k = <span class="number">0</span>, dtype = <span class="built_in">float</span>, order = <span class="string">&#x27;C&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>N</code>：如果 <code>M</code> 没有传值，表示要创建一个行列数都为 <code>N</code> 的二维数组；如果 <code>M</code> 传值，<code>N</code> 表示要创建的二维数组的行数。</p>
+</li>
+<li>
+<p><code>M</code>：表示要创建的二维数组的列数。</p>
+</li>
+<li>
+<p><code>k</code>：表示从第 <code>1</code> 行开始的对角线起始位置，默认是 <code>0</code>，表示从左上角第 <code>1</code> 个元素开始。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="42-numpy-从已有的数组创建数组"><a class="markdownIt-Anchor" href="#42-numpy-从已有的数组创建数组"></a> 4.2 NumPy 从已有的数组创建数组</h3>
+<h4 id="421-numpyasarray"><a class="markdownIt-Anchor" href="#421-numpyasarray"></a> 4.2.1 numpy.asarray</h4>
+<ul>
+<li>
+<p><code>numpy.asarray</code> 类似 <code>numpy.array</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.asarray(a, dtype = <span class="literal">None</span>, order = <span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>a</code>：任意形式可以转换为数组的参数，可以是列表、列表的元组、元组、元组的元组、元组的列表、多维数组 <code>ndarrays</code>。</p>
+</li>
+<li>
+<p><code>dtype</code>：数据类型，可选。</p>
+</li>
+<li>
+<p><code>order</code>：<code>&#123;‘K’, ‘A’, ‘C’, ‘F’&#125;</code>, <strong>可选参数</strong>。指定新生成的 <code>array</code> 的内存布局。</p>
+<ul>
+<li>
+<p>如果 <code>object</code> 不是数组，则新创建的数组将按行排列（<code>C</code>），如果指定了（<code>F</code>），则按列排列。</p>
+</li>
+<li>
+<p>如果 <code>object</code> 是一个数组，可选项为 <code>&#123;‘K’, ‘A’, ‘C’, ‘F’&#125;</code>，默认 <code>K</code>。</p>
+<ul>
+<li>
+<p><code>C</code>：按照 <strong>行方向</strong> 进行存储；</p>
+</li>
+<li>
+<p><code>F</code>（<code>Fortran</code>）：按照 <strong>列方向</strong> 进行存储；</p>
+</li>
+<li>
+<p><code>A</code>（<code>any</code>）：表示如果输入源在内存中的存储结构是 <code>F order</code> 连续的，按 <code>F order</code> 进行存储，否则都按 <code>C odrder</code> 进行存储。</p>
+</li>
+<li>
+<p><code>K</code>（<code>keep</code>）：按照输入源的数据存储结构进行存储。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="422-numpyfrombuffer"><a class="markdownIt-Anchor" href="#422-numpyfrombuffer"></a> 4.2.2 numpy.frombuffer</h4>
+<ul>
+<li>
+<p><code>numpy.frombuffer</code> 接受 <code>buffer</code> 输入参数，以流的形式读入转化成 <code>ndarray</code> 对象。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.frombuffer(buffer, dtype = <span class="literal">None</span>, count = -<span class="number">1</span>, offset = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>buffer</code>：实现了 <code>__buffer__</code> 方法的对象。</p>
+</li>
+<li>
+<p><code>dtype</code>：返回数组的数据类型。</p>
+</li>
+<li>
+<p><code>count</code>：读取的数据数量，默认为 <code>-1</code>，读取所有数据。</p>
+</li>
+<li>
+<p><code>offset</code>：读取的起始位置，默认为 <code>0</code>。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="423-numpyfromiter"><a class="markdownIt-Anchor" href="#423-numpyfromiter"></a> 4.2.3 numpy.fromiter</h4>
+<ul>
+<li>
+<p><code>numpy.fromiter</code> 方法从可迭代对象中建立 <code>ndarray</code> 对象，返回一维数组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.fromiter(iterable, dtype, count = -<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>iterable</code>：实现了 <code>__iter__</code> 方法的可迭代对象。如：字符串、列表、元组、集合、字典等等之类的对象都属于可迭代对象。</p>
+</li>
+<li>
+<p><code>dtype</code>：返回数组的数据类型，必选。</p>
+</li>
+<li>
+<p><code>count</code>：读取的数据数量，默认为 <code>-1</code>，读取所有数据。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="424-numpyempty_like"><a class="markdownIt-Anchor" href="#424-numpyempty_like"></a> 4.2.4 numpy.empty_like</h4>
+<ul>
+<li>
+<p><code>numpy.empty_like</code> 方法返回一个与给定数组具有相同维度和类型的未初始化的新数组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.empty_like(prototype, dtype=<span class="literal">None</span>, order=<span class="string">&#x27;K&#x27;</span>, subok=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>prototype</code>：给定的数组。</p>
+</li>
+<li>
+<p><code>dtype</code>：返回数组的数据类型，默认值 <code>None</code>，则使用给定数组的类型。</p>
+</li>
+<li>
+<p><code>order</code>：<code>&#123;‘K’, ‘A’, ‘C’, ‘F’&#125;</code>, <strong>可选参数</strong>。指定新生成的 <code>array</code> 的内存布局。</p>
+<ul>
+<li>
+<p>如果 <code>object</code> 不是数组，则新创建的数组将按行排列（<code>C</code>），如果指定了（<code>F</code>），则按列排列。</p>
+</li>
+<li>
+<p>如果 <code>object</code> 是一个数组，可选项为 <code>&#123;‘K’, ‘A’, ‘C’, ‘F’&#125;</code>，默认 <code>K</code>。</p>
+<ul>
+<li>
+<p><code>C</code>：按照 <strong>行方向</strong> 进行存储；</p>
+</li>
+<li>
+<p><code>F</code>（<code>Fortran</code>）：按照 <strong>列方向</strong> 进行存储；</p>
+</li>
+<li>
+<p><code>A</code>（<code>any</code>）：表示如果输入源在内存中的存储结构是 <code>F order</code> 连续的，按 <code>F order</code> 进行存储，否则都按 <code>C odrder</code> 进行存储。</p>
+</li>
+<li>
+<p><code>K</code>（<code>keep</code>）：按照输入源的数据存储结构进行存储。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>subok</code>：如果为 <code>True</code>，则新创建的数组将使用 <code>prototype</code> 的类型，否则它将是基类 <code>ndarray</code>。默认为 <code>False</code>。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="425-numpyzeros_like"><a class="markdownIt-Anchor" href="#425-numpyzeros_like"></a> 4.2.5 numpy.zeros_like</h4>
+<ul>
+<li>
+<p><code>numpy.zeros_like</code> 方法返回一个与给定数组具有相同维度和类型的以 <code>0</code> 来填充的新数组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.zeros_like(prototype, dtype=<span class="literal">None</span>, order=<span class="string">&#x27;K&#x27;</span>, subok=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>参数同上。</li>
+</ul>
+</li>
+</ul>
+<h4 id="426-numpyones_like"><a class="markdownIt-Anchor" href="#426-numpyones_like"></a> 4.2.6 numpy.ones_like</h4>
+<ul>
+<li>
+<p><code>numpy.ones_like</code> 方法返回一个与给定数组具有相同维度和类型的以 <code>1</code> 来填充的新数组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.ones_like(prototype, dtype=<span class="literal">None</span>, order=<span class="string">&#x27;K&#x27;</span>, subok=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>参数同上。</li>
+</ul>
+</li>
+</ul>
+<h4 id="427-numpyfull_like"><a class="markdownIt-Anchor" href="#427-numpyfull_like"></a> 4.2.7 numpy.full_like</h4>
+<ul>
+<li>
+<p><code>numpy.full_like</code> 方法返回一个与给定数组具有相同维度和类型的以 <code>fill_value</code> 来填充的新数组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.full_like(prototype, fill_value, dtype=<span class="literal">None</span>, order=<span class="string">&#x27;K&#x27;</span>, subok=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>prototype</code>：给定的数组。</p>
+</li>
+<li>
+<p><code>fill_value</code>：填充值。</p>
+</li>
+<li>
+<p><code>dtype</code>：返回数组的数据类型，默认值 <code>None</code>，则使用给定数组的类型。</p>
+</li>
+<li>
+<p><code>order</code>：<code>&#123;‘K’, ‘A’, ‘C’, ‘F’&#125;</code>, <strong>可选参数</strong>。指定新生成的 <code>array</code> 的内存布局。</p>
+<ul>
+<li>
+<p>如果 <code>object</code> 不是数组，则新创建的数组将按行排列（<code>C</code>），如果指定了（<code>F</code>），则按列排列。</p>
+</li>
+<li>
+<p>如果 <code>object</code> 是一个数组，可选项为 <code>&#123;‘K’, ‘A’, ‘C’, ‘F’&#125;</code>，默认 <code>K</code>。</p>
+<ul>
+<li>
+<p><code>C</code>：按照 <strong>行方向</strong> 进行存储；</p>
+</li>
+<li>
+<p><code>F</code>（<code>Fortran</code>）：按照 <strong>列方向</strong> 进行存储；</p>
+</li>
+<li>
+<p><code>A</code>（<code>any</code>）：表示如果输入源在内存中的存储结构是 <code>F order</code> 连续的，按 <code>F order</code> 进行存储，否则都按 <code>C odrder</code> 进行存储。</p>
+</li>
+<li>
+<p><code>K</code>（<code>keep</code>）：按照输入源的数据存储结构进行存储。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>subok</code>：如果为 <code>True</code>，则新创建的数组将使用 <code>prototype</code> 的类型，否则它将是基类 <code>ndarray</code>。默认为 <code>False</code>。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="43-numpy-从数值范围创建数组"><a class="markdownIt-Anchor" href="#43-numpy-从数值范围创建数组"></a> 4.3 NumPy 从数值范围创建数组</h3>
+<h4 id="431-numpyarange"><a class="markdownIt-Anchor" href="#431-numpyarange"></a> 4.3.1 numpy.arange</h4>
+<ul>
+<li>
+<p><code>numpy</code> 包中的 <code>arange</code> 函数根据 <code>start</code> 与 <code>stop</code> 指定的范围以及 <code>step</code> 设定的步长，生成一个 <code>ndarray</code> 对象并返回。格式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.arange([start,] stop[, step,], dtype=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>start</code>：起始值，可选，默认为 <code>0</code>。</p>
+</li>
+<li>
+<p><code>stop</code>：终止值（不包含）。</p>
+</li>
+<li>
+<p><code>step</code>：步长，可选，默认为 <code>1</code>。如果将 <code>step</code> 指定为位置参数，则必须给出 <code>start</code>。</p>
+</li>
+<li>
+<p><code>dtype</code>：返回 <code>ndarray</code> 的数据类型。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="432-numpylinspace"><a class="markdownIt-Anchor" href="#432-numpylinspace"></a> 4.3.2 numpy.linspace</h4>
+<ul>
+<li>
+<p><code>numpy.linspace</code> 函数用于创建一个一维数组，数组是一个等差数列构成的，格式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.linspace(start, stop, num=<span class="number">50</span>, endpoint=<span class="literal">True</span>, retstep=<span class="literal">False</span>, dtype=<span class="literal">None</span>, axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>start</code>：序列的起始值。</p>
+</li>
+<li>
+<p><code>stop</code>：序列的终止值，如果 <code>endpoint</code> 为 <code>True</code>，该值包含于数列中。</p>
+<ul>
+<li><code>start</code> <strong>与</strong> <code>stop</code> <strong>可以是符合广播条件的数组</strong>。<strong>（下文讲解 numpy 广播）</strong></li>
+</ul>
+</li>
+<li>
+<p><code>num</code>：要生成的等步长的样本数量，默认为 <code>50</code>。</p>
+</li>
+<li>
+<p><code>endpoint</code>：该值为 <code>True</code> 时，数列中包含 <code>stop</code> 值，反之不包含，默认是 <code>True</code>。</p>
+<ul>
+<li>
+<p>该值为 <code>False</code> 时，在 <code>start</code> 到 <code>stop</code> 的范围中生成 <code>num + 1</code> 个值，然后返回除最后一个 <code>stop</code> 外的 <code>num</code> 个值。示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.linspace(<span class="number">0</span>, <span class="number">10</span>, <span class="number">5</span>, endpoint=<span class="literal">True</span>, retstep=<span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment"># 输出：(array([ 0. ,  2.5,  5. ,  7.5, 10. ]), 2.5)</span></span><br><span class="line">b = np.linspace(<span class="number">0</span>, <span class="number">10</span>, <span class="number">5</span>, endpoint=<span class="literal">False</span>, retstep=<span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># 输出：(array([0., 2., 4., 6., 8.]), 2.0)</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><code>retstep</code>：如果为 <code>True</code> 时，生成的数组中会显示间距，反之不显示。</p>
+</li>
+<li>
+<p><code>dtype</code>：返回 <code>ndarray</code> 的数据类型。</p>
+</li>
+<li>
+<p><code>axis</code>：默认<code>axis = 0</code>，可以指定在哪个轴上进行操作。仅当 <code>start</code> 或 <code>stop</code> 为数组/元组时才有用。</p>
+<ul>
+<li>
+<p><strong>注</strong>：<code>numpy.geomspace</code> <strong>返回数组的维度会在</strong> <code>start</code> <strong>与</strong> <code>stop</code> <strong>维度基础上</strong> <code>+1</code>，<strong>新增维度的值为</strong> <code>num</code>。</p>
+</li>
+<li>
+<p>假设输入数组的维度为 <code>n</code>，则输出数组维度为 <code>n + 1</code>。如果 <code>axis = i</code>，则在输出数组的 <code>shape</code> 的第 <code>i</code> 个索引处为新增的维度，含有 <code>num</code> 个值（<code>i</code> 不可以大于输出数组的维度）。</p>
+</li>
+<li>
+<p><strong>示例</strong>：输入 <code>2</code> 行 <code>3</code> 列的二维数组，则返回 <code>3</code> 维数组。当 <code>axis=0</code> 时，返回形状为 <code>(5,2,3)</code> 的数组；当 <code>axis=1</code> 时，返回形状为 <code>(2,5,3)</code> 的数组；当 <code>axis=2</code> 时，返回形状为 <code>(2,3,5)</code> 的数组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = [[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]]</span><br><span class="line">b = [[<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>],[<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>]]</span><br><span class="line">c0 = np.linspace(a,b,<span class="number">10</span>)</span><br><span class="line">c1 = np.linspace(a,b,<span class="number">10</span>,axis=<span class="number">1</span>)</span><br><span class="line">c2 = np.linspace(a,b,<span class="number">10</span>,axis=<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(c0)</span><br><span class="line"><span class="built_in">print</span>(c0.shape) <span class="comment"># 输出：(10, 2, 3)</span></span><br><span class="line"><span class="built_in">print</span>(c1)</span><br><span class="line"><span class="built_in">print</span>(c1.shape) <span class="comment"># 输出：(2, 10, 3)</span></span><br><span class="line"><span class="built_in">print</span>(c2)</span><br><span class="line"><span class="built_in">print</span>(c2.shape) <span class="comment"># 输出：(2, 3, 10)</span></span><br></pre></td></tr></table></figure>
+<div align=center>
+<img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/Numpy/01/04.jpg"/>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="433-numpylogspace"><a class="markdownIt-Anchor" href="#433-numpylogspace"></a> 4.3.3 numpy.logspace</h4>
+<ul>
+<li>
+<p><code>numpy.logspace</code> 函数用于创建一个一维数组，数组是一个等比数列构成的。格式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.logspace(start, stop, num=<span class="number">50</span>, endpoint=<span class="literal">True</span>, base=<span class="number">10.0</span>, dtype=<span class="literal">None</span>, axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>start</code>：序列的起始值为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi><mi>a</mi><mi>s</mi><msup><mi>e</mi><mrow><mi>s</mi><mi>t</mi><mi>a</mi><mi>r</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">base^{start}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7935559999999999em;vertical-align:0em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7935559999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">s</span><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">t</span></span></span></span></span></span></span></span></span></span></span></span></p>
+</li>
+<li>
+<p><code>stop</code>：序列的终止值为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi><mi>a</mi><mi>s</mi><msup><mi>e</mi><mrow><mi>s</mi><mi>t</mi><mi>o</mi><mi>p</mi></mrow></msup></mrow><annotation encoding="application/x-tex">base^{stop}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7935559999999999em;vertical-align:0em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7935559999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">s</span><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span></span></span></span></span>。如果 <code>endpoint</code> 为 <code>True</code>，该值包含于数列中。</p>
+<ul>
+<li><code>start</code> <strong>与</strong> <code>stop</code> <strong>可以是符合广播条件的数组</strong>。<strong>（下文讲解 numpy 广播）</strong></li>
+</ul>
+</li>
+<li>
+<p><code>num</code>：要生成的等步长的样本数量，默认为 <code>50</code>。</p>
+</li>
+<li>
+<p><code>endpoint</code>：该值为 <code>True</code> 时，数列中中包含 <code>stop</code> 值，反之不包含，默认是 <code>True</code>。</p>
+</li>
+<li>
+<p><code>base</code>：<code>logspace</code> 函数的底数，默认底数是 <code>10</code>。</p>
+</li>
+<li>
+<p><code>dtype</code>：返回 <code>ndarray</code> 的数据类型。</p>
+</li>
+<li>
+<p><code>axis</code>：默认<code>axis = 0</code>，可以指定在哪个轴上进行操作。仅当 <code>start</code> 或 <code>stop</code> 为数组/元组时才有用。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="434-numpygeomspace"><a class="markdownIt-Anchor" href="#434-numpygeomspace"></a> 4.3.4 numpy.geomspace</h4>
+<ul>
+<li>
+<p><code>numpy.geomspace</code> 函数返回数字以对数刻度（几何级数）均匀分布。这类似于 <code>logspace</code>，但是直接指定了端点。每个输出样本是前一个样本的 <strong>恒定倍数</strong>。格式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.geomspace(start, stop, num=<span class="number">50</span>, endpoint=<span class="literal">True</span>, dtype=<span class="literal">None</span>, axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>start</code>：序列的起始值。</p>
+</li>
+<li>
+<p><code>stop</code>：序列的终止值。</p>
+<ul>
+<li><code>start</code> <strong>与</strong> <code>stop</code> <strong>可以是符合广播条件的数组</strong>。<strong>（下文讲解 numpy 广播）</strong></li>
+</ul>
+</li>
+<li>
+<p><code>num</code>：要生成的等步长的样本数量，默认为 <code>50</code>。</p>
+</li>
+<li>
+<p><code>endpoint</code>：该值为 <code>Ture</code> 时，数列中中包含 <code>stop</code> 值，反之不包含，默认是 <code>True</code>。</p>
+</li>
+<li>
+<p><code>dtype</code>：返回 <code>ndarray</code> 的数据类型。</p>
+</li>
+<li>
+<p><code>axis</code>：默认<code>axis = 0</code>，可以指定在哪个轴上进行操作。仅当 <code>start</code> 或 <code>stop</code> 为数组/元组时才有用。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="五-numpy-切片和索引"><a class="markdownIt-Anchor" href="#五-numpy-切片和索引"></a> 五、NumPy 切片和索引</h2>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> <code>ndarray</code> 对象的内容可以通过索引或切片来访问和修改，与 <code>Python</code> 中 <code>list</code> 的切片操作一样。</p>
+<h3 id="51-numpy-索引"><a class="markdownIt-Anchor" href="#51-numpy-索引"></a> 5.1 NumPy 索引</h3>
+<ul>
+<li><code>ndarray</code> 数组可以基于 <code>0 ~ n</code> 的下标进行索引。</li>
+</ul>
+<h3 id="52-numpy-切片"><a class="markdownIt-Anchor" href="#52-numpy-切片"></a> 5.2 NumPy 切片</h3>
+<h4 id="521-索引切片"><a class="markdownIt-Anchor" href="#521-索引切片"></a> 5.2.1 索引切片</h4>
+<ul>
+<li>
+<p>我们可以通过冒号分隔切片参数 <code>start:stop:step</code> 来进行切片操作：<code>ndarray[start:stop:step]</code></p>
+<ul>
+<li><code>start</code>：可选。整数，指定在哪个位置开始裁切。默认为 <code>0</code>。
+<ul>
+<li>如果只放置 <code>start</code> 一个参数，将返回 <code>start</code> 索引相对应的单个元素。</li>
+<li>如果为 <code>[start:]</code>，表示 <code>start</code> 索引开始以后的所有项都将被提取。</li>
+</ul>
+</li>
+<li><code>end</code>：可选。整数，指定在哪个位置结束裁切（不包含）。</li>
+<li><code>step</code>：可选。整数，指定裁切的步长。默认为 <code>1</code>。</li>
+</ul>
+</li>
+<li>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">arr = np.arange(<span class="number">24</span>).reshape(<span class="number">4</span>,<span class="number">6</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;arr:\n&quot;</span>, arr)</span><br><span class="line">sliceArr = arr[<span class="number">1</span>:<span class="number">3</span>, <span class="number">1</span>:<span class="number">4</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;sliceArr:\n&quot;</span>, sliceArr)</span><br></pre></td></tr></table></figure>
+<div align=center>
+<img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/Numpy/01/05.png"/>
+</div>
+</li>
+<li>
+<p>切片可以使用省略号 “<code>...</code>”，如果在行位置使用省略号，那么返回值将包含所有行元素，反之，则包含所有列元素。示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">	</span><br><span class="line">a = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]]) <span class="comment"># 创建 2 行 3 列数组</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;a[...]:\n&quot;</span>, a[...]) <span class="comment"># 返回整个数组</span></span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;a[...,1]:\n&quot;</span>, a[...,<span class="number">1</span>]) <span class="comment"># 返回数组的第二列</span></span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;a[1,...]:\n&quot;</span>, a[<span class="number">1</span>,...]) <span class="comment"># 返回数组的第二行</span></span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;a[...,1:]:\n&quot;</span>, a[...,<span class="number">1</span>:]) <span class="comment"># 返回第二列（包含）后的所有列</span></span><br></pre></td></tr></table></figure>
+<div align=center>
+<img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/Numpy/01/06.png"/>
+</div>
+</li>
+</ul>
+<h4 id="522-slice-函数"><a class="markdownIt-Anchor" href="#522-slice-函数"></a> 5.2.2 slice 函数</h4>
+<ul>
+<li>
+<p><code>python</code> 内置函数 <code>slice</code> 可以用来构造 <code>slice</code> 对象，<code>slice</code> 对象用于指定如何对 <strong>序列</strong> 进行裁切。格式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">slice</span>(start, end, step)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><code>start</code>：可选。整数，指定在哪个位置开始裁切。默认为 <code>0</code>。</p>
+</li>
+<li>
+<p><code>end</code>：可选。整数，指定在哪个位置结束裁切。</p>
+</li>
+<li>
+<p><code>step</code>：可选。整数，指定裁切的步长。默认为 <code>1</code>。</p>
+</li>
+<li>
+<p>实例：通过 <code>arange()</code> 函数创建 <code>ndarray</code> 对象。然后，分别设置起始、终止和步长的参数为 <code>2</code>、<code>7</code> 和 <code>2</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.arange(<span class="number">10</span>)</span><br><span class="line">s = <span class="built_in">slice</span>(<span class="number">2</span>,<span class="number">7</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span> (a[s]) <span class="comment"># 输出：[2 4 6]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="53-numpy-高级索引"><a class="markdownIt-Anchor" href="#53-numpy-高级索引"></a> 5.3 NumPy 高级索引</h3>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mspace width="1em"/></mrow><annotation encoding="application/x-tex">\quad</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:1em;"></span></span></span></span> <code>NumPy</code> 比一般的 <code>Python</code> 序列提供更多的索引方式。除了之前看到的用整数和切片的索引外，数组可以由 <strong>整数数组</strong>索引、<strong>布尔</strong>索引 及 <strong>花式</strong>索引。</p>
+<h4 id="531-整数数组索引"><a class="markdownIt-Anchor" href="#531-整数数组索引"></a> 5.3.1 整数数组索引</h4>
+<ul>
+<li>
+<p>使用 <code>N</code> 维整数数组索引来获取 <code>M</code> 维数组中的元素，生成的数组也是 <code>N</code> 维的，<code>N</code> 维整数数组中的数值表示该维度的下标值。</p>
+<ul>
+<li>
+<p><strong>实例 1</strong>：使用 <code>2</code> 维整数数组索引 <code>[[0,1,2], [0,1,0]]</code> 获取 <code>2</code> 维数组中<code>(0,0)，(1,1)</code> 和 <code>(2,0)</code> 位置处的元素。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"></span><br><span class="line">x = np.array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>],[<span class="number">5</span>,<span class="number">6</span>]]) </span><br><span class="line">y = x[[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>],[<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>]]  </span><br><span class="line"><span class="built_in">print</span>(y) <span class="comment"># 输出：[1 4 5]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>实例 2</strong>：获取 <code>4</code> 行 <code>3</code> 列数组中的四个角上的元素，它们对应的行索引是 <code>[0, 0]</code> 和 <code>[3, 3]</code>，列索引是 <code>[0, 2]</code> 和 <code>[0, 2]</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">b = np.array([[ <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">              [ <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>],</span><br><span class="line">              [ <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>],</span><br><span class="line">              [ <span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>]])</span><br><span class="line">r = np.array([[<span class="number">0</span>,<span class="number">0</span>],[<span class="number">3</span>,<span class="number">3</span>]])</span><br><span class="line">c = np.array([[<span class="number">0</span>,<span class="number">2</span>],[<span class="number">0</span>,<span class="number">2</span>]])</span><br><span class="line"><span class="comment"># 获取四个角的元素</span></span><br><span class="line">c = b[r, c]</span><br><span class="line"><span class="built_in">print</span>(c)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<div align=center>
+<img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/Numpy/01/07.png"/>
+</div>
+</li>
+<li>
+<p><strong>实例 3</strong>：可以将切片所使用的 <code>:</code> 或省略号 <code>...</code> 与整数数组索引结合使用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">arr = np.array([[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>],</span><br><span class="line">                [ <span class="number">3</span>,  <span class="number">4</span>,  <span class="number">5</span>],</span><br><span class="line">                [ <span class="number">6</span>,  <span class="number">7</span>,  <span class="number">8</span>],</span><br><span class="line">                [ <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>]])</span><br><span class="line">	</span><br><span class="line">a = arr[<span class="number">1</span>:<span class="number">4</span>,<span class="number">1</span>:<span class="number">3</span>] <span class="comment"># 对行列分别进行切片</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;a:\n&quot;</span>,a)</span><br><span class="line">b = arr[<span class="number">1</span>:<span class="number">4</span>,[<span class="number">1</span>,<span class="number">2</span>]] <span class="comment"># 对行使用基础索引，对列使用高级索引</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;b:\n&quot;</span>,b)</span><br><span class="line">c = arr[...,<span class="number">1</span>:] <span class="comment"># 对行使用省略号</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;c:\n&quot;</span>,c)</span><br></pre></td></tr></table></figure>
+<div align=center>
+<img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/Numpy/01/08.png"/>
+</div>
+</li>
+</ul>
+<h4 id="532-布尔索引"><a class="markdownIt-Anchor" href="#532-布尔索引"></a> 5.3.2 布尔索引</h4>
+<ul>
+<li>
+<p>当输出的结果需要经过布尔运算（如：比较运算）时，此时会使用到另一种高级索引方式，即布尔数组索引。</p>
+<ul>
+<li>
+<p><strong>实例 1</strong>：返回数组中大于 6 的的所有元素。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x = np.array([[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>],[ <span class="number">3</span>,  <span class="number">4</span>,  <span class="number">5</span>],[ <span class="number">6</span>,  <span class="number">7</span>,  <span class="number">8</span>],[ <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>]])</span><br><span class="line"><span class="built_in">print</span>(x[x &gt; <span class="number">6</span>]) <span class="comment"># [ 7  8  9 10 11]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>实例 2</strong>：使用补码运算符去除 <code>NaN</code>（即非数字元素）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.array([np.nan, <span class="number">1</span>, <span class="number">2</span>, np.nan, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(a[~np.isnan(a)]) <span class="comment"># [1. 2. 3. 4. 5.]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="533-花式索引"><a class="markdownIt-Anchor" href="#533-花式索引"></a> 5.3.3 花式索引</h4>
+<ul>
+<li>
+<p>花式索引根据索引数组的值作为目标数组的某个轴的下标来取值。花式索引会生成一个新的副本。</p>
+<ul>
+<li>
+<p><strong>实例 1</strong>：当原数组是一维数组时，使用一维整型数组作为索引，那么索引结果就是相应索引位置上的元素。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">arr = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line"><span class="built_in">print</span>(arr[<span class="number">1</span>]) <span class="comment"># 2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>实例 2</strong>：当原数组是二维数组时，索引数组也需要是二维的，索引数组的元素值与被索引数组的每一行相对应。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">arr  = np.arange(<span class="number">32</span>).reshape((<span class="number">8</span>,<span class="number">4</span>))</span><br><span class="line"><span class="built_in">print</span>(arr, <span class="string">&quot;\n&quot;</span>)</span><br><span class="line"><span class="comment"># 分别对应第 4 行数据、第 2 行数据、第 1 行数据、第 7 行数据项</span></span><br><span class="line"><span class="built_in">print</span>(arr[[<span class="number">4</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">7</span>]])</span><br></pre></td></tr></table></figure>
+<div align=center>
+<img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/Numpy/01/09.png"/>
+</div>
+</li>
+<li>
+<p><strong>实例 3</strong>：可以使用倒序索引数组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">arr = np.arange(<span class="number">32</span>).reshape((<span class="number">8</span>,<span class="number">4</span>))</span><br><span class="line"><span class="built_in">print</span>(arr, <span class="string">&quot;\n&quot;</span>)</span><br><span class="line"><span class="comment"># 分别对应倒数第 4 行数据、倒数第 2 行数据、倒数第 1 行数据、倒数第 7 行数据项</span></span><br><span class="line"><span class="built_in">print</span>(arr[[-<span class="number">4</span>,-<span class="number">2</span>,-<span class="number">1</span>,-<span class="number">7</span>]])</span><br></pre></td></tr></table></figure>
+<div align=center>
+<img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/Numpy/01/10.png"/>
+</div>
+</li>
+<li>
+<p><strong>实例 4</strong>：可以同时使用多个索引数组，但这种情况下需要添加 <code>np.ix_</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">arr = np.arange(<span class="number">32</span>).reshape((<span class="number">8</span>,<span class="number">4</span>))</span><br><span class="line"><span class="built_in">print</span>(arr, <span class="string">&quot;\n&quot;</span>)</span><br><span class="line"><span class="comment"># 由第 1、5、7、2 行的第 0、3、1、2 列元素组成新的二维数组</span></span><br><span class="line"><span class="built_in">print</span>(arr[np.ix_([<span class="number">1</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">2</span>],[<span class="number">0</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>])])</span><br></pre></td></tr></table></figure>
+<div align=center>
+<img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/Numpy/01/11.png"/>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="六-numpy-广播broadcast"><a class="markdownIt-Anchor" href="#六-numpy-广播broadcast"></a> 六、NumPy 广播（Broadcast）</h2>
+<ul>
+<li>
+<p><code>NumPy</code> 中的广播机制（<code>Broadcast</code>）旨在解决不同形状数组之间的算术运算问题，数组的算术运算通常在相对应位置上的元素之间进行。</p>
+</li>
+<li>
+<p>广播机制的核心是对形状较小的数组，在横向或纵向上进行一定次数的重复，使其与形状较大的数组拥有相同的维度。</p>
+</li>
+<li>
+<p>广播机制首先需要判断参与运算的两个数组是否广播兼容，从两个数组的 <code>shape</code> 尾部开始一一比对，存在下列任一情况即兼容：</p>
+<ul>
+<li>
+<p>数组至少有一个维度，且两个数组每个维度的数值相等；</p>
+</li>
+<li>
+<p>数组至少有一个维度，但是两个数组某个维度的数值不等，其中有一个数组在该维度的值为 <code>1</code> 或缺失（维度不同）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>如果两个数组是 “可广播的”，则计算过程遵循下列规则：</p>
+<ul>
+<li>
+<p>如果两个数组维度的维度不同，则在维度较小的数组前面增加维度，使两个数组维度相等。</p>
+</li>
+<li>
+<p>对于每个维度，广播后的数组的维度值取两个数组维度中的较大值。</p>
+</li>
+<li>
+<p>两个数组在某个维度广播的过程是将数值进行复制。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>实例</strong>：数组 <code>a</code> 的形状为 <code>(4,3)</code>，数组 <code>b</code> 的形状为 <code>(1,3)</code>，数组 <code>a</code> 和 <code>b</code> 进行加法运算。<strong>（广播）</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"></span><br><span class="line">a = np.array([[ <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">              [<span class="number">10</span>,<span class="number">10</span>,<span class="number">10</span>],</span><br><span class="line">              [<span class="number">20</span>,<span class="number">20</span>,<span class="number">20</span>],</span><br><span class="line">              [<span class="number">30</span>,<span class="number">30</span>,<span class="number">30</span>]])</span><br><span class="line">b = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(a + b)</span><br></pre></td></tr></table></figure>
+<div align=center>
+<img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/Numpy/01/12.png"/>
+</div>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://xindong2020.love">Mr.DONG</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://xindong2020.love/Numpy/Numpy01">https://xindong2020.love/Numpy/Numpy01</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xindong2020.love" target="_blank">Mr.DONG の 自习室</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Numpy/">Numpy</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover35.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/Numpy/Numpy02"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover31.jpg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">NumPy 教程二（数组操作）</div></div></a></div><div class="next-post pull-right"><a href="/e37807"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover05.jpg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Python 文件操作（I/O）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/Numpy/Numpy03" title="NumPy 教程三（位运算、字符串处理函数）"><img class="cover" src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover32.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-05</div><div class="title">NumPy 教程三（位运算、字符串处理函数）</div></div></a></div><div><a href="/Numpy/Numpy02" title="NumPy 教程二（数组操作）"><img class="cover" src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover31.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-03</div><div class="title">NumPy 教程二（数组操作）</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/avatar.png" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Mr.DONG</div><div class="author-info__description">Mr.DONG学习记录</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fandong93"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/fandong93" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dongf19931107@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到 Mr.DONG の 自习室</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-numpy-ndarray-%E5%AF%B9%E8%B1%A1"><span class="toc-text"> 一、NumPy ndarray 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-ndarray-%E5%AF%B9%E8%B1%A1%E7%AE%80%E4%BB%8B"><span class="toc-text"> 1.1 ndarray 对象简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-ndarray-%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA"><span class="toc-text"> 1.2 ndarray 对象创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-ndarray-%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6"><span class="toc-text"> 1.3 ndarray 的设计哲学</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-ndarray-%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80"><span class="toc-text"> 1.4 ndarray 的内存布局</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-numpy-%E6%95%B0%E7%BB%84%E5%B1%9E%E6%80%A7"><span class="toc-text"> 二、NumPy 数组属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-numpy-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 三、NumPy 数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-%E5%B8%B8%E7%94%A8-numpy-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B"><span class="toc-text"> 3.1 常用 NumPy 基本类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%AF%B9%E8%B1%A1dtype"><span class="toc-text"> 3.2 数据类型对象（dtype）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4datetime64%E5%92%8C%E6%97%B6%E9%97%B4%E5%A2%9E%E9%87%8Ftimedelta64"><span class="toc-text"> 3.3 日期时间（datetime64）和时间增量（timedelta64）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#331-%E5%9F%BA%E6%9C%AC%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4"><span class="toc-text"> 3.3.1 基本日期时间</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E7%AE%80%E4%BB%8B"><span class="toc-text"> 1. 简介</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-iso-8601-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F"><span class="toc-text"> 2. ISO 8601 日期格式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E5%AE%9E%E4%BE%8B"><span class="toc-text"> 3. 实例</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#332-datetime64-%E5%92%8C-timedelta64-%E8%BF%90%E7%AE%97"><span class="toc-text"> 3.3.2 datetime64 和 timedelta64 运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#333-%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%8A%9F%E8%83%BDbusday"><span class="toc-text"> 3.3.3 工作日功能（busday）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-busday_offset-%E5%87%BD%E6%95%B0"><span class="toc-text"> 1. busday_offset 函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-is_busday-%E5%87%BD%E6%95%B0"><span class="toc-text"> 2. is_busday 函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-busday_count-%E5%87%BD%E6%95%B0"><span class="toc-text"> 3. busday_count 函数</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-numpy-%E6%95%B0%E7%BB%84"><span class="toc-text"> 四、NumPy 数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-numpy-%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84"><span class="toc-text"> 4.1 NumPy 创建数组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#411-numpyempty"><span class="toc-text"> 4.1.1 numpy.empty</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#412-numpyzeros"><span class="toc-text"> 4.1.2 numpy.zeros</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#413-numpyones"><span class="toc-text"> 4.1.3 numpy.ones</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#414-numpyfull"><span class="toc-text"> 4.1.4 numpy.full</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#415-numpyeye"><span class="toc-text"> 4.1.5 numpy.eye</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-numpy-%E4%BB%8E%E5%B7%B2%E6%9C%89%E7%9A%84%E6%95%B0%E7%BB%84%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84"><span class="toc-text"> 4.2 NumPy 从已有的数组创建数组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#421-numpyasarray"><span class="toc-text"> 4.2.1 numpy.asarray</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#422-numpyfrombuffer"><span class="toc-text"> 4.2.2 numpy.frombuffer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#423-numpyfromiter"><span class="toc-text"> 4.2.3 numpy.fromiter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#424-numpyempty_like"><span class="toc-text"> 4.2.4 numpy.empty_like</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#425-numpyzeros_like"><span class="toc-text"> 4.2.5 numpy.zeros_like</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#426-numpyones_like"><span class="toc-text"> 4.2.6 numpy.ones_like</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#427-numpyfull_like"><span class="toc-text"> 4.2.7 numpy.full_like</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#43-numpy-%E4%BB%8E%E6%95%B0%E5%80%BC%E8%8C%83%E5%9B%B4%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84"><span class="toc-text"> 4.3 NumPy 从数值范围创建数组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#431-numpyarange"><span class="toc-text"> 4.3.1 numpy.arange</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#432-numpylinspace"><span class="toc-text"> 4.3.2 numpy.linspace</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#433-numpylogspace"><span class="toc-text"> 4.3.3 numpy.logspace</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#434-numpygeomspace"><span class="toc-text"> 4.3.4 numpy.geomspace</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-numpy-%E5%88%87%E7%89%87%E5%92%8C%E7%B4%A2%E5%BC%95"><span class="toc-text"> 五、NumPy 切片和索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#51-numpy-%E7%B4%A2%E5%BC%95"><span class="toc-text"> 5.1 NumPy 索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#52-numpy-%E5%88%87%E7%89%87"><span class="toc-text"> 5.2 NumPy 切片</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#521-%E7%B4%A2%E5%BC%95%E5%88%87%E7%89%87"><span class="toc-text"> 5.2.1 索引切片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#522-slice-%E5%87%BD%E6%95%B0"><span class="toc-text"> 5.2.2 slice 函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#53-numpy-%E9%AB%98%E7%BA%A7%E7%B4%A2%E5%BC%95"><span class="toc-text"> 5.3 NumPy 高级索引</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#531-%E6%95%B4%E6%95%B0%E6%95%B0%E7%BB%84%E7%B4%A2%E5%BC%95"><span class="toc-text"> 5.3.1 整数数组索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#532-%E5%B8%83%E5%B0%94%E7%B4%A2%E5%BC%95"><span class="toc-text"> 5.3.2 布尔索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#533-%E8%8A%B1%E5%BC%8F%E7%B4%A2%E5%BC%95"><span class="toc-text"> 5.3.3 花式索引</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-numpy-%E5%B9%BF%E6%92%ADbroadcast"><span class="toc-text"> 六、NumPy 广播（Broadcast）</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/1a2713be" title="Python3 流程控制"><img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover49.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/404.jpg'" alt="Python3 流程控制"/></a><div class="content"><a class="title" href="/1a2713be" title="Python3 流程控制">Python3 流程控制</a><time datetime="2022-12-12T16:18:55.417Z" title="发表于 2022-12-13 00:18:55">2022-12-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/b657703c" title="Python3 函数"><img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover25.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/404.jpg'" alt="Python3 函数"/></a><div class="content"><a class="title" href="/b657703c" title="Python3 函数">Python3 函数</a><time datetime="2022-12-12T16:18:55.417Z" title="发表于 2022-12-13 00:18:55">2022-12-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Numpy/Numpy03" title="NumPy 教程三（位运算、字符串处理函数）"><img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover32.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/404.jpg'" alt="NumPy 教程三（位运算、字符串处理函数）"/></a><div class="content"><a class="title" href="/Numpy/Numpy03" title="NumPy 教程三（位运算、字符串处理函数）">NumPy 教程三（位运算、字符串处理函数）</a><time datetime="2022-12-04T16:00:00.000Z" title="发表于 2022-12-05 00:00:00">2022-12-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022  <i id="heartbeat" class="fa fas fa-heartbeat"></i> Mr.DONG</div><div class="footer_custom_text"><p> <a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="本站使用Hexo框架"></a>&nbsp; <a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="本站使用Butterfly主题"></a>&nbsp; <a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站使用Gtihub托管"></a>&nbsp; <a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a>&nbsp; <a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a> </p> <p> <img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/national_emblem.png"/>&nbsp; <a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=46010802001122">琼公网安备 46010802001122号</a>&nbsp; <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/#/Integrated/recordQuery">琼ICP备2022012184号</a> </p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = false;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:24%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/category_IDE.jpg);"> <a class="categoryBar-list-link" href="categories/IDE-集成开发环境/">IDE 集成开发环境</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr">IDE 集成开发环境</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/category_Java.jpg);"> <a class="categoryBar-list-link" href="categories/JavaSE/">JavaSE</a><span class="categoryBar-list-count">9</span><span class="categoryBar-list-descr">JavaSE</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/category_Python.jpg);"> <a class="categoryBar-list-link" href="categories/blockchain/">blockchain</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr">Python</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/category_Ubuntu.jpg);"> <a class="categoryBar-list-link" href="categories/Python/">Python</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr">Ubuntu 20.04 指南</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/calculus.png);"> <a class="categoryBar-list-link" href="categories/Ubuntu-20-04-指南/">Ubuntu 20.04 指南</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr">一元函数微积分</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/deep_learning.jpg);"> <a class="categoryBar-list-link" href="categories/Numpy/">Numpy</a><span class="categoryBar-list-count">4</span><span class="categoryBar-list-descr">Deep learning</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/category_Computer.jpg);"> <a class="categoryBar-list-link" href="categories/一元函数微积分/">一元函数微积分</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">计算机基础</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/paper.jpg);"> <a class="categoryBar-list-link" href="categories/Deep-learning/">Deep learning</a><span class="categoryBar-list-count">4</span><span class="categoryBar-list-descr">Paper</span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/计算机基础/">计算机基础</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/Paper/">Paper</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = '4d16be2aa23749989764d48a38123e0b';
+  var gaud_map_key = '569c5267f3d03ef7d2e461f3ef6498c0';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.982279,28.19409';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><!-- hexo injector body_end end --></body></html>

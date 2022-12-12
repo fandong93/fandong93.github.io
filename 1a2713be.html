@@ -1,0 +1,485 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Python3 流程控制 | Mr.DONG の 自习室</title><meta name="author" content="Mr.DONG"><meta name="copyright" content="Mr.DONG"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="一、顺序结构 二、分支结构 三、循环结构  3.1 while 循环 3.2 for 循环   四、生成器和迭代器  4.1 容器 4.2 迭代器 4.3 生成器   五、推导式   一、顺序结构  顺序结构就是让程序按照从头到尾的顺序依次执行每一条 Python 代码，不重复执行任何代码，也不跳过任何代码。   二、分支结构   分支结构就是构造合适的分支条件和分析程序流程，根据分析程序流程选">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python3 流程控制">
+<meta property="og:url" content="https://xindong2020.love/1a2713be">
+<meta property="og:site_name" content="Mr.DONG の 自习室">
+<meta property="og:description" content="一、顺序结构 二、分支结构 三、循环结构  3.1 while 循环 3.2 for 循环   四、生成器和迭代器  4.1 容器 4.2 迭代器 4.3 生成器   五、推导式   一、顺序结构  顺序结构就是让程序按照从头到尾的顺序依次执行每一条 Python 代码，不重复执行任何代码，也不跳过任何代码。   二、分支结构   分支结构就是构造合适的分支条件和分析程序流程，根据分析程序流程选">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover49.jpg">
+<meta property="article:published_time" content="2022-12-12T16:18:55.417Z">
+<meta property="article:modified_time" content="2022-12-12T16:18:55.417Z">
+<meta property="article:author" content="Mr.DONG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover49.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/favicon.png"><link rel="canonical" href="https://xindong2020.love/1a2713be"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io/css/logofonts.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"R7ZHV2NELE","apiKey":"8aa9f67293bfb4f2895895aaaa92152f","indexName":"fandong","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":270},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Python3 流程控制',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-13 00:18:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/one.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/width.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/background.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/fonts.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/logofonts.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/fontsize.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/mouse.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fandong93/fandong93.github.io@master/css/scrollbar.css"><link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/KaTeX/0.15.2/katex.min.css" rel="stylesheet"><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/avatar.png" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/musics/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-images"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover49.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Mr.DONG の 自习室</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/musics/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-images"></i><span> 书单</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Python3 流程控制</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-12T16:18:55.417Z" title="发表于 2022-12-13 00:18:55">2022-12-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-12T16:18:55.417Z" title="更新于 2022-12-13 00:18:55">2022-12-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python/">Python</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Python3 流程控制"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ul>
+<li><a href="#%E4%B8%80%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84">一、顺序结构</a></li>
+<li><a href="#%E4%BA%8C%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84">二、分支结构</a></li>
+<li><a href="#%E4%B8%89%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84">三、循环结构</a>
+<ul>
+<li><a href="#31-while-%E5%BE%AA%E7%8E%AF">3.1 while 循环</a></li>
+<li><a href="#32-for-%E5%BE%AA%E7%8E%AF">3.2 for 循环</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9B%E7%94%9F%E6%88%90%E5%99%A8%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8">四、生成器和迭代器</a>
+<ul>
+<li><a href="#41-%E5%AE%B9%E5%99%A8">4.1 容器</a></li>
+<li><a href="#42-%E8%BF%AD%E4%BB%A3%E5%99%A8">4.2 迭代器</a></li>
+<li><a href="#43-%E7%94%9F%E6%88%90%E5%99%A8">4.3 生成器</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%94%E6%8E%A8%E5%AF%BC%E5%BC%8F">五、推导式</a></li>
+</ul>
+<h2 id="一-顺序结构"><a class="markdownIt-Anchor" href="#一-顺序结构"></a> 一、顺序结构</h2>
+<ul>
+<li>顺序结构就是让程序按照从头到尾的顺序依次执行每一条 <code>Python</code> 代码，不重复执行任何代码，也不跳过任何代码。</li>
+</ul>
+<h2 id="二-分支结构"><a class="markdownIt-Anchor" href="#二-分支结构"></a> 二、分支结构</h2>
+<ul>
+<li>
+<p>分支结构就是构造合适的分支条件和分析程序流程，根据分析程序流程选择适当的分支语句。</p>
+</li>
+<li>
+<p>在 <code>Python</code> 中，可以使用 <code>if else</code> 语句对条件进行判断，然后根据不同的结果执行不同的代码，这称为选择结构或者分支结构。</p>
+</li>
+<li>
+<p><code>Python</code> 中的 <code>if else</code> 语句的语法格式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> condition_1:</span><br><span class="line">    statement_block_1</span><br><span class="line"><span class="keyword">elif</span> condition_2:</span><br><span class="line">    statement_block_2</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    statement_block_3</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>如果 “<code>condition_1</code>” 为 <code>True</code>，将执行 “<code>statement_block_1</code>” 块语句。</p>
+</li>
+<li>
+<p>如果 “<code>condition_1</code>” 为 <code>False</code>，将判断 “<code>condition_2</code>”。</p>
+</li>
+<li>
+<p>如果 “<code>condition_2</code>” 为 <code>True</code>，将执行 “<code>statement_block_2</code>” 块语句。</p>
+</li>
+<li>
+<p>如果 “<code>condition_2</code>” 为 <code>False</code>，将执行&quot;<code>statement_block_3</code>&quot; 块语句。</p>
+</li>
+<li>
+<p>注意事项：</p>
+<ul>
+<li>
+<p>“表达式（<code>condition</code>）” 可以是一个单一的值或变量，也可以是由运算符组成的复杂语句，<strong>形式不限</strong>，只要它的结果能转变为一个布尔值即可。</p>
+<ul>
+<li>
+<p>对于数字，<code>Python</code> 会把 <code>0</code> 和 <code>0.0</code> 当做 “<code>False</code>”，把其它值当做 “<code>True</code>”。</p>
+</li>
+<li>
+<p>对于其它类型，当值为空或 <code>None</code> 时，<code>Python</code> 会当做 “<code>False</code>”，其它情况当做 “<code>True</code>”。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>if</code>、<code>elif</code>、<code>else</code> 语句的最后要使用冒号 <code>:</code>，表示接下来是满足条件后要执行的代码块。</p>
+</li>
+<li>
+<p>“代码块” 由具有 <strong>相同缩进量</strong> 的若干条语句组成。</p>
+<ul>
+<li>
+<p><code>Python</code> 是以缩进来标记代码块的，代码块一定要有缩进，没有缩进的不是代码块。</p>
+</li>
+<li>
+<p>同一个代码块的缩进量要相同，缩进量不同的代码不属于同一个代码块。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>一旦某个表达式（<code>if</code> 或 <code>elif</code>）成立，<code>Python</code> 就会执行它后面对应的代码块；如果所有表达式都不成立，那就执行 <code>else</code> 后面的代码块；如果没有 <code>else</code> 部分，那就什么也不执行。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>Python</code> 中的 <code>if else</code> 语句可以分为三种形式：<code>if</code> 语句、<code>if else</code> 语句和 <code>if elif else</code> 语句。</p>
+<table frame=void>
+  <tr>
+    <td align=center>
+    <img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/control_flow/01.jpg"/>
+    </td>
+    <td align=center>
+    <img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/control_flow/02.jpg"/>
+    </td>
+    <td align=center>
+    <img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/control_flow/03.jpg"/>
+    </td>
+  </tr>
+  <tr>
+    <td align=center>if 语句执行流程</td>
+    <td align=center>if else 语句执行流程</td>
+    <td align=center>if elif else 语句执行流程</td>
+  </tr>
+</table>
+<ul>
+<li>
+<p><code>if</code> 语句：如果表达式成立（<code>True</code>），执行后面的代码块；如果表达式不成立（<code>False</code>），什么也不执行。</p>
+</li>
+<li>
+<p><code>if else</code> 语句：如果表达式成立（<code>True</code>），执行 <code>if</code> 后面紧跟的代码块 <code>1</code>；如果表达式不成立（<code>False</code>），执行 <code>else</code> 后面紧跟的代码块 <code>2</code>。如果没有 <code>else</code> 部分，那就什么也不执行。</p>
+</li>
+<li>
+<p><code>if elif else</code> 语句：<code>Python</code> 从上到下逐个判断表达式（<code>condition</code>）是否成立，如果遇到某个表达式成立（<code>True</code>），就执行后面紧跟的代码块，不再执行其余代码。如果所有的表达式都不成立，就执行 <code>else</code> 后面的代码块。如果没有 <code>else</code> 部分，那就什么也不执行。</p>
+<ul>
+<li>不论有多少个 <code>elif</code> 分支，只能执行其中一个分支或一个也不执行，不能同时执行多个分支。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>if</code> 语句、<code>if else</code> 语句和 <code>if elif else</code> 语句之间可以相互嵌套。</p>
+</li>
+<li>
+<p>当 <code>if else</code> 条件语句中不进行任何操作时，可以使用空语句 <code>pass</code> 当作占位语句。<code>pass</code> 是 <code>Python</code> 中的关键字，用来让解释器跳过此处，什么都不做。</p>
+</li>
+<li>
+<p><code>assert</code> 语句，又称 <strong>断言语句</strong>，可以看做是简配版 <code>if</code> 语句，它用于判断某个表达式的值是否为真，如果为真，则程序可以继续往下执行；反之，<code>Python</code> 解释器会抛出 <code>AssertionError</code> 异常。格式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assert</span> 表达式</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>在</strong> <code>Python</code> <strong>中没有</strong> <code>switch</code> <strong>语句</strong>，但是在 <code>Python 3.10</code> 中新增了 <code>match...case</code> 条件判断，不需要再使用一连串的 <code>if-else</code>。语法格式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">match</span> subject:</span><br><span class="line">    <span class="keyword">case</span> &lt;pattern_1&gt;:</span><br><span class="line">        &lt;action_1&gt;</span><br><span class="line">    <span class="keyword">case</span> &lt;pattern_2&gt;:</span><br><span class="line">        &lt;action_2&gt;</span><br><span class="line">    <span class="keyword">case</span> &lt;pattern_3&gt;:</span><br><span class="line">        &lt;action_3&gt;</span><br><span class="line">    <span class="keyword">case</span> _:</span><br><span class="line">        &lt;action_wildcard&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>match</code> 后的对象会依次与 <code>case</code> 后的表达式进行匹配，如果匹配成功，则执行匹配成功的表达式后面的代码块，否则直接跳过。<code>_</code> 可以匹配一切，当其他 <code>case</code> 都无法匹配时，执行 <code>case _</code> 后面的代码块。</li>
+</ul>
+</li>
+</ul>
+<h2 id="三-循环结构"><a class="markdownIt-Anchor" href="#三-循环结构"></a> 三、循环结构</h2>
+<h3 id="31-while-循环"><a class="markdownIt-Anchor" href="#31-while-循环"></a> 3.1 while 循环</h3>
+<ul>
+<li>
+<p><code>while</code> 循环的语法格式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> 条件表达式：</span><br><span class="line">    代码块（循环体）</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>while</code> 循环的执行流程：</p>
+<ul>
+<li>
+<p>首先，判断条件表达式的值，值为真（<code>True</code>）时执行代码块中的语句，否则跳出循环。</p>
+</li>
+<li>
+<p>当循环体执行完毕后，重新判断条件表达式的值是否为真，若仍为真，则再次执行代码块。</p>
+</li>
+<li>
+<p>重复上述操作，直到条件表达式的值为假（<code>False</code>），终止循环。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>可以通过设置条件表达式永远为 <code>True</code> 来实现无限循环（死循环）。</p>
+</li>
+<li>
+<p>如果 <code>while</code> 循环体中只有一条语句，可以将该语句与 <code>while</code> 写在同一行。</p>
+</li>
+<li>
+<p>可以将 <code>while</code> 循环与 <code>else</code> 语句配合使用，当 <code>while</code> 后面的条件表达式为 <code>false</code> 时，执行 <code>else</code> 后面的语句块。语法格式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> &lt;expr&gt;:</span><br><span class="line">    &lt;statement(s)&gt;</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    &lt;additional_statement(s)&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>expr</code> 语句为 <code>true</code> 则执行 <code>statement(s)</code> 代码块，否则执行 <code>additional_statement(s)</code>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="32-for-循环"><a class="markdownIt-Anchor" href="#32-for-循环"></a> 3.2 for 循环</h3>
+<ul>
+<li>
+<p><code>for</code> 循环的语法格式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> &lt;variable&gt; <span class="keyword">in</span> &lt;iterable&gt;:</span><br><span class="line">    &lt;statements&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>for</code> 循环可以遍历任何可迭代对象。</p>
+</li>
+<li>
+<p>当用 <code>for</code> 循环进行数值循环时，可以使用内置函数 <code>range()</code> 生成数字数列。</p>
+</li>
+<li>
+<p>当用 <code>for</code> 循环遍历 <code>list</code> 列表或 <code>tuple</code> 元组时，迭代变量 <code>variable</code> 会先后被赋值为列表或元组中的每个元素并执行一次循环体。</p>
+</li>
+<li>
+<p>当用 <code>for</code> 循环遍历 <code>dict</code> 字典时，会经常用到和字典相关的 <code>3</code> 个方法返回字典中的键、值和键值对，即 <code>keys()</code>、<code>values()</code> 和 <code>items()</code>。如果使用 <code>for</code> 循环直接遍历字典，则迭代变量会先后被赋值为每个键值对中的键，和遍历字典 <code>keys()</code> 方法的返回值是相同的。</p>
+</li>
+<li>
+<p>可以将 <code>for</code> 循环与 <code>else</code> 语句配合使用，当 <code>for</code> 循环执行完成，即穷尽可迭代对象后，执行 <code>else</code> 后面的语句块。语法格式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> &lt;variable&gt; <span class="keyword">in</span> &lt;iterable&gt;:</span><br><span class="line">    &lt;statements&gt;</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    &lt;statements&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>Python</code> 不仅支持 <code>if</code> 语句相互嵌套，也支持 <code>while</code> 循环和 <code>for</code> 循环相互嵌套。当 <code>2</code> 个或多个循环结构相互嵌套时，位于外层的循环结构常被称为外层循环或外循环，位于内层的循环结构常被称为内层循环或内循环。</p>
+<ul>
+<li>嵌套循环执行的总次数 = 外循环执行次数 * 内循环执行次数</li>
+</ul>
+</li>
+<li>
+<p><code>continue</code> 语句可以终止执行本次循环中剩下的代码，继续执行下一次循环。</p>
+</li>
+<li>
+<p><code>break</code> 语句可以跳出 <code>for</code> 和 <code>while</code> 的循环体，终止循环，对应的 <code>else</code> 代码块将不执行。</p>
+</li>
+</ul>
+<h2 id="四-生成器和迭代器"><a class="markdownIt-Anchor" href="#四-生成器和迭代器"></a> 四、生成器和迭代器</h2>
+<h3 id="41-容器"><a class="markdownIt-Anchor" href="#41-容器"></a> 4.1 容器</h3>
+<ul>
+<li>
+<p>容器是一种把多个元素组织在一起的数据结构，容器中的元素可以逐个迭代获取，可以用 <code>in</code>，<code>not in</code> 关键字判断元素是否包含在容器中。通常这类数据结构把所有的元素存储在内存中（也有一些特例，并不是所有的元素都放在内存，例：迭代器和生成器对象），我们常用的 <code>string</code>、<code>set</code>、<code>list</code>、<code>tuple</code>、<code>dict</code> 都属于容器对象。</p>
+</li>
+<li>
+<p>尽管大多数容器都提供了某种方式获取容器中的每一个元素，但这并不是容器本身提供的能力，而是可迭代对象赋予了容器这种能力，当然并不是所有容器都是可迭代的。</p>
+<ul>
+<li>可以返回一个迭代器的对象都可以称之为可迭代对象，即实现了 <code>__iter__()</code> 方法的对象都可以称为可迭代对象。通过调用 <code>iter()</code> 方法可以获得一个迭代器（<code>Iterator</code>）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="42-迭代器"><a class="markdownIt-Anchor" href="#42-迭代器"></a> 4.2 迭代器</h3>
+<ul>
+<li>
+<p>迭代器是一个带状态的对象，它能在你调用 <code>next()</code> 方法时返回容器中的下一个值，任何实现了 <code>__iter__()</code> 方法和 <code>__next__()</code> 方法的对象都是迭代器。<code>__iter__()</code> 方法返回迭代器自身，<code>__next__()</code> 方法返回容器中的下一个值，如果容器中没有更多元素，则抛出 <code>StopIteration</code> 异常。</p>
+</li>
+<li>
+<p>迭代器不像其他类型容器一样把所有元素一次性加载到内存，而是以一种延迟计算（<code>lazy evaluation</code>）的方式返回元素。</p>
+</li>
+<li>
+<p>在使用 <code>for...in...</code> 循环遍历自定义容器对象时，会调用遍历对象的 <code>__iter__()</code> 魔法方法获得一个迭代器，之后再循环调用迭代器对象的 <code>__next__()</code> 方法。<code>__iter__()</code> 只会被调用一次，而 <code>__next__()</code> 会被调用 <code>n</code> 次。</p>
+</li>
+<li>
+<p>示例：输出斐波那契数列（第一项和第二项为 <code>1</code>，从第三项开始，每一项都等于前两项之和）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Fib</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, <span class="built_in">max</span>=<span class="number">0</span></span>):</span><br><span class="line">        <span class="built_in">super</span>(Fib, self).__init__()</span><br><span class="line">        self.prev = <span class="number">0</span></span><br><span class="line">        self.curr = <span class="number">1</span></span><br><span class="line">        self.<span class="built_in">max</span> = <span class="built_in">max</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__iter__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__next__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> self.<span class="built_in">max</span> &gt; <span class="number">0</span>:</span><br><span class="line">            self.<span class="built_in">max</span> -= <span class="number">1</span></span><br><span class="line">            <span class="comment"># 当前要返回的元素的值</span></span><br><span class="line">            value = self.curr</span><br><span class="line">            <span class="comment"># 下一个要返回的元素的值</span></span><br><span class="line">            self.curr += self.prev</span><br><span class="line">            <span class="comment"># 设置下一个元素的上一个元素的值</span></span><br><span class="line">            self.prev = value</span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span> StopIteration</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    fib = Fib(<span class="number">10</span>) <span class="comment"># 调用 __init__ 方法返回一个迭代器对象</span></span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> fib: <span class="comment"># 遍历迭代器</span></span><br><span class="line">        <span class="built_in">print</span>(n, end=<span class="string">&quot;,&quot;</span>) <span class="comment"># 输出：1,1,2,3,5,8,13,21,34,55,</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="43-生成器"><a class="markdownIt-Anchor" href="#43-生成器"></a> 4.3 生成器</h3>
+<ul>
+<li>
+<p>使用 <code>yield</code> 关键字 <strong>返回函数值</strong> 的函数叫生成器函数。调用生成器函数时，<code>Python</code> 解释器不会执行函数中的代码，而是会返回一个生成器对象。生成器是一种特殊的迭代器，不过这种迭代器不需要像普通迭代器一样实现 <code>__iter__()</code> 和 <code>__next__()</code> 方法，只需要使用 <code>yield</code> 关键字。</p>
+</li>
+<li>
+<p>程序每执行到一个 <code>yield</code> 语句就会中断，并返回一个迭代值，下次执行时从 <code>yield</code> 的下一个语句继续执行。</p>
+</li>
+<li>
+<p>要想使生成器函数得以执行，或者想使执行完 <code>yield</code> 语句立即暂停的程序得以继续执行，有以下 <code>2</code> 种方式：</p>
+<ul>
+<li>
+<p>通过生成器对象调用 <code>next()</code>、<code>send()</code> 或 <code>__next__()</code> 方法。</p>
+</li>
+<li>
+<p>通过 <code>for</code> 循环遍历生成器。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>yield</code> 生成器中提供了<code>send</code> 方法，可以给生成器传递参数。每次的 <code>send(params)</code> 都会运行到 <code>yield</code> 语句，但赋值不会执行，只会有返回值，赋值操作在下一次 <code>send(params)</code> 时执行。</p>
+</li>
+<li>
+<p>生成器表达式：<code>(expression for item in Sequence)</code> 或 <code>(expression for item in Sequence if condition)</code>，使用 <code>()</code> 圆括号将各部分括起来。</p>
+<ul>
+<li>
+<p>可以利用 <code>range</code> 区间、元组、列表、字典和集合等数据类型，快速生成一个满足指定需求的生成器对象。</p>
+</li>
+<li>
+<p>可是使用 <code>list()</code>、<code>tuple()</code> 或 <code>set()</code> 函数将生成器对象转换成相应的列表、元组或集合。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>示例：使用生成器输出斐波那契数列，不需要实现 <code>__iter__()</code> 和 <code>__next__()</code> 方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">fib</span>(<span class="params"><span class="built_in">max</span></span>):</span><br><span class="line">    prev, curr = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> <span class="built_in">max</span> &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">max</span> -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">yield</span> curr</span><br><span class="line">        prev, curr = curr, prev + curr</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    fib = fib(<span class="number">10</span>) <span class="comment"># 不会执行 fib 函数，仅返回一个生成器对象</span></span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> fib: <span class="comment"># 遍历生成器，执行 fib 函数</span></span><br><span class="line">        <span class="built_in">print</span>(n, end=<span class="string">&quot;,&quot;</span>) <span class="comment"># 输出：1,1,2,3,5,8,13,21,34,55,</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="五-推导式"><a class="markdownIt-Anchor" href="#五-推导式"></a> 五、推导式</h2>
+<ul>
+<li>
+<p>推导式 <code>comprehensions</code>（又称解析式），是 <code>Python</code> 的一种独有特性，是一种可以从一个序列构建另一个新的序列的结构体。共有 <code>3</code> 种推导式：<strong>列表推导式</strong>、<strong>字典推导式</strong> 和 <strong>集合推导式</strong>。</p>
+</li>
+<li>
+<p>列表推导式格式：<code>[out_exp_res for out_exp in input_list]</code> 或 <code>[out_exp_res for out_exp in input_list if condition]</code></p>
+<ul>
+<li>
+<p><code>out_exp_res</code>：列表生成元素表达式，可以是有返回值的函数。</p>
+</li>
+<li>
+<p><code>for out_exp in input_list</code>：迭代 <code>input_list</code> 将 <code>out_exp</code> 传入到 <code>out_exp_res</code> 表达式中。</p>
+</li>
+<li>
+<p><code>if condition</code>：条件语句，可以过滤列表中不符合条件的值。</p>
+</li>
+<li>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">namelist = [<span class="string">&#x27;Bob&#x27;</span>,<span class="string">&#x27;Tom&#x27;</span>,<span class="string">&#x27;alice&#x27;</span>,<span class="string">&#x27;Jerry&#x27;</span>,<span class="string">&#x27;Wendy&#x27;</span>,<span class="string">&#x27;Smith&#x27;</span>]</span><br><span class="line">new_namelist = [name.upper() <span class="keyword">for</span> name <span class="keyword">in</span> namelist <span class="keyword">if</span> <span class="built_in">len</span>(name)&gt;<span class="number">3</span>]</span><br><span class="line"><span class="built_in">print</span>(new_namelist) <span class="comment"># 输出：[&#x27;ALICE&#x27;, &#x27;JERRY&#x27;, &#x27;WENDY&#x27;, &#x27;SMITH&#x27;]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>字典推导式格式：<code>&#123;key_expr : value_expr for value in collection&#125;</code> 或 <code>&#123;key_expr : value_expr for value in collection if condition&#125;</code>，示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">namelist = [<span class="string">&#x27;Bob&#x27;</span>,<span class="string">&#x27;Tom&#x27;</span>,<span class="string">&#x27;alice&#x27;</span>,<span class="string">&#x27;Jerry&#x27;</span>,<span class="string">&#x27;Wendy&#x27;</span>,<span class="string">&#x27;Smith&#x27;</span>]</span><br><span class="line">namedict = &#123;name:<span class="built_in">len</span>(name) <span class="keyword">for</span> name <span class="keyword">in</span> namelist <span class="keyword">if</span> <span class="built_in">len</span>(name)&gt;<span class="number">3</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(namedict) <span class="comment"># 输出：&#123;&#x27;alice&#x27;: 5, &#x27;Jerry&#x27;: 5, &#x27;Wendy&#x27;: 5, &#x27;Smith&#x27;: 5&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>集合推导式格式：<code>&#123;expression for item in Sequence&#125;</code> 或 <code>&#123;expression for item in Sequence if conditional&#125;</code>，示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setnew = &#123;i**<span class="number">2</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)&#125;</span><br><span class="line"><span class="built_in">print</span>(setnew) <span class="comment"># 输出：&#123;0, 1, 64, 4, 36, 9, 16, 49, 81, 25&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://xindong2020.love">Mr.DONG</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://xindong2020.love/1a2713be">https://xindong2020.love/1a2713be</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xindong2020.love" target="_blank">Mr.DONG の 自习室</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover49.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/b657703c"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover25.jpg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Python3 函数</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/avatar.png" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Mr.DONG</div><div class="author-info__description">Mr.DONG学习记录</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fandong93"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/fandong93" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dongf19931107@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到 Mr.DONG の 自习室</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84"><span class="toc-text"> 一、顺序结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84"><span class="toc-text"> 二、分支结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84"><span class="toc-text"> 三、循环结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#31-while-%E5%BE%AA%E7%8E%AF"><span class="toc-text"> 3.1 while 循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#32-for-%E5%BE%AA%E7%8E%AF"><span class="toc-text"> 3.2 for 循环</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E7%94%9F%E6%88%90%E5%99%A8%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-text"> 四、生成器和迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-%E5%AE%B9%E5%99%A8"><span class="toc-text"> 4.1 容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-text"> 4.2 迭代器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#43-%E7%94%9F%E6%88%90%E5%99%A8"><span class="toc-text"> 4.3 生成器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E6%8E%A8%E5%AF%BC%E5%BC%8F"><span class="toc-text"> 五、推导式</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/1a2713be" title="Python3 流程控制"><img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover49.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/404.jpg'" alt="Python3 流程控制"/></a><div class="content"><a class="title" href="/1a2713be" title="Python3 流程控制">Python3 流程控制</a><time datetime="2022-12-12T16:18:55.417Z" title="发表于 2022-12-13 00:18:55">2022-12-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/b657703c" title="Python3 函数"><img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover25.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/404.jpg'" alt="Python3 函数"/></a><div class="content"><a class="title" href="/b657703c" title="Python3 函数">Python3 函数</a><time datetime="2022-12-12T16:18:55.417Z" title="发表于 2022-12-13 00:18:55">2022-12-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Numpy/Numpy03" title="NumPy 教程三（位运算、字符串处理函数）"><img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/cover32.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/404.jpg'" alt="NumPy 教程三（位运算、字符串处理函数）"/></a><div class="content"><a class="title" href="/Numpy/Numpy03" title="NumPy 教程三（位运算、字符串处理函数）">NumPy 教程三（位运算、字符串处理函数）</a><time datetime="2022-12-04T16:00:00.000Z" title="发表于 2022-12-05 00:00:00">2022-12-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022  <i id="heartbeat" class="fa fas fa-heartbeat"></i> Mr.DONG</div><div class="footer_custom_text"><p> <a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="本站使用Hexo框架"></a>&nbsp; <a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="本站使用Butterfly主题"></a>&nbsp; <a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站使用Gtihub托管"></a>&nbsp; <a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a>&nbsp; <a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a> </p> <p> <img src="https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/national_emblem.png"/>&nbsp; <a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=46010802001122">琼公网安备 46010802001122号</a>&nbsp; <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/#/Integrated/recordQuery">琼ICP备2022012184号</a> </p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/algoliasearch/dist/algoliasearch-lite.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = false;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:24%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/category_IDE.jpg);"> <a class="categoryBar-list-link" href="categories/IDE-集成开发环境/">IDE 集成开发环境</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr">IDE 集成开发环境</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/category_Java.jpg);"> <a class="categoryBar-list-link" href="categories/JavaSE/">JavaSE</a><span class="categoryBar-list-count">9</span><span class="categoryBar-list-descr">JavaSE</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/category_Python.jpg);"> <a class="categoryBar-list-link" href="categories/blockchain/">blockchain</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr">Python</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/category_Ubuntu.jpg);"> <a class="categoryBar-list-link" href="categories/Python/">Python</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr">Ubuntu 20.04 指南</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/calculus.png);"> <a class="categoryBar-list-link" href="categories/Ubuntu-20-04-指南/">Ubuntu 20.04 指南</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr">一元函数微积分</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/deep_learning.jpg);"> <a class="categoryBar-list-link" href="categories/Numpy/">Numpy</a><span class="categoryBar-list-count">4</span><span class="categoryBar-list-descr">Deep learning</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/category_Computer.jpg);"> <a class="categoryBar-list-link" href="categories/一元函数微积分/">一元函数微积分</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">计算机基础</span></li><li class="categoryBar-list-item" style="background:url(https://cdn.jsdelivr.net/gh/fandong93/PictureBed/_config.butterfly/paper.jpg);"> <a class="categoryBar-list-link" href="categories/Deep-learning/">Deep learning</a><span class="categoryBar-list-count">4</span><span class="categoryBar-list-descr">Paper</span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/计算机基础/">计算机基础</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/Paper/">Paper</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = '4d16be2aa23749989764d48a38123e0b';
+  var gaud_map_key = '569c5267f3d03ef7d2e461f3ef6498c0';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.982279,28.19409';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><!-- hexo injector body_end end --></body></html>
